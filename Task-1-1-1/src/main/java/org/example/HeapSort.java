@@ -1,9 +1,20 @@
+/**
+ * Main
+ */
+
 package org.example;
 
 /**
- * comment
+ * HeapSort
  */
 public class HeapSort {
+
+    /**
+     * sorting
+     *
+     * @param arr is the array we will sort
+     * @param n is the length of array
+     */
     public static void hsort(int[] arr, int n) {
         for (int i = (n / 2 - 1); i >= 0; i--) {
             heapify(arr, n, i);
@@ -15,6 +26,14 @@ public class HeapSort {
             heapify(arr, i, 0);
         }
     }
+
+    /**
+     * build the max heap.
+     *
+     * @param arr is the array
+     * @param n is the length of array
+     * @param i is the index of root node of subtree
+     */
     public static void heapify(int[] arr, int n, int i) {
 
         int maxid = i;
