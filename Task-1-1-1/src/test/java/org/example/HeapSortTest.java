@@ -1,5 +1,5 @@
 /**
- * Test
+ * Test.
  */
 
 package org.example;
