@@ -1,16 +1,16 @@
 /**
- * Main
+ * Main.
  */
 
 package org.example;
 
 /**
- * HeapSort
+ * HeapSort.
  */
 public class HeapSort {
 
     /**
-     * sorting
+     * sorting.
      *
      * @param arr is the array we will sort
      * @param n is the length of array
