@@ -1,5 +1,5 @@
 /**
- * Test.
+ * Different tests for HeapSort.
  */
 
 package org.example;
@@ -11,7 +11,7 @@ import org.junit.jupiter.api.Test;
 
 class HeapSortTest {
 
-    private HeapSort heapSort = new HeapSort();
+    private HeapSort heapSort;
 
     @Test
     void testRegularArray() {
