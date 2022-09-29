@@ -34,7 +34,7 @@ public class HeapSort {
      * @param n is the length of array
      * @param i is the index of root node of subtree
      */
-    public static void heapify(int[] arr, int n, int i) {
+    private static void heapify(int[] arr, int n, int i) {
 
         int maxid = i;
         if ((2 * i + 2) < n && arr[maxid] < arr[2 * i + 2]) {
