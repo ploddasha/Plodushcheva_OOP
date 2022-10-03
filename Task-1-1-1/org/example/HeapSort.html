@@ -131,7 +131,8 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <hr>
 <pre>public class <span class="typeNameLabel">HeapSort</span>
 extends java.lang.Object</pre>
-<div class="block">HeapSort.</div>
+<div class="block">HeapSort is a comparison-based sorting technique based on binary heap data structure.
+ The time required to perform Heap sort increases logarithmically.</div>
 </li>
 </ul>
 </div>
@@ -178,7 +179,9 @@ extends java.lang.Object</pre>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#hsort(int%5B%5D,int)">hsort</a></span>&#8203;(int[]&nbsp;arr,
      int&nbsp;n)</code></th>
 <td class="colLast">
-<div class="block">sorting.</div>
+<div class="block">Array converts into heap data structure with heapify,
+ then one by one it deletes the root node of the Max-heap and
+ replaces it with the last node in the heap and then heapify the root of the heap.</div>
 </td>
 </tr>
 </table>
@@ -232,7 +235,10 @@ extends java.lang.Object</pre>
 <h4>hsort</h4>
 <pre class="methodSignature">public static&nbsp;void&nbsp;hsort&#8203;(int[]&nbsp;arr,
                          int&nbsp;n)</pre>
-<div class="block">sorting.</div>
+<div class="block">Array converts into heap data structure with heapify,
+ then one by one it deletes the root node of the Max-heap and
+ replaces it with the last node in the heap and then heapify the root of the heap.
+ This process repeats until size of heap is greater than 1.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>arr</code> - is the array we will sort</dd>
