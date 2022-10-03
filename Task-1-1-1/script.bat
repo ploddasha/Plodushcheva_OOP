@@ -4,3 +4,5 @@ javac -d .\make\bin\ -sourcepath .\src\main\java .\src\main\java\org\example\Hea
 
 mkdir .\make\jar
 jar cf .\make\jar\HeapSort.jar -C .\make\bin .
+
+java -classpath .\make\jar\HeapSort.jar org.example.HeapSort
