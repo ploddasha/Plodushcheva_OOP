@@ -1,16 +1,16 @@
-/**
- * Main.
- */
-
 package org.example;
 
 /**
- * HeapSort.
+ * HeapSort is a comparison-based sorting technique based on binary heap data structure.
+ * The time required to perform Heap sort increases logarithmically.
  */
 public class HeapSort {
 
     /**
-     * sorting.
+     * Array converts into heap data structure with heapify,
+     * then one by one it deletes the root node of the Max-heap and
+     * replaces it with the last node in the heap and then heapify the root of the heap.
+     * This process repeats until size of heap is greater than 1.
      *
      * @param arr is the array we will sort
      * @param n is the length of array
@@ -28,7 +28,9 @@ public class HeapSort {
     }
 
     /**
-     * build the max heap.
+     * Heapify is the process of creating a heap data structure
+     * from a binary tree represented using an array.
+     * It is used to create max-heap.
      *
      * @param arr is the array
      * @param n is the length of array
