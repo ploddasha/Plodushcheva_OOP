@@ -17,7 +17,7 @@ public class Stack<T> {
      */
     public Stack() {
         cnt = 0;
-        capacity = 5;
+        capacity = 1;
         arr = (T[]) new Object[capacity];
     }
 
@@ -58,7 +58,6 @@ public class Stack<T> {
             return null;
         }
         T element = arr[cnt - 1];
-        arr[cnt - 1] = null;
         cnt--;
         return element;
 
