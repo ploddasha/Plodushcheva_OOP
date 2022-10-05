@@ -42,7 +42,6 @@ public class Stack<T> {
      */
     public void pushStack(Stack<T> temp) {
         int length = temp.count();
-        //T[] arr = (T[]) new Object[length];
         for (int i = 0; i < length; i++) {
             push(temp.arr[i]);
         }
