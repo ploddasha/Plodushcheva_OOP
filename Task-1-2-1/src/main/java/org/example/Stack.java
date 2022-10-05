@@ -17,7 +17,7 @@ public class Stack<T> {
      */
     public Stack() {
         cnt = 0;
-        capacity = 1;
+        capacity = 2;
         arr = (T[]) new Object[capacity];
     }
 
@@ -31,8 +31,7 @@ public class Stack<T> {
             capacity = capacity + 10;
             arr = Arrays.copyOf(arr, capacity);
         }
-        arr[cnt] = temp;
-        cnt++;
+        arr[cnt++] = temp;
     }
 
     /**
@@ -57,8 +56,7 @@ public class Stack<T> {
             System.out.println("Stack is empty");
             return null;
         }
-        T element = arr[cnt - 1];
-        cnt--;
+        T element = arr[--cnt];
         return element;
 
     }
