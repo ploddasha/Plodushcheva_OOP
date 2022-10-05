@@ -1,7 +1,6 @@
 package org.example;
 
 import java.util.Arrays;
-import java.util.Objects;
 
 /**
  * Stack is an abstract data type that serves as a collection of elements, with rule LIFO
@@ -127,16 +126,5 @@ public class Stack<T> {
             }
         }
         return true;
-    }
-
-    /**
-     * override hachcode.
-     *
-     * @return hash
-     */
-    @Override
-    public int hashCode() {
-        int res = 31 * (Objects.hash(cnt)) + Arrays.hashCode(arr);
-        return res;
     }
 }
