@@ -1,12 +1,11 @@
 package org.example;
 
 import org.junit.jupiter.api.Assertions;
-
 import org.junit.jupiter.api.Test;
 
 class StackTest {
     @Test
-    public void push_pop_Test(){
+    public void push_pop_Test() {
         Stack<Integer> expected = new Stack<Integer>();
         Stack<Integer> actual = new Stack<Integer>();
         expected.push(4);
@@ -16,8 +15,9 @@ class StackTest {
 
         Assertions.assertEquals(actual, expected);
     }
+
     @Test
-    public void pushStack_popStack_Test(){
+    public void pushStack_popStack_Test() {
 
         Stack<Integer> expected = new Stack<Integer>();
         expected.push(4);
