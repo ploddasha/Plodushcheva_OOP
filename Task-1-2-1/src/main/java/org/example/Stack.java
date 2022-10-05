@@ -135,6 +135,7 @@ public class Stack<T> {
 
     /**
      * Override hachcode.
+     * 
      * @return hash
      */
     @Override
