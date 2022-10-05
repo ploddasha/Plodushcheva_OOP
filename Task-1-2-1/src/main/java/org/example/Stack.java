@@ -43,8 +43,8 @@ public class Stack<T> {
     public void pushStack(Stack<T> temp) {
         int length = temp.count();
         //T[] arr = (T[]) new Object[length];
-        for (int i = 0; i < length; i++){
-            push (temp.arr[i]);
+        for (int i = 0; i < length; i++) {
+            push(temp.arr[i]);
         }
     }
 
@@ -97,9 +97,11 @@ public class Stack<T> {
     }
 
     /**
+     * count of stack elements.
+     *
      * @return count if elements in stack
      */
-    public int count(){
+    public int count() {
         return cnt;
     }
 
@@ -114,12 +116,12 @@ public class Stack<T> {
         if (this == o) {
             return true;
         }
-        if ( o == null || getClass() != o.getClass() ) {
+        if (o == null || getClass() != o.getClass()) {
             return false;
         }
         Stack<T> expected = (Stack<T>) o;
 
-        if ( count() != expected.count() ) {
+        if (count() != expected.count()) {
             return false;
         } else {
             for (int i = 0; i < count(); i++) {
@@ -132,6 +134,7 @@ public class Stack<T> {
     }
 
     /**
+     * Override hachcode.
      * @return hash
      */
     @Override
