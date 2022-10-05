@@ -68,7 +68,7 @@ public class Stack<T> {
      */
     private Stack(int capacity) {
         cnt = 0;
-        capacity = 5;
+        this.capacity = capacity;
         arr = (T[]) new Object[capacity];
     }
 
@@ -81,7 +81,7 @@ public class Stack<T> {
     public Stack<T> popStack(int amount) {
         if (amount >= cnt) {
             System.out.println("Stack will be empty");
-            return null; //return arr
+            return null;
         }
         Stack<T> newarr = new Stack<T>(cnt);
 

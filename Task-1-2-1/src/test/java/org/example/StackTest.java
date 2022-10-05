@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 class StackTest {
     @Test
     public void push_pop_Test() {
+
         Stack<Integer> expected = new Stack<Integer>();
         Stack<Integer> actual = new Stack<Integer>();
         expected.push(4);
@@ -41,6 +42,30 @@ class StackTest {
 
         Assertions.assertEquals(actual, expected);
         Assertions.assertEquals(returning, forPush);
+    }
+
+    @Test
+    public void pop_null_Test() {
+
+        Stack<Integer> expected = new Stack<Integer>();
+        Stack<Integer> actual = new Stack<Integer>();
+        actual.pop();
+
+        Assertions.assertEquals(actual, expected);
+
+        expected.push(3);
+        expected.pop();
+        Assertions.assertEquals(actual, expected);
+    }
+
+    @Test
+    public void popStack_null_Test() {
+
+        Stack<Integer> expected = new Stack<Integer>();
+        Stack<Integer> actual = new Stack<Integer>();
+        actual.popStack(2);
+
+        Assertions.assertEquals(actual, expected);
     }
 
 }
