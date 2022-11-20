@@ -1,25 +1,23 @@
 package ru.nsu.plodushcheva;
 
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.Assertions;
-
 import java.io.File;
 import java.io.IOException;
 import java.io.RandomAccessFile;
 import java.util.ArrayList;
 import java.util.Random;
-
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 class SubStringTest {
     @Test
-    void initialTest() throws IOException {
+    void initialTest() {
         File file = new File("input.txt");
 
         String sub = "one";
 
         ArrayList<Integer> actual;
         try {
-            actual = SubString.subStringFinder(sub,file);
+            actual = SubString.subStringFinder(sub, file);
             System.out.println(actual);
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -34,7 +32,7 @@ class SubStringTest {
     @Test
     void twoKBTest() throws IOException {
         RandomAccessFile file = new RandomAccessFile("random.txt", "rw");
-        file.setLength(1024 * 1024 * 2 );
+        file.setLength(1024 * 1024 * 2);
         file.seek(100);
         file.writeBytes("meow");
         file.seek(300);
@@ -70,10 +68,10 @@ class SubStringTest {
     @Test
     void oneGBTest() throws IOException {
         RandomAccessFile file = new RandomAccessFile("random.txt", "rw");
-        file.setLength(1024 * 1024 * 1024 );
+        file.setLength(1024 * 1024 * 1024);
 
         Random r = new Random();
-        for(int i = 0; i<(1024*1024*1024); i++){
+        for(int i = 0; i < (1024*1024*1024); i++){
             file.seek(i);
             char code = (char) (r.nextInt(94) + 33);
             file.writeBytes(String.valueOf(code));
@@ -95,7 +93,7 @@ class SubStringTest {
         String sub = "meow";
         ArrayList<Integer> actual;
         try {
-            actual = SubString.subStringFinder(sub,file1);
+            actual = SubString.subStringFinder(sub, file1);
             System.out.println(actual);
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -109,7 +107,7 @@ class SubStringTest {
         expected.add(1073000000);
 
 
-        Assertions.assertEquals(actual,expected);
+        Assertions.assertEquals(actual, expected);
         file.close();
     }
 
