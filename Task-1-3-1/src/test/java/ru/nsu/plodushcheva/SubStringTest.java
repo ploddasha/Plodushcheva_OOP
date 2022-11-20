@@ -27,10 +27,11 @@ class SubStringTest {
         expected.add(12);
         expected.add(16);
 
-        Assertions.assertEquals(actual,expected);
+        Assertions.assertEquals(actual, expected);
     }
+
     @Test
-    void twoKBTest() throws IOException {
+    void twoKbTest() throws IOException {
         RandomAccessFile file = new RandomAccessFile("random.txt", "rw");
         file.setLength(1024 * 1024 * 2);
         file.seek(100);
@@ -50,7 +51,7 @@ class SubStringTest {
         String sub = "meow";
         ArrayList<Integer> actual;
         try {
-            actual = SubString.subStringFinder(sub,file1);
+            actual = SubString.subStringFinder(sub, file1);
             System.out.println(actual);
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -62,16 +63,17 @@ class SubStringTest {
         expected.add(1000);
         expected.add(1048576);
 
-        Assertions.assertEquals(actual,expected);
+        Assertions.assertEquals(actual, expected);
         file.close();
     }
+
     @Test
-    void oneGBTest() throws IOException {
+    void oneGbTest() throws IOException {
         RandomAccessFile file = new RandomAccessFile("random.txt", "rw");
         file.setLength(1024 * 1024 * 1024);
 
         Random r = new Random();
-        for(int i = 0; i < (1024*1024*1024); i++){
+        for (int i = 0; i < 1024 * 1024 * 1024; i++) {
             file.seek(i);
             char code = (char) (r.nextInt(94) + 33);
             file.writeBytes(String.valueOf(code));
