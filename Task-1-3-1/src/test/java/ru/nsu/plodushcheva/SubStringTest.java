@@ -67,6 +67,7 @@ class SubStringTest {
         file.close();
     }
 
+    /*
     @Test
     void oneGbTest() throws IOException {
         RandomAccessFile file = new RandomAccessFile("random.txt", "rw");
@@ -112,6 +113,8 @@ class SubStringTest {
         Assertions.assertEquals(actual, expected);
         file.close();
     }
+
+     */
 
 
 }
