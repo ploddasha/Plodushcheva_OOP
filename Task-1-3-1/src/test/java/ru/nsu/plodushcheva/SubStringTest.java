@@ -3,14 +3,16 @@ package ru.nsu.plodushcheva;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Assertions;
 
-import java.io.*;
+import java.io.File;
+import java.io.IOException;
+import java.io.RandomAccessFile;
 import java.util.ArrayList;
 import java.util.Random;
 
 
 class SubStringTest {
     @Test
-    void initialTest() throws IOException{
+    void initialTest() throws IOException {
         File file = new File("input.txt");
 
         String sub = "one";
@@ -32,7 +34,6 @@ class SubStringTest {
     @Test
     void twoKBTest() throws IOException {
         RandomAccessFile file = new RandomAccessFile("random.txt", "rw");
-        //file.setLength(1024 * 1024 * 1024 );
         file.setLength(1024 * 1024 * 2 );
         file.seek(100);
         file.writeBytes("meow");
@@ -89,7 +90,7 @@ class SubStringTest {
         file.writeBytes("meow");
 
 
-        File file1 = new File("C:/Users/plodd/IdeaProjects/Plodushcheva_OOP/Task-1-3-1/random.txt");
+        File file1 = new File("random.txt");
 
         String sub = "meow";
         ArrayList<Integer> actual;
