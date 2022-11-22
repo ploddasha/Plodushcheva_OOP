@@ -30,8 +30,8 @@ public class SubString {
         FileInputStream file = new FileInputStream(fileName);
         InputStreamReader streamReader = new InputStreamReader(file, StandardCharsets.UTF_8);
         try (BufferedReader reader = new BufferedReader(streamReader)) {
-            ArrayList<Integer> result = new ArrayList<>();
-            kmp(reader, sub, result);
+            ArrayList<Integer> result;
+            result = kmp(reader, sub);
             return result;
         } catch (IOException e) {
             e.printStackTrace();
@@ -50,11 +50,12 @@ public class SubString {
      *
      * @param text is source text
      * @param sub is the string whose occurrences we are looking for
-     * @param arr is array with indices of substring occurrences
+     *
      * @throws IOException wile working with text
      */
-    static void kmp(BufferedReader text, String sub, ArrayList<Integer> arr) throws IOException {
-
+    static ArrayList<Integer> kmp(BufferedReader text, String sub) throws IOException {
+        // @param arr is array with indices of substring occurrences
+        ArrayList<Integer> arr = new ArrayList<Integer>();
         int len = sub.length();
         int[] lps = new int[len];
         computePrefixArray(sub, lps);
@@ -76,10 +77,11 @@ public class SubString {
                     j = lps[j - 1];
                 } else {
                     a = text.read();
-                    i = i + 1;
+                    i++;
                 }
             }
         }
+        return arr;
     }
 
     /**
@@ -93,16 +95,12 @@ public class SubString {
      */
     static void computePrefixArray(String sub, int[] lps) {
         int len = sub.length();
-        lps[0] = 0;
 
-        for (int i = 1; i < len; ++i) {
-            int j = lps[i - 1];
-            while (j > 0 && sub.charAt(i) != sub.charAt(j)) {
-                j = lps[j - 1];
-                if (sub.charAt(i) == sub.charAt(j)) {
-                    ++j;
-                }
-                lps[i] = j;
+        for (int i = 1; i < len; i++) {
+            int j = 0;
+            while (i + j < len && sub.charAt(i + j) == sub.charAt(j)) {
+                lps[i + j] = Math.max(lps[i + j], j + 1);
+                j++;
             }
         }
     }
