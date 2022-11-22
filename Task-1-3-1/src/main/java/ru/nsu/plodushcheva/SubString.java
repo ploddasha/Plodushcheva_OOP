@@ -84,7 +84,7 @@ public class SubString {
 
     /**
      * prefix function,
-     * i.e. an array of numbers is defined as follows:
+     * an array of numbers is defined as follows:
      * element is the longest length of the largest self suffix of a substring
      * that matches its prefix (self suffix means not matching the whole string).
      *
