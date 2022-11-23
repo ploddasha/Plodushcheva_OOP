@@ -54,7 +54,6 @@ public class SubString {
      * @throws IOException wile working with text
      */
     static ArrayList<Integer> kmp(BufferedReader text, String sub) throws IOException {
-        // @param arr is array with indices of substring occurrences
         ArrayList<Integer> arr = new ArrayList<Integer>();
         int len = sub.length();
         int[] lps = new int[len];
