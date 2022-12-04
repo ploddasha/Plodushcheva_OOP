@@ -1,12 +1,9 @@
 package ru.nsu.plodushcheva;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
+import java.util.List;
 
 
 /**
@@ -20,17 +17,17 @@ public class SubString {
      * which converts the byte stream to character stream.
      *
      * @param sub is the string whose occurrences we are looking for
-     * @param fileName the name of the file with text
+     * @param stream the stream of file from resources
      * @return array with indices of substring occurrences
      * @throws IOException while reading file
      */
-    public static ArrayList<Integer> subStringFinder(String sub, File fileName)
+    public static List<Integer> subStringFinder(String sub, InputStream stream)
             throws IOException {
 
-        FileInputStream file = new FileInputStream(fileName);
-        InputStreamReader streamReader = new InputStreamReader(file, StandardCharsets.UTF_8);
-        try (BufferedReader reader = new BufferedReader(streamReader)) {
-            ArrayList<Integer> result;
+        InputStreamReader streamReader = new InputStreamReader(stream, StandardCharsets.UTF_8);
+
+        try (Reader reader = new BufferedReader(streamReader)) {
+            List<Integer> result;
             result = kmp(reader, sub);
             return result;
         } catch (IOException e) {
@@ -53,8 +50,8 @@ public class SubString {
      *
      * @throws IOException wile working with text
      */
-    static ArrayList<Integer> kmp(BufferedReader text, String sub) throws IOException {
-        ArrayList<Integer> arr = new ArrayList<Integer>();
+    static List<Integer> kmp(Reader text, String sub) throws IOException {
+        List<Integer> arr = new ArrayList<Integer>();
         int len = sub.length();
         int[] lps = new int[len];
         computePrefixArray(sub, lps);
