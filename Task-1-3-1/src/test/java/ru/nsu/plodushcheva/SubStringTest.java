@@ -4,11 +4,11 @@ import java.io.File;
 import java.io.IOException;
 import java.io.RandomAccessFile;
 import java.util.ArrayList;
-import java.util.Random;
 import java.io.InputStream;
 import java.io.FileInputStream;
 import java.nio.channels.Channels;
 import java.util.List;
+import java.util.Random;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -16,7 +16,7 @@ class SubStringTest {
     @Test
     void initialTest() {
         try (InputStream stream =
-                     getClass().getClassLoader().getResourceAsStream("input.txt")){
+                     getClass().getClassLoader().getResourceAsStream("input.txt")) {
 
             String sub = "one";
             List<Integer> actual;
@@ -40,7 +40,7 @@ class SubStringTest {
     @Test
     void emptyTest() {
 
-        try(InputStream stream =
+        try (InputStream stream =
                     getClass().getClassLoader().getResourceAsStream("input.txt")) {
 
             String sub = "miracle and mir";
@@ -68,7 +68,7 @@ class SubStringTest {
      */
     @Test
     void subSubStringTest() {
-        try(InputStream stream =
+        try (InputStream stream =
                     getClass().getClassLoader().getResourceAsStream("input.txt")) {
 
             String sub = "AABA";
@@ -122,7 +122,7 @@ class SubStringTest {
             File file1 = new File("./src/test/resources/input1.txt");
             FileInputStream stream = new FileInputStream(file1);
 
-            actual = SubString.subStringFinder(sub,stream);
+            actual = SubString.subStringFinder(sub, stream);
             System.out.println(actual);
 
             ArrayList<Integer> expected = new ArrayList<>();
@@ -133,15 +133,15 @@ class SubStringTest {
 
             Assertions.assertEquals(expected, actual);
 
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Test
     void oneGbTest() {
         try (RandomAccessFile file =
-                     new RandomAccessFile("./src/test/resources/input1.txt", "rw")){
+                     new RandomAccessFile("./src/test/resources/input1.txt", "rw")) {
 
             file.setLength(1024 * 1024 * 1024);
 
