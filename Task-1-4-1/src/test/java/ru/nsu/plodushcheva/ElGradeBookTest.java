@@ -23,7 +23,7 @@ class ElGradeBookTest {
         gradeBook.addGrades(2,5,"English");
         gradeBook.addGrades(2,4,"Digital platforms");
 
-        int gpa = gradeBook.gpa();
+        int gpa = gradeBook.getGpa();
         Assertions.assertEquals(3.0, gpa);
 
         boolean a = gradeBook.redDiploma();
@@ -31,7 +31,6 @@ class ElGradeBookTest {
 
         boolean b = gradeBook.scholarship();
         Assertions.assertEquals(false,b);
-
 
     }
 
@@ -53,7 +52,7 @@ class ElGradeBookTest {
         gradeBook.addGrades(2,5,"English");
         gradeBook.addGrades(2,5,"Digital platforms");
 
-        int gpa = gradeBook.gpa();
+        int gpa = gradeBook.getGpa();
         Assertions.assertEquals(5.0, gpa);
 
         boolean a = gradeBook.redDiploma();
@@ -62,7 +61,34 @@ class ElGradeBookTest {
         boolean b = gradeBook.scholarship();
         Assertions.assertEquals(true,b);
 
+    }
+    @Test
+    public void differentTest(){
+        ElGradeBook gradeBook = new ElGradeBook("Groopmate",210699,5,3);
+
+        gradeBook.addGrades2(1,5, Subject.ExamType.Exam,2, "Algebra");
+        gradeBook.addGrades2(1,5, Subject.ExamType.Exam,2, "Discrete math");
+        gradeBook.addGrades2(1,5, Subject.ExamType.DifCredit,2,"Declarative programming");
+        gradeBook.addGrades2(1,5, Subject.ExamType.DifCredit,1,"History");
+        gradeBook.addGrades2(1,5, Subject.ExamType.DifCredit,1, "Basics of speech");
+        gradeBook.addGrades2(1,5, Subject.ExamType.DifCredit,2,"Imperative programming");
+
+        gradeBook.addGrades2(2,5, Subject.ExamType.Exam,2,"Algebra");
+        gradeBook.addGrades2(2,5, Subject.ExamType.Exam,2,"Discrete math");
+        gradeBook.addGrades2(2,5, Subject.ExamType.DifCredit,2,"Declarative programming");
+        gradeBook.addGrades2(2,5, Subject.ExamType.Exam,2,"Imperative programming");
+        gradeBook.addGrades2(2,5, Subject.ExamType.DifCredit, 2 ,"English");
+        gradeBook.addGrades2(2,5, Subject.ExamType.DifCredit,2,"Digital platforms");
+
+        double gpa = gradeBook.gpa2();
+        Assertions.assertEquals(5.00, gpa,0.01);
+
+        boolean a = gradeBook.redDiploma();
+        Assertions.assertEquals(true,a);
+
+        boolean b = gradeBook.scholarship();
+        //Assertions.assertEquals(true,b);
+
 
     }
-
 }

@@ -1,23 +1,34 @@
 package ru.nsu.plodushcheva;
 
 import java.util.ArrayList;
+import java.util.Collection;
+
+import static ru.nsu.plodushcheva.Subject.ExamType.DifCredit;
+import static ru.nsu.plodushcheva.Subject.ExamType.Exam;
 
 public class ElGradeBook {
     private String studentName;
     private int bookID;
-    private int idGlobal;
     private int currentSemester;
-    private ArrayList<Integer> idsGlobal = new ArrayList<>();
+    private static ArrayList<Integer> idsGlobal = new ArrayList<>();
+    private double gpa;
+    private int sumForGpa;
+    private int numberForGpa;
+    private int countOfThree;
+    private int countOfFive;
 
     private int qualifyingWork;
-    private int diplomaGrade;
     private Semester[] semesters = new Semester[8];
 
     public ElGradeBook(String studentName, int bookID, int qualifyingWork, int currentSemester){
         if (!idsGlobal.contains(bookID)){
             idsGlobal.add(bookID);
-            this.bookID = bookID;
+            gpa = 0;
+            numberForGpa = 0;
+            sumForGpa = 0;
+            countOfThree = 0;
             this.studentName = studentName;
+            this.bookID = bookID;
             this.qualifyingWork = qualifyingWork;
             this.currentSemester = currentSemester;
             for (int i = 0; i < 8; i++) {
@@ -39,6 +50,23 @@ public class ElGradeBook {
     public void addGrades(int semester, int grade, String subject) {
         semesters[semester].addGrade(subject, grade);
     }
+    public void addGrades2(int semester, int grade, Subject.ExamType type, int fsn, String subject) {
+        Subject a = new Subject(subject, type, grade, fsn);
+        semesters[semester - 1].addGrade2(subject, a);
+
+        if ((type == Exam || type == DifCredit) && semester == fsn){
+            numberForGpa++;
+            sumForGpa += grade;
+            if (grade == 3){
+                countOfThree++;
+            }
+            if (grade == 5){
+
+            }
+        }
+
+
+    }
 
     public ArrayList<Integer> getSemGrades(int semester) {
         ArrayList<Integer> integers = new ArrayList<>(semesters[semester].getGrades());
@@ -53,7 +81,16 @@ public class ElGradeBook {
         return grades;
     }
 
-    public int gpa(){
+    public ArrayList<Integer> getAllFinalGrades() {
+        ArrayList<Integer> grades = new ArrayList<>();
+        for (int i = 0; i < currentSemester; i++) {
+            Collection<Subject> n = semesters[i].getGrades2();
+            grades.addAll(semesters[i].getGrades());
+        }
+        return grades;
+    }
+
+    public int getGpa(){
         ArrayList<Integer> grades = getAllGrades();
         double gpa = 0;
         for (int grade : grades) {
@@ -62,6 +99,11 @@ public class ElGradeBook {
         gpa /= grades.size();
         return (int) gpa;
     }
+    public double gpa2(){
+        gpa = sumForGpa/numberForGpa;
+        return gpa;
+    }
+
 
     //bullish
     public boolean redDiploma(){
@@ -73,7 +115,12 @@ public class ElGradeBook {
             }
         }
         return (double) countOfFive/grades.size() >= 0.75 && (qualifyingWork == 5);
+    }
 
+    public boolean redDiploma2(){
+        //boolean a = true;
+
+        return (double) countOfFive/numberForGpa >= 0.75 && (qualifyingWork == 5) && countOfThree == 0;
     }
 
     public boolean scholarship(){

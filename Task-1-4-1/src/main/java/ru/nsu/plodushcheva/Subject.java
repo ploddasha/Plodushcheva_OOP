@@ -4,14 +4,12 @@ public class Subject {
     private String subjectName;
     private ExamType examType;
     private int examGrade;
+
     public enum ExamType {Exam, DifCredit, Credit}
     private int finalSemesterNumber;
 
 
-    public void Subject(String subjectName,
-                        ExamType examType,
-                        int examGrade,
-                        int finalSemesterNumber) {
+    public Subject (String subjectName, ExamType examType, int examGrade, int finalSemesterNumber) {
         this.subjectName = subjectName;
         this.examType = examType;
         this.examGrade = examGrade;
