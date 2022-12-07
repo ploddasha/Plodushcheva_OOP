@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.example.CalculatorTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2022-12-06T13:02:41" hostname="LAPTOP-0TJBD7LO" time="0.026">
+  <properties/>
+  <testcase name="plusTest()" classname="org.example.CalculatorTest" time="0.024"/>
+  <testcase name="plusMinusTest()" classname="org.example.CalculatorTest" time="0.001"/>
+  <system-out><![CDATA[3.0
+2.0
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
