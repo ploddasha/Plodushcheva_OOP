@@ -1,0 +1,1 @@
+memberSearchIndex = [{"p":"ru.nsu.plodushcheva","c":"Calculator","l":"calculate(String)","url":"calculate(java.lang.String)"},{"p":"ru.nsu.plodushcheva","c":"Calculator","l":"Calculator()","url":"%3Cinit%3E()"},{"p":"ru.nsu.plodushcheva","c":"Calculator","l":"checkedPop()"}]
