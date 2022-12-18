@@ -22,19 +22,18 @@ public class Calculator {
         for (int i = array.length - 1; i >= 0; i--) {
             try {
                 stack.push(Double.parseDouble(array[i]));
-            }
-            catch (NumberFormatException e) {
+            } catch (NumberFormatException e) {
                 switch (array[i]) {
-                    case "+" :
+                    case "+":
                         stack.push(checkedPop() + checkedPop());
                         break;
-                    case "-" :
+                    case "-":
                         stack.push(checkedPop() - checkedPop());
                         break;
-                    case "*" :
+                    case "*":
                         stack.push(checkedPop() * checkedPop());
                         break;
-                    case "/" :
+                    case "/":
                         double a = checkedPop();
                         double b = checkedPop();
                         if (b != 0) {
@@ -43,32 +42,32 @@ public class Calculator {
                             throw new Exception("Division by 0");
                         }
                         break;
-                    case "log" :
+                    case "log":
                         double number = checkedPop();
                         if (number > 0) {
-                            stack.push(Math.log(number)); }
-                        else {
-                            throw new Exception("Negative number for logarithm"); }
+                            stack.push(Math.log(number));
+                        } else {
+                            throw new Exception("Negative number for logarithm");
+                        }
                         break;
-                    case "pow" :
+                    case "pow":
                         stack.push(Math.pow(checkedPop(), checkedPop()));
                         break;
-                    case "sqrt" :
+                    case "sqrt":
                         double num = checkedPop();
                         if (num >= 0) {
                             stack.push(Math.sqrt(num));
-                        }
-                        else {
+                        } else {
                             throw new Exception("Negative number for root");
                         }
                         break;
-                    case "sin" :
+                    case "sin":
                         stack.push(Math.sin(checkedPop()));
                         break;
-                    case "cos" :
+                    case "cos":
                         stack.push(Math.cos(checkedPop()));
                         break;
-                    default : throw new RuntimeException();
+                    default: throw new RuntimeException();
                 }
             }
         }
@@ -84,8 +83,7 @@ public class Calculator {
     public double checkedPop() throws Exception {
         if (stack.isEmpty()) {
             throw new Exception("Wrong expression");
-        }
-        else {
+        } else {
             return stack.pop();
         }
     }
