@@ -1,13 +1,14 @@
 package ru.nsu.plodushcheva;
 
 import java.io.BufferedReader;
-import java.io.Reader;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.Reader;
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
-import java.util.List;
 import java.util.ArrayList;
+import java.util.List;
+
 
 
 /**
@@ -16,18 +17,23 @@ import java.util.ArrayList;
  */
 public class SubString {
 
+    /*private final InputStream stream ;
+
+    public SubString(InputStream stream) {
+        this.stream = stream;
+    } */
+
     /**
      * file stream is passed to the InputStreamReader object,
      * which converts the byte stream to character stream.
      *
      * @param sub is the string whose occurrences we are looking for
-     * @param stream the stream of file from resources
      * @return array with indices of substring occurrences
      * @throws IOException while reading file
      */
     public static List<Integer> subStringFinder(String sub, InputStream stream)
             throws IOException {
-
+        //param stream the stream of file from resources
         InputStreamReader streamReader = new InputStreamReader(stream, StandardCharsets.UTF_8);
 
         try (Reader reader = new BufferedReader(streamReader)) {

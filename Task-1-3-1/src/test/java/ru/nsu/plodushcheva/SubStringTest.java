@@ -1,12 +1,10 @@
 package ru.nsu.plodushcheva;
 
-import java.io.File;
 import java.io.IOException;
 import java.io.RandomAccessFile;
-import java.util.ArrayList;
 import java.io.InputStream;
-import java.io.FileInputStream;
 import java.nio.channels.Channels;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 import org.junit.jupiter.api.Assertions;
@@ -20,12 +18,9 @@ class SubStringTest {
 
             String sub = "one";
             List<Integer> actual;
-            try {
-                actual = SubString.subStringFinder(sub, stream);
-                System.out.println(actual);
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
+
+            actual = SubString.subStringFinder(sub, stream);
+
             ArrayList<Integer> expected = new ArrayList<>();
             expected.add(0);
             expected.add(12);
@@ -46,15 +41,13 @@ class SubStringTest {
             String sub = "miracle and mir";
 
             List<Integer> actual;
-            try {
-                actual = SubString.subStringFinder(sub, stream);
-                System.out.println(actual);
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
+
+            actual = SubString.subStringFinder(sub, stream);
+
             ArrayList<Integer> expected = new ArrayList<>();
 
             Assertions.assertEquals(expected, actual);
+
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -74,12 +67,8 @@ class SubStringTest {
             String sub = "AABA";
 
             List<Integer> actual;
-            try {
-                actual = SubString.subStringFinder(sub, stream);
-                System.out.println(actual);
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
+            actual = SubString.subStringFinder(sub, stream);
+
             ArrayList<Integer> expected = new ArrayList<>();
             expected.add(61);
             expected.add(70);
@@ -92,7 +81,7 @@ class SubStringTest {
     }
 
     @Test
-    void twoKbTest() {
+    void twoKbTest() throws IOException{
 
         try (RandomAccessFile file =
                      new RandomAccessFile("./src/test/resources/input1.txt", "rw")) {
@@ -115,15 +104,13 @@ class SubStringTest {
             file.writeBytes("meow");
             file.seek(1048576);
             file.writeBytes("meow");
+            file.seek(0);
 
             String sub = "meow";
             List<Integer> actual;
 
-            File file1 = new File("./src/test/resources/input1.txt");
-            FileInputStream stream = new FileInputStream(file1);
-
+            InputStream stream = Channels.newInputStream(file.getChannel());
             actual = SubString.subStringFinder(sub, stream);
-            System.out.println(actual);
 
             ArrayList<Integer> expected = new ArrayList<>();
             expected.add(100);
@@ -132,9 +119,6 @@ class SubStringTest {
             expected.add(1048576);
 
             Assertions.assertEquals(expected, actual);
-
-        } catch (IOException e) {
-            throw new RuntimeException(e);
         }
     }
 
@@ -155,15 +139,15 @@ class SubStringTest {
             file.writeBytes("word");
             file.seek(1073000000);
             file.writeBytes("word");
+            file.seek(0);
 
             String sub = "word";
             List<Integer> actual;
-            File file1 = new File("./src/test/resources/input1.txt");
-            FileInputStream stream = new FileInputStream(file1);
+
+            InputStream stream = Channels.newInputStream(file.getChannel());
 
             actual = SubString.subStringFinder(sub, stream);
 
-            System.out.println(actual);
             ArrayList<Integer> expected = new ArrayList<>();
             expected.add(100);
             expected.add(300);
@@ -178,9 +162,9 @@ class SubStringTest {
     }
 
     @Test
-    void tenGbTest() {
+    void tenGbTest() throws IOException {
         try (RandomAccessFile file =
-                     new RandomAccessFile("./src/test/resources/input3.txt", "rw")) {
+                     new RandomAccessFile("./src/test/resources/input1.txt", "rw")) {
             file.setLength(10737418240L);
 
             file.seek(100);
@@ -191,12 +175,14 @@ class SubStringTest {
             file.writeBytes("winter");
             file.seek(1073000000);
             file.writeBytes("winter");
+            file.seek(0);
 
             String sub = "winter";
             List<Integer> actual;
 
-            actual = SubString.subStringFinder(sub, Channels.newInputStream(file.getChannel()));
-            System.out.println(actual);
+            InputStream stream = Channels.newInputStream(file.getChannel());
+
+            actual = SubString.subStringFinder(sub, stream);
 
             ArrayList<Integer> expected = new ArrayList<>();
             expected.add(100);
@@ -206,8 +192,6 @@ class SubStringTest {
             expected.add(1073000000);
 
             Assertions.assertEquals(expected, actual);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
         }
     }
 
