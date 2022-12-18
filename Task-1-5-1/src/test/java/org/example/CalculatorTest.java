@@ -1,11 +1,10 @@
 package org.example;
 
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
 
 class CalculatorTest {
     @Test
-    public void plusTest(){
+    public void plusTest() throws Exception {
         String str = "+ 1 2";
         Calculator calc = new Calculator();
 
@@ -13,8 +12,25 @@ class CalculatorTest {
         System.out.println(rez);
     }
     @Test
-    public void plusMinusTest(){
+    public void plusMinusTest() throws Exception {
         String str = "+ - 1 2 3";
+        Calculator calc = new Calculator();
+
+        Double rez = calc.calculate(str);
+        System.out.println(rez);
+    }
+    @Test
+    public void divisionZeroTest() throws Exception {
+        String str = "/ 1 0";
+        Calculator calc = new Calculator();
+
+        //Double rez = calc.calculate(str);
+        //System.out.println(rez);
+    }
+
+    @Test
+    public void notEnoughArgumentTest() throws Exception {
+        String str = "+ 1";
         Calculator calc = new Calculator();
 
         Double rez = calc.calculate(str);
