@@ -23,7 +23,7 @@ class CalculatorTest {
     }
 
     @Test
-    public void MultiplicationTest() throws Exception {
+    public void multiplicationTest() throws Exception {
         String str = "* + - 1 2 3 100";
         Calculator calc = new Calculator();
 
