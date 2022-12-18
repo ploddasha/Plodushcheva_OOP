@@ -11,6 +11,7 @@ public class Calculator {
     /**
      * method splits the string by spaces and adds from the end to the stack
      * by execution operation.
+     *
      * @param str line with an expression
      * @return the number is the result of operations
      * @throws Exception in operations and in reading an expression
@@ -20,13 +21,20 @@ public class Calculator {
 
         for (int i = array.length - 1; i >= 0; i--) {
             try {
-                stack.push(Double.parseDouble(array[i])); }
+                stack.push(Double.parseDouble(array[i]));
+            }
             catch (NumberFormatException e) {
                 switch (array[i]) {
-                    case "+" -> stack.push(checkedPop() + checkedPop());
-                    case "-" -> stack.push(checkedPop() - checkedPop());
-                    case "*" -> stack.push(checkedPop() * checkedPop());
-                    case "/" -> {
+                    case "+" :
+                        stack.push(checkedPop() + checkedPop());
+                        break;
+                    case "-" :
+                        stack.push(checkedPop() - checkedPop());
+                        break;
+                    case "*" :
+                        stack.push(checkedPop() * checkedPop());
+                        break;
+                    case "/" :
                         double a = checkedPop();
                         double b = checkedPop();
                         if (b != 0) {
@@ -34,25 +42,33 @@ public class Calculator {
                         } else {
                             throw new Exception("Division by 0");
                         }
-                    }
-                    case "log" -> {
+                        break;
+                    case "log" :
                         double number = checkedPop();
                         if (number > 0) {
                             stack.push(Math.log(number)); }
                         else {
                             throw new Exception("Negative number for logarithm"); }
-                    }
-                    case "pow" -> stack.push(Math.pow(checkedPop(), checkedPop()));
-                    case "sqrt" -> {
-                        double number = checkedPop();
-                        if (number >= 0) {
-                            stack.push(Math.sqrt(number)); }
+                        break;
+                    case "pow" :
+                        stack.push(Math.pow(checkedPop(), checkedPop()));
+                        break;
+                    case "sqrt" :
+                        double num = checkedPop();
+                        if (num >= 0) {
+                            stack.push(Math.sqrt(num));
+                        }
                         else {
-                            throw new Exception("Negative number for root"); }
-                    }
-                    case "sin" -> stack.push(Math.sin(checkedPop()));
-                    case "cos" -> stack.push(Math.cos(checkedPop()));
-                    default -> throw new RuntimeException();
+                            throw new Exception("Negative number for root");
+                        }
+                        break;
+                    case "sin" :
+                        stack.push(Math.sin(checkedPop()));
+                        break;
+                    case "cos" :
+                        stack.push(Math.cos(checkedPop()));
+                        break;
+                    default : throw new RuntimeException();
                 }
             }
         }
@@ -67,8 +83,10 @@ public class Calculator {
      */
     public double checkedPop() throws Exception {
         if (stack.isEmpty()) {
-            throw new Exception("Wrong expression"); }
+            throw new Exception("Wrong expression");
+        }
         else {
-            return stack.pop(); }
+            return stack.pop();
+        }
     }
 }
