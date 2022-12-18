@@ -3,8 +3,8 @@ package ru.nsu.plodushcheva;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.Reader;
 import java.io.InputStreamReader;
+import java.io.Reader;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
@@ -17,23 +17,18 @@ import java.util.List;
  */
 public class SubString {
 
-    /*private final InputStream stream ;
-
-    public SubString(InputStream stream) {
-        this.stream = stream;
-    } */
-
     /**
      * file stream is passed to the InputStreamReader object,
      * which converts the byte stream to character stream.
      *
      * @param sub is the string whose occurrences we are looking for
+     * @param stream the stream of file from resources
      * @return array with indices of substring occurrences
      * @throws IOException while reading file
      */
     public static List<Integer> subStringFinder(String sub, InputStream stream)
             throws IOException {
-        //param stream the stream of file from resources
+
         InputStreamReader streamReader = new InputStreamReader(stream, StandardCharsets.UTF_8);
 
         try (Reader reader = new BufferedReader(streamReader)) {
@@ -61,7 +56,7 @@ public class SubString {
      * @throws IOException wile working with text
      */
     static List<Integer> kmp(Reader text, String sub) throws IOException {
-        List<Integer> arr = new ArrayList<Integer>();
+        List<Integer> arr = new ArrayList<>();
         int len = sub.length();
         int[] lps = new int[len];
         computePrefixArray(sub, lps);

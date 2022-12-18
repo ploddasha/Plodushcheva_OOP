@@ -1,8 +1,8 @@
 package ru.nsu.plodushcheva;
 
 import java.io.IOException;
-import java.io.RandomAccessFile;
 import java.io.InputStream;
+import java.io.RandomAccessFile;
 import java.nio.channels.Channels;
 import java.util.ArrayList;
 import java.util.List;
@@ -81,7 +81,7 @@ class SubStringTest {
     }
 
     @Test
-    void twoKbTest() throws IOException{
+    void twoKbTest() throws IOException {
 
         try (RandomAccessFile file =
                      new RandomAccessFile("./src/test/resources/input1.txt", "rw")) {
