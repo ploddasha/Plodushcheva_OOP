@@ -21,7 +21,7 @@ class SubStringTest {
 
             actual = SubString.subStringFinder(sub, stream);
 
-            ArrayList<Integer> expected = new ArrayList<>();
+            List<Integer> expected = new ArrayList<>();
             expected.add(0);
             expected.add(12);
             expected.add(16);
@@ -44,7 +44,7 @@ class SubStringTest {
 
             actual = SubString.subStringFinder(sub, stream);
 
-            ArrayList<Integer> expected = new ArrayList<>();
+            List<Integer> expected = new ArrayList<>();
 
             Assertions.assertEquals(expected, actual);
 
@@ -69,7 +69,7 @@ class SubStringTest {
             List<Integer> actual;
             actual = SubString.subStringFinder(sub, stream);
 
-            ArrayList<Integer> expected = new ArrayList<>();
+            List<Integer> expected = new ArrayList<>();
             expected.add(61);
             expected.add(70);
             expected.add(73);
@@ -112,7 +112,7 @@ class SubStringTest {
             InputStream stream = Channels.newInputStream(file.getChannel());
             actual = SubString.subStringFinder(sub, stream);
 
-            ArrayList<Integer> expected = new ArrayList<>();
+            List<Integer> expected = new ArrayList<>();
             expected.add(100);
             expected.add(300);
             expected.add(1000);
@@ -148,7 +148,7 @@ class SubStringTest {
 
             actual = SubString.subStringFinder(sub, stream);
 
-            ArrayList<Integer> expected = new ArrayList<>();
+            List<Integer> expected = new ArrayList<>();
             expected.add(100);
             expected.add(300);
             expected.add(1000);
@@ -184,7 +184,7 @@ class SubStringTest {
 
             actual = SubString.subStringFinder(sub, stream);
 
-            ArrayList<Integer> expected = new ArrayList<>();
+            List<Integer> expected = new ArrayList<>();
             expected.add(100);
             expected.add(106);
             expected.add(16589);

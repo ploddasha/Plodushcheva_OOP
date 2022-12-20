@@ -29,9 +29,8 @@ public class SubString {
     public static List<Integer> subStringFinder(String sub, InputStream stream)
             throws IOException {
 
-        InputStreamReader streamReader = new InputStreamReader(stream, StandardCharsets.UTF_8);
-
-        try (Reader reader = new BufferedReader(streamReader)) {
+        try (Reader reader = new BufferedReader(
+                new InputStreamReader(stream, StandardCharsets.UTF_8))) {
             List<Integer> result;
             result = kmp(reader, sub);
             return result;
