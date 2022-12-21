@@ -5,14 +5,13 @@ import static ru.nsu.plodushcheva.GradeInfo.ExamType.DifCredit;
 import static ru.nsu.plodushcheva.GradeInfo.ExamType.Exam;
 
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
-
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.Reader;
 import java.util.Objects;
+import org.junit.jupiter.api.Test;
 
 class ElGradeBookTest {
     @Test
@@ -30,7 +29,7 @@ class ElGradeBookTest {
         gradeBook.addGrades(2, 5, Exam, 2, "Discrete math");
         gradeBook.addGrades(2, 5, GradeInfo.ExamType.DifCredit, 2, "Declarative programming");
         gradeBook.addGrades(2, 5, Exam, 2, "Imperative programming");
-        gradeBook.addGrades(2, 5, GradeInfo.ExamType.DifCredit, 2 , "English");
+        gradeBook.addGrades(2, 5, GradeInfo.ExamType.DifCredit, 2, "English");
         gradeBook.addGrades(2, 5, GradeInfo.ExamType.DifCredit, 2, "Digital platforms");
 
         double gpa = gradeBook.gpa();
@@ -58,7 +57,7 @@ class ElGradeBookTest {
         gradeBook.addGrades(2, 4, Exam, 2, "Discrete math");
         gradeBook.addGrades(2, 4, GradeInfo.ExamType.DifCredit, 2, "Declarative programming");
         gradeBook.addGrades(2, 4, Exam, 2, "Imperative programming");
-        gradeBook.addGrades(2, 5, GradeInfo.ExamType.DifCredit, 2 , "English");
+        gradeBook.addGrades(2, 5, GradeInfo.ExamType.DifCredit, 2, "English");
         gradeBook.addGrades(2, 4, GradeInfo.ExamType.DifCredit, 2, "Digital platforms");
 
         double gpa = gradeBook.gpa();
@@ -86,7 +85,7 @@ class ElGradeBookTest {
         gradeBook.addGrades(2, 4, Exam, 2, "Discrete math");
         gradeBook.addGrades(2, 3, GradeInfo.ExamType.DifCredit, 2, "Declarative programming");
         gradeBook.addGrades(2, 4, Exam, 2, "Imperative programming");
-        gradeBook.addGrades(2, 3, GradeInfo.ExamType.DifCredit, 2 , "English");
+        gradeBook.addGrades(2, 3, GradeInfo.ExamType.DifCredit, 2, "English");
         gradeBook.addGrades(2, 4, GradeInfo.ExamType.DifCredit, 2, "Digital platforms");
 
         double gpa = gradeBook.gpa();
@@ -100,7 +99,7 @@ class ElGradeBookTest {
     }
 
     @Test
-    public void StudentBookTest() throws IllegalAccessException, IOException {
+    public void studentBookTest() throws IllegalAccessException, IOException {
 
         File file = new File("./src/test/resources/Book1.txt");
         Reader fr = new FileReader(file);
@@ -114,13 +113,13 @@ class ElGradeBookTest {
         while (line != null) {
             array = line.split(" ");
             GradeInfo.ExamType temp = null;
-            if (Objects.equals(array[2], "Exam")){
+            if (Objects.equals(array[2], "Exam")) {
                 temp = Exam;
             }
-            if (Objects.equals(array[2], "DifCredit")){
+            if (Objects.equals(array[2], "DifCredit")) {
                 temp = DifCredit;
             }
-            if (Objects.equals(array[2], "Credit")){
+            if (Objects.equals(array[2], "Credit")) {
                 temp = Credit;
             }
             gradeBook.addGrades(Integer.parseInt(array[0]), Integer.parseInt(array[1]), 
