@@ -1,15 +1,15 @@
 package ru.nsu.plodushcheva;
 
-public class Subject {
+public class SubjectInfo {
     private String subjectName;
-    private ExamType examType;
-    private int examGrade;
+    private final ExamType examType;
+    private final int examGrade;
 
     public enum ExamType {Exam, DifCredit, Credit}
-    private int finalSemesterNumber;
+    private final int finalSemesterNumber;
 
 
-    public Subject (String subjectName, ExamType examType, int examGrade, int finalSemesterNumber) {
+    public SubjectInfo(String subjectName, ExamType examType, int examGrade, int finalSemesterNumber) {
         this.subjectName = subjectName;
         this.examType = examType;
         this.examGrade = examGrade;
@@ -30,6 +30,10 @@ public class Subject {
 
     public int getExamGrade() {
         return examGrade;
+    }
+
+    public int getFinalSemesterNumber(){
+        return finalSemesterNumber;
     }
 
 }
