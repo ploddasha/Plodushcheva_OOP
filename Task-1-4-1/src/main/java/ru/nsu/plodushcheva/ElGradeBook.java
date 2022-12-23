@@ -234,10 +234,9 @@ public class ElGradeBook {
     public boolean upperScholarship() {
         List<Integer> grades = semesters[currentSemester - 2].getValuesGrades();
 
-        return getAllCredits().stream().allMatch(x -> x) &&
-                grades.stream().noneMatch(x -> x < 4) &&
-                grades.stream().filter(x -> x == 4).count() <= 1;
+        return getAllCredits().stream().allMatch(x -> x)
+                && grades.stream().noneMatch(x -> x < 4)
+                && grades.stream().filter(x -> x == 4).count() <= 1;
     }
 
 }
-
