@@ -28,15 +28,17 @@ public class ElGradeBook {
      * @param currentSemester номер текущего семестра
      */
     public ElGradeBook(String studentName, int qualifyingWork, int currentSemester) {
-            this.studentName = studentName;
-            this.qualifyingWork = qualifyingWork;
-            this.currentSemester = currentSemester;
-            for (int i = 0; i < 8; i++) {
-                semesters[i] = new SemesterInfo();
-            }
+        this.studentName = studentName;
+        this.qualifyingWork = qualifyingWork;
+        this.currentSemester = currentSemester;
+        for (int i = 0; i < 8; i++) {
+            semesters[i] = new SemesterInfo();
+        }
     }
 
     /**
+     * геттер имени студента.
+     *
      * @return имя студента
      */
     public String getStudentName() {
@@ -44,6 +46,8 @@ public class ElGradeBook {
     }
 
     /**
+     * сеттер имени студента.
+     *
      * @param studentName имя студента
      */
     public void setStudentName(String studentName) {
@@ -51,6 +55,8 @@ public class ElGradeBook {
     }
 
     /**
+     * геттер номера текущего семетра.
+     *
      * @return номер текущего семестра
      */
     public int getCurrentSemester() {
@@ -58,6 +64,8 @@ public class ElGradeBook {
     }
 
     /**
+     * сеттер номера текущего семестра.
+     *
      * @param currentSemester номер текущего семетра
      */
     public void setCurrentSemester(int currentSemester) {
@@ -65,6 +73,8 @@ public class ElGradeBook {
     }
 
     /**
+     * сеттер квалификационной работы.
+     *
      * @param qualifyingWork оценка за квалификационную работу
      */
     public void setQualifyingWork(int qualifyingWork) {
@@ -72,6 +82,8 @@ public class ElGradeBook {
     }
 
     /**
+     * геттре квалификационной работы.
+     *
      * @return оценка за квалификационную работу
      */
     public int getQualifyingWork() {
@@ -79,6 +91,9 @@ public class ElGradeBook {
     }
 
     /**
+     * для экзамена и дифзачета.
+     * добавление оценки за семетр по предмету.
+     *
      * @param semester номер семестра с записываемыми оценками
      * @param grade оценка за предмет
      * @param type тип оценивания
@@ -91,6 +106,9 @@ public class ElGradeBook {
     }
 
     /**
+     * для зачета
+     * добавление оценки за семетр по предмету.
+     *
      * @param semester номер семестра с записываемыми оценками
      * @param credit зачет незачет за предмет
      * @param type тип оценивания - зачет
@@ -103,6 +121,8 @@ public class ElGradeBook {
     }
 
     /**
+     * список все оценок за семестр.
+     *
      * @param semester номер семетра
      * @return оценки за укзаный семестр
      */
@@ -111,6 +131,8 @@ public class ElGradeBook {
     }
 
     /**
+     * список всех оценок за весь период обучения.
+     *
      * @return оценки за весь период обучения
      */
     public List<Integer> getAllGrades() {
@@ -122,6 +144,8 @@ public class ElGradeBook {
     }
 
     /**
+     * список всех зачетов за весь период обучения.
+     *
      * @return зачеты за весь период обучения
      */
     public List<Boolean> getAllCredits() {
@@ -133,7 +157,10 @@ public class ElGradeBook {
     }
 
     /**
-     * @return финальные оценки (за последние семестры по предмету)
+     * список всех финальных оценок
+     * финальные это последние оценки по предмету.
+     *
+     * @return финальные оценки (за последние семестры по предмету).
      */
     public List<Integer> getAllFinalGrades() {
         List<Integer> grades = new ArrayList<>();
@@ -142,8 +169,8 @@ public class ElGradeBook {
         for (int i = currentSemester - 1; i >= 0; i--) {
             Set<String> names = semesters[i].getNames();
             for (String name : names) {
-                if (!temp.contains(name) &&
-                        semesters[i].getGradeType(name)!= GradeInfo.ExamType.Credit) {
+                if (!temp.contains(name)
+                        && semesters[i].getGradeType(name) != GradeInfo.ExamType.Credit) {
                     grades.add(semesters[i].getGrade(name));
                     temp.add(name);
                 }
@@ -153,41 +180,55 @@ public class ElGradeBook {
     }
 
     /**
+     * средний балл зачетной книжки
+     * учитываются все предметы
+     * зачеты не учитываются.
+     *
      * @return средний балл
      */
     public double gpa() {
 
         Integer sumForGpa = getAllGrades().stream().reduce(0, Integer::sum);
-        return (double) sumForGpa/getAllGrades().size();
+        return (double) sumForGpa / getAllGrades().size();
     }
 
     /**
+     * условия для красного диплома:
+     * пятерок больше 75%
+     * нет троек
+     * нет незачетов
+     * квалификационная работа на отлично.
+     *
      * @return возможно ли получение красного диплома в текущем семестре
      */
     public boolean redDiploma() {
         int countOfFive = (int) getAllFinalGrades().stream().filter(x -> x == 5).count();
         int countOfThree = (int) getAllFinalGrades().stream().filter(x -> x == 3).count();
 
-        if ( getAllCredits().contains(false)) {
+        if (getAllCredits().contains(false)) {
             return false;
         }
 
-        return (double) countOfFive/getAllFinalGrades().size() >= 0.75 &&
-                (qualifyingWork == 5) && countOfThree == 0;
+        return (double) countOfFive / getAllFinalGrades().size() >= 0.75
+                && (qualifyingWork == 5) && countOfThree == 0;
     }
 
     /**
+     * для стипендии нужно отсутсиве троек и незачетов.
+     *
      * @return возмонжо ли получение стипендии в текущем семестре
      */
     public boolean scholarship() {
         List<Integer> grades = new ArrayList<>(semesters[currentSemester - 2].getValuesGrades());
 
-        return getAllCredits().stream().allMatch(x -> x) &&
-                grades.stream().noneMatch(x -> x < 4);
+        return getAllCredits().stream().allMatch(x -> x)
+                && grades.stream().noneMatch(x -> x < 4);
 
     }
 
     /**
+     * для повышенной стипендии требуется не более одной четверки.
+     *
      * @return возмонжо ли получение повышенной стипендии в текущем семестре
      */
     public boolean upperScholarship() {

@@ -16,6 +16,9 @@ public class SemesterInfo {
     Map<String, GradeInfo> semester = new HashMap<>();
 
     /**
+     * для экзамена и дифференцированного зачета
+     * добавление оценки за семестр по предмету.
+     *
      * @param subjectName имя предмета
      * @param grade оценка по указанному предмету
      * @param gradeType тип итогового оценивая
@@ -28,6 +31,9 @@ public class SemesterInfo {
     }
 
     /**
+     * для зачета
+     * добавление оценки за семестр по предмету.
+     *
      * @param subjectName имя предмета
      * @param credit зачет незачет
      * @param gradeType тип итогового оценивая
@@ -40,14 +46,18 @@ public class SemesterInfo {
     }
 
     /**
+     * геттер типа оценивания.
+     *
      * @param subjectName имя предмета
      * @return тип оценивания по указанному предмету
      */
-    public GradeInfo.ExamType getGradeType (String subjectName) {
+    public GradeInfo.ExamType getGradeType(String subjectName) {
         return semester.get(subjectName).getGradeType();
     }
 
     /**
+     * получение оценки по навзанию предмета.
+     *
      * @param subjectName имя предмета
      * @return оценка за указанный предмет
      */
@@ -56,6 +66,8 @@ public class SemesterInfo {
     }
 
     /**
+     * геттер зачета по названию предмета.
+     *
      * @param subjectName имя предмета
      * @return зачет или незачет
      */
@@ -64,12 +76,14 @@ public class SemesterInfo {
     }
 
     /**
+     * список оценок за семестр.
+     *
      * @return все оценки за семестр
      */
     public List<Integer> getValuesGrades() {
         List<Integer> values = new LinkedList<>();
-        for (GradeInfo name : semester.values()){
-            if (name.getGradeType() != GradeInfo.ExamType.Credit){
+        for (GradeInfo name : semester.values()) {
+            if (name.getGradeType() != GradeInfo.ExamType.Credit) {
                 values.add(name.getGrade());
             }
         }
@@ -77,6 +91,8 @@ public class SemesterInfo {
     }
 
     /**
+     * список зачетов за семестр.
+     *
      * @return все зачеты за семестр
      */
     public List<Boolean> getValuesCredits() {
@@ -90,6 +106,8 @@ public class SemesterInfo {
     }
 
     /**
+     * множество неповторяющихся назвнаий предметов.
+     *
      * @return все предметы (названия) за семестр
      */
     public Set<String> getNames() {

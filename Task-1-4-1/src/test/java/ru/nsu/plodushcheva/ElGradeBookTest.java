@@ -33,7 +33,7 @@ class ElGradeBookTest {
         Assertions.assertEquals(4, gradeBook.getCurrentSemester());
     }
 
-        @Test
+    @Test
     public void coolStudentTest() throws Exception {
         ElGradeBook gradeBook = new ElGradeBook("CoolGroupMate", 5, 3);
 
@@ -122,7 +122,6 @@ class ElGradeBookTest {
         gradeBook.addGrades(2, 4, GradeInfo.ExamType.DifCredit, "Digital platforms");
         gradeBook.addGrades(2, true, GradeInfo.ExamType.Credit, "Physical education");
 
-        List<Integer> semesterGrades = gradeBook.getSemesterGrades(2);
         List<Integer> expected = new ArrayList<>();
         expected.add(3);
         expected.add(4);
@@ -130,6 +129,7 @@ class ElGradeBookTest {
         expected.add(4);
         expected.add(3);
         expected.add(4);
+        List<Integer> semesterGrades = gradeBook.getSemesterGrades(2);
         Assertions.assertEquals(expected, semesterGrades);
 
         double gpa = gradeBook.gpa();
