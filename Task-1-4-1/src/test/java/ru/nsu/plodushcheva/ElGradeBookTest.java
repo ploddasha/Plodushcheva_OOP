@@ -4,14 +4,14 @@ import static ru.nsu.plodushcheva.GradeInfo.ExamType.Credit;
 import static ru.nsu.plodushcheva.GradeInfo.ExamType.DifCredit;
 import static ru.nsu.plodushcheva.GradeInfo.ExamType.Exam;
 
-import org.junit.jupiter.api.Assertions;
-import java.util.ArrayList;
 import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileReader;
 import java.io.Reader;
+import java.io.FileReader;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 class ElGradeBookTest {
