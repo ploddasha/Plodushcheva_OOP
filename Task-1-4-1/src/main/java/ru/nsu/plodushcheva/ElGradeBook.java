@@ -1,96 +1,150 @@
 package ru.nsu.plodushcheva;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Set;
 
-import static ru.nsu.plodushcheva.GradeInfo.ExamType.*;
-
+/**
+ * Электронная зачетная книжка студента,
+ * в которой хранятся имя студента, результат его квалификационной работы,
+ * номер текущего семестра,
+ * массив с семестрами.
+ * Каждый семестр представляет из себя HashMap с парами
+ * название предмета - инофрмация об оценке по этому предмету.
+ */
 public class ElGradeBook {
     private String studentName;
-    private final int bookID;
     private int qualifyingWork;
-    private final SemesterInfo[] semesters = new SemesterInfo[8];
+    private final SemesterInfo[] semesters = new SemesterInfo[16];
     private int currentSemester;
-    private static final ArrayList<Integer> idsGlobal = new ArrayList<>();
 
 
-    public ElGradeBook(String studentName, int bookID, int qualifyingWork, int currentSemester)
-            throws IllegalAccessException {
-        if (!idsGlobal.contains(bookID)){
-            idsGlobal.add(bookID);
+    /**
+     * конструктор зачетной книжки.
+     *
+     * @param studentName имя студента
+     * @param qualifyingWork оценка за квалификационную работу
+     * @param currentSemester номер текущего семестра
+     */
+    public ElGradeBook(String studentName, int qualifyingWork, int currentSemester) {
             this.studentName = studentName;
-            this.bookID = bookID;
             this.qualifyingWork = qualifyingWork;
             this.currentSemester = currentSemester;
             for (int i = 0; i < 8; i++) {
                 semesters[i] = new SemesterInfo();
             }
-
-            //gpa = 0;
-            //numberForGpa = 0;
-            //sumForGpa = 0;
-            //countOfThree = 0;
-        } else {
-            throw new IllegalAccessException("This book already exist");
-        }
     }
 
+    /**
+     * @return имя студента
+     */
     public String getStudentName() {
         return studentName;
     }
-    public void setStudentName(String studentName){ this.studentName = studentName; }
-    public int getCurrentSemester(){
+
+    /**
+     * @param studentName имя студента
+     */
+    public void setStudentName(String studentName) {
+        this.studentName = studentName;
+    }
+
+    /**
+     * @return номер текущего семестра
+     */
+    public int getCurrentSemester() {
         return currentSemester;
     }
-    public void setCurrentSemester(int currentSemester) {this.currentSemester = currentSemester; }
-    public void setQualifyingWork(int qualifyingWork) {this.qualifyingWork = qualifyingWork; }
-    public int getQualifyingWork(){
+
+    /**
+     * @param currentSemester номер текущего семетра
+     */
+    public void setCurrentSemester(int currentSemester) {
+        this.currentSemester = currentSemester;
+    }
+
+    /**
+     * @param qualifyingWork оценка за квалификационную работу
+     */
+    public void setQualifyingWork(int qualifyingWork) {
+        this.qualifyingWork = qualifyingWork;
+    }
+
+    /**
+     * @return оценка за квалификационную работу
+     */
+    public int getQualifyingWork() {
         return qualifyingWork;
     }
 
-    public int getBookID() {
-        return bookID;
-    }
-
+    /**
+     * @param semester номер семестра с записываемыми оценками
+     * @param grade оценка за предмет
+     * @param type тип оценивания
+     * @param subject название предмета
+     * @throws Exception если тип оценивания не соотвествует оценке
+     */
     public void addGrades(int semester, int grade,
-                          GradeInfo.ExamType type, int fsn, String subject) {
-
-        int temp = 2;
-
-        if (type == Exam) {
-            temp = 1;
-        }
-        if (type == Credit){
-            temp = 3;
-        }
-        Integer[] grades = new Integer[] {grade, fsn, temp};
-        semesters[semester - 1].addGrade(subject,grades);
-
+                          GradeInfo.ExamType type, String subject) throws Exception {
+        semesters[semester - 1].addGrade(subject, grade, type);
     }
 
-    public ArrayList<Integer> getSemesterGrades(int semester) {
-
-        return new ArrayList<>(semesters[semester].getValues());
+    /**
+     * @param semester номер семестра с записываемыми оценками
+     * @param credit зачет незачет за предмет
+     * @param type тип оценивания - зачет
+     * @param subject название предмета
+     * @throws Exception елси тип оценивания не Credit
+     */
+    public void addGrades(int semester, boolean credit,
+                          GradeInfo.ExamType type, String subject) throws Exception {
+        semesters[semester - 1].addGrade(subject, credit, type);
     }
 
-    public ArrayList<Integer> getAllGrades() {
-        ArrayList<Integer> grades = new ArrayList<>();
-        for (int i = 0; i < currentSemester; i++) {
-            grades.addAll(semesters[i].getValues());
+    /**
+     * @param semester номер семетра
+     * @return оценки за укзаный семестр
+     */
+    public List<Integer> getSemesterGrades(int semester) {
+        return new ArrayList<>(semesters[semester - 1].getValuesGrades());
+    }
+
+    /**
+     * @return оценки за весь период обучения
+     */
+    public List<Integer> getAllGrades() {
+        List<Integer> grades = new ArrayList<>();
+        for (int i = 0; i < currentSemester - 1; i++) {
+            grades.addAll(semesters[i].getValuesGrades());
         }
         return grades;
     }
 
+    /**
+     * @return зачеты за весь период обучения
+     */
+    public List<Boolean> getAllCredits() {
+        List<Boolean> credits = new LinkedList<>();
+        for (int i = 0; i < currentSemester - 1; i++) {
+            credits.addAll(semesters[i].getValuesCredits());
+        }
+        return credits;
+    }
+
+    /**
+     * @return финальные оценки (за последние семестры по предмету)
+     */
     public List<Integer> getAllFinalGrades() {
         List<Integer> grades = new ArrayList<>();
         List<String> temp = new ArrayList<>();
 
         for (int i = currentSemester - 1; i >= 0; i--) {
-            List<String> names = semesters[i].getNames();
+            Set<String> names = semesters[i].getNames();
             for (String name : names) {
-                if (!temp.contains(name)) {
-                    Integer grade = semesters[i].getGrade(name);
-                    grades.add(grade);
+                if (!temp.contains(name) &&
+                        semesters[i].getGradeType(name)!= GradeInfo.ExamType.Credit) {
+                    grades.add(semesters[i].getGrade(name));
                     temp.add(name);
                 }
             }
@@ -98,56 +152,50 @@ public class ElGradeBook {
         return grades;
     }
 
-    public double gpa(){
-        List<Integer> allGrades = getAllGrades();
-        int sumForGpa = 0;
-        for (Integer allGrade : allGrades) {
-            sumForGpa += allGrade;
-        }
-        return (double) sumForGpa/allGrades.size();
+    /**
+     * @return средний балл
+     */
+    public double gpa() {
+
+        Integer sumForGpa = getAllGrades().stream().reduce(0, Integer::sum);
+        return (double) sumForGpa/getAllGrades().size();
     }
 
+    /**
+     * @return возможно ли получение красного диплома в текущем семестре
+     */
+    public boolean redDiploma() {
+        int countOfFive = (int) getAllFinalGrades().stream().filter(x -> x == 5).count();
+        int countOfThree = (int) getAllFinalGrades().stream().filter(x -> x == 3).count();
 
-    public boolean redDiploma(){
-        int countOfFive = 0;
-        int countOfThree = 0;
-        List<Integer> finalGrades =  getAllFinalGrades();
-        for (Integer finalGrade : finalGrades) {
-            if (finalGrade == 5) {
-                countOfFive++;
-            }
-            if (finalGrade == 3) {
-                countOfThree++;
-            }
+        if ( getAllCredits().contains(false)) {
+            return false;
         }
 
-        return (double) countOfFive/finalGrades.size() >= 0.75 &&
+        return (double) countOfFive/getAllFinalGrades().size() >= 0.75 &&
                 (qualifyingWork == 5) && countOfThree == 0;
     }
 
-    public boolean scholarship(){
-        List<Integer> grades = new ArrayList<>(semesters[currentSemester - 2].getValues());
+    /**
+     * @return возмонжо ли получение стипендии в текущем семестре
+     */
+    public boolean scholarship() {
+        List<Integer> grades = new ArrayList<>(semesters[currentSemester - 2].getValuesGrades());
 
-        for (Integer grade : grades) {
-            if (grade < 4) {
-                return false;
-            }
-        }
-        return true;
+        return getAllCredits().stream().allMatch(x -> x) &&
+                grades.stream().noneMatch(x -> x < 4);
+
     }
-    public boolean upperScholarship(){
-        List<Integer> grades = semesters[currentSemester-1].getValues();
 
-        int countOfGood = 0;
-        for (Integer grade : grades) {
-            if (grade < 4) {
-                return false;
-            }
-            if (grade == 4) {
-                countOfGood++;
-            }
-        }
-        return countOfGood < 1;
+    /**
+     * @return возмонжо ли получение повышенной стипендии в текущем семестре
+     */
+    public boolean upperScholarship() {
+        List<Integer> grades = semesters[currentSemester - 2].getValuesGrades();
+
+        return getAllCredits().stream().allMatch(x -> x) &&
+                grades.stream().noneMatch(x -> x < 4) &&
+                grades.stream().filter(x -> x == 4).count() <= 1;
     }
 
 }

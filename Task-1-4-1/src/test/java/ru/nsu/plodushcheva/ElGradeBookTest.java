@@ -5,32 +5,53 @@ import static ru.nsu.plodushcheva.GradeInfo.ExamType.DifCredit;
 import static ru.nsu.plodushcheva.GradeInfo.ExamType.Exam;
 
 import org.junit.jupiter.api.Assertions;
+import java.util.ArrayList;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
-import java.io.IOException;
 import java.io.Reader;
+import java.util.List;
 import java.util.Objects;
 import org.junit.jupiter.api.Test;
 
 class ElGradeBookTest {
+
     @Test
-    public void coolStudentTest() throws IllegalAccessException {
-        ElGradeBook gradeBook = new ElGradeBook("CoolGroupMate", 210699, 5, 3);
+    public void studentTest() {
+        ElGradeBook gradeBook = new ElGradeBook("CoolGroupMate", 5, 3);
 
-        gradeBook.addGrades(1, 5, Exam, 2, "Algebra");
-        gradeBook.addGrades(1, 5, Exam, 2, "Discrete math");
-        gradeBook.addGrades(1, 5, GradeInfo.ExamType.DifCredit, 2, "Declarative programming");
-        gradeBook.addGrades(1, 5, GradeInfo.ExamType.DifCredit, 1, "History");
-        gradeBook.addGrades(1, 5, GradeInfo.ExamType.DifCredit, 1, "Basics of speech");
-        gradeBook.addGrades(1, 5, GradeInfo.ExamType.DifCredit, 2, "Imperative programming");
+        Assertions.assertEquals("CoolGroupMate", gradeBook.getStudentName());
+        Assertions.assertEquals(5, gradeBook.getQualifyingWork());
+        Assertions.assertEquals(3, gradeBook.getCurrentSemester());
 
-        gradeBook.addGrades(2, 5, Exam, 2, "Algebra");
-        gradeBook.addGrades(2, 5, Exam, 2, "Discrete math");
-        gradeBook.addGrades(2, 5, GradeInfo.ExamType.DifCredit, 2, "Declarative programming");
-        gradeBook.addGrades(2, 5, Exam, 2, "Imperative programming");
-        gradeBook.addGrades(2, 5, GradeInfo.ExamType.DifCredit, 2, "English");
-        gradeBook.addGrades(2, 5, GradeInfo.ExamType.DifCredit, 2, "Digital platforms");
+        gradeBook.setStudentName("AnotherName");
+        gradeBook.setQualifyingWork(4);
+        gradeBook.setCurrentSemester(4);
+
+        Assertions.assertEquals("AnotherName", gradeBook.getStudentName());
+        Assertions.assertEquals(4, gradeBook.getQualifyingWork());
+        Assertions.assertEquals(4, gradeBook.getCurrentSemester());
+    }
+
+        @Test
+    public void coolStudentTest() throws Exception {
+        ElGradeBook gradeBook = new ElGradeBook("CoolGroupMate", 5, 3);
+
+        gradeBook.addGrades(1, 5, Exam, "Algebra");
+        gradeBook.addGrades(1, 5, Exam, "Discrete math");
+        gradeBook.addGrades(1, 5, GradeInfo.ExamType.DifCredit, "Declarative programming");
+        gradeBook.addGrades(1, 5, GradeInfo.ExamType.DifCredit, "History");
+        gradeBook.addGrades(1, 5, GradeInfo.ExamType.DifCredit, "Basics of speech");
+        gradeBook.addGrades(1, 5, GradeInfo.ExamType.DifCredit, "Imperative programming");
+        gradeBook.addGrades(1, true, GradeInfo.ExamType.Credit, "Physical education");
+
+        gradeBook.addGrades(2, 5, Exam, "Algebra");
+        gradeBook.addGrades(2, 5, Exam, "Discrete math");
+        gradeBook.addGrades(2, 5, GradeInfo.ExamType.DifCredit, "Declarative programming");
+        gradeBook.addGrades(2, 5, Exam, "Imperative programming");
+        gradeBook.addGrades(2, 5, GradeInfo.ExamType.DifCredit, "English");
+        gradeBook.addGrades(2, 5, GradeInfo.ExamType.DifCredit, "Digital platforms");
+        gradeBook.addGrades(2, true, GradeInfo.ExamType.Credit, "Physical education");
 
         double gpa = gradeBook.gpa();
         Assertions.assertEquals(5, gpa);
@@ -43,22 +64,24 @@ class ElGradeBookTest {
     }
 
     @Test
-    public void okayStudentTest() throws IllegalAccessException {
-        ElGradeBook gradeBook = new ElGradeBook("NotAsCoolGroupMate", 210698, 5, 3);
+    public void okayStudentTest() throws Exception {
+        ElGradeBook gradeBook = new ElGradeBook("NotAsCoolGroupMate",  5, 3);
 
-        gradeBook.addGrades(1, 3, Exam, 2, "Algebra");
-        gradeBook.addGrades(1, 3, Exam, 2, "Discrete math");
-        gradeBook.addGrades(1, 4, GradeInfo.ExamType.DifCredit, 2, "Declarative programming");
-        gradeBook.addGrades(1, 4, GradeInfo.ExamType.DifCredit, 1, "History");
-        gradeBook.addGrades(1, 4, GradeInfo.ExamType.DifCredit, 1, "Basics of speech");
-        gradeBook.addGrades(1, 3, GradeInfo.ExamType.DifCredit, 2, "Imperative programming");
+        gradeBook.addGrades(1, 3, GradeInfo.ExamType.Exam, "Algebra");
+        gradeBook.addGrades(1, 3, GradeInfo.ExamType.Exam, "Discrete math");
+        gradeBook.addGrades(1, 4, GradeInfo.ExamType.DifCredit, "Declarative programming");
+        gradeBook.addGrades(1, 4, GradeInfo.ExamType.DifCredit, "History");
+        gradeBook.addGrades(1, 4, GradeInfo.ExamType.DifCredit, "Basics of speech");
+        gradeBook.addGrades(1, 3, GradeInfo.ExamType.DifCredit, "Imperative programming");
+        gradeBook.addGrades(1, true, GradeInfo.ExamType.Credit, "Physical education");
 
-        gradeBook.addGrades(2, 4, Exam, 2, "Algebra");
-        gradeBook.addGrades(2, 4, Exam, 2, "Discrete math");
-        gradeBook.addGrades(2, 4, GradeInfo.ExamType.DifCredit, 2, "Declarative programming");
-        gradeBook.addGrades(2, 4, Exam, 2, "Imperative programming");
-        gradeBook.addGrades(2, 5, GradeInfo.ExamType.DifCredit, 2, "English");
-        gradeBook.addGrades(2, 4, GradeInfo.ExamType.DifCredit, 2, "Digital platforms");
+        gradeBook.addGrades(2, 4, GradeInfo.ExamType.Exam, "Algebra");
+        gradeBook.addGrades(2, 4, GradeInfo.ExamType.Exam, "Discrete math");
+        gradeBook.addGrades(2, 4, GradeInfo.ExamType.DifCredit, "Declarative programming");
+        gradeBook.addGrades(2, 4, GradeInfo.ExamType.Exam, "Imperative programming");
+        gradeBook.addGrades(2, 5, GradeInfo.ExamType.DifCredit, "English");
+        gradeBook.addGrades(2, 4, GradeInfo.ExamType.DifCredit, "Digital platforms");
+        gradeBook.addGrades(2, true, GradeInfo.ExamType.Credit, "Physical education");
 
         double gpa = gradeBook.gpa();
         Assertions.assertEquals(3.83, gpa, 0.01);
@@ -68,25 +91,46 @@ class ElGradeBookTest {
 
         boolean b = gradeBook.scholarship();
         Assertions.assertTrue(b);
+
+        boolean d = gradeBook.upperScholarship();
+        Assertions.assertFalse(d);
+
+
+        gradeBook.addGrades(1, false, GradeInfo.ExamType.Credit, "Physical education");
+        boolean c = gradeBook.scholarship();
+        Assertions.assertFalse(c);
+
     }
 
     @Test
-    public void badStudentTest() throws IllegalAccessException {
-        ElGradeBook gradeBook = new ElGradeBook("NotCoolGroupMate", 210697, 3, 3);
+    public void badStudentTest() throws Exception {
+        ElGradeBook gradeBook = new ElGradeBook("NotCoolGroupMate",  3, 3);
 
-        gradeBook.addGrades(1, 3, Exam, 2, "Algebra");
-        gradeBook.addGrades(1, 3, Exam, 2, "Discrete math");
-        gradeBook.addGrades(1, 3, GradeInfo.ExamType.DifCredit, 2, "Declarative programming");
-        gradeBook.addGrades(1, 4, GradeInfo.ExamType.DifCredit, 1, "History");
-        gradeBook.addGrades(1, 4, GradeInfo.ExamType.DifCredit, 1, "Basics of speech");
-        gradeBook.addGrades(1, 3, GradeInfo.ExamType.DifCredit, 2, "Imperative programming");
+        gradeBook.addGrades(1, 3, Exam, "Algebra");
+        gradeBook.addGrades(1, 3, Exam, "Discrete math");
+        gradeBook.addGrades(1, 3, GradeInfo.ExamType.DifCredit, "Declarative programming");
+        gradeBook.addGrades(1, 4, GradeInfo.ExamType.DifCredit, "History");
+        gradeBook.addGrades(1, 4, GradeInfo.ExamType.DifCredit, "Basics of speech");
+        gradeBook.addGrades(1, 3, GradeInfo.ExamType.DifCredit, "Imperative programming");
+        gradeBook.addGrades(1, true, GradeInfo.ExamType.Credit, "Physical education");
 
-        gradeBook.addGrades(2, 3, Exam, 2, "Algebra");
-        gradeBook.addGrades(2, 4, Exam, 2, "Discrete math");
-        gradeBook.addGrades(2, 3, GradeInfo.ExamType.DifCredit, 2, "Declarative programming");
-        gradeBook.addGrades(2, 4, Exam, 2, "Imperative programming");
-        gradeBook.addGrades(2, 3, GradeInfo.ExamType.DifCredit, 2, "English");
-        gradeBook.addGrades(2, 4, GradeInfo.ExamType.DifCredit, 2, "Digital platforms");
+        gradeBook.addGrades(2, 3, Exam, "Algebra");
+        gradeBook.addGrades(2, 4, Exam, "Discrete math");
+        gradeBook.addGrades(2, 3, GradeInfo.ExamType.DifCredit, "Declarative programming");
+        gradeBook.addGrades(2, 4, Exam, "Imperative programming");
+        gradeBook.addGrades(2, 3, GradeInfo.ExamType.DifCredit, "English");
+        gradeBook.addGrades(2, 4, GradeInfo.ExamType.DifCredit, "Digital platforms");
+        gradeBook.addGrades(2, true, GradeInfo.ExamType.Credit, "Physical education");
+
+        List<Integer> semesterGrades = gradeBook.getSemesterGrades(2);
+        List<Integer> expected = new ArrayList<>();
+        expected.add(3);
+        expected.add(4);
+        expected.add(3);
+        expected.add(4);
+        expected.add(3);
+        expected.add(4);
+        Assertions.assertEquals(expected, semesterGrades);
 
         double gpa = gradeBook.gpa();
         Assertions.assertEquals(3.42, gpa, 0.01);
@@ -99,7 +143,7 @@ class ElGradeBookTest {
     }
 
     @Test
-    public void studentBookTest() throws IllegalAccessException, IOException {
+    public void studentBookTest() throws Exception {
 
         File file = new File("./src/test/resources/Book1.txt");
         Reader fr = new FileReader(file);
@@ -107,7 +151,7 @@ class ElGradeBookTest {
         String line = reader.readLine();
         String[] array = line.split(" ");
         ElGradeBook gradeBook = new ElGradeBook(array[0], Integer.parseInt(array[1]), 
-                Integer.parseInt(array[2]), Integer.parseInt(array[3]));
+                Integer.parseInt(array[2]));
 
         line = reader.readLine();
         while (line != null) {
@@ -123,7 +167,7 @@ class ElGradeBookTest {
                 temp = Credit;
             }
             gradeBook.addGrades(Integer.parseInt(array[0]), Integer.parseInt(array[1]), 
-                    temp, Integer.parseInt(array[3]), array[4]);
+                    temp, array[3]);
             line = reader.readLine();
         }
 

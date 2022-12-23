@@ -1,32 +1,64 @@
 package ru.nsu.plodushcheva;
 
+/**
+ * информация об оценке
+ * тип оценивания Экзамен, Дифференцированный зачет, Зачет
+ * оценка для Экзамена или Дифференцированного зачета
+ * зачет/незачет для Зачета
+ */
 public class GradeInfo {
-    // первое значение оценка
-    // второе значение тип экзамена
-    // 1 Exam  2 DiffCredit  3 Credit
-    // третье значение номер семестра с последней оценкой
-
-    public Integer[] grades;
-
-    public enum ExamType {Exam, DifCredit, Credit}
-
-    public GradeInfo (Integer[] grades) {
-        this.grades = grades;
+    private Integer grade;
+    private boolean credit;
+    private final ExamType gradeType;
+    public enum ExamType {
+        Exam,
+        DifCredit,
+        Credit
     }
 
-    public void setGrade(Integer grade){
-        grades[0] = grade;
+    /**
+     * @param grade оценка для Экзамена и Дифф.зачета
+     * @param gradeType тип оценивания
+     * @throws Exception если тип оценивания Зачет
+     */
+    public GradeInfo (Integer grade, ExamType gradeType) throws Exception {
+        if (gradeType == ExamType.Exam || gradeType == ExamType.DifCredit){
+            this.grade = grade;
+            this.gradeType = gradeType;
+        } else throw new Exception("Exam type and the grade are not the same");
     }
-    public void setType(Integer type){
-        grades[1] = type;
+
+    /**
+     * @param credit результат
+     * @param gradeType тип оценивания Зачет
+     * @throws Exception если тип оценивания Экзамен или Дифф.зачет
+     */
+    public GradeInfo (Boolean credit, ExamType gradeType) throws Exception {
+        if (gradeType == ExamType.Credit) {
+            this.credit = credit;
+            this.gradeType = gradeType;
+        } else throw new Exception("Exam type and the grade are not the same");
+
     }
-    public void setSemesterNumber(Integer semesterNumber){
-        grades[2] = semesterNumber;
+
+    /**
+     * @return оценка за экзамен/дифф.зачет
+     */
+    public Integer getGrade() {
+        return grade;
     }
-    public Integer[] getGrades(){
-        return grades;
+
+    /**
+     * @return результат зачета
+     */
+    public Boolean getCredit() {
+        return credit;
     }
-    public Integer getGrade(){
-        return grades[0];
+
+    /**
+     * @return тип оценивания
+     */
+    public ExamType getGradeType() {
+        return gradeType;
     }
 }
