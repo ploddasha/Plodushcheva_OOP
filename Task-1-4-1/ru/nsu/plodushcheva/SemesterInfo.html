@@ -27,7 +27,7 @@
     catch(err) {
     }
 //-->
-var data = {"i0":10,"i1":10,"i2":10,"i3":10};
+var data = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -132,6 +132,9 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <hr>
 <pre>public class <span class="typeNameLabel">SemesterInfo</span>
 extends java.lang.Object</pre>
+<div class="block">инофрмация о семестре
+ список пар
+ название предмета - информация об оценке за этот предмет.</div>
 </li>
 </ul>
 </div>
@@ -175,23 +178,46 @@ extends java.lang.Object</pre>
 </tr>
 <tr id="i0" class="altColor">
 <td class="colFirst"><code>void</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#addGrade(java.lang.String,java.lang.Integer%5B%5D)">addGrade</a></span>&#8203;(java.lang.String&nbsp;subjectName,
-        java.lang.Integer[]&nbsp;grades)</code></th>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#addGrade(java.lang.String,java.lang.Boolean,ru.nsu.plodushcheva.GradeInfo.ExamType)">addGrade</a></span>&#8203;(java.lang.String&nbsp;subjectName,
+        java.lang.Boolean&nbsp;credit,
+        <a href="GradeInfo.ExamType.html" title="enum in ru.nsu.plodushcheva">GradeInfo.ExamType</a>&nbsp;gradeType)</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
 <tr id="i1" class="rowColor">
+<td class="colFirst"><code>void</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#addGrade(java.lang.String,java.lang.Integer,ru.nsu.plodushcheva.GradeInfo.ExamType)">addGrade</a></span>&#8203;(java.lang.String&nbsp;subjectName,
+        java.lang.Integer&nbsp;grade,
+        <a href="GradeInfo.ExamType.html" title="enum in ru.nsu.plodushcheva">GradeInfo.ExamType</a>&nbsp;gradeType)</code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr id="i2" class="altColor">
+<td class="colFirst"><code>java.lang.Boolean</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getCredit(java.lang.String)">getCredit</a></span>&#8203;(java.lang.String&nbsp;subjectName)</code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr id="i3" class="rowColor">
 <td class="colFirst"><code>int</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getGrade(java.lang.String)">getGrade</a></span>&#8203;(java.lang.String&nbsp;subjectName)</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i2" class="altColor">
-<td class="colFirst"><code>java.util.List&lt;java.lang.String&gt;</code></td>
+<tr id="i4" class="altColor">
+<td class="colFirst"><code><a href="GradeInfo.ExamType.html" title="enum in ru.nsu.plodushcheva">GradeInfo.ExamType</a></code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getGradeType(java.lang.String)">getGradeType</a></span>&#8203;(java.lang.String&nbsp;subjectName)</code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr id="i5" class="rowColor">
+<td class="colFirst"><code>java.util.Set&lt;java.lang.String&gt;</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getNames()">getNames</a></span>()</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i3" class="rowColor">
+<tr id="i6" class="altColor">
+<td class="colFirst"><code>java.util.List&lt;java.lang.Boolean&gt;</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getValuesCredits()">getValuesCredits</a></span>()</code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr id="i7" class="rowColor">
 <td class="colFirst"><code>java.util.List&lt;java.lang.Integer&gt;</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getValues()">getValues</a></span>()</code></th>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getValuesGrades()">getValuesGrades</a></span>()</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
 </table>
@@ -237,14 +263,59 @@ extends java.lang.Object</pre>
 <!--   -->
 </a>
 <h3>Method Detail</h3>
-<a id="addGrade(java.lang.String,java.lang.Integer[])">
+<a id="addGrade(java.lang.String,java.lang.Integer,ru.nsu.plodushcheva.GradeInfo.ExamType)">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
 <h4>addGrade</h4>
 <pre class="methodSignature">public&nbsp;void&nbsp;addGrade&#8203;(java.lang.String&nbsp;subjectName,
-                     java.lang.Integer[]&nbsp;grades)</pre>
+                     java.lang.Integer&nbsp;grade,
+                     <a href="GradeInfo.ExamType.html" title="enum in ru.nsu.plodushcheva">GradeInfo.ExamType</a>&nbsp;gradeType)
+              throws java.lang.Exception</pre>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>subjectName</code> - имя предмета</dd>
+<dd><code>grade</code> - оценка по указанному предмету</dd>
+<dd><code>gradeType</code> - тип итогового оценивая</dd>
+<dt><span class="throwsLabel">Throws:</span></dt>
+<dd><code>java.lang.Exception</code> - при несоответвии оценки и типа оценивания</dd>
+</dl>
+</li>
+</ul>
+<a id="addGrade(java.lang.String,java.lang.Boolean,ru.nsu.plodushcheva.GradeInfo.ExamType)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>addGrade</h4>
+<pre class="methodSignature">public&nbsp;void&nbsp;addGrade&#8203;(java.lang.String&nbsp;subjectName,
+                     java.lang.Boolean&nbsp;credit,
+                     <a href="GradeInfo.ExamType.html" title="enum in ru.nsu.plodushcheva">GradeInfo.ExamType</a>&nbsp;gradeType)
+              throws java.lang.Exception</pre>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>subjectName</code> - имя предмета</dd>
+<dd><code>credit</code> - зачет незачет</dd>
+<dd><code>gradeType</code> - тип итогового оценивая</dd>
+<dt><span class="throwsLabel">Throws:</span></dt>
+<dd><code>java.lang.Exception</code> - при несоответвии оценки и типа оценивания</dd>
+</dl>
+</li>
+</ul>
+<a id="getGradeType(java.lang.String)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getGradeType</h4>
+<pre class="methodSignature">public&nbsp;<a href="GradeInfo.ExamType.html" title="enum in ru.nsu.plodushcheva">GradeInfo.ExamType</a>&nbsp;getGradeType&#8203;(java.lang.String&nbsp;subjectName)</pre>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>subjectName</code> - имя предмета</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>тип оценивания по указанному предмету</dd>
+</dl>
 </li>
 </ul>
 <a id="getGrade(java.lang.String)">
@@ -254,15 +325,53 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>getGrade</h4>
 <pre class="methodSignature">public&nbsp;int&nbsp;getGrade&#8203;(java.lang.String&nbsp;subjectName)</pre>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>subjectName</code> - имя предмета</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>оценка за указанный предмет</dd>
+</dl>
 </li>
 </ul>
-<a id="getValues()">
+<a id="getCredit(java.lang.String)">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
-<h4>getValues</h4>
-<pre class="methodSignature">public&nbsp;java.util.List&lt;java.lang.Integer&gt;&nbsp;getValues()</pre>
+<h4>getCredit</h4>
+<pre class="methodSignature">public&nbsp;java.lang.Boolean&nbsp;getCredit&#8203;(java.lang.String&nbsp;subjectName)</pre>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>subjectName</code> - имя предмета</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>зачет или незачет</dd>
+</dl>
+</li>
+</ul>
+<a id="getValuesGrades()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getValuesGrades</h4>
+<pre class="methodSignature">public&nbsp;java.util.List&lt;java.lang.Integer&gt;&nbsp;getValuesGrades()</pre>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>все оценки за семестр</dd>
+</dl>
+</li>
+</ul>
+<a id="getValuesCredits()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getValuesCredits</h4>
+<pre class="methodSignature">public&nbsp;java.util.List&lt;java.lang.Boolean&gt;&nbsp;getValuesCredits()</pre>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>все зачеты за семестр</dd>
+</dl>
 </li>
 </ul>
 <a id="getNames()">
@@ -271,7 +380,11 @@ extends java.lang.Object</pre>
 <ul class="blockListLast">
 <li class="blockList">
 <h4>getNames</h4>
-<pre class="methodSignature">public&nbsp;java.util.List&lt;java.lang.String&gt;&nbsp;getNames()</pre>
+<pre class="methodSignature">public&nbsp;java.util.Set&lt;java.lang.String&gt;&nbsp;getNames()</pre>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>все предметы (названия) за семестр</dd>
+</dl>
 </li>
 </ul>
 </li>

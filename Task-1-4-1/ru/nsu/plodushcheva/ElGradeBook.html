@@ -27,7 +27,7 @@
     catch(err) {
     }
 //-->
-var data = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10,"i8":10,"i9":10,"i10":10,"i11":10,"i12":10,"i13":10,"i14":10};
+var data = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10,"i8":10,"i9":10,"i10":10,"i11":10,"i12":10,"i13":10,"i14":10,"i15":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -132,6 +132,12 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <hr>
 <pre>public class <span class="typeNameLabel">ElGradeBook</span>
 extends java.lang.Object</pre>
+<div class="block">Электронная зачетная книжка студента,
+ в которой хранятся имя студента, результат его квалификационной работы,
+ номер текущего семестра,
+ массив с семестрами.
+ Каждый семестр представляет из себя HashMap с парами
+ название предмета - инофрмация об оценке по этому предмету.</div>
 </li>
 </ul>
 </div>
@@ -152,11 +158,12 @@ extends java.lang.Object</pre>
 <th class="colLast" scope="col">Description</th>
 </tr>
 <tr class="altColor">
-<th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E(java.lang.String,int,int,int)">ElGradeBook</a></span>&#8203;(java.lang.String&nbsp;studentName,
-           int&nbsp;bookID,
+<th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E(java.lang.String,int,int)">ElGradeBook</a></span>&#8203;(java.lang.String&nbsp;studentName,
            int&nbsp;qualifyingWork,
            int&nbsp;currentSemester)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">конструктор зачетной книжки.</div>
+</td>
 </tr>
 </table>
 </li>
@@ -178,79 +185,86 @@ extends java.lang.Object</pre>
 </tr>
 <tr id="i0" class="altColor">
 <td class="colFirst"><code>void</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#addGrades(int,int,ru.nsu.plodushcheva.GradeInfo.ExamType,int,java.lang.String)">addGrades</a></span>&#8203;(int&nbsp;semester,
-         int&nbsp;grade,
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#addGrades(int,boolean,ru.nsu.plodushcheva.GradeInfo.ExamType,java.lang.String)">addGrades</a></span>&#8203;(int&nbsp;semester,
+         boolean&nbsp;credit,
          <a href="GradeInfo.ExamType.html" title="enum in ru.nsu.plodushcheva">GradeInfo.ExamType</a>&nbsp;type,
-         int&nbsp;fsn,
          java.lang.String&nbsp;subject)</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
 <tr id="i1" class="rowColor">
+<td class="colFirst"><code>void</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#addGrades(int,int,ru.nsu.plodushcheva.GradeInfo.ExamType,java.lang.String)">addGrades</a></span>&#8203;(int&nbsp;semester,
+         int&nbsp;grade,
+         <a href="GradeInfo.ExamType.html" title="enum in ru.nsu.plodushcheva">GradeInfo.ExamType</a>&nbsp;type,
+         java.lang.String&nbsp;subject)</code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr id="i2" class="altColor">
+<td class="colFirst"><code>java.util.List&lt;java.lang.Boolean&gt;</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getAllCredits()">getAllCredits</a></span>()</code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr id="i3" class="rowColor">
 <td class="colFirst"><code>java.util.List&lt;java.lang.Integer&gt;</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getAllFinalGrades()">getAllFinalGrades</a></span>()</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i2" class="altColor">
-<td class="colFirst"><code>java.util.ArrayList&lt;java.lang.Integer&gt;</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getAllGrades()">getAllGrades</a></span>()</code></th>
-<td class="colLast">&nbsp;</td>
-</tr>
-<tr id="i3" class="rowColor">
-<td class="colFirst"><code>int</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getBookID()">getBookID</a></span>()</code></th>
-<td class="colLast">&nbsp;</td>
-</tr>
 <tr id="i4" class="altColor">
-<td class="colFirst"><code>int</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getCurrentSemester()">getCurrentSemester</a></span>()</code></th>
+<td class="colFirst"><code>java.util.List&lt;java.lang.Integer&gt;</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getAllGrades()">getAllGrades</a></span>()</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
 <tr id="i5" class="rowColor">
 <td class="colFirst"><code>int</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getQualifyingWork()">getQualifyingWork</a></span>()</code></th>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getCurrentSemester()">getCurrentSemester</a></span>()</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
 <tr id="i6" class="altColor">
-<td class="colFirst"><code>java.util.ArrayList&lt;java.lang.Integer&gt;</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getSemesterGrades(int)">getSemesterGrades</a></span>&#8203;(int&nbsp;semester)</code></th>
+<td class="colFirst"><code>int</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getQualifyingWork()">getQualifyingWork</a></span>()</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
 <tr id="i7" class="rowColor">
+<td class="colFirst"><code>java.util.List&lt;java.lang.Integer&gt;</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getSemesterGrades(int)">getSemesterGrades</a></span>&#8203;(int&nbsp;semester)</code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr id="i8" class="altColor">
 <td class="colFirst"><code>java.lang.String</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getStudentName()">getStudentName</a></span>()</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i8" class="altColor">
+<tr id="i9" class="rowColor">
 <td class="colFirst"><code>double</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#gpa()">gpa</a></span>()</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i9" class="rowColor">
+<tr id="i10" class="altColor">
 <td class="colFirst"><code>boolean</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#redDiploma()">redDiploma</a></span>()</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i10" class="altColor">
+<tr id="i11" class="rowColor">
 <td class="colFirst"><code>boolean</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#scholarship()">scholarship</a></span>()</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i11" class="rowColor">
+<tr id="i12" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setCurrentSemester(int)">setCurrentSemester</a></span>&#8203;(int&nbsp;currentSemester)</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i12" class="altColor">
+<tr id="i13" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setQualifyingWork(int)">setQualifyingWork</a></span>&#8203;(int&nbsp;qualifyingWork)</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i13" class="rowColor">
+<tr id="i14" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setStudentName(java.lang.String)">setStudentName</a></span>&#8203;(java.lang.String&nbsp;studentName)</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i14" class="altColor">
+<tr id="i15" class="rowColor">
 <td class="colFirst"><code>boolean</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#upperScholarship()">upperScholarship</a></span>()</code></th>
 <td class="colLast">&nbsp;</td>
@@ -279,20 +293,21 @@ extends java.lang.Object</pre>
 <!--   -->
 </a>
 <h3>Constructor Detail</h3>
-<a id="&lt;init&gt;(java.lang.String,int,int,int)">
+<a id="&lt;init&gt;(java.lang.String,int,int)">
 <!--   -->
 </a>
 <ul class="blockListLast">
 <li class="blockList">
 <h4>ElGradeBook</h4>
 <pre>public&nbsp;ElGradeBook&#8203;(java.lang.String&nbsp;studentName,
-                   int&nbsp;bookID,
                    int&nbsp;qualifyingWork,
-                   int&nbsp;currentSemester)
-            throws java.lang.IllegalAccessException</pre>
+                   int&nbsp;currentSemester)</pre>
+<div class="block">конструктор зачетной книжки.</div>
 <dl>
-<dt><span class="throwsLabel">Throws:</span></dt>
-<dd><code>java.lang.IllegalAccessException</code></dd>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>studentName</code> - имя студента</dd>
+<dd><code>qualifyingWork</code> - оценка за квалификационную работу</dd>
+<dd><code>currentSemester</code> - номер текущего семестра</dd>
 </dl>
 </li>
 </ul>
@@ -313,6 +328,10 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>getStudentName</h4>
 <pre class="methodSignature">public&nbsp;java.lang.String&nbsp;getStudentName()</pre>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>имя студента</dd>
+</dl>
 </li>
 </ul>
 <a id="setStudentName(java.lang.String)">
@@ -322,6 +341,10 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>setStudentName</h4>
 <pre class="methodSignature">public&nbsp;void&nbsp;setStudentName&#8203;(java.lang.String&nbsp;studentName)</pre>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>studentName</code> - имя студента</dd>
+</dl>
 </li>
 </ul>
 <a id="getCurrentSemester()">
@@ -331,6 +354,10 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>getCurrentSemester</h4>
 <pre class="methodSignature">public&nbsp;int&nbsp;getCurrentSemester()</pre>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>номер текущего семестра</dd>
+</dl>
 </li>
 </ul>
 <a id="setCurrentSemester(int)">
@@ -340,6 +367,10 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>setCurrentSemester</h4>
 <pre class="methodSignature">public&nbsp;void&nbsp;setCurrentSemester&#8203;(int&nbsp;currentSemester)</pre>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>currentSemester</code> - номер текущего семетра</dd>
+</dl>
 </li>
 </ul>
 <a id="setQualifyingWork(int)">
@@ -349,6 +380,10 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>setQualifyingWork</h4>
 <pre class="methodSignature">public&nbsp;void&nbsp;setQualifyingWork&#8203;(int&nbsp;qualifyingWork)</pre>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>qualifyingWork</code> - оценка за квалификационную работу</dd>
+</dl>
 </li>
 </ul>
 <a id="getQualifyingWork()">
@@ -358,18 +393,13 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>getQualifyingWork</h4>
 <pre class="methodSignature">public&nbsp;int&nbsp;getQualifyingWork()</pre>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>оценка за квалификационную работу</dd>
+</dl>
 </li>
 </ul>
-<a id="getBookID()">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>getBookID</h4>
-<pre class="methodSignature">public&nbsp;int&nbsp;getBookID()</pre>
-</li>
-</ul>
-<a id="addGrades(int,int,ru.nsu.plodushcheva.GradeInfo.ExamType,int,java.lang.String)">
+<a id="addGrades(int,int,ru.nsu.plodushcheva.GradeInfo.ExamType,java.lang.String)">
 <!--   -->
 </a>
 <ul class="blockList">
@@ -378,8 +408,39 @@ extends java.lang.Object</pre>
 <pre class="methodSignature">public&nbsp;void&nbsp;addGrades&#8203;(int&nbsp;semester,
                       int&nbsp;grade,
                       <a href="GradeInfo.ExamType.html" title="enum in ru.nsu.plodushcheva">GradeInfo.ExamType</a>&nbsp;type,
-                      int&nbsp;fsn,
-                      java.lang.String&nbsp;subject)</pre>
+                      java.lang.String&nbsp;subject)
+               throws java.lang.Exception</pre>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>semester</code> - номер семестра с записываемыми оценками</dd>
+<dd><code>grade</code> - оценка за предмет</dd>
+<dd><code>type</code> - тип оценивания</dd>
+<dd><code>subject</code> - название предмета</dd>
+<dt><span class="throwsLabel">Throws:</span></dt>
+<dd><code>java.lang.Exception</code> - если тип оценивания не соотвествует оценке</dd>
+</dl>
+</li>
+</ul>
+<a id="addGrades(int,boolean,ru.nsu.plodushcheva.GradeInfo.ExamType,java.lang.String)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>addGrades</h4>
+<pre class="methodSignature">public&nbsp;void&nbsp;addGrades&#8203;(int&nbsp;semester,
+                      boolean&nbsp;credit,
+                      <a href="GradeInfo.ExamType.html" title="enum in ru.nsu.plodushcheva">GradeInfo.ExamType</a>&nbsp;type,
+                      java.lang.String&nbsp;subject)
+               throws java.lang.Exception</pre>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>semester</code> - номер семестра с записываемыми оценками</dd>
+<dd><code>credit</code> - зачет незачет за предмет</dd>
+<dd><code>type</code> - тип оценивания - зачет</dd>
+<dd><code>subject</code> - название предмета</dd>
+<dt><span class="throwsLabel">Throws:</span></dt>
+<dd><code>java.lang.Exception</code> - елси тип оценивания не Credit</dd>
+</dl>
 </li>
 </ul>
 <a id="getSemesterGrades(int)">
@@ -388,7 +449,13 @@ extends java.lang.Object</pre>
 <ul class="blockList">
 <li class="blockList">
 <h4>getSemesterGrades</h4>
-<pre class="methodSignature">public&nbsp;java.util.ArrayList&lt;java.lang.Integer&gt;&nbsp;getSemesterGrades&#8203;(int&nbsp;semester)</pre>
+<pre class="methodSignature">public&nbsp;java.util.List&lt;java.lang.Integer&gt;&nbsp;getSemesterGrades&#8203;(int&nbsp;semester)</pre>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>semester</code> - номер семетра</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>оценки за укзаный семестр</dd>
+</dl>
 </li>
 </ul>
 <a id="getAllGrades()">
@@ -397,7 +464,24 @@ extends java.lang.Object</pre>
 <ul class="blockList">
 <li class="blockList">
 <h4>getAllGrades</h4>
-<pre class="methodSignature">public&nbsp;java.util.ArrayList&lt;java.lang.Integer&gt;&nbsp;getAllGrades()</pre>
+<pre class="methodSignature">public&nbsp;java.util.List&lt;java.lang.Integer&gt;&nbsp;getAllGrades()</pre>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>оценки за весь период обучения</dd>
+</dl>
+</li>
+</ul>
+<a id="getAllCredits()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getAllCredits</h4>
+<pre class="methodSignature">public&nbsp;java.util.List&lt;java.lang.Boolean&gt;&nbsp;getAllCredits()</pre>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>зачеты за весь период обучения</dd>
+</dl>
 </li>
 </ul>
 <a id="getAllFinalGrades()">
@@ -407,6 +491,10 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>getAllFinalGrades</h4>
 <pre class="methodSignature">public&nbsp;java.util.List&lt;java.lang.Integer&gt;&nbsp;getAllFinalGrades()</pre>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>финальные оценки (за последние семестры по предмету)</dd>
+</dl>
 </li>
 </ul>
 <a id="gpa()">
@@ -416,6 +504,10 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>gpa</h4>
 <pre class="methodSignature">public&nbsp;double&nbsp;gpa()</pre>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>средний балл</dd>
+</dl>
 </li>
 </ul>
 <a id="redDiploma()">
@@ -425,6 +517,10 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>redDiploma</h4>
 <pre class="methodSignature">public&nbsp;boolean&nbsp;redDiploma()</pre>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>возможно ли получение красного диплома в текущем семестре</dd>
+</dl>
 </li>
 </ul>
 <a id="scholarship()">
@@ -434,6 +530,10 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>scholarship</h4>
 <pre class="methodSignature">public&nbsp;boolean&nbsp;scholarship()</pre>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>возмонжо ли получение стипендии в текущем семестре</dd>
+</dl>
 </li>
 </ul>
 <a id="upperScholarship()">
@@ -443,6 +543,10 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>upperScholarship</h4>
 <pre class="methodSignature">public&nbsp;boolean&nbsp;upperScholarship()</pre>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>возмонжо ли получение повышенной стипендии в текущем семестре</dd>
+</dl>
 </li>
 </ul>
 </li>
