@@ -145,11 +145,11 @@ class ElGradeBookTest {
     @Test
     public void studentBookTest() throws Exception {
 
-        File file = new File("./src/test/resources/Book1.txt");
-        Reader fr = new FileReader(file);
-        BufferedReader reader = new BufferedReader(fr);
+        BufferedReader reader = new BufferedReader(new FileReader(
+                "./src/test/resources/Book1.txt"));
         String line = reader.readLine();
         String[] array = line.split(" ");
+
         ElGradeBook gradeBook = new ElGradeBook(array[0], Integer.parseInt(array[1]), 
                 Integer.parseInt(array[2]));
 

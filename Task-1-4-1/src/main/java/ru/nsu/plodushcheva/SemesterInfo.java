@@ -24,7 +24,7 @@ public class SemesterInfo {
      * @param gradeType тип итогового оценивая
      * @throws Exception при несоответвии оценки и типа оценивания
      */
-    public void addGrade(String subjectName, Integer grade, GradeInfo.ExamType gradeType)
+    public void addGrade(String subjectName, int grade, GradeInfo.ExamType gradeType)
             throws Exception {
         GradeInfo grades = new GradeInfo(grade, gradeType);
         this.semester.put(subjectName, grades);
@@ -39,7 +39,7 @@ public class SemesterInfo {
      * @param gradeType тип итогового оценивая
      * @throws Exception при несоответвии оценки и типа оценивания
      */
-    public void addGrade(String subjectName, Boolean credit, GradeInfo.ExamType gradeType)
+    public void addGrade(String subjectName, boolean credit, GradeInfo.ExamType gradeType)
             throws Exception {
         GradeInfo grades = new GradeInfo(credit, gradeType);
         this.semester.put(subjectName, grades);

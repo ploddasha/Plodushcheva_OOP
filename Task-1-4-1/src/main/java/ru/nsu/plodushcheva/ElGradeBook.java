@@ -1,9 +1,6 @@
 package ru.nsu.plodushcheva;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 /**
  * Электронная зачетная книжка студента,
@@ -164,7 +161,7 @@ public class ElGradeBook {
      */
     public List<Integer> getAllFinalGrades() {
         List<Integer> grades = new ArrayList<>();
-        List<String> temp = new ArrayList<>();
+        Set<String> temp = new HashSet<>();
 
         for (int i = currentSemester - 1; i >= 0; i--) {
             Set<String> names = semesters[i].getNames();
@@ -188,7 +185,7 @@ public class ElGradeBook {
      */
     public double gpa() {
 
-        Integer sumForGpa = getAllGrades().stream().reduce(0, Integer::sum);
+        int sumForGpa = getAllGrades().stream().reduce(0, Integer::sum);
         return (double) sumForGpa / getAllGrades().size();
     }
 
