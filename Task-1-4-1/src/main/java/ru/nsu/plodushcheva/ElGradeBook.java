@@ -1,6 +1,10 @@
 package ru.nsu.plodushcheva;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Set;
 
 /**
  * Электронная зачетная книжка студента,
