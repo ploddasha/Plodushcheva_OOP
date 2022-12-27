@@ -45,6 +45,19 @@ class TreeTest {
     }
 
     @Test
+    void removeChild() {
+        Tree<String> tree = new Tree<>("Hello");
+        Tree<String> tree1 = tree.add("world");
+        Tree<String> tree2 = tree1.add("!");
+        tree.removeChild(tree1);
+
+        Tree<String> treeAct = new Tree<>("Hello");
+        Tree<String> treeAct2 = treeAct.add("!");
+
+        Assertions.assertEquals(tree, treeAct);
+    }
+
+    @Test
     void getChildren() {
 
         Tree<String> tree = new Tree<>("Hello");
@@ -66,6 +79,11 @@ class TreeTest {
 
     }
 
+    //           Hello  2
+    //          /
+    //         World  1
+    //        /
+    //       !  0
     @Test
     void getModCounter() {
         Tree<String> tree = new Tree<>("Hello");
@@ -107,6 +125,7 @@ class TreeTest {
 
     }
 
+    /*
     @Test
     public void depthFirstSearchIteratorTest() {
         Tree<Integer> tree = new Tree<>(1);
@@ -135,5 +154,5 @@ class TreeTest {
 
     //HUGE PROBLEM WITH MOD COUNT
     //WHAT IS IT FOR WHAT AND HOW YO USE
-
+    */
 }
