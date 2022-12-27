@@ -48,13 +48,37 @@ class TreeTest {
     void removeChild() {
         Tree<String> tree = new Tree<>("Hello");
         Tree<String> tree1 = tree.add("world");
-        Tree<String> tree2 = tree1.add("!");
+        Tree<String> tree2 = tree.add("!");
         tree.removeChild(tree1);
 
         Tree<String> treeAct = new Tree<>("Hello");
         Tree<String> treeAct2 = treeAct.add("!");
 
+        Assertions.assertEquals(tree.getChildren(), treeAct.getChildren());
+    }
+
+    @Test
+    void removeTest() throws Exception {
+        Tree<String> tree = new Tree<>("Hello");
+        Tree<String> tree2 = tree.add("world");
+        Tree<String> tree3 = tree2.add("!");
+        tree.remove(tree2);
+
+        Tree<String> treeAct = new Tree<>("Hello");
+        Tree<String> treeAct2 = treeAct.add("!");
+
         Assertions.assertEquals(tree, treeAct);
+    }
+
+    @Test
+    void removeAssertionTest() throws Exception {
+        Tree<String> tree = new Tree<>("Hello");
+        Tree<String> tree2 = new Tree<>("World");
+        Tree<String> tree3 = tree.add("!");
+        tree.remove(tree2);
+
+        //Assertions.
+
     }
 
     @Test
@@ -100,6 +124,13 @@ class TreeTest {
         Assertions.assertEquals(0, actual);
     }
 
+    //                       1
+    //                     /   \
+    //                    2     3
+    //                  / | \   | \
+    //                 4  5  6  7  8
+    //                    |     | \
+    //                    9     10 11
     @Test
     public void testBreathFirstSearch() {
         Tree<Integer> tree = new Tree<>(1);
