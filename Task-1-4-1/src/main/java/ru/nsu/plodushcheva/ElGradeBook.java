@@ -7,12 +7,12 @@ import java.util.List;
 import java.util.Set;
 
 /**
- * Электронная зачетная книжка студента,
- * в которой хранятся имя студента, результат его квалификационной работы,
- * номер текущего семестра,
- * массив с семестрами.
- * Каждый семестр представляет из себя HashMap с парами
- * название предмета - инофрмация об оценке по этому предмету.
+ * The student's electronic grade book,
+ * which stores the student's name, the result of his/her qualification work,
+ * current semester number,
+ * An array with semesters.
+ * Each semester is a HashMap with pairs.
+ * course name - information about the grades of the course.
  */
 public class ElGradeBook {
     private String studentName;
@@ -22,11 +22,11 @@ public class ElGradeBook {
 
 
     /**
-     * конструктор зачетной книжки.
+     * the constructor of the record book.
      *
-     * @param studentName имя студента
-     * @param qualifyingWork оценка за квалификационную работу
-     * @param currentSemester номер текущего семестра
+     * @param studentName student name
+     * @param qualifyingWork assessment for qualifying work
+     * @param currentSemester current semester's number
      */
     public ElGradeBook(String studentName, int qualifyingWork, int currentSemester) {
         this.studentName = studentName;
@@ -38,68 +38,68 @@ public class ElGradeBook {
     }
 
     /**
-     * геттер имени студента.
+     * getter of the student's name.
      *
-     * @return имя студента
+     * @return student name
      */
     public String getStudentName() {
         return studentName;
     }
 
     /**
-     * сеттер имени студента.
+     * setter of the student's name.
      *
-     * @param studentName имя студента
+     * @param studentName student name
      */
     public void setStudentName(String studentName) {
         this.studentName = studentName;
     }
 
     /**
-     * геттер номера текущего семетра.
+     * the getter of the number of the current semester.
      *
-     * @return номер текущего семестра
+     * @return current semester's number
      */
     public int getCurrentSemester() {
         return currentSemester;
     }
 
     /**
-     * сеттер номера текущего семестра.
+     * setter of the current semester's numbers.
      *
-     * @param currentSemester номер текущего семетра
+     * @param currentSemester current semester's number
      */
     public void setCurrentSemester(int currentSemester) {
         this.currentSemester = currentSemester;
     }
 
     /**
-     * сеттер квалификационной работы.
+     * the setter of the qualification work.
      *
-     * @param qualifyingWork оценка за квалификационную работу
+     * @param qualifyingWork assessment for qualifying work
      */
     public void setQualifyingWork(int qualifyingWork) {
         this.qualifyingWork = qualifyingWork;
     }
 
     /**
-     * геттре квалификационной работы.
+     * getter of the qualifying work.
      *
-     * @return оценка за квалификационную работу
+     * @return assessment for qualifying work
      */
     public int getQualifyingWork() {
         return qualifyingWork;
     }
 
     /**
-     * для экзамена и дифзачета.
-     * добавление оценки за семетр по предмету.
+     * for the exam and the dissertation.
+     * Adding a grade for a semester in a subject.
      *
-     * @param semester номер семестра с записываемыми оценками
-     * @param grade оценка за предмет
-     * @param type тип оценивания
-     * @param subject название предмета
-     * @throws Exception если тип оценивания не соотвествует оценке
+     * @param semester semester number with grades to be recorded
+     * @param grade grade for course
+     * @param type type of assessment - diffCredit or Exam
+     * @param subject course name
+     * @throws Exception if the type of assessment is Credit
      */
     public void addGrades(int semester, int grade,
                           GradeInfo.ExamType type, String subject) throws Exception {
@@ -107,14 +107,14 @@ public class ElGradeBook {
     }
 
     /**
-     * для зачета
-     * добавление оценки за семетр по предмету.
+     * for credit
+     * Adding a grade for a semester in the course.
      *
-     * @param semester номер семестра с записываемыми оценками
-     * @param credit зачет незачет за предмет
-     * @param type тип оценивания - зачет
-     * @param subject название предмета
-     * @throws Exception елси тип оценивания не Credit
+     * @param semester semester number with grades to be recorded
+     * @param credit credit or non-credit for course
+     * @param type type of assessment - credit
+     * @param subject course name
+     * @throws Exception if the type of assessment is not Credit
      */
     public void addGrades(int semester, boolean credit,
                           GradeInfo.ExamType type, String subject) throws Exception {
@@ -122,19 +122,19 @@ public class ElGradeBook {
     }
 
     /**
-     * список все оценок за семестр.
+     * a list of all the grades for the semester.
      *
-     * @param semester номер семетра
-     * @return оценки за укзаный семестр
+     * @param semester semester number
+     * @return grades for a given semester
      */
     public List<Integer> getSemesterGrades(int semester) {
         return new ArrayList<>(semesters[semester - 1].getValuesGrades());
     }
 
     /**
-     * список всех оценок за весь период обучения.
+     * a list of all grades for the entire period of study.
      *
-     * @return оценки за весь период обучения
+     * @return grades for the whole period of study
      */
     public List<Integer> getAllGrades() {
         List<Integer> grades = new ArrayList<>();
@@ -145,9 +145,9 @@ public class ElGradeBook {
     }
 
     /**
-     * список всех зачетов за весь период обучения.
+     * a list of all credits for the entire period of study.
      *
-     * @return зачеты за весь период обучения
+     * @return credits for the entire period of study
      */
     public List<Boolean> getAllCredits() {
         List<Boolean> credits = new LinkedList<>();
@@ -158,10 +158,10 @@ public class ElGradeBook {
     }
 
     /**
-     * список всех финальных оценок
-     * финальные это последние оценки по предмету.
+     * a list of all final grades,
+     * Final grades are the most recent grades in the course.
      *
-     * @return финальные оценки (за последние семестры по предмету).
+     * @return final grades (for the last semester of the course).
      */
     public List<Integer> getAllFinalGrades() {
         List<Integer> grades = new ArrayList<>();
@@ -181,11 +181,11 @@ public class ElGradeBook {
     }
 
     /**
-     * средний балл зачетной книжки
-     * учитываются все предметы
-     * зачеты не учитываются.
+     * grade point average
+     * all subjects are taken into account
+     * credits do not count.
      *
-     * @return средний балл
+     * @return average score
      */
     public double gpa() {
 
@@ -194,13 +194,13 @@ public class ElGradeBook {
     }
 
     /**
-     * условия для красного диплома:
-     * пятерок больше 75%
-     * нет троек
-     * нет незачетов
-     * квалификационная работа на отлично.
+     * conditions for a red diploma:
+     * more fives than 75%
+     * no fives
+     * no failures
+     * a qualification paper with a good grade.
      *
-     * @return возможно ли получение красного диплома в текущем семестре
+     * @return Is it possible to get a red diploma in the current semester
      */
     public boolean redDiploma() {
         int countOfFive = (int) getAllFinalGrades().stream().filter(x -> x == 5).count();
@@ -215,9 +215,9 @@ public class ElGradeBook {
     }
 
     /**
-     * для стипендии нужно отсутсиве троек и незачетов.
+     * you need to have no "3" or "2" levels to get a scholarship.
      *
-     * @return возмонжо ли получение стипендии в текущем семестре
+     * @return Is it possible to receive a scholarship in the current semester
      */
     public boolean scholarship() {
         List<Integer> grades = new ArrayList<>(semesters[currentSemester - 2].getValuesGrades());
@@ -228,9 +228,9 @@ public class ElGradeBook {
     }
 
     /**
-     * для повышенной стипендии требуется не более одной четверки.
+     * no more than one 4 grade is required for an advanced scholarship.
      *
-     * @return возмонжо ли получение повышенной стипендии в текущем семестре
+     * @return Is it possible to receive a scholarship increase in the current semester
      */
     public boolean upperScholarship() {
         List<Integer> grades = semesters[currentSemester - 2].getValuesGrades();

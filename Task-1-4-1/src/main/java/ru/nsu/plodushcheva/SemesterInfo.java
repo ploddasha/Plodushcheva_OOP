@@ -8,21 +8,21 @@ import java.util.Set;
 
 
 /**
- * инофрмация о семестре
- * список пар
- * название предмета - информация об оценке за этот предмет.
+ * semester information
+ * list of pairs
+ * course name - information about the grade for the course.
  */
 public class SemesterInfo {
     Map<String, GradeInfo> semester = new HashMap<>();
 
     /**
-     * для экзамена и дифференцированного зачета
-     * добавление оценки за семестр по предмету.
+     * for examination and differential credit
+     * adding a semester grade for the course.
      *
-     * @param subjectName имя предмета
-     * @param grade оценка по указанному предмету
-     * @param gradeType тип итогового оценивая
-     * @throws Exception при несоответвии оценки и типа оценивания
+     * @param subjectName name of the subject
+     * @param grade a grade in the subject indicated
+     * @param gradeType type of final assessment
+     * @throws Exception mismatch between the assessment and the type of assessment
      */
     public void addGrade(String subjectName, int grade, GradeInfo.ExamType gradeType)
             throws Exception {
@@ -31,13 +31,13 @@ public class SemesterInfo {
     }
 
     /**
-     * для зачета
-     * добавление оценки за семестр по предмету.
+     * for credit
+     * adding a semester grade for the course.
      *
-     * @param subjectName имя предмета
-     * @param credit зачет незачет
-     * @param gradeType тип итогового оценивая
-     * @throws Exception при несоответвии оценки и типа оценивания
+     * @param subjectName name of the subject
+     * @param credit pass or fail
+     * @param gradeType type of final assessment
+     * @throws Exception mismatch between the assessment and the type of assessment
      */
     public void addGrade(String subjectName, boolean credit, GradeInfo.ExamType gradeType)
             throws Exception {
@@ -46,39 +46,39 @@ public class SemesterInfo {
     }
 
     /**
-     * геттер типа оценивания.
+     * getter type of evaluation.
      *
-     * @param subjectName имя предмета
-     * @return тип оценивания по указанному предмету
+     * @param subjectName course name
+     * @return the type of assessment for the subject indicated
      */
     public GradeInfo.ExamType getGradeType(String subjectName) {
         return semester.get(subjectName).getGradeType();
     }
 
     /**
-     * получение оценки по навзанию предмета.
+     * obtaining a grade by subject title.
      *
-     * @param subjectName имя предмета
-     * @return оценка за указанный предмет
+     * @param subjectName course name
+     * @return grade for the subject indicated
      */
     public int getGrade(String subjectName) {
         return semester.get(subjectName).getGrade();
     }
 
     /**
-     * геттер зачета по названию предмета.
+     * getter of credit by subject name.
      *
-     * @param subjectName имя предмета
-     * @return зачет или незачет
+     * @param subjectName course name
+     * @return pass or fail
      */
     public Boolean getCredit(String subjectName) {
         return semester.get(subjectName).getCredit();
     }
 
     /**
-     * список оценок за семестр.
+     * a list of grades for the semester.
      *
-     * @return все оценки за семестр
+     * @return all grades for the semester
      */
     public List<Integer> getValuesGrades() {
         List<Integer> values = new LinkedList<>();
@@ -91,9 +91,9 @@ public class SemesterInfo {
     }
 
     /**
-     * список зачетов за семестр.
+     * a list of credits for the semester.
      *
-     * @return все зачеты за семестр
+     * @return all credits for the semester.
      */
     public List<Boolean> getValuesCredits() {
         List<Boolean> credits = new LinkedList<>();
@@ -106,9 +106,9 @@ public class SemesterInfo {
     }
 
     /**
-     * множество неповторяющихся назвнаий предметов.
+     * many non-repeating subject names.
      *
-     * @return все предметы (названия) за семестр
+     * @return all subjects (titles) for the course
      */
     public Set<String> getNames() {
         return semester.keySet();

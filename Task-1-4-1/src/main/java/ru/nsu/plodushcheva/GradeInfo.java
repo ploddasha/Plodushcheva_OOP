@@ -1,10 +1,10 @@
 package ru.nsu.plodushcheva;
 
 /**
- * информация об оценке
- * тип оценивания Экзамен, Дифференцированный зачет, Зачет
- * оценка для Экзамена или Дифференцированного зачета
- * зачет/незачет для Зачета.
+ * assessment information
+ * type of assessment Exam, Differential Credit, Pass
+ * grade for Exam or Differential credit
+ * pass/fail for Credit.
  */
 public class GradeInfo {
     private int grade;
@@ -12,7 +12,7 @@ public class GradeInfo {
     private final ExamType gradeType;
 
     /**
-     * перечисление типов итогового оценивания по предмету.
+     * listing the types of summative assessment in the subject.
      */
     public enum ExamType {
         Exam,
@@ -21,11 +21,11 @@ public class GradeInfo {
     }
 
     /**
-     * конструктор оценки.
+     * assessment constructor.
      *
-     * @param grade оценка для Экзамена и Дифф.зачета
-     * @param gradeType тип оценивания
-     * @throws Exception если тип оценивания Зачет
+     * @param grade Assessment for Examination and Differential Credit
+     * @param gradeType type of assessment
+     * @throws Exception if the type of assessment is Credit
      */
     public GradeInfo(int grade, ExamType gradeType) throws Exception {
         if (gradeType == ExamType.Exam || gradeType == ExamType.DifCredit) {
@@ -37,11 +37,11 @@ public class GradeInfo {
     }
 
     /**
-     * конструктор зачета.
+     * credit constructor.
      *
-     * @param credit результат
-     * @param gradeType тип оценивания Зачет
-     * @throws Exception если тип оценивания Экзамен или Дифф.зачет
+     * @param credit result
+     * @param gradeType type of assessment Credit
+     * @throws Exception if the type of assessment is Examination or Differentiated Credit
      */
     public GradeInfo(boolean credit, ExamType gradeType) throws Exception {
         if (gradeType == ExamType.Credit) {
@@ -54,27 +54,27 @@ public class GradeInfo {
     }
 
     /**
-     * геттер оценки.
+     * getter assessment.
      *
-     * @return оценка за экзамен/дифф.зачет
+     * @return Examination/diff. score
      */
     public int getGrade() {
         return grade;
     }
 
     /**
-     * геттер зачета.
+     * the getter of the credit.
      *
-     * @return результат зачета
+     * @return result
      */
     public boolean getCredit() {
         return credit;
     }
 
     /**
-     * геттер типа оценивания.
+     * getter type of evaluation.
      *
-     * @return тип оценивания
+     * @return type of evaluation.
      */
     public ExamType getGradeType() {
         return gradeType;
