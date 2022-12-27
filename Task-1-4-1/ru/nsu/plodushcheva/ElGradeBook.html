@@ -132,12 +132,12 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <hr>
 <pre>public class <span class="typeNameLabel">ElGradeBook</span>
 extends java.lang.Object</pre>
-<div class="block">Электронная зачетная книжка студента,
- в которой хранятся имя студента, результат его квалификационной работы,
- номер текущего семестра,
- массив с семестрами.
- Каждый семестр представляет из себя HashMap с парами
- название предмета - инофрмация об оценке по этому предмету.</div>
+<div class="block">The student's electronic grade book,
+ which stores the student's name, the result of his/her qualification work,
+ current semester number,
+ An array with semesters.
+ Each semester is a HashMap with pairs.
+ course name - information about the grades of the course.</div>
 </li>
 </ul>
 </div>
@@ -162,7 +162,7 @@ extends java.lang.Object</pre>
            int&nbsp;qualifyingWork,
            int&nbsp;currentSemester)</code></th>
 <td class="colLast">
-<div class="block">конструктор зачетной книжки.</div>
+<div class="block">the constructor of the record book.</div>
 </td>
 </tr>
 </table>
@@ -190,8 +190,8 @@ extends java.lang.Object</pre>
          <a href="GradeInfo.ExamType.html" title="enum in ru.nsu.plodushcheva">GradeInfo.ExamType</a>&nbsp;type,
          java.lang.String&nbsp;subject)</code></th>
 <td class="colLast">
-<div class="block">для зачета
- добавление оценки за семетр по предмету.</div>
+<div class="block">for credit
+ Adding a grade for a semester in the course.</div>
 </td>
 </tr>
 <tr id="i1" class="rowColor">
@@ -201,112 +201,112 @@ extends java.lang.Object</pre>
          <a href="GradeInfo.ExamType.html" title="enum in ru.nsu.plodushcheva">GradeInfo.ExamType</a>&nbsp;type,
          java.lang.String&nbsp;subject)</code></th>
 <td class="colLast">
-<div class="block">для экзамена и дифзачета.</div>
+<div class="block">for the exam and the dissertation.</div>
 </td>
 </tr>
 <tr id="i2" class="altColor">
 <td class="colFirst"><code>java.util.List&lt;java.lang.Boolean&gt;</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getAllCredits()">getAllCredits</a></span>()</code></th>
 <td class="colLast">
-<div class="block">список всех зачетов за весь период обучения.</div>
+<div class="block">a list of all credits for the entire period of study.</div>
 </td>
 </tr>
 <tr id="i3" class="rowColor">
 <td class="colFirst"><code>java.util.List&lt;java.lang.Integer&gt;</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getAllFinalGrades()">getAllFinalGrades</a></span>()</code></th>
 <td class="colLast">
-<div class="block">список всех финальных оценок
- финальные это последние оценки по предмету.</div>
+<div class="block">a list of all final grades,
+ Final grades are the most recent grades in the course.</div>
 </td>
 </tr>
 <tr id="i4" class="altColor">
 <td class="colFirst"><code>java.util.List&lt;java.lang.Integer&gt;</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getAllGrades()">getAllGrades</a></span>()</code></th>
 <td class="colLast">
-<div class="block">список всех оценок за весь период обучения.</div>
+<div class="block">a list of all grades for the entire period of study.</div>
 </td>
 </tr>
 <tr id="i5" class="rowColor">
 <td class="colFirst"><code>int</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getCurrentSemester()">getCurrentSemester</a></span>()</code></th>
 <td class="colLast">
-<div class="block">геттер номера текущего семетра.</div>
+<div class="block">the getter of the number of the current semester.</div>
 </td>
 </tr>
 <tr id="i6" class="altColor">
 <td class="colFirst"><code>int</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getQualifyingWork()">getQualifyingWork</a></span>()</code></th>
 <td class="colLast">
-<div class="block">геттре квалификационной работы.</div>
+<div class="block">getter of the qualifying work.</div>
 </td>
 </tr>
 <tr id="i7" class="rowColor">
 <td class="colFirst"><code>java.util.List&lt;java.lang.Integer&gt;</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getSemesterGrades(int)">getSemesterGrades</a></span>&#8203;(int&nbsp;semester)</code></th>
 <td class="colLast">
-<div class="block">список все оценок за семестр.</div>
+<div class="block">a list of all the grades for the semester.</div>
 </td>
 </tr>
 <tr id="i8" class="altColor">
 <td class="colFirst"><code>java.lang.String</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getStudentName()">getStudentName</a></span>()</code></th>
 <td class="colLast">
-<div class="block">геттер имени студента.</div>
+<div class="block">getter of the student's name.</div>
 </td>
 </tr>
 <tr id="i9" class="rowColor">
 <td class="colFirst"><code>double</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#gpa()">gpa</a></span>()</code></th>
 <td class="colLast">
-<div class="block">средний балл зачетной книжки
- учитываются все предметы
- зачеты не учитываются.</div>
+<div class="block">grade point average
+ all subjects are taken into account
+ credits do not count.</div>
 </td>
 </tr>
 <tr id="i10" class="altColor">
 <td class="colFirst"><code>boolean</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#redDiploma()">redDiploma</a></span>()</code></th>
 <td class="colLast">
-<div class="block">условия для красного диплома:
- пятерок больше 75%
- нет троек
- нет незачетов
- квалификационная работа на отлично.</div>
+<div class="block">conditions for a red diploma:
+ more fives than 75%
+ no fives
+ no failures
+ a qualification paper with a good grade.</div>
 </td>
 </tr>
 <tr id="i11" class="rowColor">
 <td class="colFirst"><code>boolean</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#scholarship()">scholarship</a></span>()</code></th>
 <td class="colLast">
-<div class="block">для стипендии нужно отсутсиве троек и незачетов.</div>
+<div class="block">you need to have no "3" or "2" levels to get a scholarship.</div>
 </td>
 </tr>
 <tr id="i12" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setCurrentSemester(int)">setCurrentSemester</a></span>&#8203;(int&nbsp;currentSemester)</code></th>
 <td class="colLast">
-<div class="block">сеттер номера текущего семестра.</div>
+<div class="block">setter of the current semester's numbers.</div>
 </td>
 </tr>
 <tr id="i13" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setQualifyingWork(int)">setQualifyingWork</a></span>&#8203;(int&nbsp;qualifyingWork)</code></th>
 <td class="colLast">
-<div class="block">сеттер квалификационной работы.</div>
+<div class="block">the setter of the qualification work.</div>
 </td>
 </tr>
 <tr id="i14" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setStudentName(java.lang.String)">setStudentName</a></span>&#8203;(java.lang.String&nbsp;studentName)</code></th>
 <td class="colLast">
-<div class="block">сеттер имени студента.</div>
+<div class="block">setter of the student's name.</div>
 </td>
 </tr>
 <tr id="i15" class="rowColor">
 <td class="colFirst"><code>boolean</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#upperScholarship()">upperScholarship</a></span>()</code></th>
 <td class="colLast">
-<div class="block">для повышенной стипендии требуется не более одной четверки.</div>
+<div class="block">no more than one 4 grade is required for an advanced scholarship.</div>
 </td>
 </tr>
 </table>
@@ -342,12 +342,12 @@ extends java.lang.Object</pre>
 <pre>public&nbsp;ElGradeBook&#8203;(java.lang.String&nbsp;studentName,
                    int&nbsp;qualifyingWork,
                    int&nbsp;currentSemester)</pre>
-<div class="block">конструктор зачетной книжки.</div>
+<div class="block">the constructor of the record book.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>studentName</code> - имя студента</dd>
-<dd><code>qualifyingWork</code> - оценка за квалификационную работу</dd>
-<dd><code>currentSemester</code> - номер текущего семестра</dd>
+<dd><code>studentName</code> - student name</dd>
+<dd><code>qualifyingWork</code> - assessment for qualifying work</dd>
+<dd><code>currentSemester</code> - current semester's number</dd>
 </dl>
 </li>
 </ul>
@@ -368,10 +368,10 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>getStudentName</h4>
 <pre class="methodSignature">public&nbsp;java.lang.String&nbsp;getStudentName()</pre>
-<div class="block">геттер имени студента.</div>
+<div class="block">getter of the student's name.</div>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
-<dd>имя студента</dd>
+<dd>student name</dd>
 </dl>
 </li>
 </ul>
@@ -382,10 +382,10 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>setStudentName</h4>
 <pre class="methodSignature">public&nbsp;void&nbsp;setStudentName&#8203;(java.lang.String&nbsp;studentName)</pre>
-<div class="block">сеттер имени студента.</div>
+<div class="block">setter of the student's name.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>studentName</code> - имя студента</dd>
+<dd><code>studentName</code> - student name</dd>
 </dl>
 </li>
 </ul>
@@ -396,10 +396,10 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>getCurrentSemester</h4>
 <pre class="methodSignature">public&nbsp;int&nbsp;getCurrentSemester()</pre>
-<div class="block">геттер номера текущего семетра.</div>
+<div class="block">the getter of the number of the current semester.</div>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
-<dd>номер текущего семестра</dd>
+<dd>current semester's number</dd>
 </dl>
 </li>
 </ul>
@@ -410,10 +410,10 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>setCurrentSemester</h4>
 <pre class="methodSignature">public&nbsp;void&nbsp;setCurrentSemester&#8203;(int&nbsp;currentSemester)</pre>
-<div class="block">сеттер номера текущего семестра.</div>
+<div class="block">setter of the current semester's numbers.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>currentSemester</code> - номер текущего семетра</dd>
+<dd><code>currentSemester</code> - current semester's number</dd>
 </dl>
 </li>
 </ul>
@@ -424,10 +424,10 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>setQualifyingWork</h4>
 <pre class="methodSignature">public&nbsp;void&nbsp;setQualifyingWork&#8203;(int&nbsp;qualifyingWork)</pre>
-<div class="block">сеттер квалификационной работы.</div>
+<div class="block">the setter of the qualification work.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>qualifyingWork</code> - оценка за квалификационную работу</dd>
+<dd><code>qualifyingWork</code> - assessment for qualifying work</dd>
 </dl>
 </li>
 </ul>
@@ -438,10 +438,10 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>getQualifyingWork</h4>
 <pre class="methodSignature">public&nbsp;int&nbsp;getQualifyingWork()</pre>
-<div class="block">геттре квалификационной работы.</div>
+<div class="block">getter of the qualifying work.</div>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
-<dd>оценка за квалификационную работу</dd>
+<dd>assessment for qualifying work</dd>
 </dl>
 </li>
 </ul>
@@ -456,16 +456,16 @@ extends java.lang.Object</pre>
                       <a href="GradeInfo.ExamType.html" title="enum in ru.nsu.plodushcheva">GradeInfo.ExamType</a>&nbsp;type,
                       java.lang.String&nbsp;subject)
                throws java.lang.Exception</pre>
-<div class="block">для экзамена и дифзачета.
- добавление оценки за семетр по предмету.</div>
+<div class="block">for the exam and the dissertation.
+ Adding a grade for a semester in a subject.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>semester</code> - номер семестра с записываемыми оценками</dd>
-<dd><code>grade</code> - оценка за предмет</dd>
-<dd><code>type</code> - тип оценивания</dd>
-<dd><code>subject</code> - название предмета</dd>
+<dd><code>semester</code> - semester number with grades to be recorded</dd>
+<dd><code>grade</code> - grade for course</dd>
+<dd><code>type</code> - type of assessment - diffCredit or Exam</dd>
+<dd><code>subject</code> - course name</dd>
 <dt><span class="throwsLabel">Throws:</span></dt>
-<dd><code>java.lang.Exception</code> - если тип оценивания не соотвествует оценке</dd>
+<dd><code>java.lang.Exception</code> - if the type of assessment is Credit</dd>
 </dl>
 </li>
 </ul>
@@ -480,16 +480,16 @@ extends java.lang.Object</pre>
                       <a href="GradeInfo.ExamType.html" title="enum in ru.nsu.plodushcheva">GradeInfo.ExamType</a>&nbsp;type,
                       java.lang.String&nbsp;subject)
                throws java.lang.Exception</pre>
-<div class="block">для зачета
- добавление оценки за семетр по предмету.</div>
+<div class="block">for credit
+ Adding a grade for a semester in the course.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>semester</code> - номер семестра с записываемыми оценками</dd>
-<dd><code>credit</code> - зачет незачет за предмет</dd>
-<dd><code>type</code> - тип оценивания - зачет</dd>
-<dd><code>subject</code> - название предмета</dd>
+<dd><code>semester</code> - semester number with grades to be recorded</dd>
+<dd><code>credit</code> - credit or non-credit for course</dd>
+<dd><code>type</code> - type of assessment - credit</dd>
+<dd><code>subject</code> - course name</dd>
 <dt><span class="throwsLabel">Throws:</span></dt>
-<dd><code>java.lang.Exception</code> - елси тип оценивания не Credit</dd>
+<dd><code>java.lang.Exception</code> - if the type of assessment is not Credit</dd>
 </dl>
 </li>
 </ul>
@@ -500,12 +500,12 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>getSemesterGrades</h4>
 <pre class="methodSignature">public&nbsp;java.util.List&lt;java.lang.Integer&gt;&nbsp;getSemesterGrades&#8203;(int&nbsp;semester)</pre>
-<div class="block">список все оценок за семестр.</div>
+<div class="block">a list of all the grades for the semester.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>semester</code> - номер семетра</dd>
+<dd><code>semester</code> - semester number</dd>
 <dt><span class="returnLabel">Returns:</span></dt>
-<dd>оценки за укзаный семестр</dd>
+<dd>grades for a given semester</dd>
 </dl>
 </li>
 </ul>
@@ -516,10 +516,10 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>getAllGrades</h4>
 <pre class="methodSignature">public&nbsp;java.util.List&lt;java.lang.Integer&gt;&nbsp;getAllGrades()</pre>
-<div class="block">список всех оценок за весь период обучения.</div>
+<div class="block">a list of all grades for the entire period of study.</div>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
-<dd>оценки за весь период обучения</dd>
+<dd>grades for the whole period of study</dd>
 </dl>
 </li>
 </ul>
@@ -530,10 +530,10 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>getAllCredits</h4>
 <pre class="methodSignature">public&nbsp;java.util.List&lt;java.lang.Boolean&gt;&nbsp;getAllCredits()</pre>
-<div class="block">список всех зачетов за весь период обучения.</div>
+<div class="block">a list of all credits for the entire period of study.</div>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
-<dd>зачеты за весь период обучения</dd>
+<dd>credits for the entire period of study</dd>
 </dl>
 </li>
 </ul>
@@ -544,11 +544,11 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>getAllFinalGrades</h4>
 <pre class="methodSignature">public&nbsp;java.util.List&lt;java.lang.Integer&gt;&nbsp;getAllFinalGrades()</pre>
-<div class="block">список всех финальных оценок
- финальные это последние оценки по предмету.</div>
+<div class="block">a list of all final grades,
+ Final grades are the most recent grades in the course.</div>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
-<dd>финальные оценки (за последние семестры по предмету).</dd>
+<dd>final grades (for the last semester of the course).</dd>
 </dl>
 </li>
 </ul>
@@ -559,12 +559,12 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>gpa</h4>
 <pre class="methodSignature">public&nbsp;double&nbsp;gpa()</pre>
-<div class="block">средний балл зачетной книжки
- учитываются все предметы
- зачеты не учитываются.</div>
+<div class="block">grade point average
+ all subjects are taken into account
+ credits do not count.</div>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
-<dd>средний балл</dd>
+<dd>average score</dd>
 </dl>
 </li>
 </ul>
@@ -575,14 +575,14 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>redDiploma</h4>
 <pre class="methodSignature">public&nbsp;boolean&nbsp;redDiploma()</pre>
-<div class="block">условия для красного диплома:
- пятерок больше 75%
- нет троек
- нет незачетов
- квалификационная работа на отлично.</div>
+<div class="block">conditions for a red diploma:
+ more fives than 75%
+ no fives
+ no failures
+ a qualification paper with a good grade.</div>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
-<dd>возможно ли получение красного диплома в текущем семестре</dd>
+<dd>Is it possible to get a red diploma in the current semester</dd>
 </dl>
 </li>
 </ul>
@@ -593,10 +593,10 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>scholarship</h4>
 <pre class="methodSignature">public&nbsp;boolean&nbsp;scholarship()</pre>
-<div class="block">для стипендии нужно отсутсиве троек и незачетов.</div>
+<div class="block">you need to have no "3" or "2" levels to get a scholarship.</div>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
-<dd>возмонжо ли получение стипендии в текущем семестре</dd>
+<dd>Is it possible to receive a scholarship in the current semester</dd>
 </dl>
 </li>
 </ul>
@@ -607,10 +607,10 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>upperScholarship</h4>
 <pre class="methodSignature">public&nbsp;boolean&nbsp;upperScholarship()</pre>
-<div class="block">для повышенной стипендии требуется не более одной четверки.</div>
+<div class="block">no more than one 4 grade is required for an advanced scholarship.</div>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
-<dd>возмонжо ли получение повышенной стипендии в текущем семестре</dd>
+<dd>Is it possible to receive a scholarship increase in the current semester</dd>
 </dl>
 </li>
 </ul>

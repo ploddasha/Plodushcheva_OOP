@@ -132,9 +132,9 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <hr>
 <pre>public class <span class="typeNameLabel">SemesterInfo</span>
 extends java.lang.Object</pre>
-<div class="block">инофрмация о семестре
- список пар
- название предмета - информация об оценке за этот предмет.</div>
+<div class="block">semester information
+ list of pairs
+ course name - information about the grade for the course.</div>
 </li>
 </ul>
 </div>
@@ -182,8 +182,8 @@ extends java.lang.Object</pre>
         boolean&nbsp;credit,
         <a href="GradeInfo.ExamType.html" title="enum in ru.nsu.plodushcheva">GradeInfo.ExamType</a>&nbsp;gradeType)</code></th>
 <td class="colLast">
-<div class="block">для зачета
- добавление оценки за семестр по предмету.</div>
+<div class="block">for credit
+ adding a semester grade for the course.</div>
 </td>
 </tr>
 <tr id="i1" class="rowColor">
@@ -192,50 +192,50 @@ extends java.lang.Object</pre>
         int&nbsp;grade,
         <a href="GradeInfo.ExamType.html" title="enum in ru.nsu.plodushcheva">GradeInfo.ExamType</a>&nbsp;gradeType)</code></th>
 <td class="colLast">
-<div class="block">для экзамена и дифференцированного зачета
- добавление оценки за семестр по предмету.</div>
+<div class="block">for examination and differential credit
+ adding a semester grade for the course.</div>
 </td>
 </tr>
 <tr id="i2" class="altColor">
 <td class="colFirst"><code>java.lang.Boolean</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getCredit(java.lang.String)">getCredit</a></span>&#8203;(java.lang.String&nbsp;subjectName)</code></th>
 <td class="colLast">
-<div class="block">геттер зачета по названию предмета.</div>
+<div class="block">getter of credit by subject name.</div>
 </td>
 </tr>
 <tr id="i3" class="rowColor">
 <td class="colFirst"><code>int</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getGrade(java.lang.String)">getGrade</a></span>&#8203;(java.lang.String&nbsp;subjectName)</code></th>
 <td class="colLast">
-<div class="block">получение оценки по навзанию предмета.</div>
+<div class="block">obtaining a grade by subject title.</div>
 </td>
 </tr>
 <tr id="i4" class="altColor">
 <td class="colFirst"><code><a href="GradeInfo.ExamType.html" title="enum in ru.nsu.plodushcheva">GradeInfo.ExamType</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getGradeType(java.lang.String)">getGradeType</a></span>&#8203;(java.lang.String&nbsp;subjectName)</code></th>
 <td class="colLast">
-<div class="block">геттер типа оценивания.</div>
+<div class="block">getter type of evaluation.</div>
 </td>
 </tr>
 <tr id="i5" class="rowColor">
 <td class="colFirst"><code>java.util.Set&lt;java.lang.String&gt;</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getNames()">getNames</a></span>()</code></th>
 <td class="colLast">
-<div class="block">множество неповторяющихся назвнаий предметов.</div>
+<div class="block">many non-repeating subject names.</div>
 </td>
 </tr>
 <tr id="i6" class="altColor">
 <td class="colFirst"><code>java.util.List&lt;java.lang.Boolean&gt;</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getValuesCredits()">getValuesCredits</a></span>()</code></th>
 <td class="colLast">
-<div class="block">список зачетов за семестр.</div>
+<div class="block">a list of credits for the semester.</div>
 </td>
 </tr>
 <tr id="i7" class="rowColor">
 <td class="colFirst"><code>java.util.List&lt;java.lang.Integer&gt;</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getValuesGrades()">getValuesGrades</a></span>()</code></th>
 <td class="colLast">
-<div class="block">список оценок за семестр.</div>
+<div class="block">a list of grades for the semester.</div>
 </td>
 </tr>
 </table>
@@ -291,15 +291,15 @@ extends java.lang.Object</pre>
                      int&nbsp;grade,
                      <a href="GradeInfo.ExamType.html" title="enum in ru.nsu.plodushcheva">GradeInfo.ExamType</a>&nbsp;gradeType)
               throws java.lang.Exception</pre>
-<div class="block">для экзамена и дифференцированного зачета
- добавление оценки за семестр по предмету.</div>
+<div class="block">for examination and differential credit
+ adding a semester grade for the course.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>subjectName</code> - имя предмета</dd>
-<dd><code>grade</code> - оценка по указанному предмету</dd>
-<dd><code>gradeType</code> - тип итогового оценивая</dd>
+<dd><code>subjectName</code> - name of the subject</dd>
+<dd><code>grade</code> - a grade in the subject indicated</dd>
+<dd><code>gradeType</code> - type of final assessment</dd>
 <dt><span class="throwsLabel">Throws:</span></dt>
-<dd><code>java.lang.Exception</code> - при несоответвии оценки и типа оценивания</dd>
+<dd><code>java.lang.Exception</code> - mismatch between the assessment and the type of assessment</dd>
 </dl>
 </li>
 </ul>
@@ -313,15 +313,15 @@ extends java.lang.Object</pre>
                      boolean&nbsp;credit,
                      <a href="GradeInfo.ExamType.html" title="enum in ru.nsu.plodushcheva">GradeInfo.ExamType</a>&nbsp;gradeType)
               throws java.lang.Exception</pre>
-<div class="block">для зачета
- добавление оценки за семестр по предмету.</div>
+<div class="block">for credit
+ adding a semester grade for the course.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>subjectName</code> - имя предмета</dd>
-<dd><code>credit</code> - зачет незачет</dd>
-<dd><code>gradeType</code> - тип итогового оценивая</dd>
+<dd><code>subjectName</code> - name of the subject</dd>
+<dd><code>credit</code> - pass or fail</dd>
+<dd><code>gradeType</code> - type of final assessment</dd>
 <dt><span class="throwsLabel">Throws:</span></dt>
-<dd><code>java.lang.Exception</code> - при несоответвии оценки и типа оценивания</dd>
+<dd><code>java.lang.Exception</code> - mismatch between the assessment and the type of assessment</dd>
 </dl>
 </li>
 </ul>
@@ -332,12 +332,12 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>getGradeType</h4>
 <pre class="methodSignature">public&nbsp;<a href="GradeInfo.ExamType.html" title="enum in ru.nsu.plodushcheva">GradeInfo.ExamType</a>&nbsp;getGradeType&#8203;(java.lang.String&nbsp;subjectName)</pre>
-<div class="block">геттер типа оценивания.</div>
+<div class="block">getter type of evaluation.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>subjectName</code> - имя предмета</dd>
+<dd><code>subjectName</code> - course name</dd>
 <dt><span class="returnLabel">Returns:</span></dt>
-<dd>тип оценивания по указанному предмету</dd>
+<dd>the type of assessment for the subject indicated</dd>
 </dl>
 </li>
 </ul>
@@ -348,12 +348,12 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>getGrade</h4>
 <pre class="methodSignature">public&nbsp;int&nbsp;getGrade&#8203;(java.lang.String&nbsp;subjectName)</pre>
-<div class="block">получение оценки по навзанию предмета.</div>
+<div class="block">obtaining a grade by subject title.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>subjectName</code> - имя предмета</dd>
+<dd><code>subjectName</code> - course name</dd>
 <dt><span class="returnLabel">Returns:</span></dt>
-<dd>оценка за указанный предмет</dd>
+<dd>grade for the subject indicated</dd>
 </dl>
 </li>
 </ul>
@@ -364,12 +364,12 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>getCredit</h4>
 <pre class="methodSignature">public&nbsp;java.lang.Boolean&nbsp;getCredit&#8203;(java.lang.String&nbsp;subjectName)</pre>
-<div class="block">геттер зачета по названию предмета.</div>
+<div class="block">getter of credit by subject name.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>subjectName</code> - имя предмета</dd>
+<dd><code>subjectName</code> - course name</dd>
 <dt><span class="returnLabel">Returns:</span></dt>
-<dd>зачет или незачет</dd>
+<dd>pass or fail</dd>
 </dl>
 </li>
 </ul>
@@ -380,10 +380,10 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>getValuesGrades</h4>
 <pre class="methodSignature">public&nbsp;java.util.List&lt;java.lang.Integer&gt;&nbsp;getValuesGrades()</pre>
-<div class="block">список оценок за семестр.</div>
+<div class="block">a list of grades for the semester.</div>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
-<dd>все оценки за семестр</dd>
+<dd>all grades for the semester</dd>
 </dl>
 </li>
 </ul>
@@ -394,10 +394,10 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>getValuesCredits</h4>
 <pre class="methodSignature">public&nbsp;java.util.List&lt;java.lang.Boolean&gt;&nbsp;getValuesCredits()</pre>
-<div class="block">список зачетов за семестр.</div>
+<div class="block">a list of credits for the semester.</div>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
-<dd>все зачеты за семестр</dd>
+<dd>all credits for the semester.</dd>
 </dl>
 </li>
 </ul>
@@ -408,10 +408,10 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>getNames</h4>
 <pre class="methodSignature">public&nbsp;java.util.Set&lt;java.lang.String&gt;&nbsp;getNames()</pre>
-<div class="block">множество неповторяющихся назвнаий предметов.</div>
+<div class="block">many non-repeating subject names.</div>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
-<dd>все предметы (названия) за семестр</dd>
+<dd>all subjects (titles) for the course</dd>
 </dl>
 </li>
 </ul>
