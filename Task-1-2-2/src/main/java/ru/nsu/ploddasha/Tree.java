@@ -15,7 +15,7 @@ import org.jetbrains.annotations.NotNull;
 public class Tree<T> implements Iterable<Tree<T>> {
 
     private T value;
-    private Tree <T> parent;
+    private Tree<T> parent;
     private final List<Tree<T>> children;
     private int modCount;
     private IteratorTreeType typeOfIteration;
