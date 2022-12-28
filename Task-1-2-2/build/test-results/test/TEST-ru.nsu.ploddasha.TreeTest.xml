@@ -1,14 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="ru.nsu.ploddasha.TreeTest" tests="8" skipped="0" failures="0" errors="0" timestamp="2022-12-27T19:54:12" hostname="LAPTOP-0TJBD7LO" time="0.095">
+<testsuite name="ru.nsu.ploddasha.TreeTest" tests="11" skipped="0" failures="0" errors="0" timestamp="2022-12-28T04:43:43" hostname="LAPTOP-0TJBD7LO" time="0.148">
   <properties/>
-  <testcase name="getChildren()" classname="ru.nsu.ploddasha.TreeTest" time="0.057"/>
-  <testcase name="removeChild()" classname="ru.nsu.ploddasha.TreeTest" time="0.002"/>
+  <testcase name="depthFirstSearchIteratorTest()" classname="ru.nsu.ploddasha.TreeTest" time="0.085"/>
+  <testcase name="removeAssertionTest()" classname="ru.nsu.ploddasha.TreeTest" time="0.006"/>
+  <testcase name="getChildren()" classname="ru.nsu.ploddasha.TreeTest" time="0.002"/>
+  <testcase name="getCountOfNodesTest()" classname="ru.nsu.ploddasha.TreeTest" time="0.012"/>
   <testcase name="getRoot()" classname="ru.nsu.ploddasha.TreeTest" time="0.002"/>
-  <testcase name="getParent()" classname="ru.nsu.ploddasha.TreeTest" time="0.002"/>
+  <testcase name="getParent()" classname="ru.nsu.ploddasha.TreeTest" time="0.001"/>
   <testcase name="testBreathFirstSearch()" classname="ru.nsu.ploddasha.TreeTest" time="0.003"/>
+  <testcase name="generalTest()" classname="ru.nsu.ploddasha.TreeTest" time="0.004"/>
   <testcase name="removeTest()" classname="ru.nsu.ploddasha.TreeTest" time="0.002"/>
-  <testcase name="addGetValueTest()" classname="ru.nsu.ploddasha.TreeTest" time="0.015"/>
-  <testcase name="getModCounter()" classname="ru.nsu.ploddasha.TreeTest" time="0.001"/>
+  <testcase name="addGetValueTest()" classname="ru.nsu.ploddasha.TreeTest" time="0.014"/>
+  <testcase name="getModCounter()" classname="ru.nsu.ploddasha.TreeTest" time="0.002"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

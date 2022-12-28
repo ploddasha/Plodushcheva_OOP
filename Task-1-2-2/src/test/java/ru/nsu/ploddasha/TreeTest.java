@@ -2,14 +2,12 @@ package ru.nsu.ploddasha;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 
 class TreeTest {
-    Tree<String> tree;
 
     @Test
     void addGetValueTest() {
@@ -22,6 +20,26 @@ class TreeTest {
         String expected = "Hello World!";
 
         Assertions.assertEquals(expected, actual);
+    }
+
+    //           Hello
+    //          /
+    //         World
+    //        /
+    //      !
+
+    @Test
+    void generalTest() {
+        Tree<String> tree = new Tree<>("Hello");
+        Tree<String> tree2 = tree.add("World");
+        Tree<String> tree3 = tree2.add("!");
+
+        Assertions.assertTrue(tree.isRoot());
+
+        Assertions.assertTrue(tree3.isLeaf());
+
+        tree2.setValue("NewWorld");
+        Assertions.assertEquals("NewWorld", tree2.getValue());
     }
 
     @Test
@@ -45,19 +63,6 @@ class TreeTest {
     }
 
     @Test
-    void removeChild() {
-        Tree<String> tree = new Tree<>("Hello");
-        Tree<String> tree1 = tree.add("world");
-        Tree<String> tree2 = tree.add("!");
-        tree.removeChild(tree1);
-
-        Tree<String> treeAct = new Tree<>("Hello");
-        Tree<String> treeAct2 = treeAct.add("!");
-
-        Assertions.assertEquals(tree.getChildren(), treeAct.getChildren());
-    }
-
-    @Test
     void removeTest() throws Exception {
         Tree<String> tree = new Tree<>("Hello");
         Tree<String> tree2 = tree.add("world");
@@ -71,15 +76,19 @@ class TreeTest {
     }
 
     @Test
-    void removeAssertionTest() throws Exception {
+    void removeAssertionTest() {
         Tree<String> tree = new Tree<>("Hello");
         Tree<String> tree2 = new Tree<>("World");
         Tree<String> tree3 = tree.add("!");
-        tree.remove(tree2);
 
-        //Assertions.
+        Exception exception =
+                Assertions.assertThrows(Exception.class,
+                        () -> tree.remove(tree2));
+
+        Assertions.assertEquals("Parent doesn't have this child", exception.getMessage());
 
     }
+
 
     @Test
     void getChildren() {
@@ -103,11 +112,6 @@ class TreeTest {
 
     }
 
-    //           Hello  2
-    //          /
-    //         World  1
-    //        /
-    //       !  0
     @Test
     void getModCounter() {
         Tree<String> tree = new Tree<>("Hello");
@@ -118,10 +122,10 @@ class TreeTest {
         Assertions.assertEquals(2, actual);
 
         actual = tree1.getModCount();
-        Assertions.assertEquals(1, actual);
+        Assertions.assertEquals(2, actual);
 
         actual = tree2.getModCount();
-        Assertions.assertEquals(0, actual);
+        Assertions.assertEquals(2, actual);
     }
 
     //                       1
@@ -131,6 +135,26 @@ class TreeTest {
     //                 4  5  6  7  8
     //                    |     | \
     //                    9     10 11
+    @Test
+    void getCountOfNodesTest(){
+        Tree<Integer> tree = new Tree<>(1);
+        Tree<Integer> child1 = tree.add(2);
+        Tree<Integer> child2 = tree.add(3);
+        Tree<Integer> child11 = child1.add(4);
+        Tree<Integer> child12 = child1.add(5);
+        Tree<Integer> child13 = child1.add(6);
+        Tree<Integer> child21 = child2.add(7);
+        Tree<Integer> child22 = child2.add(8);
+        Tree<Integer> child121 = child12.add(9);
+        Tree<Integer> child211 = child21.add(10);
+        Tree<Integer> child212 = child21.add(11);
+
+        int countOfNodes = tree.getCountOfNodesInTree();
+        Assertions.assertEquals(11, countOfNodes);
+
+        countOfNodes = child11.getCountOfNodesInTree();
+        Assertions.assertEquals(1, countOfNodes);
+    }
     @Test
     public void testBreathFirstSearch() {
         Tree<Integer> tree = new Tree<>(1);
@@ -144,9 +168,9 @@ class TreeTest {
         Tree<Integer> child121 = child12.add(9);
         Tree<Integer> child211 = child21.add(10);
         Tree<Integer> child212 = child21.add(11);
-        tree.setTypeOfIteration(2);
+        tree.setTypeOfIteration(Tree.IteratorTreeType.BFSIterator);
         Iterator<Tree<Integer>> iterator = tree.iterator();
-        ArrayList<Integer> actual = new ArrayList<>();
+        List<Integer> actual = new ArrayList<>();
         while (iterator.hasNext()) {
             actual.add(iterator.next().getValue());
         }
@@ -156,7 +180,6 @@ class TreeTest {
 
     }
 
-    /*
     @Test
     public void depthFirstSearchIteratorTest() {
         Tree<Integer> tree = new Tree<>(1);
@@ -171,19 +194,16 @@ class TreeTest {
         Tree<Integer> child211 = child21.add(10);
         Tree<Integer> child212 = child21.add(11);
 
-        tree.setTypeOfIteration(1);
+        tree.setTypeOfIteration(Tree.IteratorTreeType.DFSIterator);
         Iterator<Tree<Integer>> iterator = tree.iterator();
         List<Integer> actual = new ArrayList<>();
         while (iterator.hasNext()) {
             actual.add(iterator.next().getValue());
         }
-        List<Integer> expected = Arrays.asList(1, 2, 4, 5, 9, 6, 3, 7, 10, 11, 8);
+        List<Integer> expected = Arrays.asList(1, 3, 8, 7, 11, 10, 2, 6, 5, 9, 4);
 
         Assertions.assertEquals(expected, actual);
 
     }
 
-    //HUGE PROBLEM WITH MOD COUNT
-    //WHAT IS IT FOR WHAT AND HOW YO USE
-    */
 }
