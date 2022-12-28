@@ -254,10 +254,13 @@ public class Tree<T> implements Iterable<Tree<T>> {
         if (this == o) {
             return true;
         }
-        if (!(o instanceof Tree<?> node)) {
+        if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        return value.equals(node.value) && Objects.equals(children, node.children);
+        Tree<?> tree = (Tree<?>) o;
+
+        return Objects.equals(value, tree.value)
+                && Objects.equals(children, tree.children);
     }
 
     /**
