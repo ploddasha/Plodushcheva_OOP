@@ -1,0 +1,1 @@
+typeSearchIndex = [{"l":"All Classes","url":"allclasses-index.html"},{"p":"ru.nsu.ploddasha","l":"BfsIterator"},{"p":"ru.nsu.ploddasha","l":"DfsIterator"},{"p":"ru.nsu.ploddasha","l":"Tree.IteratorTreeType"},{"p":"ru.nsu.ploddasha","l":"Tree"}]
