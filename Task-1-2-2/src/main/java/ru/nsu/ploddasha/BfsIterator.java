@@ -1,30 +1,29 @@
 package ru.nsu.ploddasha;
 
+import java.util.ArrayDeque;
 import java.util.ConcurrentModificationException;
 import java.util.Iterator;
-import java.util.Stack;
+import java.util.Queue;
 
 /**
- * Depth first search iterator
- * walk through each descendant element of tree.
+ * Breadth First Search Iterator.
  *
  * @param <T> value
  */
-public class DFSIterator<T> implements Iterator<Tree<T>> {
+public class BfsIterator<T> implements Iterator<Tree<T>> {
     private final int modCount;
-    private final Stack<Tree<T>> stack;
+    private final Queue<Tree<T>> queue;
 
     /**
-     * constructor of the DFS iterator
+     * constructor of the BFS iterator.
      *
-     * @param root is current node
+     * @param root is a current node
      */
-    public DFSIterator(Tree<T> root) {
-        stack = new Stack<>();
-        stack.push(root);
+    public BfsIterator(Tree<T> root) {
         modCount = root.getModCount();
+        queue = new ArrayDeque<>();
+        queue.add(root);
     }
-
 
     /**
      * Returns true if there is the next element.
@@ -33,7 +32,7 @@ public class DFSIterator<T> implements Iterator<Tree<T>> {
      */
     @Override
     public boolean hasNext() {
-        return !stack.isEmpty();
+        return !queue.isEmpty();
     }
 
     /**
@@ -43,12 +42,13 @@ public class DFSIterator<T> implements Iterator<Tree<T>> {
      */
     @Override
     public Tree<T> next() {
-        Tree<T> current = stack.pop();
+        Tree<T> current = queue.remove();
 
         if (modCount != current.getModCount()) {
             throw new ConcurrentModificationException();
         }
-        stack.addAll(current.getChildren());
+
+        queue.addAll(current.getChildren());
         return current;
     }
 }

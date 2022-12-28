@@ -1,11 +1,11 @@
 package ru.nsu.ploddasha;
 
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 class TreeTest {
 
@@ -113,19 +113,17 @@ class TreeTest {
     }
 
     @Test
-    void getModCounter() {
+    void getModCount() {
         Tree<String> tree = new Tree<>("Hello");
         Tree<String> tree1 = tree.add("World");
         Tree<String> tree2 = tree1.add("!");
-
         int actual = tree.getModCount();
-        Assertions.assertEquals(2, actual);
+        int actual2 = tree2.getModCount();
+        int actual1 = tree1.getModCount();
 
-        actual = tree1.getModCount();
         Assertions.assertEquals(2, actual);
-
-        actual = tree2.getModCount();
-        Assertions.assertEquals(2, actual);
+        Assertions.assertEquals(2, actual1);
+        Assertions.assertEquals(2, actual2);
     }
 
     //                       1
@@ -136,7 +134,7 @@ class TreeTest {
     //                    |     | \
     //                    9     10 11
     @Test
-    void getCountOfNodesTest(){
+    void getCountOfNodesTest() {
         Tree<Integer> tree = new Tree<>(1);
         Tree<Integer> child1 = tree.add(2);
         Tree<Integer> child2 = tree.add(3);
@@ -155,6 +153,7 @@ class TreeTest {
         countOfNodes = child11.getCountOfNodesInTree();
         Assertions.assertEquals(1, countOfNodes);
     }
+
     @Test
     public void testBreathFirstSearch() {
         Tree<Integer> tree = new Tree<>(1);
@@ -168,7 +167,7 @@ class TreeTest {
         Tree<Integer> child121 = child12.add(9);
         Tree<Integer> child211 = child21.add(10);
         Tree<Integer> child212 = child21.add(11);
-        tree.setTypeOfIteration(Tree.IteratorTreeType.BFSIterator);
+        tree.setTypeOfIteration(Tree.IteratorTreeType.BfsIterator);
         Iterator<Tree<Integer>> iterator = tree.iterator();
         List<Integer> actual = new ArrayList<>();
         while (iterator.hasNext()) {
@@ -194,7 +193,7 @@ class TreeTest {
         Tree<Integer> child211 = child21.add(10);
         Tree<Integer> child212 = child21.add(11);
 
-        tree.setTypeOfIteration(Tree.IteratorTreeType.DFSIterator);
+        tree.setTypeOfIteration(Tree.IteratorTreeType.DfsIterator);
         Iterator<Tree<Integer>> iterator = tree.iterator();
         List<Integer> actual = new ArrayList<>();
         while (iterator.hasNext()) {

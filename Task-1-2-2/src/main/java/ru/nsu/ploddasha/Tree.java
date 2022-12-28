@@ -39,7 +39,7 @@ public class Tree<T> implements Iterable<Tree<T>> {
      */
     public Tree<T> getRoot() {
         Tree<T> root = this;
-        while (root.parent != null){
+        while (root.parent != null) {
             root = root.getParent();
         }
         return root;
@@ -68,7 +68,7 @@ public class Tree<T> implements Iterable<Tree<T>> {
      *
      * @param parent of the current Tree
      */
-    public void setParent(Tree<T> parent){
+    public void setParent(Tree<T> parent) {
         this.parent = parent;
     }
 
@@ -78,7 +78,7 @@ public class Tree<T> implements Iterable<Tree<T>> {
      *
      * @return Modification count
      */
-    public int getModCount(){
+    public int getModCount() {
         Tree<T> root = getRoot();
         return root.modCount;
     }
@@ -225,8 +225,8 @@ public class Tree<T> implements Iterable<Tree<T>> {
      * Breadth First Search Iterator.
      */
     public enum IteratorTreeType {
-        DFSIterator,
-        BFSIterator
+        DfsIterator,
+        BfsIterator
     }
 
 
@@ -238,9 +238,9 @@ public class Tree<T> implements Iterable<Tree<T>> {
     @Override
     public Iterator<Tree<T>> iterator() {
 
-        return typeOfIteration == IteratorTreeType.DFSIterator
-                ? new DFSIterator<>(this)
-                : new BFSIterator<>(this);
+        return typeOfIteration == IteratorTreeType.DfsIterator
+                ? new DfsIterator<>(this)
+                : new BfsIterator<>(this);
     }
 
     /**
