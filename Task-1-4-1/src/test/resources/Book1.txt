@@ -1,0 +1,13 @@
+Student 3 3
+1 3 Exam "Algebra"
+1 3 Exam "Discrete math"
+1 3 DifCredit "Declarative programming"
+1 4 DifCredit "History")
+1 4 DifCredit "Basics of speech"
+1 3 DifCredit "Imperative programming"
+2 3 Exam "Algebra"
+2 4 Exam "Discrete math"
+2 3 DifCredit "Declarative programming"
+2 4 Exam "Imperative programming"
+2 3 DifCredit "English"
+2 4 DifCredit "Digital platforms"
