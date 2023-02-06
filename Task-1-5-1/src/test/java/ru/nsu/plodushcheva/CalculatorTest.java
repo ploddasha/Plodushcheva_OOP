@@ -146,4 +146,15 @@ class CalculatorTest {
         Assertions.assertEquals(9.0, rez);
     }
 
+    @Test
+    public void bigTest() throws Exception {
+        String str = "* pow cos + cos 30 sin 1 log 7 10";
+        Calculator calc = new Calculator();
+
+        Double rez = calc.calculate(str);
+        System.out.println(rez);
+        Assertions.assertEquals(3.057, rez, 0.001);
+
+    }
+
 }
