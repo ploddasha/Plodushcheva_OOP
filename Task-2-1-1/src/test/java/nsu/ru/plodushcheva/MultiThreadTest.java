@@ -3,11 +3,8 @@ package nsu.ru.plodushcheva;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-
 
 class MultiThreadTest {
 
@@ -16,7 +13,7 @@ class MultiThreadTest {
         List<Integer> arr = Arrays.asList(6, 8, 7, 13, 9, 4);
         MultiThread test = new MultiThread();
         boolean act = test.func(1, arr);
-        assertTrue(act);
+        Assertions.assertTrue(act);
     }
 
     @Test
@@ -33,7 +30,7 @@ class MultiThreadTest {
         arr.add(6998053);
         MultiThread test = new MultiThread();
         boolean act = test.func(1, arr);
-        assertFalse(act);
+        Assertions.assertFalse(act);
     }
 
 }
