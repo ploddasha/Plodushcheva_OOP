@@ -1,8 +1,8 @@
 package nsu.ru.plodushcheva;
 
-import javax.swing.JFrame;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JFrame;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
@@ -32,33 +32,33 @@ public class Chart {
                 new DefaultCategoryDataset();
 
         double duration0 = func0();
-        dataset.addValue(duration0, succ , "0");
+        dataset.addValue(duration0, succ, "0");
 
         double duration1 = func1();
-        dataset.addValue(duration1, thread , "1");
+        dataset.addValue(duration1, thread, "1");
         double duration2 = func2();
-        dataset.addValue(duration2, thread , "2");
+        dataset.addValue(duration2, thread, "2");
         double duration3 = func3();
-        dataset.addValue(duration3, thread , "3");
+        dataset.addValue(duration3, thread, "3");
         double duration4 = func4();
-        dataset.addValue(duration4, thread , "4");
+        dataset.addValue(duration4, thread, "4");
         double duration5 = func5();
-        dataset.addValue(duration5, thread , "5");
+        dataset.addValue(duration5, thread, "5");
         double duration6 = func6();
-        dataset.addValue(duration6, thread , "6");
+        dataset.addValue(duration6, thread, "6");
         double duration7 = func7();
-        dataset.addValue(duration7, thread , "7");
+        dataset.addValue(duration7, thread, "7");
         double duration8 = func8();
-        dataset.addValue(duration8, thread , "9");
+        dataset.addValue(duration8, thread, "9");
 
         double duration9 = func9();
-        dataset.addValue(duration9 , ps, "9");
+        dataset.addValue(duration9, ps, "9");
 
         return dataset;
     }
 
     /**
-     *
+     * The main method for creating and displaying the diagram.
      *
      * @param args for main requirements
      * @throws Exception of multiThread
@@ -105,7 +105,7 @@ public class Chart {
     private static double func1() throws Exception {
         long startTime = System.nanoTime();
         MultiThread cla = new MultiThread();
-        boolean ans = cla.func(1,arr);
+        boolean ans = cla.func(1, arr);
         Assertions.assertFalse(ans);
         long endTime = System.nanoTime();
         return (endTime - startTime) / 1e6;
