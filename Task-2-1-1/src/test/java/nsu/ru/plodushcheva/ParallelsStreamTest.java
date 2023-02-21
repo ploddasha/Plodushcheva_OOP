@@ -1,17 +1,15 @@
 package nsu.ru.plodushcheva;
 
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import org.junit.jupiter.api.Test;
 
 class ParallelsStreamTest {
     @Test
-    public void exampleOneTest(){
+    public void exampleOneTest() {
         ParallelsStream s = new ParallelsStream();
         List<Integer> arr = Arrays.asList(6, 8, 7, 13, 9, 4);
         boolean ans = s.func(arr);
@@ -20,7 +18,7 @@ class ParallelsStreamTest {
     }
 
     @Test
-    public void exampleTwoTest(){
+    public void exampleTwoTest() {
         ParallelsStream s = new ParallelsStream();
         List<Integer> arr = new ArrayList<>();
         arr.add(6997901);

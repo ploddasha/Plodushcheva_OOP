@@ -1,10 +1,19 @@
 package nsu.ru.plodushcheva;
 
 import java.util.List;
-import java.util.concurrent.*;
 
+/**
+ * The usual calculation on finding a non-complex number in a list.
+ * One standard thread.
+ */
 public class Successively {
-    public boolean func(List<Integer> arr){
+    /**
+     * function checks for composite numbers.
+     *
+     * @param arr is checked for composite numbers
+     * @return true if there are composite numbers
+     */
+    public boolean func(List<Integer> arr) {
 
         for (Integer number : arr) {
             if (!Prime.isPrime(number)) {

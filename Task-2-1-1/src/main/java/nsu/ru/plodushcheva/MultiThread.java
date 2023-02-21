@@ -1,22 +1,27 @@
 package nsu.ru.plodushcheva;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import java.util.concurrent.*;
 
+/**
+ * Checks the list for a non-complex number using threads.
+ * Threads are created by an extension from the Thread class.
+ */
 public class MultiThread {
     private boolean notOnlyPrimes = false;
 
-    public class DifferentThread extends Thread{
+    /**
+     * Class extends to the thread and overrides the run method.
+     */
+    public class DifferentThread extends Thread {
 
         private final List<Integer> arr;
-        public DifferentThread(List<Integer> arr){
+
+        public DifferentThread(List<Integer> arr) {
             this.arr = arr;
         }
 
         @Override
-        public void run(){
+        public void run() {
             for (Integer number : arr) {
                 if (!Prime.isPrime(number)) {
                     System.out.println("Hi from the thread!");
@@ -27,12 +32,21 @@ public class MultiThread {
         }
     }
 
+    /**
+     * Method for checking for the content of a composite number.
+     * The list is divided into constituent parts according to the number of streams.
+     *
+     * @param countOfThreads desired number of threads
+     * @param arr is checked for composite numbers
+     * @return true if there are composite numbers
+     * @throws Exception if the desired number of threads is less than 1
+     */
     public boolean func(int countOfThreads, List<Integer> arr) throws Exception {
         int numThreads = Runtime.getRuntime().availableProcessors();
-        if (countOfThreads < 1){
+        if (countOfThreads < 1) {
             throw new Exception();
         }
-        if(countOfThreads > numThreads){
+        if (countOfThreads > numThreads) {
             countOfThreads = numThreads;
         }
 
