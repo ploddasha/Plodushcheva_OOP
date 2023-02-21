@@ -49,7 +49,7 @@ public class Chart {
         double duration7 = func7();
         dataset.addValue(duration7, thread, "7");
         double duration8 = func8();
-        dataset.addValue(duration8, thread, "9");
+        dataset.addValue(duration8, thread, "8");
 
         double duration9 = func9();
         dataset.addValue(duration9, ps, "9");
