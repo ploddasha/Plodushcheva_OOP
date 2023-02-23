@@ -41,12 +41,9 @@ public class MultiThread {
      * @throws Exception if the desired number of threads is less than 1
      */
     public boolean func(int countOfThreads, List<Integer> arr) throws Exception {
-        int numThreads = Runtime.getRuntime().availableProcessors();
+        //int numThreads = Runtime.getRuntime().availableProcessors();
         if (countOfThreads < 1) {
             throw new Exception("Wrong count of Threads");
-        }
-        if (countOfThreads > numThreads) {
-            countOfThreads = numThreads;
         }
 
         int arrSize = arr.size() / countOfThreads;

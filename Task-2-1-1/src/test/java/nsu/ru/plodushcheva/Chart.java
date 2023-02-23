@@ -32,7 +32,7 @@ public class Chart {
                 new DefaultCategoryDataset();
 
         double duration0 = func0();
-        dataset.addValue(duration0, succ, "0");
+        dataset.addValue(duration0, succ, "1S");
 
         double duration1 = func1();
         dataset.addValue(duration1, thread, "1");
@@ -50,9 +50,13 @@ public class Chart {
         dataset.addValue(duration7, thread, "7");
         double duration8 = func8();
         dataset.addValue(duration8, thread, "8");
+        double duration30 = func30();
+        dataset.addValue(duration30, thread, "30");
+        double duration150 = func150();
+        dataset.addValue(duration150, thread, "150");
 
-        double duration9 = func9();
-        dataset.addValue(duration9, ps, "9");
+        double durationPs = funcPs();
+        dataset.addValue(durationPs, ps, "PS");
 
         return dataset;
     }
@@ -71,7 +75,7 @@ public class Chart {
                 "Thread Time Chart",
                 "Threads",
                 "Thread Time (ms)",
-                (CategoryDataset) dataset
+                dataset
         );
         ChartPanel chartPanel = new ChartPanel(chart);
         JFrame frame = new JFrame();
@@ -174,7 +178,25 @@ public class Chart {
         return (endTime - startTime) / 1e6;
     }
 
-    private static double func9() {
+    private static double func30() throws Exception {
+        long startTime = System.nanoTime();
+        MultiThread cla = new MultiThread();
+        boolean ans = cla.func(30, arr);
+        Assertions.assertFalse(ans);
+        long endTime = System.nanoTime();
+        return (endTime - startTime) / 1e6;
+    }
+
+    private static double func150() throws Exception {
+        long startTime = System.nanoTime();
+        MultiThread cla = new MultiThread();
+        boolean ans = cla.func(150, arr);
+        Assertions.assertFalse(ans);
+        long endTime = System.nanoTime();
+        return (endTime - startTime) / 1e6;
+    }
+
+    private static double funcPs() {
         long startTime = System.nanoTime();
         ParallelsStream cl = new ParallelsStream();
         boolean ans = cl.func(arr);
