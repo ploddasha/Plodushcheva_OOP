@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Test;
 class MultiThreadTest {
 
     @Test
-    void exampleOneTest()  {
+    void exampleOneTest() {
         List<Integer> arr = Arrays.asList(6, 8, 7, 13, 9, 4);
         MultiThread test = new MultiThread();
         boolean act = test.nonPrimeFinder(1, arr);
@@ -17,7 +17,7 @@ class MultiThreadTest {
     }
 
     @Test
-    void exampleTwoTest()  {
+    void exampleTwoTest() {
         List<Integer> arr = new ArrayList<>();
         arr.add(6997901);
         arr.add(6997927);
@@ -45,7 +45,7 @@ class MultiThreadTest {
     }
 
     @Test
-    void twoThreadsTest(){
+    void twoThreadsTest() {
         List<Integer> arr = Arrays.asList(600, 800, 17, 13, 900, 400);
         MultiThread test = new MultiThread();
         boolean act = test.nonPrimeFinder(2, arr);
@@ -53,7 +53,7 @@ class MultiThreadTest {
     }
 
     @Test
-    void threeThreadsTest(){
+    void threeThreadsTest() {
         List<Integer> arr = Arrays.asList(66, 88, 7, 13, 9, 44);
         MultiThread test = new MultiThread();
         boolean act = test.nonPrimeFinder(3, arr);

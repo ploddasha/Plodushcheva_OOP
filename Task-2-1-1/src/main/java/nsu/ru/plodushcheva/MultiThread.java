@@ -22,7 +22,7 @@ public class MultiThread {
 
         @Override
         public void run() {
-            if (arr.stream().anyMatch(n -> !Prime.isPrime(n))){
+            if (arr.stream().anyMatch(n -> !Prime.isPrime(n))) {
                 notOnlyPrimes = true;
             }
         }

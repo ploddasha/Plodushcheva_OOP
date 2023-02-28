@@ -20,7 +20,6 @@ public class Chart {
      * create the data from which the diagram will be drawn.
      *
      * @return dataset
-     * @ if multiThread method got exception
      */
     private static CategoryDataset createDataset()  {
 
@@ -65,7 +64,6 @@ public class Chart {
      * The main method for creating and displaying the diagram.
      *
      * @param args for main requirements
-     * @ of multiThread
      */
     public static void main(String[] args)  {
         init();
