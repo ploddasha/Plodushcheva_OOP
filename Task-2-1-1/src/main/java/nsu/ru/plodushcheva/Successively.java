@@ -13,13 +13,9 @@ public class Successively {
      * @param arr is checked for composite numbers
      * @return true if there are composite numbers
      */
-    public boolean func(List<Integer> arr) {
+    public boolean nonPrimeFinder(List<Integer> arr) {
 
-        for (Integer number : arr) {
-            if (!Prime.isPrime(number)) {
-                return true;
-            }
-        }
-        return false;
+        return arr.stream()
+                .anyMatch(number -> !Prime.isPrime(number));
     }
 }

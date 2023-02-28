@@ -20,9 +20,9 @@ public class Chart {
      * create the data from which the diagram will be drawn.
      *
      * @return dataset
-     * @throws Exception if multiThread method got exception
+     * @ if multiThread method got exception
      */
-    private static CategoryDataset createDataset() throws Exception {
+    private static CategoryDataset createDataset()  {
 
         final String succ = "Successively";
         final String thread = "Threads";
@@ -31,31 +31,31 @@ public class Chart {
         final DefaultCategoryDataset dataset =
                 new DefaultCategoryDataset();
 
-        double duration0 = func0();
+        double duration0 = nonPrimeFinder0();
         dataset.addValue(duration0, succ, "1S");
 
-        double duration1 = func1();
+        double duration1 = nonPrimeFinder1();
         dataset.addValue(duration1, thread, "1");
-        double duration2 = func2();
+        double duration2 = nonPrimeFinder2();
         dataset.addValue(duration2, thread, "2");
-        double duration3 = func3();
+        double duration3 = nonPrimeFinder3();
         dataset.addValue(duration3, thread, "3");
-        double duration4 = func4();
+        double duration4 = nonPrimeFinder4();
         dataset.addValue(duration4, thread, "4");
-        double duration5 = func5();
+        double duration5 = nonPrimeFinder5();
         dataset.addValue(duration5, thread, "5");
-        double duration6 = func6();
+        double duration6 = nonPrimeFinder6();
         dataset.addValue(duration6, thread, "6");
-        double duration7 = func7();
+        double duration7 = nonPrimeFinder7();
         dataset.addValue(duration7, thread, "7");
-        double duration8 = func8();
+        double duration8 = nonPrimeFinder8();
         dataset.addValue(duration8, thread, "8");
-        double duration30 = func30();
+        double duration30 = nonPrimeFinder30();
         dataset.addValue(duration30, thread, "30");
-        double duration150 = func150();
+        double duration150 = nonPrimeFinder150();
         dataset.addValue(duration150, thread, "150");
 
-        double durationPs = funcPs();
+        double durationPs = nonPrimeFinderPs();
         dataset.addValue(durationPs, ps, "PS");
 
         return dataset;
@@ -65,9 +65,9 @@ public class Chart {
      * The main method for creating and displaying the diagram.
      *
      * @param args for main requirements
-     * @throws Exception of multiThread
+     * @ of multiThread
      */
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args)  {
         init();
 
         CategoryDataset dataset = createDataset();
@@ -97,109 +97,109 @@ public class Chart {
         }
     }
 
-    private static double func0() {
+    private static double nonPrimeFinder0() {
         long startTime = System.nanoTime();
         Successively cl = new Successively();
-        boolean ans = cl.func(arr);
+        boolean ans = cl.nonPrimeFinder(arr);
         Assertions.assertFalse(ans);
         long endTime = System.nanoTime();
         return (endTime - startTime) / 1e6;
     }
 
-    private static double func1() throws Exception {
+    private static double nonPrimeFinder1()  {
         long startTime = System.nanoTime();
         MultiThread cla = new MultiThread();
-        boolean ans = cla.func(1, arr);
+        boolean ans = cla.nonPrimeFinder(1, arr);
         Assertions.assertFalse(ans);
         long endTime = System.nanoTime();
         return (endTime - startTime) / 1e6;
     }
 
-    private static double func2() throws Exception {
+    private static double nonPrimeFinder2()  {
         long startTime = System.nanoTime();
         MultiThread cla = new MultiThread();
-        boolean ans = cla.func(2, arr);
+        boolean ans = cla.nonPrimeFinder(2, arr);
         Assertions.assertFalse(ans);
         long endTime = System.nanoTime();
         return (endTime - startTime) / 1e6;
     }
 
-    private static double func3() throws Exception {
+    private static double nonPrimeFinder3()  {
         long startTime = System.nanoTime();
         MultiThread cla = new MultiThread();
-        boolean ans = cla.func(3, arr);
+        boolean ans = cla.nonPrimeFinder(3, arr);
         Assertions.assertFalse(ans);
         long endTime = System.nanoTime();
         return (endTime - startTime) / 1e6;
     }
 
-    private static double func4() throws Exception {
+    private static double nonPrimeFinder4()  {
         long startTime = System.nanoTime();
         MultiThread cla = new MultiThread();
-        boolean ans = cla.func(4, arr);
+        boolean ans = cla.nonPrimeFinder(4, arr);
         Assertions.assertFalse(ans);
         long endTime = System.nanoTime();
         return (endTime - startTime) / 1e6;
     }
 
-    private static double func5() throws Exception {
+    private static double nonPrimeFinder5()  {
         long startTime = System.nanoTime();
         MultiThread cla = new MultiThread();
-        boolean ans = cla.func(5, arr);
+        boolean ans = cla.nonPrimeFinder(5, arr);
         Assertions.assertFalse(ans);
         long endTime = System.nanoTime();
         return (endTime - startTime) / 1e6;
     }
 
-    private static double func6() throws Exception {
+    private static double nonPrimeFinder6()  {
         long startTime = System.nanoTime();
         MultiThread cla = new MultiThread();
-        boolean ans = cla.func(6, arr);
+        boolean ans = cla.nonPrimeFinder(6, arr);
         Assertions.assertFalse(ans);
         long endTime = System.nanoTime();
         return (endTime - startTime) / 1e6;
     }
 
-    private static double func7() throws Exception {
+    private static double nonPrimeFinder7()  {
         long startTime = System.nanoTime();
         MultiThread cla = new MultiThread();
-        boolean ans = cla.func(7, arr);
+        boolean ans = cla.nonPrimeFinder(7, arr);
         Assertions.assertFalse(ans);
         long endTime = System.nanoTime();
         return (endTime - startTime) / 1e6;
     }
 
-    private static double func8() throws Exception {
+    private static double nonPrimeFinder8()  {
         long startTime = System.nanoTime();
         MultiThread cla = new MultiThread();
-        boolean ans = cla.func(8, arr);
+        boolean ans = cla.nonPrimeFinder(8, arr);
         Assertions.assertFalse(ans);
         long endTime = System.nanoTime();
         return (endTime - startTime) / 1e6;
     }
 
-    private static double func30() throws Exception {
+    private static double nonPrimeFinder30()  {
         long startTime = System.nanoTime();
         MultiThread cla = new MultiThread();
-        boolean ans = cla.func(30, arr);
+        boolean ans = cla.nonPrimeFinder(30, arr);
         Assertions.assertFalse(ans);
         long endTime = System.nanoTime();
         return (endTime - startTime) / 1e6;
     }
 
-    private static double func150() throws Exception {
+    private static double nonPrimeFinder150()  {
         long startTime = System.nanoTime();
         MultiThread cla = new MultiThread();
-        boolean ans = cla.func(150, arr);
+        boolean ans = cla.nonPrimeFinder(150, arr);
         Assertions.assertFalse(ans);
         long endTime = System.nanoTime();
         return (endTime - startTime) / 1e6;
     }
 
-    private static double funcPs() {
+    private static double nonPrimeFinderPs() {
         long startTime = System.nanoTime();
         ParallelsStream cl = new ParallelsStream();
-        boolean ans = cl.func(arr);
+        boolean ans = cl.nonPrimeFinder(arr);
         Assertions.assertFalse(ans);
         long endTime = System.nanoTime();
         return (endTime - startTime) / 1e6;

@@ -11,7 +11,7 @@ class SuccessivelyTest {
     public void exampleOneTest() {
         Successively s = new Successively();
         List<Integer> arr = Arrays.asList(6, 8, 7, 13, 9, 4);
-        boolean ans = s.func(arr);
+        boolean ans = s.nonPrimeFinder(arr);
         Assertions.assertTrue(ans);
 
     }
@@ -30,7 +30,7 @@ class SuccessivelyTest {
         arr.add(6998051);
         arr.add(6998053);
 
-        boolean ans = s.func(arr);
+        boolean ans = s.nonPrimeFinder(arr);
         Assertions.assertFalse(ans);
     }
 

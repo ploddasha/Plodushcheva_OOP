@@ -22,11 +22,8 @@ public class MultiThread {
 
         @Override
         public void run() {
-            for (Integer number : arr) {
-                if (!Prime.isPrime(number)) {
-                    notOnlyPrimes = true;
-                    break;
-                }
+            if (arr.stream().anyMatch(n -> !Prime.isPrime(n))){
+                notOnlyPrimes = true;
             }
         }
     }
@@ -38,19 +35,24 @@ public class MultiThread {
      * @param countOfThreads desired number of threads
      * @param arr is checked for composite numbers
      * @return true if there are composite numbers
-     * @throws Exception if the desired number of threads is less than 1
      */
-    public boolean func(int countOfThreads, List<Integer> arr) throws Exception {
+    public boolean nonPrimeFinder(int countOfThreads, List<Integer> arr) {
         //int numThreads = Runtime.getRuntime().availableProcessors();
         if (countOfThreads < 1) {
-            throw new Exception("Wrong count of Threads");
+            throw new IllegalArgumentException("Wrong count of Threads");
         }
 
-        int arrSize = arr.size() / countOfThreads;
+        int smallSize = arr.size() / countOfThreads;
+        int largeSize = smallSize + 1;
+        int largeNumber = arr.size() % countOfThreads;
+        int smallNumber = countOfThreads - largeNumber;
+        int index = 0;
         DifferentThread[] threads = new DifferentThread[countOfThreads];
         for (int i = 0; i < countOfThreads; i++) {
-            threads[i] = new DifferentThread(arr.subList(i * arrSize, (i + 1) * arrSize));
+            int size = i < smallNumber ? smallSize : largeSize;
+            threads[i] = new DifferentThread(arr.subList(index, index + size));
             threads[i].start();
+            index += size;
         }
 
         for (int i = 0; i < countOfThreads; i++) {
