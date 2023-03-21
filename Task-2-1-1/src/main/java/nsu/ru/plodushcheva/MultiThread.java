@@ -46,11 +46,18 @@ public class MultiThread {
         int largeSize = smallSize + 1;
         int largeNumber = arr.size() % countOfThreads;
         int smallNumber = countOfThreads - largeNumber;
+        System.out.println(arr);
+        System.out.println(countOfThreads);
+        System.out.println(smallSize);
+        System.out.println(largeSize);
+        System.out.println(largeNumber);
+        System.out.println(smallNumber);
         int index = 0;
         DifferentThread[] threads = new DifferentThread[countOfThreads];
         for (int i = 0; i < countOfThreads; i++) {
             int size = i < smallNumber ? smallSize : largeSize;
             threads[i] = new DifferentThread(arr.subList(index, index + size));
+            System.out.println(arr.subList(index, index + size));
             threads[i].start();
             index += size;
         }
