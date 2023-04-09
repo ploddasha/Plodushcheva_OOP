@@ -1,7 +1,5 @@
-package nsu.ru.plodushcheva;
+package nsu.ru.plodushcheva.json;
 
-import nsu.ru.plodushcheva.Threads.CookerJson;
-import nsu.ru.plodushcheva.Threads.CourierJson;
 
 import java.util.List;
 

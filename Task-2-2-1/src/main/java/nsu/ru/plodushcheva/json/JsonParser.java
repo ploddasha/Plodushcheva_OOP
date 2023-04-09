@@ -1,4 +1,4 @@
-package nsu.ru.plodushcheva;
+package nsu.ru.plodushcheva.json;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;

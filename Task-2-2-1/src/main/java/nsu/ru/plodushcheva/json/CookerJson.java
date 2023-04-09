@@ -1,4 +1,4 @@
-package nsu.ru.plodushcheva.Threads;
+package nsu.ru.plodushcheva.json;
 
 public class CookerJson {
     private final String name;

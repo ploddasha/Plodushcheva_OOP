@@ -10,14 +10,13 @@ public class Stock{
         this.capacity = capacity;
     }
 
+    //по capacity?
     public Order takePizza(int capacity) {
-        Order order = new Order(1, 2);
-        return order;
+        return new Order(1, 2);
     }
-
+    // на складе готовая продукция, не заказы на приготовление!
     public Order takeOrder() {
-        Order order = new Order(1, 2);
-        return order;
+        return new Order(1, 2);
     }
 
     public int getCurrentOrderId() {
@@ -25,7 +24,6 @@ public class Stock{
     }
 
     public boolean addPizza(Order order) {
-        boolean rez = true;
-        return rez;
+        return true;
     }
 }

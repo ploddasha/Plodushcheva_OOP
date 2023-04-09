@@ -1,11 +1,8 @@
 package nsu.ru.plodushcheva;
 
-import nsu.ru.plodushcheva.Threads.Cooker;
-import nsu.ru.plodushcheva.Threads.Courier;
-import nsu.ru.plodushcheva.Threads.Order;
-import nsu.ru.plodushcheva.Threads.Stock;
+import nsu.ru.plodushcheva.Threads.*;
+import nsu.ru.plodushcheva.json.PizzeriaData;
 
-import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.BlockingQueue;
@@ -15,7 +12,7 @@ import java.util.concurrent.LinkedBlockingQueue;
 
 public class Pizzeria {
 
-    private final List<Cooker> cookers = new ArrayList<>();
+    private final List<CookeRunnable> cookers = new ArrayList<>();
     private final List<Courier> couriers = new ArrayList<>();
     private BlockingQueue<Order> orderQueue;
     private ExecutorService executor;
@@ -33,7 +30,7 @@ public class Pizzeria {
         for (int i = 0; i < data.getNumCookers(); i++) {
             String name = data.getCookers().get(i).getName();
             int strength = data.getCookers().get(i).getStrength();
-            cookers.add( new Cooker(name, strength, stock));
+            cookers.add( new CookeRunnable(name, strength, orderQueue, stock));
             System.out.println("Cooker name: " + name + " Strength " + strength);
         }
 
@@ -50,22 +47,24 @@ public class Pizzeria {
         System.out.println("Welcome to the Pizzeria!");
         executor.execute(new TakeOrders(orderQueue));
 
-        executor.shutdown();
 
         // Start the cookers
-        for (Cooker cooker : cookers) {
-            new Thread(cooker).start();
+        for (CookeRunnable cooker : cookers) {
+            executor.execute(cooker);
+            //new Thread(cooker).start();
         }
 
         // Start the couriers
         for (Courier courier : couriers) {
-            new Thread(courier).start();
+            //new Thread(courier).start();
         }
+
+        executor.shutdown();
 
         // Start the order dispatcher
         //new Thread(new OrderDispatcher()).start();
     }
-
+    /*
     public void stop() {
         // Stop the bakers
         for (Cooker cooker : cookers) {
@@ -80,7 +79,7 @@ public class Pizzeria {
         // Stop the order dispatcher
         orderQueue.clear();
     }
-
+    */
 
 
 }
