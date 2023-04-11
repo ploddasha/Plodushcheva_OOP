@@ -1,8 +1,9 @@
-module com.example.task231 {
+module ru.nsu.plodushcheva {
     requires javafx.controls;
     requires javafx.fxml;
+    requires java.desktop;
 
 
-    opens com.example.task231 to javafx.fxml;
-    exports com.example.task231;
+    opens ru.nsu.plodushcheva to javafx.fxml;
+    exports ru.nsu.plodushcheva;
 }

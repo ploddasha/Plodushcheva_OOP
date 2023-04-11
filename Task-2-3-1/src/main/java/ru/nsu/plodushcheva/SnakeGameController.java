@@ -1,9 +1,9 @@
-package com.example.task231;
+package ru.nsu.plodushcheva;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 
-public class HelloController {
+public class SnakeGameController {
     @FXML
     private Label welcomeText;
 
