@@ -1,18 +1,17 @@
-package nsu.ru.plodushcheva;
+package nsu.ru.plodushcheva.pizzeria;
 
 import nsu.ru.plodushcheva.Threads.*;
 import nsu.ru.plodushcheva.json.PizzeriaData;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.BlockingQueue;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.LinkedBlockingQueue;
+import java.util.Timer;
+import java.util.TimerTask;
+import java.util.concurrent.*;
 
 public class Pizzeria {
 
-    private final List<CookeRunnable> cookers = new ArrayList<>();
+    private final List<Cooker> cookers = new ArrayList<>();
     private final List<Courier> couriers = new ArrayList<>();
     private BlockingQueue<Order> orderQueue;
     private ExecutorService executor;
@@ -30,7 +29,7 @@ public class Pizzeria {
         for (int i = 0; i < data.getNumCookers(); i++) {
             String name = data.getCookers().get(i).getName();
             int strength = data.getCookers().get(i).getStrength();
-            cookers.add( new CookeRunnable(name, strength, orderQueue, stock));
+            cookers.add( new Cooker(name, strength, orderQueue, stock));
             System.out.println("Cooker name: " + name + " Strength " + strength);
         }
 
@@ -43,43 +42,51 @@ public class Pizzeria {
 
     }
 
-    public void work() {
+    public void work(int time) {
         System.out.println("Welcome to the Pizzeria!");
         executor.execute(new TakeOrders(orderQueue));
 
 
         // Start the cookers
-        for (CookeRunnable cooker : cookers) {
+        for (Cooker cooker : cookers) {
             executor.execute(cooker);
-            //new Thread(cooker).start();
         }
 
         // Start the couriers
         for (Courier courier : couriers) {
-            //new Thread(courier).start();
+            executor.execute(courier);
         }
 
-        executor.shutdown();
+        Timer timer = new Timer();
+        timer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                stop();
+            }
+        }, time);
 
-        // Start the order dispatcher
-        //new Thread(new OrderDispatcher()).start();
     }
-    /*
+
     public void stop() {
-        // Stop the bakers
-        for (Cooker cooker : cookers) {
-            cooker.stop();
-        }
-
-        // Stop the couriers
-        for (Courier courier : couriers) {
-            courier.stop();
-        }
-
-        // Stop the order dispatcher
+        TakeOrders.stop();
         orderQueue.clear();
+        Cooker.stop();
+        Courier.stop();
+
+        executor.shutdown(); // Остановка приема новых задач
+
+        try {
+            if (!executor.awaitTermination(60, TimeUnit.SECONDS)) {
+                executor.shutdownNow();
+                if (!executor.awaitTermination(60, TimeUnit.SECONDS)) {
+                    System.err.println("Executor did not terminate");
+                }
+            }
+        } catch (InterruptedException ex) {
+            executor.shutdownNow();
+            Thread.currentThread().interrupt();
+        }
+        System.out.println(" Pizzeria is closed ");
+
     }
-    */
-
-
 }
