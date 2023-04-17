@@ -7,17 +7,14 @@ import java.util.LinkedList;
 import java.util.Queue;
 import java.util.concurrent.TimeUnit;
 
-public class Courier implements Runnable{
+public class Courier implements Worker{
     private final String name;
-
-    //private final int courierId;
     private final int maxTrunkSize;
     private final Stock stock;
-    private final Queue<Order> pizzasInTrunk; //<Pizza>
+    private final Queue<Order> pizzasInTrunk;
     private static boolean working;
 
     public Courier(String name, int maxTrunkSize, Stock stock) {
-        //this.courierId = courierId;
         this.name = name;
         this.maxTrunkSize = maxTrunkSize;
         this.stock = stock;
@@ -32,6 +29,8 @@ public class Courier implements Runnable{
                 if (pizzasInTrunk.size()<maxTrunkSize) {
                     Order order = stock.takeOrder();
                     if (order != null) {
+                        order.setStatus(Order.Status.DELIVERING);
+                        System.out.println("Order " + order.getOrderId() + " "  + order.getStatus() + " by courier " + name);
                         pizzasInTrunk.add(order);
                     } else {
                         Thread.sleep(1000);
@@ -45,27 +44,32 @@ public class Courier implements Runnable{
                 try {
                     deliverPizzas();
                 } catch (InterruptedException e) {
-                    throw new RuntimeException(e);
+                    //throw new RuntimeException(e);
                 }
             }
         }
-        System.out.println("couriers done");
-        System.out.println(" Pizzeria is closed ");
-
+        System.out.println("Courier " + name + " finished work");
 
     }
 
     private void deliverPizzas() throws InterruptedException {
-        //int deliveredPizzas = new Random().nextInt(pizzasInTrunk.size()) + 1;
         for (int i = 0; i < pizzasInTrunk.size(); i++) {
             TimeUnit.SECONDS.sleep(6 );
             Order order = pizzasInTrunk.remove();
-
-            System.out.println("Order " + order.getOrderId() + " delivered by courier " + name);
+            order.setStatus(Order.Status.DELIVERED);
+            System.out.println("Order " + order.getOrderId() + " "  + order.getStatus() + " by courier " + name);
 
         }
     }
-    public static void stop() {
+
+    @Override
+    public void stop() {
         working = false;
+        try {
+            deliverPizzas();
+        } catch (InterruptedException e) {
+            System.out.println("Courier " + name + " has been interrupted while delivering pizzas.");
+        }
+        Thread.currentThread().interrupt();
     }
 }

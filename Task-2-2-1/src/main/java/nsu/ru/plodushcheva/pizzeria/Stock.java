@@ -1,7 +1,9 @@
 package nsu.ru.plodushcheva.pizzeria;
 
+import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
+import java.util.concurrent.TimeUnit;
 
 public class Stock{
     private final int capacity;
@@ -11,12 +13,12 @@ public class Stock{
 
     public Stock(int capacity) {
         this.capacity = capacity;
-        orders = new LinkedBlockingQueue<>();
+        orders = new ArrayBlockingQueue<>(capacity);
     }
 
     //по capacity?
     public Order takePizza(int capacity) {
-        return new Order(1, 2);
+        return new Order(1);
     }
     // на складе готовая продукция, не заказы на приготовление!
     public Order takeOrder() throws InterruptedException {
@@ -27,7 +29,7 @@ public class Stock{
         return 2;
     }
     public boolean canAdd(Order order) {
-        return order.getPizzaCount() < (capacity - orders.size());
+        return 1 < (capacity - orders.size());
     }
 
     public void addOrder(Order order) {
@@ -38,4 +40,16 @@ public class Stock{
 
         }
     }
+
+    public boolean addOrder2(Order order) throws InterruptedException {
+        boolean added = orders.offer(order, 10, TimeUnit.SECONDS);
+        if (added) {
+            order.setStatus(Order.Status.STORED);
+            System.out.println("Order " + order.getOrderId() + " " + order.getStatus());
+        } else {
+            System.out.println("Error: Order " + order.getOrderId() + " couldn't be added to stock.");
+        }
+        return added;
+    }
+
 }
