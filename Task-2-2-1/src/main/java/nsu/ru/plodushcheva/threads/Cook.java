@@ -4,6 +4,9 @@ import java.util.concurrent.BlockingQueue;
 import nsu.ru.plodushcheva.pizzeria.Order;
 import nsu.ru.plodushcheva.pizzeria.Stock;
 
+/**
+ * A class representing a cook in a pizzeria.
+ */
 public class Cook implements Worker {
     private final String name;
     private final int strength;
@@ -14,6 +17,14 @@ public class Cook implements Worker {
     private final Stock stock;
     private volatile boolean working;
 
+    /**
+     * Constructs a Cook with the given name, strength, order queue and stock.
+     *
+     * @param name        the name of the cook.
+     * @param strength    the strength of the cook.
+     * @param orderQueue  the blocking queue of orders.
+     * @param stock       the stock of the pizzeria.
+     */
     public Cook(String name, int strength, BlockingQueue<Order> orderQueue, Stock stock) {
         //this.cookerId = cookerId;
         this.name = name;
@@ -23,6 +34,9 @@ public class Cook implements Worker {
         working = true;
     }
 
+    /**
+     * The run method that cooks pizzas and adds them to the stock.
+     */
     @Override
     public void run() {
 
@@ -40,6 +54,12 @@ public class Cook implements Worker {
 
     }
 
+    /**
+     * Makes a pizza for the given order and sets the status of the order to "cooked".
+     *
+     * @param order  the order for which to make a pizza.
+     * @throws InterruptedException  if the thread is interrupted while sleeping.
+     */
     private void makePizza(Order order) throws InterruptedException {
         Thread.sleep(500 - strength);
         order.setStatus(Order.Status.COOKED);
@@ -48,6 +68,9 @@ public class Cook implements Worker {
 
     }
 
+    /**
+     * Stops the cook from working.
+     */
     @Override
     public void stop() {
         working = false;

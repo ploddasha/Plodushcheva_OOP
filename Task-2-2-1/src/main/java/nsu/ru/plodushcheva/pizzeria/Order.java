@@ -1,16 +1,23 @@
 package nsu.ru.plodushcheva.pizzeria;
 
 
+/**
+ * Represents an order in a pizzeria.
+ */
 public class Order {
     private final int orderId;
     private Status status;
 
+    /**
+     * An enum representing the possible statuses of an order.
+     */
     public enum Status {
         CREATED,
         COOKED,
         STORED,
         DELIVERING,
         DELIVERED
+
     }
 
     public Order(int orderId) {

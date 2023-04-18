@@ -15,6 +15,15 @@ import nsu.ru.plodushcheva.threads.Courier;
 import nsu.ru.plodushcheva.threads.TakeOrders;
 
 
+/**
+ * The Pizzeria class represents a pizzeria where cooks and couriers work to fulfill orders.
+ * It uses a blocking queue
+ * to store incoming orders and
+ * an executor service to manage threads for the cooks and couriers.
+ * It can be opened and closed for a specified period of time,
+ * and also has a method to stop all ongoing tasks and shutdown
+ * the executor service.
+ */
 public class Pizzeria {
 
     private final List<Cook> cooks = new ArrayList<>();
@@ -48,6 +57,11 @@ public class Pizzeria {
 
     }
 
+    /**
+     * Opens the pizzeria for the specified period of time, during which orders are taken and fulfilled.
+     *
+     * @param time The duration of time, in milliseconds, that the pizzeria should remain open.
+     */
     public void work(int time) {
         System.out.println(" Pizzeria is open ");
 
@@ -76,6 +90,9 @@ public class Pizzeria {
 
     }
 
+    /**
+     * Stops all ongoing tasks and shuts down the executor service.
+     */
     public void stop() {
         System.out.println("Pizzeria is closing");
         executor.shutdown();
