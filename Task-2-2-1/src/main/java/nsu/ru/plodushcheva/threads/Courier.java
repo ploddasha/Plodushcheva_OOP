@@ -1,8 +1,8 @@
 package nsu.ru.plodushcheva.threads;
 
-import java.util.concurrent.TimeUnit;
 import java.util.LinkedList;
 import java.util.Queue;
+import java.util.concurrent.TimeUnit;
 import nsu.ru.plodushcheva.pizzeria.Order;
 import nsu.ru.plodushcheva.pizzeria.Stock;
 
@@ -43,8 +43,8 @@ public class Courier implements Worker {
                     Order order = stock.takeOrder();
                     if (order != null) {
                         order.setStatus(Order.Status.DELIVERING);
-                        System.out.println("Order " + order.getOrderId() +
-                                " "  + order.getStatus() + " by courier " + name);
+                        System.out.println("Order " + order.getOrderId()
+                                + " "  + order.getStatus() + " by courier " + name);
                         pizzasInTrunk.add(order);
                     } else {
                         Thread.sleep(1000);
@@ -68,6 +68,7 @@ public class Courier implements Worker {
 
     /**
      * Delivers the pizzas from the courier's trunk to the customers.
+     *
      * @throws InterruptedException if the thread is interrupted
      */
     private void deliverPizzas() throws InterruptedException {
@@ -75,8 +76,8 @@ public class Courier implements Worker {
             TimeUnit.SECONDS.sleep(6);
             Order order = pizzasInTrunk.remove();
             order.setStatus(Order.Status.DELIVERED);
-            System.out.println("Order " + order.getOrderId() + " "  +
-                    order.getStatus() + " by courier " + name);
+            System.out.println("Order " + order.getOrderId() + " "
+                    + order.getStatus() + " by courier " + name);
 
         }
     }
@@ -90,8 +91,8 @@ public class Courier implements Worker {
         try {
             deliverPizzas();
         } catch (InterruptedException e) {
-            System.out.println("Courier " + name +
-                    " has been interrupted while delivering pizzas.");
+            System.out.println("Courier " + name
+                    + " has been interrupted while delivering pizzas.");
         }
         Thread.currentThread().interrupt();
     }

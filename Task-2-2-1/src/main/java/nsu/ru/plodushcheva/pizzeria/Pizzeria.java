@@ -32,6 +32,13 @@ public class Pizzeria {
     private ExecutorService executor;
     private TakeOrders takeOrders;
 
+    /**
+     * Creates a new Pizzeria instance with the specified data.
+     *
+     * @param data The PizzeriaData containing information about the pizzeria,
+     *             including the number of cooks and couriers,
+     *             their names and strengths, and the size of the stock.
+     */
     public Pizzeria(PizzeriaData data) {
         if (data == null) {
             System.err.println("Failed to load pizzeria parameters from file");
@@ -44,7 +51,7 @@ public class Pizzeria {
         for (int i = 0; i < data.getNumCooks(); i++) {
             String name = data.getCooks().get(i).getName();
             int strength = data.getCooks().get(i).getStrength();
-            cooks.add( new Cook(name, strength, orderQueue, stock));
+            cooks.add(new Cook(name, strength, orderQueue, stock));
             System.out.println("Cooker name: " + name + " Strength " + strength);
         }
 
@@ -68,13 +75,10 @@ public class Pizzeria {
         takeOrders = new TakeOrders(orderQueue);
         executor.execute(takeOrders);
 
-
-        // Start the cookers
         for (Cook cook : cooks) {
             executor.execute(cook);
         }
 
-        // Start the couriers
         for (Courier courier : couriers) {
             executor.execute(courier);
         }

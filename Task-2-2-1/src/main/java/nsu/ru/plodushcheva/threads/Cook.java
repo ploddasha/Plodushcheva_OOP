@@ -11,9 +11,6 @@ public class Cook implements Worker {
     private final String name;
     private final int strength;
     private final BlockingQueue<Order> orderQueue;
-
-
-    // private final int bakerId;
     private final Stock stock;
     private volatile boolean working;
 
@@ -63,8 +60,8 @@ public class Cook implements Worker {
     private void makePizza(Order order) throws InterruptedException {
         Thread.sleep(500 - strength);
         order.setStatus(Order.Status.COOKED);
-        System.out.println("Order  " + order.getOrderId() + " "  +
-                order.getStatus() + " by cooker " + name);
+        System.out.println("Order  " + order.getOrderId() + " "
+                + order.getStatus() + " by cooker " + name);
 
     }
 

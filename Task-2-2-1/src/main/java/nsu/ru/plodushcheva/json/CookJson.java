@@ -1,5 +1,8 @@
 package nsu.ru.plodushcheva.json;
 
+/**
+ * This class represents the JSON object for a cook with their name and strength.
+ */
 public class CookJson {
     private final String name;
     private final int strength;

@@ -12,7 +12,7 @@ import java.util.concurrent.TimeUnit;
 public class Stock {
     private final int capacity;
 
-    private BlockingQueue<Order> orders;
+    private final BlockingQueue<Order> orders;
 
     public Stock(int capacity) {
         this.capacity = capacity;
@@ -59,7 +59,7 @@ public class Stock {
      *
      * @param order the order to be added
      * @return true if added successful
-     * @throws InterruptedException  if the thread is interrupted while waiting to add the order
+     * @throws InterruptedException if the thread is interrupted while waiting
      */
     public boolean addOrder2(Order order) throws InterruptedException {
         boolean added = orders.offer(order, 10, TimeUnit.SECONDS);
@@ -67,8 +67,8 @@ public class Stock {
             order.setStatus(Order.Status.STORED);
             System.out.println("Order " + order.getOrderId() + " " + order.getStatus());
         } else {
-            System.out.println("Error: Order " +
-                    order.getOrderId() + " couldn't be added to stock.");
+            System.out.println("Error: Order "
+                    + order.getOrderId() + " couldn't be added to stock.");
         }
         return added;
     }

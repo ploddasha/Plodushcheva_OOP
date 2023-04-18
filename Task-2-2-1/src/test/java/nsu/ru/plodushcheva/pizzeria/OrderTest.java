@@ -1,11 +1,7 @@
 package nsu.ru.plodushcheva.pizzeria;
 
-import nsu.ru.plodushcheva.json.JsonParser;
-import nsu.ru.plodushcheva.json.PizzeriaData;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class OrderTest {
 
