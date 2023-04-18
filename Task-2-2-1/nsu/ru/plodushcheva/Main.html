@@ -133,6 +133,9 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <hr>
 <pre>public class <span class="typeNameLabel">Main</span>
 extends java.lang.Object</pre>
+<div class="block">The Main class is the entry point of the application.
+ It creates an instance of the Pizzeria class and starts the pizzeria simulation
+ by calling the "work" method with the specified time interval in milliseconds.</div>
 </li>
 </ul>
 </div>
@@ -177,7 +180,12 @@ extends java.lang.Object</pre>
 <tr id="i0" class="altColor">
 <td class="colFirst"><code>static void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#main(java.lang.String%5B%5D)">main</a></span>&#8203;(java.lang.String[]&nbsp;args)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">The main method creates a Pizzeria instance with the data obtained by
+ parsing the info.json file using JsonParser, and calls the work method
+ on that instance to simulate the pizzeria's operation for the specified
+ time interval.</div>
+</td>
 </tr>
 </table>
 <ul class="blockList">
@@ -229,6 +237,14 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>main</h4>
 <pre class="methodSignature">public static&nbsp;void&nbsp;main&#8203;(java.lang.String[]&nbsp;args)</pre>
+<div class="block">The main method creates a Pizzeria instance with the data obtained by
+ parsing the info.json file using JsonParser, and calls the work method
+ on that instance to simulate the pizzeria's operation for the specified
+ time interval.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>args</code> - the command line arguments (unused)</dd>
+</dl>
 </li>
 </ul>
 </li>
