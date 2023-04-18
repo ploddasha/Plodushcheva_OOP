@@ -106,33 +106,26 @@ public class Pizzeria {
         couriers.forEach(Courier::stop);
         orderQueue.clear();
 
-
         try {
-            Thread.sleep(30000);
-            System.out.println("here");
+            Thread.sleep(3000);
             executor.shutdownNow();
 
         } catch (InterruptedException e) {
-            //throw new RuntimeException(e);
+            throw new RuntimeException(e);
         }
 
-        //executor.shutdownNow();
 
         try {
-            if (!executor.awaitTermination(30, TimeUnit.SECONDS)) {
+            if (executor.awaitTermination(10, TimeUnit.SECONDS)) {
+                System.err.println(" Pizzeria is closed!");
+            }
+            else {
                 executor.shutdownNow();
-                System.out.println("here2");
+                System.err.println(" Pizzeria is closed !");
             }
         } catch (InterruptedException e) {
             System.out.println("Interrupted while waiting for tasks to complete");
         }
-
-        if (executor.isTerminated()) {
-            System.out.println(" Pizzeria is closed !");
-        } else {
-            System.out.println("Some tasks are still running");
-        }
-
 
     }
 }

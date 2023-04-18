@@ -23,7 +23,6 @@ public class Cook implements Worker {
      * @param stock       the stock of the pizzeria.
      */
     public Cook(String name, int strength, BlockingQueue<Order> orderQueue, Stock stock) {
-        //this.cookerId = cookerId;
         this.name = name;
         this.strength = strength;
         this.stock = stock;
@@ -37,18 +36,17 @@ public class Cook implements Worker {
     @Override
     public void run() {
 
-        while (working) {
+        while (working && !Thread.currentThread().isInterrupted()) {
             try {
                 Order order = orderQueue.take();
                 makePizza(order);
                 stock.addOrder(order);
             } catch (InterruptedException e) {
-                System.out.println("ttttttt");
-                Thread.currentThread().interrupt();
+                System.out.println("Cook " + name + " was interrupted");
             }
         }
         System.out.println("Cook " + name + " finished work");
-
+        Thread.currentThread().interrupt();
     }
 
     /**
@@ -71,7 +69,5 @@ public class Cook implements Worker {
     @Override
     public void stop() {
         working = false;
-        Thread.currentThread().interrupt();
-
     }
 }

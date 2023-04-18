@@ -1,7 +1,7 @@
 package nsu.ru.plodushcheva.threads;
 
-import java.util.LinkedList;
-import java.util.Queue;
+import java.util.concurrent.ArrayBlockingQueue;
+import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.TimeUnit;
 import nsu.ru.plodushcheva.pizzeria.Order;
 import nsu.ru.plodushcheva.pizzeria.Stock;
@@ -14,7 +14,7 @@ public class Courier implements Worker {
     private final String name;
     private final int maxTrunkSize;
     private final Stock stock;
-    private final Queue<Order> pizzasInTrunk;
+    private final BlockingQueue<Order> pizzasInTrunk;
     private static boolean working;
 
     /**
@@ -28,7 +28,7 @@ public class Courier implements Worker {
         this.name = name;
         this.maxTrunkSize = maxTrunkSize;
         this.stock = stock;
-        this.pizzasInTrunk = new LinkedList<>();
+        this.pizzasInTrunk = new ArrayBlockingQueue<>(maxTrunkSize);
         working = true;
     }
 
@@ -39,30 +39,33 @@ public class Courier implements Worker {
     public void run() {
         while (working) {
             try {
-                if (pizzasInTrunk.size() < maxTrunkSize) {
-                    Order order = stock.takeOrder();
-                    if (order != null) {
+                for (int i = 0; i < maxTrunkSize; i++ ) {
+                    if (pizzasInTrunk.size() < maxTrunkSize) {
+                        Order order = stock.takeOrder();
                         order.setStatus(Order.Status.DELIVERING);
                         System.out.println("Order " + order.getOrderId()
                                 + " "  + order.getStatus() + " by courier " + name);
                         pizzasInTrunk.add(order);
-                    } else {
-                        Thread.sleep(1000);
+                    }
+                    else {
+                        break;
                     }
                 }
-
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-            if (pizzasInTrunk.size() > 0) {
-                try {
-                    deliverPizzas();
-                } catch (InterruptedException e) {
-                    //throw new RuntimeException(e);
+                if (pizzasInTrunk.size() > 0) {
+                    try {
+                        deliverPizzas();
+                    } catch (InterruptedException e) {
+                        System.out.println("Courier " + name
+                                + " was interrupted during delivery");
+                    }
                 }
+            } catch (InterruptedException e) {
+                System.out.println("Courier " + name + " was interrupted");
             }
+
         }
         System.out.println("Courier " + name + " finished work");
+        Thread.currentThread().interrupt();
 
     }
 
@@ -88,12 +91,5 @@ public class Courier implements Worker {
     @Override
     public void stop() {
         working = false;
-        try {
-            deliverPizzas();
-        } catch (InterruptedException e) {
-            System.out.println("Courier " + name
-                    + " has been interrupted while delivering pizzas.");
-        }
-        Thread.currentThread().interrupt();
     }
 }

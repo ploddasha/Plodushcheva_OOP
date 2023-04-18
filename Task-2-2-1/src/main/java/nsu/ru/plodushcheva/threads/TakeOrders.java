@@ -38,11 +38,12 @@ public class TakeOrders implements Worker {
                 TimeUnit.SECONDS.sleep(2);
                 orderQueue.add(order);
                 System.out.println("Order " + order.getOrderId() + " " +  order.getStatus());
-            } catch (InterruptedException e) {                     //e.printStackTrace();
-                System.out.println("Interrupted");
+            } catch (InterruptedException e) {
+                System.err.println("Interrupted");
             }
         }
-        System.out.println("We do not accept orders");
+        System.out.println("We do not accept orders anymore");
+        Thread.currentThread().interrupt();
 
     }
 
@@ -53,7 +54,6 @@ public class TakeOrders implements Worker {
     @Override
     public void stop() {
         working = false;
-        Thread.currentThread().interrupt();
 
     }
 
