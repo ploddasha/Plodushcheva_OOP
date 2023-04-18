@@ -1,10 +1,10 @@
 package nsu.ru.plodushcheva.pizzeria;
 
-import java.util.Random;
 
 public class Order {
     private final int orderId;
     private Status status;
+
     public enum Status {
         CREATED,
         COOKED,

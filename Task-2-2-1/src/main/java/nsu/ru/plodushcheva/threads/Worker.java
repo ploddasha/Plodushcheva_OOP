@@ -1,4 +1,4 @@
-package nsu.ru.plodushcheva.Threads;
+package nsu.ru.plodushcheva.threads;
 
 public interface Worker extends Runnable {
     @Override

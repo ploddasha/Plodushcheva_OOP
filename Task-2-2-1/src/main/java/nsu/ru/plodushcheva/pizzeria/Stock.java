@@ -5,7 +5,7 @@ import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.TimeUnit;
 
-public class Stock{
+public class Stock {
     private final int capacity;
     // можно ли очереди задать определенный размер?
     // и как происходит добавление если уже нельзя добавить
@@ -36,7 +36,7 @@ public class Stock{
         if (canAdd(order)) {
             orders.add(order);
             order.setStatus(Order.Status.STORED);
-            System.out.println("Order  " + order.getOrderId() + " " + order.getStatus() );
+            System.out.println("Order  " + order.getOrderId() + " " + order.getStatus());
 
         }
     }
@@ -47,7 +47,8 @@ public class Stock{
             order.setStatus(Order.Status.STORED);
             System.out.println("Order " + order.getOrderId() + " " + order.getStatus());
         } else {
-            System.out.println("Error: Order " + order.getOrderId() + " couldn't be added to stock.");
+            System.out.println("Error: Order " +
+                    order.getOrderId() + " couldn't be added to stock.");
         }
         return added;
     }

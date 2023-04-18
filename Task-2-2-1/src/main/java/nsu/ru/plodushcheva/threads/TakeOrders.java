@@ -1,17 +1,17 @@
-package nsu.ru.plodushcheva.Threads;
-
-import nsu.ru.plodushcheva.pizzeria.Order;
+package nsu.ru.plodushcheva.threads;
 
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.TimeUnit;
+import nsu.ru.plodushcheva.pizzeria.Order;
 
-public class TakeOrders implements Worker{
+
+public class TakeOrders implements Worker {
     private final BlockingQueue<Order> orderQueue;
     private int id;
     private static boolean working;
 
 
-    public TakeOrders(BlockingQueue<Order> orderQueue){
+    public TakeOrders(BlockingQueue<Order> orderQueue) {
         this.orderQueue = orderQueue;
         this.id = 0;
         working = true;
@@ -27,8 +27,7 @@ public class TakeOrders implements Worker{
                 TimeUnit.SECONDS.sleep(2);
                 orderQueue.add(order);
                 System.out.println("Order " + order.getOrderId() + " " +  order.getStatus());
-            } catch (InterruptedException e) {
-                    //e.printStackTrace();
+            } catch (InterruptedException e) {                     //e.printStackTrace();
                 System.out.println("Interrupted");
             }
         }
@@ -38,7 +37,7 @@ public class TakeOrders implements Worker{
 
 
     @Override
-    public void stop(){
+    public void stop() {
         working = false;
         Thread.currentThread().interrupt();
 

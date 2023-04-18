@@ -1,10 +1,19 @@
 package nsu.ru.plodushcheva.pizzeria;
 
-import nsu.ru.plodushcheva.Threads.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
+import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.LinkedBlockingQueue;
+import java.util.concurrent.TimeUnit;
 import nsu.ru.plodushcheva.json.PizzeriaData;
+import nsu.ru.plodushcheva.threads.Cook;
+import nsu.ru.plodushcheva.threads.Courier;
+import nsu.ru.plodushcheva.threads.TakeOrders;
 
-import java.util.*;
-import java.util.concurrent.*;
 
 public class Pizzeria {
 
@@ -21,18 +30,18 @@ public class Pizzeria {
         }
         this.executor = Executors.newCachedThreadPool();
         this.orderQueue = new LinkedBlockingQueue<>();
-        Stock stock = new Stock(data.stockSize());
+        Stock stock = new Stock(data.getStockSize());
 
-        for (int i = 0; i < data.getNumCookers(); i++) {
-            String name = data.cookers().get(i).getName();
-            int strength = data.cookers().get(i).getStrength();
+        for (int i = 0; i < data.getNumCooks(); i++) {
+            String name = data.getCooks().get(i).getName();
+            int strength = data.getCooks().get(i).getStrength();
             cooks.add( new Cook(name, strength, orderQueue, stock));
             System.out.println("Cooker name: " + name + " Strength " + strength);
         }
 
         for (int i = 0; i < data.getNumCouriers(); i++) {
-            String name = data.couriers().get(i).getName();
-            int maxTrunkSize = data.couriers().get(i).getMaxTrunkSize();
+            String name = data.getCouriers().get(i).getName();
+            int maxTrunkSize = data.getCouriers().get(i).getMaxTrunkSize();
             couriers.add(new Courier(name, maxTrunkSize, stock));
             System.out.println("Courier name: " + name + " TrunkSize " + maxTrunkSize);
         }

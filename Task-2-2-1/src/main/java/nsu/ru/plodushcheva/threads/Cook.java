@@ -1,12 +1,10 @@
-package nsu.ru.plodushcheva.Threads;
+package nsu.ru.plodushcheva.threads;
 
+import java.util.concurrent.BlockingQueue;
 import nsu.ru.plodushcheva.pizzeria.Order;
 import nsu.ru.plodushcheva.pizzeria.Stock;
 
-import java.util.Objects;
-import java.util.concurrent.BlockingQueue;
-
-public class Cook implements Worker{
+public class Cook implements Worker {
     private final String name;
     private final int strength;
     private final BlockingQueue<Order> orderQueue;
@@ -45,7 +43,8 @@ public class Cook implements Worker{
     private void makePizza(Order order) throws InterruptedException {
         Thread.sleep(500 - strength);
         order.setStatus(Order.Status.COOKED);
-        System.out.println("Order  " + order.getOrderId() + " "  + order.getStatus() + " by cooker " + name);
+        System.out.println("Order  " + order.getOrderId() + " "  +
+                order.getStatus() + " by cooker " + name);
 
     }
 

@@ -1,10 +1,10 @@
 package nsu.ru.plodushcheva.json;
 
-public class CookerJson {
+public class CookJson {
     private final String name;
     private final int strength;
 
-    public CookerJson(String name, int strength) {
+    public CookJson(String name, int strength) {
         this.name = name;
         this.strength = strength;
     }

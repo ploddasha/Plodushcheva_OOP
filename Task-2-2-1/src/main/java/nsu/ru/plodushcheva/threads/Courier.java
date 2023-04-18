@@ -1,13 +1,13 @@
-package nsu.ru.plodushcheva.Threads;
+package nsu.ru.plodushcheva.threads;
 
+import java.util.concurrent.TimeUnit;
+import java.util.LinkedList;
+import java.util.Queue;
 import nsu.ru.plodushcheva.pizzeria.Order;
 import nsu.ru.plodushcheva.pizzeria.Stock;
 
-import java.util.LinkedList;
-import java.util.Queue;
-import java.util.concurrent.TimeUnit;
 
-public class Courier implements Worker{
+public class Courier implements Worker {
     private final String name;
     private final int maxTrunkSize;
     private final Stock stock;
@@ -26,11 +26,12 @@ public class Courier implements Worker{
     public void run() {
         while (working) {
             try {
-                if (pizzasInTrunk.size()<maxTrunkSize) {
+                if (pizzasInTrunk.size() < maxTrunkSize) {
                     Order order = stock.takeOrder();
                     if (order != null) {
                         order.setStatus(Order.Status.DELIVERING);
-                        System.out.println("Order " + order.getOrderId() + " "  + order.getStatus() + " by courier " + name);
+                        System.out.println("Order " + order.getOrderId() +
+                                " "  + order.getStatus() + " by courier " + name);
                         pizzasInTrunk.add(order);
                     } else {
                         Thread.sleep(1000);
@@ -54,10 +55,11 @@ public class Courier implements Worker{
 
     private void deliverPizzas() throws InterruptedException {
         for (int i = 0; i < pizzasInTrunk.size(); i++) {
-            TimeUnit.SECONDS.sleep(6 );
+            TimeUnit.SECONDS.sleep(6);
             Order order = pizzasInTrunk.remove();
             order.setStatus(Order.Status.DELIVERED);
-            System.out.println("Order " + order.getOrderId() + " "  + order.getStatus() + " by courier " + name);
+            System.out.println("Order " + order.getOrderId() + " "  +
+                    order.getStatus() + " by courier " + name);
 
         }
     }
@@ -68,7 +70,8 @@ public class Courier implements Worker{
         try {
             deliverPizzas();
         } catch (InterruptedException e) {
-            System.out.println("Courier " + name + " has been interrupted while delivering pizzas.");
+            System.out.println("Courier " + name +
+                    " has been interrupted while delivering pizzas.");
         }
         Thread.currentThread().interrupt();
     }
