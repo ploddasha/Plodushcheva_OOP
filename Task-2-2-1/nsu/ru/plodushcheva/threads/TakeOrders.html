@@ -138,6 +138,7 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <pre>public class <span class="typeNameLabel">TakeOrders</span>
 extends java.lang.Object
 implements <a href="Worker.html" title="interface in nsu.ru.plodushcheva.threads">Worker</a></pre>
+<div class="block">This class represents a worker that takes orders and adds them to the order queue.</div>
 </li>
 </ul>
 </div>
@@ -159,7 +160,9 @@ implements <a href="Worker.html" title="interface in nsu.ru.plodushcheva.threads
 </tr>
 <tr class="altColor">
 <th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E(java.util.concurrent.BlockingQueue)">TakeOrders</a></span>&#8203;(java.util.concurrent.BlockingQueue&lt;<a href="../pizzeria/Order.html" title="class in nsu.ru.plodushcheva.pizzeria">Order</a>&gt;&nbsp;orderQueue)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Constructs a new TakeOrders worker with the specified order queue.</div>
+</td>
 </tr>
 </table>
 </li>
@@ -182,12 +185,17 @@ implements <a href="Worker.html" title="interface in nsu.ru.plodushcheva.threads
 <tr id="i0" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#run()">run</a></span>()</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">The method that executes the worker's job
+ of taking orders and adding them to the order queue.</div>
+</td>
 </tr>
 <tr id="i1" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#stop()">stop</a></span>()</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">The method that stops the worker from taking orders and adding them to the queue.</div>
+</td>
 </tr>
 </table>
 <ul class="blockList">
@@ -220,6 +228,11 @@ implements <a href="Worker.html" title="interface in nsu.ru.plodushcheva.threads
 <li class="blockList">
 <h4>TakeOrders</h4>
 <pre>public&nbsp;TakeOrders&#8203;(java.util.concurrent.BlockingQueue&lt;<a href="../pizzeria/Order.html" title="class in nsu.ru.plodushcheva.pizzeria">Order</a>&gt;&nbsp;orderQueue)</pre>
+<div class="block">Constructs a new TakeOrders worker with the specified order queue.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>orderQueue</code> - the blocking queue to add orders to</dd>
+</dl>
 </li>
 </ul>
 </li>
@@ -239,6 +252,8 @@ implements <a href="Worker.html" title="interface in nsu.ru.plodushcheva.threads
 <li class="blockList">
 <h4>run</h4>
 <pre class="methodSignature">public&nbsp;void&nbsp;run()</pre>
+<div class="block">The method that executes the worker's job
+ of taking orders and adding them to the order queue.</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code>run</code>&nbsp;in interface&nbsp;<code>java.lang.Runnable</code></dd>
@@ -254,6 +269,7 @@ implements <a href="Worker.html" title="interface in nsu.ru.plodushcheva.threads
 <li class="blockList">
 <h4>stop</h4>
 <pre class="methodSignature">public&nbsp;void&nbsp;stop()</pre>
+<div class="block">The method that stops the worker from taking orders and adding them to the queue.</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code><a href="Worker.html#stop()">stop</a></code>&nbsp;in interface&nbsp;<code><a href="Worker.html" title="interface in nsu.ru.plodushcheva.threads">Worker</a></code></dd>

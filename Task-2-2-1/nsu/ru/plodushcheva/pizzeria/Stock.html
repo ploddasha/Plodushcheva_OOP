@@ -27,7 +27,7 @@
     catch(err) {
     }
 //-->
-var data = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10};
+var data = {"i0":10,"i1":10,"i2":10,"i3":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -133,6 +133,9 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <hr>
 <pre>public class <span class="typeNameLabel">Stock</span>
 extends java.lang.Object</pre>
+<div class="block">A class representing the stock of a pizzeria.
+ The stock is responsible for storing orders that are ready
+ to be delivered by the couriers.</div>
 </li>
 </ul>
 </div>
@@ -177,32 +180,30 @@ extends java.lang.Object</pre>
 <tr id="i0" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#addOrder(nsu.ru.plodushcheva.pizzeria.Order)">addOrder</a></span>&#8203;(<a href="Order.html" title="class in nsu.ru.plodushcheva.pizzeria">Order</a>&nbsp;order)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Adds the specified order to the stock.</div>
+</td>
 </tr>
 <tr id="i1" class="rowColor">
 <td class="colFirst"><code>boolean</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#addOrder2(nsu.ru.plodushcheva.pizzeria.Order)">addOrder2</a></span>&#8203;(<a href="Order.html" title="class in nsu.ru.plodushcheva.pizzeria">Order</a>&nbsp;order)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Adds the specified order to the stock.</div>
+</td>
 </tr>
 <tr id="i2" class="altColor">
 <td class="colFirst"><code>boolean</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#canAdd(nsu.ru.plodushcheva.pizzeria.Order)">canAdd</a></span>&#8203;(<a href="Order.html" title="class in nsu.ru.plodushcheva.pizzeria">Order</a>&nbsp;order)</code></th>
-<td class="colLast">&nbsp;</td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#canAdd()">canAdd</a></span>()</code></th>
+<td class="colLast">
+<div class="block">Determines if the specified order can be added to the stock.</div>
+</td>
 </tr>
 <tr id="i3" class="rowColor">
-<td class="colFirst"><code>int</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getCurrentOrderId()">getCurrentOrderId</a></span>()</code></th>
-<td class="colLast">&nbsp;</td>
-</tr>
-<tr id="i4" class="altColor">
 <td class="colFirst"><code><a href="Order.html" title="class in nsu.ru.plodushcheva.pizzeria">Order</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#takeOrder()">takeOrder</a></span>()</code></th>
-<td class="colLast">&nbsp;</td>
-</tr>
-<tr id="i5" class="rowColor">
-<td class="colFirst"><code><a href="Order.html" title="class in nsu.ru.plodushcheva.pizzeria">Order</a></code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#takePizza(int)">takePizza</a></span>&#8203;(int&nbsp;capacity)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Gets the ID of the most recent order that was added to the stock.</div>
+</td>
 </tr>
 </table>
 <ul class="blockList">
@@ -247,15 +248,6 @@ extends java.lang.Object</pre>
 <!--   -->
 </a>
 <h3>Method Detail</h3>
-<a id="takePizza(int)">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>takePizza</h4>
-<pre class="methodSignature">public&nbsp;<a href="Order.html" title="class in nsu.ru.plodushcheva.pizzeria">Order</a>&nbsp;takePizza&#8203;(int&nbsp;capacity)</pre>
-</li>
-</ul>
 <a id="takeOrder()">
 <!--   -->
 </a>
@@ -264,28 +256,27 @@ extends java.lang.Object</pre>
 <h4>takeOrder</h4>
 <pre class="methodSignature">public&nbsp;<a href="Order.html" title="class in nsu.ru.plodushcheva.pizzeria">Order</a>&nbsp;takeOrder()
                 throws java.lang.InterruptedException</pre>
+<div class="block">Gets the ID of the most recent order that was added to the stock.</div>
 <dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>the ID of the most recent order that was added to the stock</dd>
 <dt><span class="throwsLabel">Throws:</span></dt>
 <dd><code>java.lang.InterruptedException</code></dd>
 </dl>
 </li>
 </ul>
-<a id="getCurrentOrderId()">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>getCurrentOrderId</h4>
-<pre class="methodSignature">public&nbsp;int&nbsp;getCurrentOrderId()</pre>
-</li>
-</ul>
-<a id="canAdd(nsu.ru.plodushcheva.pizzeria.Order)">
+<a id="canAdd()">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
 <h4>canAdd</h4>
-<pre class="methodSignature">public&nbsp;boolean&nbsp;canAdd&#8203;(<a href="Order.html" title="class in nsu.ru.plodushcheva.pizzeria">Order</a>&nbsp;order)</pre>
+<pre class="methodSignature">public&nbsp;boolean&nbsp;canAdd()</pre>
+<div class="block">Determines if the specified order can be added to the stock.</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>true if the order can be added, false otherwise</dd>
+</dl>
 </li>
 </ul>
 <a id="addOrder(nsu.ru.plodushcheva.pizzeria.Order)">
@@ -295,6 +286,12 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>addOrder</h4>
 <pre class="methodSignature">public&nbsp;void&nbsp;addOrder&#8203;(<a href="Order.html" title="class in nsu.ru.plodushcheva.pizzeria">Order</a>&nbsp;order)</pre>
+<div class="block">Adds the specified order to the stock.
+ If the stock is full, the method blocks until space becomes available.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>order</code> - the order to be added</dd>
+</dl>
 </li>
 </ul>
 <a id="addOrder2(nsu.ru.plodushcheva.pizzeria.Order)">
@@ -305,9 +302,15 @@ extends java.lang.Object</pre>
 <h4>addOrder2</h4>
 <pre class="methodSignature">public&nbsp;boolean&nbsp;addOrder2&#8203;(<a href="Order.html" title="class in nsu.ru.plodushcheva.pizzeria">Order</a>&nbsp;order)
                   throws java.lang.InterruptedException</pre>
+<div class="block">Adds the specified order to the stock.
+ If the stock is full, the method blocks until space becomes available.</div>
 <dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>order</code> - the order to be added</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>true if added successful</dd>
 <dt><span class="throwsLabel">Throws:</span></dt>
-<dd><code>java.lang.InterruptedException</code></dd>
+<dd><code>java.lang.InterruptedException</code> - if the thread is interrupted while waiting to add the order</dd>
 </dl>
 </li>
 </ul>

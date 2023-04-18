@@ -133,6 +133,13 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <hr>
 <pre>public class <span class="typeNameLabel">Pizzeria</span>
 extends java.lang.Object</pre>
+<div class="block">The Pizzeria class represents a pizzeria where cooks and couriers work to fulfill orders.
+ It uses a blocking queue
+ to store incoming orders and
+ an executor service to manage threads for the cooks and couriers.
+ It can be opened and closed for a specified period of time,
+ and also has a method to stop all ongoing tasks and shutdown
+ the executor service.</div>
 </li>
 </ul>
 </div>
@@ -177,12 +184,16 @@ extends java.lang.Object</pre>
 <tr id="i0" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#stop()">stop</a></span>()</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Stops all ongoing tasks and shuts down the executor service.</div>
+</td>
 </tr>
 <tr id="i1" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#work(int)">work</a></span>&#8203;(int&nbsp;time)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Opens the pizzeria for the specified period of time, during which orders are taken and fulfilled.</div>
+</td>
 </tr>
 </table>
 <ul class="blockList">
@@ -234,6 +245,11 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>work</h4>
 <pre class="methodSignature">public&nbsp;void&nbsp;work&#8203;(int&nbsp;time)</pre>
+<div class="block">Opens the pizzeria for the specified period of time, during which orders are taken and fulfilled.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>time</code> - The duration of time, in milliseconds, that the pizzeria should remain open.</dd>
+</dl>
 </li>
 </ul>
 <a id="stop()">
@@ -243,6 +259,7 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>stop</h4>
 <pre class="methodSignature">public&nbsp;void&nbsp;stop()</pre>
+<div class="block">Stops all ongoing tasks and shuts down the executor service.</div>
 </li>
 </ul>
 </li>
