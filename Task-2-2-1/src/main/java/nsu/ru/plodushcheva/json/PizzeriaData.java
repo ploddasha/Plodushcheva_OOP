@@ -19,7 +19,8 @@ public class PizzeriaData {
     }
 
     /**
-     * Constructs a PizzeriaData object with the specified cook and courier information and stock size.
+     * Constructs a PizzeriaData object with the specified cook
+     * and courier information and stock size.
      *
      * @param cooks A list of cook information.
      * @param couriers A list of courier information.

@@ -3,10 +3,10 @@ package nsu.ru.plodushcheva.json;
 import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
 import com.google.gson.reflect.TypeToken;
-import java.io.InputStreamReader;
 import java.io.IOException;
-import java.util.Objects;
+import java.io.InputStreamReader;
 import java.io.Reader;
+import java.util.Objects;
 
 /**
  * A class for parsing a JSON file and obtaining data about a pizzeria.

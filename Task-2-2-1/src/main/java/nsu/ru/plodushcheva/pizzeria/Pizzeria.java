@@ -65,7 +65,8 @@ public class Pizzeria {
     }
 
     /**
-     * Opens the pizzeria for the specified period of time, during which orders are taken and fulfilled.
+     * Opens the pizzeria for the specified period of time,
+     * during which orders are taken and fulfilled.
      *
      * @param time The duration of time, in milliseconds, that the pizzeria should remain open.
      */
