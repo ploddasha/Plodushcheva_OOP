@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","url":"allpackages-index.html"},{"l":"nsu.ru.plodushcheva"},{"l":"nsu.ru.plodushcheva.json"},{"l":"nsu.ru.plodushcheva.pizzeria"},{"l":"nsu.ru.plodushcheva.threads"}]
