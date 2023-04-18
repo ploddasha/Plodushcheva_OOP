@@ -39,15 +39,14 @@ public class Courier implements Worker {
     public void run() {
         while (working) {
             try {
-                for (int i = 0; i < maxTrunkSize; i++ ) {
+                for (int i = 0; i < maxTrunkSize; i++) {
                     if (pizzasInTrunk.size() < maxTrunkSize) {
                         Order order = stock.takeOrder();
                         order.setStatus(Order.Status.DELIVERING);
                         System.out.println("Order " + order.getOrderId()
                                 + " "  + order.getStatus() + " by courier " + name);
                         pizzasInTrunk.add(order);
-                    }
-                    else {
+                    } else {
                         break;
                     }
                 }

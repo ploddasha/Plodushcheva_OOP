@@ -118,8 +118,7 @@ public class Pizzeria {
         try {
             if (executor.awaitTermination(10, TimeUnit.SECONDS)) {
                 System.err.println(" Pizzeria is closed!");
-            }
-            else {
+            } else {
                 executor.shutdownNow();
                 System.err.println(" Pizzeria is closed !");
             }
