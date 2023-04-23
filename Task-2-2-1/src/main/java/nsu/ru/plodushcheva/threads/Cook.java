@@ -43,10 +43,11 @@ public class Cook implements Worker {
                 stock.addOrder(order);
             } catch (InterruptedException e) {
                 System.out.println("Cook " + name + " was interrupted");
+                Thread.currentThread().interrupt();
+                //break; // выход из цикла
             }
         }
         System.out.println("Cook " + name + " finished work");
-        Thread.currentThread().interrupt();
     }
 
     /**

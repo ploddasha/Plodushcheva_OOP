@@ -15,7 +15,7 @@ public class Courier implements Worker {
     private final int maxTrunkSize;
     private final Stock stock;
     private final BlockingQueue<Order> pizzasInTrunk;
-    private static boolean working;
+    private volatile boolean working;
 
     /**
      * Constructs a Courier object with the given name, maximum trunk size, and stock.
@@ -37,7 +37,7 @@ public class Courier implements Worker {
      */
     @Override
     public void run() {
-        while (working) {
+        while (working && !Thread.currentThread().isInterrupted()) {
             try {
                 for (int i = 0; i < maxTrunkSize; i++) {
                     if (pizzasInTrunk.size() < maxTrunkSize) {
@@ -50,22 +50,20 @@ public class Courier implements Worker {
                         break;
                     }
                 }
-                if (pizzasInTrunk.size() > 0) {
-                    try {
-                        deliverPizzas();
-                    } catch (InterruptedException e) {
-                        System.out.println("Courier " + name
-                                + " was interrupted during delivery");
-                    }
-                }
             } catch (InterruptedException e) {
                 System.out.println("Courier " + name + " was interrupted");
+            }
+            if (pizzasInTrunk.size() > 0) {
+                try {
+                    deliverPizzas();
+                } catch (InterruptedException e) {
+                    System.out.println("Courier " + name
+                            + " was interrupted during delivery");
+                }
             }
 
         }
         System.out.println("Courier " + name + " finished work");
-        Thread.currentThread().interrupt();
-
     }
 
     /**

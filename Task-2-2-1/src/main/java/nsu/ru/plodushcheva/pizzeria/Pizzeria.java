@@ -2,13 +2,8 @@ package nsu.ru.plodushcheva.pizzeria;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Timer;
-import java.util.TimerTask;
-import java.util.concurrent.BlockingQueue;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.LinkedBlockingQueue;
-import java.util.concurrent.TimeUnit;
+import java.util.concurrent.*;
+
 import nsu.ru.plodushcheva.json.PizzeriaData;
 import nsu.ru.plodushcheva.threads.Cook;
 import nsu.ru.plodushcheva.threads.Courier;
@@ -29,7 +24,9 @@ public class Pizzeria {
     private final List<Cook> cooks = new ArrayList<>();
     private final List<Courier> couriers = new ArrayList<>();
     private BlockingQueue<Order> orderQueue;
-    private ExecutorService executor;
+    private ThreadPoolExecutor executor;
+    //private ExecutorService executor;
+
     private TakeOrders takeOrders;
 
     /**
@@ -44,7 +41,7 @@ public class Pizzeria {
             System.err.println("Failed to load pizzeria parameters from file");
             return;
         }
-        this.executor = Executors.newCachedThreadPool();
+        this.executor = (ThreadPoolExecutor) Executors.newCachedThreadPool();
         this.orderQueue = new LinkedBlockingQueue<>();
         Stock stock = new Stock(data.getStockSize());
 
@@ -67,31 +64,20 @@ public class Pizzeria {
     /**
      * Opens the pizzeria for the specified period of time,
      * during which orders are taken and fulfilled.
-     *
-     * @param time The duration of time, in milliseconds, that the pizzeria should remain open.
      */
-    public void work(int time) {
+    public void work() {
         System.out.println(" Pizzeria is open ");
 
         takeOrders = new TakeOrders(orderQueue);
         executor.execute(takeOrders);
 
         for (Cook cook : cooks) {
-            executor.execute(cook);
+             executor.execute(cook);
         }
 
         for (Courier courier : couriers) {
             executor.execute(courier);
         }
-
-        Timer timer = new Timer();
-        timer.schedule(new TimerTask() {
-            @Override
-            public void run() {
-                stop();
-            }
-        }, time);
-
 
     }
 
@@ -107,9 +93,9 @@ public class Pizzeria {
         orderQueue.clear();
 
         try {
-            Thread.sleep(3000);
+            Thread.sleep(9000);
+            System.out.println("Start shutdownNow");
             executor.shutdownNow();
-
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
@@ -117,10 +103,11 @@ public class Pizzeria {
 
         try {
             if (executor.awaitTermination(10, TimeUnit.SECONDS)) {
-                System.err.println(" Pizzeria is closed!");
+                //System.out.println(executor.);
+                System.out.println("   Pizzeria is closed!");
             } else {
                 executor.shutdownNow();
-                System.err.println(" Pizzeria is closed !");
+                System.err.println(" Pizzeria is closed!");
             }
         } catch (InterruptedException e) {
             System.out.println("Interrupted while waiting for tasks to complete");

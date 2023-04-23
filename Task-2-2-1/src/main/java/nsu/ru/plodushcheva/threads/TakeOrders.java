@@ -11,7 +11,7 @@ import nsu.ru.plodushcheva.pizzeria.Order;
 public class TakeOrders implements Worker {
     private final BlockingQueue<Order> orderQueue;
     private int id;
-    private static boolean working;
+    private volatile boolean working;
 
 
     /**
@@ -43,8 +43,6 @@ public class TakeOrders implements Worker {
             }
         }
         System.out.println("We do not accept orders anymore");
-        Thread.currentThread().interrupt();
-
     }
 
 

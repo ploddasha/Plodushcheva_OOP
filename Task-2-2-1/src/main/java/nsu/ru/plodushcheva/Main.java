@@ -16,11 +16,23 @@ public class Main {
      * on that instance to simulate the pizzeria's operation for the specified
      * time interval.
      *
-     * @param args the command line arguments (unused)
+     *  @param args the command line arguments (unused)
      */
     public static void main(String[] args) {
         Pizzeria pizzeria = new Pizzeria(new JsonParser().getData());
-        pizzeria.work(15000);
+        pizzeria.work();
 
+        new java.util.Timer().schedule(
+                new java.util.TimerTask() {
+                    @Override
+                    public void run() {
+                        System.out.println("Stopping pizzeria...");
+                        pizzeria.stop();
+                        System.out.println("Stopped...");
+                        //System.exit(0);
+                    }
+                },
+                15000
+        );
     }
 }
