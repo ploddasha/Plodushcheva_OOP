@@ -24,7 +24,7 @@ public class EnemySnake{
     private int ROWS;
     private int COLUMNS;
     private int SQUARE_SIZE;
-    private GraphicsContext gc;
+    private GraphicsContext graphicsContext;
     private boolean gameOver;
     private Walls walls;
 
@@ -41,7 +41,7 @@ public class EnemySnake{
         this.ROWS = ROWS;
         this.COLUMNS = COLUMNS;
         this.SQUARE_SIZE = SQUARE_SIZE;
-        this.gc = graphicsContext;
+        this.graphicsContext = graphicsContext;
         this.walls = walls;
 
         //int p = new Random().nextInt(20);
@@ -55,7 +55,7 @@ public class EnemySnake{
         //timeline.play();
     }
 
-    public void run() {
+    public void run(GraphicsContext gc) {
         if (gameOver) {
             return;
         }
