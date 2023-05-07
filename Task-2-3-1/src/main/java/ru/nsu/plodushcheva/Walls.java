@@ -33,39 +33,128 @@ public class Walls {
     }
 
     public void addWalls() {
-        //gc.setFill(Color.web("5BC0EB"));
-        //gc.fillRect(10 * SQUARE_SIZE, 3 * SQUARE_SIZE, SQUARE_SIZE, SQUARE_SIZE);
         walls.add(new Point(10, 3));
-        //walls.addWall(new Point(10, 3));
-        //gc.fillRect(10 * SQUARE_SIZE, 4 * SQUARE_SIZE, SQUARE_SIZE, SQUARE_SIZE);
         walls.add(new Point(10, 4));
-        //walls.addWall(new Point(10, 4));
-        //gc.fillRect(10 * SQUARE_SIZE, 5 * SQUARE_SIZE, SQUARE_SIZE, SQUARE_SIZE);
         walls.add(new Point(10, 5));
-        //walls.addWall(new Point(10, 5));
-        //gc.fillRect(20 * SQUARE_SIZE, 20 * SQUARE_SIZE, SQUARE_SIZE, SQUARE_SIZE);
+
         walls.add(new Point(20, 20));
-        //walls.addWall(new Point(20, 20));
-        //gc.fillRect(21 * SQUARE_SIZE, 20 * SQUARE_SIZE, SQUARE_SIZE, SQUARE_SIZE);
         walls.add(new Point(21, 20));
-        //walls.addWall(new Point(21, 20));
-        //gc.fillRect(22 * SQUARE_SIZE, 20 * SQUARE_SIZE, SQUARE_SIZE, SQUARE_SIZE);
         walls.add(new Point(22, 20));
-        //walls.addWall(new Point(22, 20));
-        //gc.fillRect(23 * SQUARE_SIZE, 20 * SQUARE_SIZE, SQUARE_SIZE, SQUARE_SIZE);
         walls.add(new Point(23, 20));
-        //walls.addWall(new Point(23, 20));
-        //gc.fillRect(8 * SQUARE_SIZE, 25 * SQUARE_SIZE, SQUARE_SIZE, SQUARE_SIZE);
+
         walls.add(new Point(8, 25));
-        //walls.addWall(new Point(8, 25));
-        //gc.fillRect(9 * SQUARE_SIZE, 25 * SQUARE_SIZE, SQUARE_SIZE, SQUARE_SIZE);
         walls.add(new Point(9, 25));
-        //walls.addWall(new Point(9, 25));
-        //gc.fillRect(10 * SQUARE_SIZE, 25 * SQUARE_SIZE, SQUARE_SIZE, SQUARE_SIZE);
         walls.add(new Point(10, 25));
-        //walls.addWall(new Point(10, 25));
-        //gc.fillRect(11 * SQUARE_SIZE, 25 * SQUARE_SIZE, SQUARE_SIZE, SQUARE_SIZE);
         walls.add(new Point(11, 25));
-        //walls.addWall(new Point(11, 25));
     }
+
+    public void addWallsForLevelOne() {
+        walls.add(new Point(10, 3));
+        walls.add(new Point(10, 4));
+        walls.add(new Point(10, 5));
+        walls.add(new Point(20, 20));
+        walls.add(new Point(21, 20));
+        walls.add(new Point(22, 20));
+        walls.add(new Point(23, 20));
+        walls.add(new Point(8, 25));
+        walls.add(new Point(9, 25));
+        walls.add(new Point(10, 25));
+        walls.add(new Point(11, 25));
+    }
+
+
+    public void addWallsForLevelTwo() {
+
+
+    }
+
+    public void addWallsForLevelThree() {
+        walls.add(new Point(2, 1));
+        walls.add(new Point(3, 1));
+        walls.add(new Point(4, 1));
+        walls.add(new Point(5, 1));
+        walls.add(new Point(6, 1));
+        walls.add(new Point(2, 3));
+        walls.add(new Point(2, 4));
+        walls.add(new Point(2, 5));
+
+        walls.add(new Point(11, 2));
+
+        walls.add(new Point(14, 2));
+
+        walls.add(new Point(20, 1));
+        walls.add(new Point(21, 1));
+
+        walls.add(new Point(1, 10));
+        walls.add(new Point(1, 11));
+        walls.add(new Point(1, 12));
+
+        walls.add(new Point(5, 8));
+        walls.add(new Point(5, 9));
+        walls.add(new Point(5, 10));
+        walls.add(new Point(5, 11));
+        walls.add(new Point(5, 12));
+
+        walls.add(new Point(5, 7));
+
+        walls.add(new Point(8, 14));
+        walls.add(new Point(9, 14));
+        walls.add(new Point(10, 14));
+        walls.add(new Point(11, 14));
+        walls.add(new Point(12, 14));
+
+        walls.add(new Point(15, 6));
+        walls.add(new Point(15, 7));
+        walls.add(new Point(15, 8));
+        walls.add(new Point(15, 9));
+        walls.add(new Point(15, 10));
+        walls.add(new Point(15, 11));
+
+        walls.add(new Point(4, 18));
+
+        walls.add(new Point(7, 21));
+        walls.add(new Point(7, 22));
+        walls.add(new Point(7, 23));
+        walls.add(new Point(7, 24));
+        walls.add(new Point(6, 24));
+        walls.add(new Point(5, 24));
+        walls.add(new Point(4, 24));
+        walls.add(new Point(3, 24));
+        walls.add(new Point(3, 25));
+        walls.add(new Point(3, 26));
+        walls.add(new Point(3, 27));
+        walls.add(new Point(3, 28));
+
+        walls.add(new Point(20, 17));
+        walls.add(new Point(21, 17));
+        walls.add(new Point(22, 17));
+        walls.add(new Point(23, 17));
+        walls.add(new Point(24, 17));
+
+        walls.add(new Point(28, 24));
+        walls.add(new Point(28, 25));
+        walls.add(new Point(28, 26));
+        walls.add(new Point(28, 27));
+        walls.add(new Point(28, 28));
+
+        walls.add(new Point(12, 19));
+        walls.add(new Point(12, 20));
+        walls.add(new Point(12, 21));
+        walls.add(new Point(13, 21));
+        walls.add(new Point(14, 21));
+        walls.add(new Point(15, 21));
+        walls.add(new Point(16, 21));
+
+
+        walls.add(new Point(23, 28));
+
+        walls.add(new Point(28, 10));
+        walls.add(new Point(28, 11));
+        walls.add(new Point(28, 12));
+
+
+    }
+
+
+
 }

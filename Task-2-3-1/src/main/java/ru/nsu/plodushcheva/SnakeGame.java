@@ -45,7 +45,7 @@ public class SnakeGame extends Application {
     private static final int COLUMNS = 30;
     private static final int ROWS = 30;
     private static final int SQUARE_SIZE = WIDTH/ROWS;
-    private static int SCORE_FOR_WIN = 20;
+    private int SCORE_FOR_WIN = 20;
     private Graphics graphics;
 
     public enum Direction {
@@ -58,13 +58,9 @@ public class SnakeGame extends Application {
     private Direction direction;
 
     private GraphicsContext gc;
-    //private List<Point> snakeBody = new ArrayList<>();
 
     Walls walls;
     private int currentDirection;
-    //private Point snakeHead;
-    private int foodX;
-    private int foodY;
     private boolean gameOver;
     private int score = 0;
     private GameField gameField;
@@ -73,6 +69,7 @@ public class SnakeGame extends Application {
     int MAX_FOOD = 10;
     int Speed = 130;
     Snake snake;
+    int gameLevel = 2;
 
 
 
@@ -81,10 +78,8 @@ public class SnakeGame extends Application {
     @Override
     public void start(Stage primaryStage) throws IOException {
 
-        // --------------
-        Label level = new Label("Choose you level");
+        Label level = new Label("Choose your level");
 
-        //TextField scoreDesire = new TextField("initial text");
         Label chosenScore = new Label("Choose your desire score");
         final Spinner<Integer> spinner = new Spinner<Integer>();
         final int initialValue = 20;
@@ -92,16 +87,6 @@ public class SnakeGame extends Application {
                 new SpinnerValueFactory.IntegerSpinnerValueFactory(3, 50, initialValue);
 
         spinner.setValueFactory(valueFactory);
-        
-/*
-        EventHandler<ActionEvent> event = new EventHandler<ActionEvent>() {
-            public void handle(ActionEvent e)
-            {
-                chosenScore.setText(scoreDesire.getText());
-            }
-        };
-        scoreDesire.setOnAction(event);
-*/
 
 
         Button buttonLevel = new Button();
@@ -109,8 +94,7 @@ public class SnakeGame extends Application {
         buttonLevel.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                MAX_FOOD = 30;
-                Speed = 200;
+                gameLevel = 1;
                 level.setText("You chose level 1");
 
             }
@@ -121,11 +105,8 @@ public class SnakeGame extends Application {
         buttonLevel2.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                MAX_FOOD = 20;
-                Speed = 150;
+                gameLevel = 2;
                 level.setText("You chose level 2");
-
-
             }
         });
 
@@ -134,8 +115,7 @@ public class SnakeGame extends Application {
         buttonLevel3.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                MAX_FOOD = 10;
-                Speed = 100;
+                gameLevel = 3;
                 level.setText("You chose level 3");
 
             }
@@ -151,8 +131,18 @@ public class SnakeGame extends Application {
 
             @Override
             public void handle(ActionEvent event) {
+                if (gameLevel == 1) {
+                    MAX_FOOD = 30;
+                    Speed = 200;
+                }else if (gameLevel == 2){
+                    MAX_FOOD = 20;
+                    Speed = 150;
+                } else if (gameLevel == 3){
+                    MAX_FOOD = 10;
+                    Speed = 100;
+                }
 
-                gameField = new GameField(600, 600, COLUMNS, ROWS, SQUARE_SIZE);
+                gameField = new GameField(WIDTH, HEIGHT, COLUMNS, ROWS, SQUARE_SIZE);
                 food = new Food(gameField, MAX_FOOD);
                 walls = new Walls(gameField, 5);
                 snake = new Snake(gameField, food, walls);
@@ -191,9 +181,14 @@ public class SnakeGame extends Application {
                     }
                 });
 
-
-
-                walls.addWalls();
+                if (gameLevel == 1) {
+                    walls.addWallsForLevelOne();
+                }else if (gameLevel == 2){
+                    walls.addWallsForLevelTwo();
+                } else if (gameLevel == 3){
+                    walls.addWallsForLevelThree();
+                }
+                //walls.addWalls();
                 food.generateFood(walls, snake);
                 snake.gameOver();
 
@@ -201,11 +196,13 @@ public class SnakeGame extends Application {
                 timeline.setCycleCount(Animation.INDEFINITE);
                 timeline.play();
 
-
+                /*
                 EnemySnakeTwo enemySnakeTwo = new EnemySnakeTwo( gameField, food, walls);
                 Timeline timeline2 = new Timeline(new KeyFrame(Duration.millis(Speed), e -> enemySnakeTwo.run(gc)));
                 timeline2.setCycleCount(Animation.INDEFINITE);
                 timeline2.play();
+
+                 */
             }
         });
 
@@ -214,7 +211,6 @@ public class SnakeGame extends Application {
 
         vbox.getChildren().add(chosenScore);
         vbox.getChildren().add(spinner);
-
 
         vbox.getChildren().add(level);
 
@@ -231,22 +227,6 @@ public class SnakeGame extends Application {
         primaryStage.show();
 
 
-        // --------------
-
-
-
-        /*
-        EnemySnake enemySnake = new EnemySnake(ROWS, COLUMNS, SQUARE_SIZE, gc, walls);
-        Timeline timeline1 = new Timeline(new KeyFrame(Duration.millis(130), e -> enemySnake.run(gc)));
-        timeline1.setCycleCount(Animation.INDEFINITE);
-        timeline1.play();
-        */
-        
-        /*
-        EnemySnake enemySnake2 = new EnemySnake(ROWS, COLUMNS, SQUARE_SIZE, gc, walls);
-        Timeline timeline2 = new Timeline(new KeyFrame(Duration.millis(130), e -> enemySnake2.run()));
-        timeline2.setCycleCount(Animation.INDEFINITE);
-        timeline2.play(); */
 
     }
 
@@ -254,7 +234,7 @@ public class SnakeGame extends Application {
         if (snake.isGameOver()) {
             gc.setFill(Color.RED);
             gc.setFont(new Font("Digital-7", 70));
-            gc.fillText("Game Over", WIDTH / 3.5, HEIGHT / 2);
+            gc.fillText("Game Over", WIDTH / 3.5,  HEIGHT / 2);
             return;
         }
         if (score == SCORE_FOR_WIN) {
@@ -301,23 +281,8 @@ public class SnakeGame extends Application {
 
 
 
-
-
     public static void main(String[] args) {
         launch(args);
     }
 }
 
-/*
-    -> при нажатии в дургом направлении на границах, змейка уходит в заграничное пространство
-    сделать checkPosition и проверять голову
-
-    добавление стены
-
-    -> враг проходит сквозь стены, не ест еду, не убивает гг
-    пусть ест еду
-    пусть проигрывает если гг его ест
-    пусть гг проигрывает если враг его ест
-
-    -> враг ратсет после проигрыша
- */
