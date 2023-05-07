@@ -5,8 +5,8 @@ import java.util.List;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.Executors;
 import java.util.concurrent.LinkedBlockingQueue;
-import java.util.concurrent.TimeUnit;
 import java.util.concurrent.ThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
 import nsu.ru.plodushcheva.json.PizzeriaData;
 import nsu.ru.plodushcheva.threads.Cook;
 import nsu.ru.plodushcheva.threads.Courier;
@@ -80,8 +80,7 @@ public class Pizzeria {
         for (Courier courier : couriers) {
             executor.submit(courier);
         }
-
-        }
+    }
 
     /**
      * Stops all ongoing tasks and shuts down the executor service.

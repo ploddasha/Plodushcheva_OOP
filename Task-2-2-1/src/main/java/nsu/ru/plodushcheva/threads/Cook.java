@@ -2,7 +2,6 @@ package nsu.ru.plodushcheva.threads;
 
 import java.util.Objects;
 import java.util.concurrent.BlockingQueue;
-
 import nsu.ru.plodushcheva.pizzeria.Order;
 import nsu.ru.plodushcheva.pizzeria.Stock;
 
