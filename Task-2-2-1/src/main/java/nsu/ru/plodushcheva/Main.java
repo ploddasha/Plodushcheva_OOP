@@ -29,8 +29,7 @@ public class Main {
                 System.out.println("Stopping pizzeria...");
                 pizzeria.stop();
                 System.out.println("Stopped...");
-                //System.exit(0);
-                timer.cancel(); // stop the timer
+                timer.cancel();
             }
         }, 15000);
 
