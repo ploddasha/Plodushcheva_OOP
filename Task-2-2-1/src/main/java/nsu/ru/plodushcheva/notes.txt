@@ -1,0 +1,7 @@
+ -> сделать пиццерию runnable, а потом join
+ Миша Б
+
+ -> сделать working в начале true в конце false
+ Вадим
+
+ -> busy waiting

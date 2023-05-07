@@ -1,8 +1,11 @@
 package nsu.ru.plodushcheva.threads;
 
+import java.util.Objects;
 import java.util.concurrent.BlockingQueue;
+
 import nsu.ru.plodushcheva.pizzeria.Order;
 import nsu.ru.plodushcheva.pizzeria.Stock;
+
 
 /**
  * A class representing a cook in a pizzeria.
@@ -39,15 +42,16 @@ public class Cook implements Worker {
         while (working && !Thread.currentThread().isInterrupted()) {
             try {
                 Order order = orderQueue.take();
-                makePizza(order);
+                makePizza(Objects.requireNonNull(order));
                 stock.addOrder(order);
+
             } catch (InterruptedException e) {
-                System.out.println("Cook " + name + " was interrupted");
-                Thread.currentThread().interrupt();
-                //break; // выход из цикла
+                System.err.println("Cook " + name + " was interrupted while waiting");
+                working = false;
             }
         }
         System.out.println("Cook " + name + " finished work");
+
     }
 
     /**

@@ -61,7 +61,7 @@ public class Stock {
      * @return true if added successful
      * @throws InterruptedException if the thread is interrupted while waiting
      */
-    public boolean addOrder2(Order order) throws InterruptedException {
+    public boolean addOrderWithCheck(Order order) throws InterruptedException {
         boolean added = orders.offer(order, 10, TimeUnit.SECONDS);
         if (added) {
             order.setStatus(Order.Status.STORED);

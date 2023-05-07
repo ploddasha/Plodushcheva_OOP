@@ -19,8 +19,8 @@ class StockTest {
         Stock stock = new Stock(1);
         Order order1 = new Order(1);
         Order order2 = new Order(2);
-        stock.addOrder2(order1);
-        boolean added = stock.addOrder2(order2);
+        stock.addOrderWithCheck(order1);
+        boolean added = stock.addOrderWithCheck(order2);
         Assertions.assertFalse(added);
     }
 

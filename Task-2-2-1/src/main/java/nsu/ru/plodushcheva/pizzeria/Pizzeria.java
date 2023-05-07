@@ -2,8 +2,11 @@ package nsu.ru.plodushcheva.pizzeria;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.*;
-
+import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.Executors;
+import java.util.concurrent.LinkedBlockingQueue;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.ThreadPoolExecutor;
 import nsu.ru.plodushcheva.json.PizzeriaData;
 import nsu.ru.plodushcheva.threads.Cook;
 import nsu.ru.plodushcheva.threads.Courier;
@@ -25,7 +28,6 @@ public class Pizzeria {
     private final List<Courier> couriers = new ArrayList<>();
     private BlockingQueue<Order> orderQueue;
     private ThreadPoolExecutor executor;
-    //private ExecutorService executor;
 
     private TakeOrders takeOrders;
 
@@ -69,17 +71,17 @@ public class Pizzeria {
         System.out.println(" Pizzeria is open ");
 
         takeOrders = new TakeOrders(orderQueue);
-        executor.execute(takeOrders);
+        executor.submit(takeOrders);
 
         for (Cook cook : cooks) {
-             executor.execute(cook);
+            executor.submit(cook);
         }
 
         for (Courier courier : couriers) {
-            executor.execute(courier);
+            executor.submit(courier);
         }
 
-    }
+        }
 
     /**
      * Stops all ongoing tasks and shuts down the executor service.
@@ -94,7 +96,6 @@ public class Pizzeria {
 
         try {
             Thread.sleep(9000);
-            System.out.println("Start shutdownNow");
             executor.shutdownNow();
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
@@ -103,15 +104,16 @@ public class Pizzeria {
 
         try {
             if (executor.awaitTermination(10, TimeUnit.SECONDS)) {
-                //System.out.println(executor.);
-                System.out.println("   Pizzeria is closed!");
+                System.out.println("Pizzeria is closed!");
+
             } else {
                 executor.shutdownNow();
-                System.err.println(" Pizzeria is closed!");
+                System.err.println("Pizzeria is closed!");
             }
         } catch (InterruptedException e) {
             System.out.println("Interrupted while waiting for tasks to complete");
         }
+
 
     }
 }

@@ -57,7 +57,7 @@ public class Courier implements Worker {
                 try {
                     deliverPizzas();
                 } catch (InterruptedException e) {
-                    System.out.println("Courier " + name
+                    System.err.println("Courier " + name
                             + " was interrupted during delivery");
                 }
             }

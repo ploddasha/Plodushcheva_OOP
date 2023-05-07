@@ -22,17 +22,17 @@ public class Main {
         Pizzeria pizzeria = new Pizzeria(new JsonParser().getData());
         pizzeria.work();
 
-        new java.util.Timer().schedule(
-                new java.util.TimerTask() {
-                    @Override
-                    public void run() {
-                        System.out.println("Stopping pizzeria...");
-                        pizzeria.stop();
-                        System.out.println("Stopped...");
-                        //System.exit(0);
-                    }
-                },
-                15000
-        );
+        java.util.Timer timer = new java.util.Timer();
+        timer.schedule(new java.util.TimerTask() {
+            @Override
+            public void run() {
+                System.out.println("Stopping pizzeria...");
+                pizzeria.stop();
+                System.out.println("Stopped...");
+                //System.exit(0);
+                timer.cancel(); // stop the timer
+            }
+        }, 15000);
+
     }
 }
