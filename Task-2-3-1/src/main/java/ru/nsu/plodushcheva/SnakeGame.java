@@ -9,6 +9,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Pos;
 import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.Parent;
@@ -21,10 +22,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.StackPane;
-import javafx.scene.layout.TilePane;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
@@ -58,6 +56,7 @@ public class SnakeGame extends Application {
     private Direction direction;
 
     private GraphicsContext gc;
+    private GraphicsContext gcInfo;
 
     Walls walls;
     private int currentDirection;
@@ -87,7 +86,6 @@ public class SnakeGame extends Application {
                 new SpinnerValueFactory.IntegerSpinnerValueFactory(3, 50, initialValue);
 
         spinner.setValueFactory(valueFactory);
-
 
         Button buttonLevel = new Button();
         buttonLevel.setText("Choose level 1");
@@ -141,21 +139,34 @@ public class SnakeGame extends Application {
                     MAX_FOOD = 10;
                     Speed = 100;
                 }
+                SCORE_FOR_WIN = spinner.getValue();
+
 
                 gameField = new GameField(WIDTH, HEIGHT, COLUMNS, ROWS, SQUARE_SIZE);
                 food = new Food(gameField, MAX_FOOD);
                 walls = new Walls(gameField, 5);
                 snake = new Snake(gameField, food, walls);
-                graphics = new Graphics(gameField);
+                graphics = new Graphics(gameField, WIDTH, HEIGHT, COLUMNS, ROWS);
 
-                Group root = new Group();
+                //Group root = new Group();
+                HBox root = new HBox();
+                //VBox root = new VBox();
+
+
                 Canvas canvas = new Canvas(WIDTH, HEIGHT);
+                Canvas info = new Canvas(100, HEIGHT);
+                //Canvas info = new Canvas(WIDTH, HEIGHT/7);
 
+
+                root.getChildren().add(info);
                 root.getChildren().add(canvas);
+
                 Scene scene = new Scene(root);
                 primaryStage.setScene(scene);
                 primaryStage.show();
                 gc = canvas.getGraphicsContext2D();
+                gcInfo = info.getGraphicsContext2D();
+
 
                 scene.setOnKeyPressed(new EventHandler<KeyEvent>() {
                     @Override
@@ -192,7 +203,7 @@ public class SnakeGame extends Application {
                 food.generateFood(walls, snake);
                 snake.gameOver();
 
-                Timeline timeline = new Timeline(new KeyFrame(Duration.millis(Speed), e -> run(gc)));
+                Timeline timeline = new Timeline(new KeyFrame(Duration.millis(Speed), e -> run(gc, gcInfo)));
                 timeline.setCycleCount(Animation.INDEFINITE);
                 timeline.play();
 
@@ -220,7 +231,23 @@ public class SnakeGame extends Application {
 
         vbox.getChildren().add(button);
 
+        vbox.setSpacing(10);
+        vbox.setAlignment(Pos.BASELINE_CENTER);
+        String hexColor = "#9BC53D";
+        Color color = Color.web(hexColor);
+        vbox.setBackground(new Background(new BackgroundFill(color, null, null)));
+
+        /*
+        Image backgroundImage = new Image("path/to/image.png");
+        BackgroundSize backgroundSize = new BackgroundSize(BackgroundSize.AUTO, BackgroundSize.AUTO, false, false, true, false);
+        BackgroundImage backgroundImg = new BackgroundImage(backgroundImage, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, backgroundSize);
+        vbox.setBackground(new Background(backgroundImg));
+
+        */
+
         Scene scene = new Scene(vbox, 450, 250);
+        scene.getStylesheets().addAll(Objects.requireNonNull(this.getClass().getResource("style.css")).toExternalForm());
+
 
         primaryStage.setTitle("Snake game menu");
         primaryStage.setScene(scene);
@@ -230,7 +257,7 @@ public class SnakeGame extends Application {
 
     }
 
-    private void run(GraphicsContext gc) {
+    private void run(GraphicsContext gc, GraphicsContext gcInfo) {
         if (snake.isGameOver()) {
             gc.setFill(Color.RED);
             gc.setFont(new Font("Digital-7", 70));
@@ -251,7 +278,7 @@ public class SnakeGame extends Application {
         graphics.drawFood(gc, food.getFood());
 
         score = snake.getScore();
-        graphics.drawScore(gc, score, SCORE_FOR_WIN);
+        graphics.drawScore(gcInfo, score, SCORE_FOR_WIN);
 
         //drawBackground(gc);
         //walls.drawWalls();
