@@ -1,22 +1,15 @@
-package ru.nsu.plodushcheva;
+package ru.nsu.plodushcheva.environment;
 
-import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.paint.Color;
-
-import java.awt.*;
+import java.awt.Point;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Walls {
     private final List<Point> walls;
-    //private final int SQUARE_SIZE;
-    private GraphicsContext gc;
-    //private final GameField gameField;
 
 
-    public Walls(GameField gameField, int SQUARE_SIZE) {
+    public Walls() {
         this.walls = new ArrayList<>();
-
     }
 
 

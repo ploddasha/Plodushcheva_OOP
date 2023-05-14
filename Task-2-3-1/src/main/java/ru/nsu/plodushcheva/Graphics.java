@@ -1,29 +1,25 @@
 package ru.nsu.plodushcheva;
 
+import ru.nsu.plodushcheva.environment.GameField;
+import ru.nsu.plodushcheva.environment.Walls;
+import java.awt.Point;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 
-import java.awt.*;
-import javafx.scene.image.Image;
-
-import java.util.List;
-import java.util.Objects;
-
 public class Graphics {
 
-    private GameField gameField;
+    private final GameField gameField;
     private static int WIDTH = 600;
     private static int HEIGHT = 600;
     private static int COLUMNS = 30;
     private static int ROWS = 30;
     private static final int SQUARE_SIZE = WIDTH/ROWS;
-    //private List<Point> walls;
 
     public Graphics(GameField gameField, int WIDTH, int HEIGHT, int COLUMNS, int ROWS) {
-        this.WIDTH = WIDTH;
-        this.HEIGHT = HEIGHT;
-        this.COLUMNS = COLUMNS;
-        this.ROWS = ROWS;
+        Graphics.WIDTH = WIDTH;
+        Graphics.HEIGHT = HEIGHT;
+        Graphics.COLUMNS = COLUMNS;
+        Graphics.ROWS = ROWS;
         this.gameField = gameField;
 
     }
@@ -54,9 +50,9 @@ public class Graphics {
 
     public void drawFood(GraphicsContext gc, java.util.List<Point> food) {
         gc.setFill(Color.web("E55934"));
-        //gc.fillRect(foodX * SQUARE_SIZE, foodY * SQUARE_SIZE, SQUARE_SIZE, SQUARE_SIZE);
         for (Point point : food) {
-            gc.fillRoundRect(point.getX() * gameField.getPOINT_SIZE(), point.getY() * gameField.getPOINT_SIZE(),
+            gc.fillRoundRect(point.getX() * gameField.getPOINT_SIZE(),
+                    point.getY() * gameField.getPOINT_SIZE(),
                     gameField.getPOINT_SIZE(), gameField.getPOINT_SIZE(), 45, 45);
         }
     }
@@ -64,23 +60,31 @@ public class Graphics {
 
     public void drawWalls(GraphicsContext gc, Walls walls) {
         gc.setFill(Color.web("5BC0EB"));
-        //Image image = new Image("wall.png");
-        //Image image = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/wall.png")));
 
-        List<Point> wallls = walls.getWalls();
-        for (int i = 0; i < wallls.size(); i++){
-            gc.fillRect(wallls.get(i).x * SQUARE_SIZE,
-                    wallls.get(i).y * SQUARE_SIZE, SQUARE_SIZE, SQUARE_SIZE);
-            //gc.drawImage(image, wallls.get(i).x * SQUARE_SIZE,
-            //        wallls.get(i).y * SQUARE_SIZE, SQUARE_SIZE, SQUARE_SIZE);
+        for (Point wall : walls.getWalls()) {
+            gc.fillRect(wall.x * SQUARE_SIZE,
+                    wall.y * SQUARE_SIZE, SQUARE_SIZE, SQUARE_SIZE);
         }
     }
 
 
-    public void drawScore(GraphicsContext gc, int score, int scoreForWin) {
+    public void drawScore(GraphicsContext gc, int score, int score1, int score2, int scoreForWin) {
+        gc.setFill(Color.WHITE);
+        gc.fillRect(0, 0, 100, HEIGHT);
         gc.setFill(Color.web("5BC0EB"));
-        gc.fillText("Score: " , 20, 35);
+        gc.fillText("Score: " , 15, 30);
         gc.fillText(score + "/" + scoreForWin, 30, 50);
 
+        gc.fillText("Enemy1 score: " , 15, 70);
+        gc.fillText(score1 + "/" + scoreForWin, 30, 90);
+
+        gc.fillText("Enemy2 score: " , 15, 110);
+        gc.fillText(score2 + "/" + scoreForWin, 30, 130);
+
+    }
+
+    public void drawLevel(GraphicsContext gc, int level) {
+        gc.setFill(Color.web("5BC0EB"));
+        gc.fillText("Level " + level, 15, 150);
     }
 }

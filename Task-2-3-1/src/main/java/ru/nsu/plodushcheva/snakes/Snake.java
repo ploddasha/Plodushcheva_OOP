@@ -1,19 +1,20 @@
-package ru.nsu.plodushcheva;
+package ru.nsu.plodushcheva.snakes;
 
-import java.awt.*;
+import ru.nsu.plodushcheva.environment.Food;
+import ru.nsu.plodushcheva.environment.GameField;
+import ru.nsu.plodushcheva.environment.Walls;
+import java.awt.Point;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Snake {
     private final GameField gameField;
     private final Food food;
-    private List<Point> snake;
+    private final List<Point> snake;
     private Point snakeHead;
-    //private GameField gameField;
-    //private FoodGenerator foodGenerator;
-    private int ROWS = 30;
-    private int COLUMNS = 30;
-    private Walls walls;
+    private final int ROWS = 30;
+    private final int COLUMNS = 30;
+    private final Walls walls;
     boolean gameOver = false;
     private int score;
 
@@ -21,10 +22,7 @@ public class Snake {
         this.gameField = gameField;
         this.food = food;
         this.walls = walls;
-        //STARTING_X = gameField.getCOLUMNS() / 2;
-        //STARTING_Y = gameField.getROWS() / 2;
         snake = new ArrayList<>();
-        //score = 0;
         initSnake();
     }
 
@@ -40,7 +38,7 @@ public class Snake {
             if (snakeHead.getX() == food.getFood().get(i).getX()
                     && snakeHead.getY() == food.getFood().get(i).getY()) {
                 food.getFood().remove(i);
-                food.generateFood(walls, this);
+                food.generateFood(walls);
                 snake.add(new Point(-1, -1));
                 score++;
             }
@@ -84,28 +82,16 @@ public class Snake {
         if (snakeHead.x < 0 || snakeHead.y < 0 ||
                 snakeHead.x * gameField.getPOINT_SIZE() >= gameField.getWIDTH() ||
                 snakeHead.y * gameField.getPOINT_SIZE() >= gameField.getHEIGHT()) {
-            //collisionPoint = snake.get(0);
             gameOver = true;
             return;
         }
         for (int i = 3; i < snake.size(); i++) {
             if (snakeHead.getX() == snake.get(i).getX() && snakeHead.getY() == snake.get(i).getY()) {
-                //collisionPoint = snake.get(i);
                 gameOver = true;
                 return;
             }
         }
-        //System.out.println(walls.getWalls());
-        /*
-        for (Point point : walls.getWalls()) {
-            System.out.println("r " + point.getX() + " " + point.x + " " + point.getX());
-            if (point.getX() == snakeHead.getX() && point.getY() == snakeHead.getY()) {
-                //collisionPoint = snake.get(0);
-                return true;
-            }
-        } */
         for (int i = 0 ; i < walls.getWalls().size(); i++) {
-            //System.out.println("r " + snakeHead.getX() + " " + walls.getWalls().get(i).getX());
             if (snakeHead.getX() == walls.getWalls().get(i).getX() &&
             snakeHead.getY() == walls.getWalls().get(i).getY()) {
                 System.out.println("r " + snakeHead.getX() + " " + walls.getWalls().get(i).getX());
@@ -113,6 +99,8 @@ public class Snake {
                 return;
             }
         }
+
+
     }
 
     public List<Point> getSnake() {
@@ -123,6 +111,12 @@ public class Snake {
     }
     public int getScore() {
         return score;
+    }
+    public void setScore() {
+        score++;
+    }
+    public void setGameOver() {
+        gameOver = true;
     }
     public boolean isGameOver() {
         return gameOver;

@@ -4,35 +4,31 @@ import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.application.Application;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
-import javafx.scene.Group;
-import javafx.scene.Node;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
-import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import ru.nsu.plodushcheva.environment.Food;
+import ru.nsu.plodushcheva.environment.GameField;
+import ru.nsu.plodushcheva.environment.Walls;
+import ru.nsu.plodushcheva.snakes.EnemySnakeFood;
+import ru.nsu.plodushcheva.snakes.EnemySnakeRandom;
+import ru.nsu.plodushcheva.snakes.Snake;
 
 
-import java.awt.*;
-import java.io.IOException;
-import java.util.ArrayList;
+import java.awt.Point;
 import java.util.Objects;
 
 
@@ -59,8 +55,6 @@ public class SnakeGame extends Application {
     private GraphicsContext gcInfo;
 
     Walls walls;
-    private int currentDirection;
-    private boolean gameOver;
     private int score = 0;
     private GameField gameField;
     private Food food;
@@ -70,17 +64,18 @@ public class SnakeGame extends Application {
     Snake snake;
     int gameLevel = 2;
 
-
+    EnemySnakeRandom enemySnakeRandom;
+    EnemySnakeFood enemySnakeFood;
 
 
 
     @Override
-    public void start(Stage primaryStage) throws IOException {
+    public void start(Stage primaryStage) {
 
         Label level = new Label("Choose your level");
 
         Label chosenScore = new Label("Choose your desire score");
-        final Spinner<Integer> spinner = new Spinner<Integer>();
+        final Spinner<Integer> spinner = new Spinner<>();
         final int initialValue = 20;
         SpinnerValueFactory<Integer> valueFactory =
                 new SpinnerValueFactory.IntegerSpinnerValueFactory(3, 50, initialValue);
@@ -144,18 +139,16 @@ public class SnakeGame extends Application {
 
                 gameField = new GameField(WIDTH, HEIGHT, COLUMNS, ROWS, SQUARE_SIZE);
                 food = new Food(gameField, MAX_FOOD);
-                walls = new Walls(gameField, 5);
+                walls = new Walls();
                 snake = new Snake(gameField, food, walls);
                 graphics = new Graphics(gameField, WIDTH, HEIGHT, COLUMNS, ROWS);
 
-                //Group root = new Group();
-                HBox root = new HBox();
-                //VBox root = new VBox();
+                food.addSnake(snake);
 
+                HBox root = new HBox();
 
                 Canvas canvas = new Canvas(WIDTH, HEIGHT);
                 Canvas info = new Canvas(100, HEIGHT);
-                //Canvas info = new Canvas(WIDTH, HEIGHT/7);
 
 
                 root.getChildren().add(info);
@@ -200,20 +193,22 @@ public class SnakeGame extends Application {
                     walls.addWallsForLevelThree();
                 }
                 //walls.addWalls();
-                food.generateFood(walls, snake);
                 snake.gameOver();
 
                 Timeline timeline = new Timeline(new KeyFrame(Duration.millis(Speed), e -> run(gc, gcInfo)));
                 timeline.setCycleCount(Animation.INDEFINITE);
                 timeline.play();
 
-                /*
-                EnemySnakeTwo enemySnakeTwo = new EnemySnakeTwo( gameField, food, walls);
-                Timeline timeline2 = new Timeline(new KeyFrame(Duration.millis(Speed), e -> enemySnakeTwo.run(gc)));
-                timeline2.setCycleCount(Animation.INDEFINITE);
-                timeline2.play();
 
-                 */
+                enemySnakeRandom = new EnemySnakeRandom( gameField, food, walls);
+                enemySnakeFood = new EnemySnakeFood(gameField, food, walls);
+
+                food.addEnemySnakeFood(enemySnakeFood);
+                food.addEnemySnakeRandom(enemySnakeRandom);
+
+                food.generateFood(walls);
+
+
             }
         });
 
@@ -237,14 +232,6 @@ public class SnakeGame extends Application {
         Color color = Color.web(hexColor);
         vbox.setBackground(new Background(new BackgroundFill(color, null, null)));
 
-        /*
-        Image backgroundImage = new Image("path/to/image.png");
-        BackgroundSize backgroundSize = new BackgroundSize(BackgroundSize.AUTO, BackgroundSize.AUTO, false, false, true, false);
-        BackgroundImage backgroundImg = new BackgroundImage(backgroundImage, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, backgroundSize);
-        vbox.setBackground(new Background(backgroundImg));
-
-        */
-
         Scene scene = new Scene(vbox, 450, 250);
         scene.getStylesheets().addAll(Objects.requireNonNull(this.getClass().getResource("style.css")).toExternalForm());
 
@@ -258,6 +245,11 @@ public class SnakeGame extends Application {
     }
 
     private void run(GraphicsContext gc, GraphicsContext gcInfo) {
+        collision();
+        if (enemySnakeFood.getScore() == SCORE_FOR_WIN
+                || enemySnakeRandom.getScore() == SCORE_FOR_WIN) {
+            snake.setGameOver();
+        }
         if (snake.isGameOver()) {
             gc.setFill(Color.RED);
             gc.setFont(new Font("Digital-7", 70));
@@ -278,12 +270,16 @@ public class SnakeGame extends Application {
         graphics.drawFood(gc, food.getFood());
 
         score = snake.getScore();
-        graphics.drawScore(gcInfo, score, SCORE_FOR_WIN);
+        int scoreEnemyFood = enemySnakeFood.getScore();
+        int scoreEnemyRandom = enemySnakeRandom.getScore();
+        graphics.drawScore(gcInfo, score, scoreEnemyFood, scoreEnemyRandom, SCORE_FOR_WIN);
+        graphics.drawLevel(gcInfo, gameLevel);
 
-        //drawBackground(gc);
-        //walls.drawWalls();
-        //drawSnake(gc, );
-        //drawFood(gc);
+        if (!snake.isGameOver()) {
+            enemySnakeRandom.drawSnake(gc);
+            enemySnakeFood.drawSnake(gc);
+        }
+
         if (snake.getSnake().size() > 1) {
             Point crawling = snake.getSnake().get(snake.getSnake().size() - 1);
             crawling.x = snake.getSnakeHead().x;
@@ -303,6 +299,42 @@ public class SnakeGame extends Application {
         }
 
         snake.gameOver();
+
+        if (!snake.isGameOver()) {
+            enemySnakeRandom.run();
+            enemySnakeFood.run();
+        }
+    }
+
+    public void collision() {
+        for (int i = 0; i < snake.getSnake().size(); i++) {
+            if (enemySnakeFood.getSnakeHead().x == snake.getSnake().get(i).x
+                    && enemySnakeFood.getSnakeHead().y == snake.getSnake().get(i).y) {
+                snake.setGameOver();
+                break;
+            }
+            if (enemySnakeRandom.getSnakeHead().x == snake.getSnake().get(i).x
+                    && enemySnakeRandom.getSnakeHead().y == snake.getSnake().get(i).y) {
+                snake.setGameOver();
+                break;
+            }
+        }
+        for (int i = 0; i < enemySnakeRandom.getSnake().size(); i++) {
+            if (snake.getSnakeHead().x == enemySnakeRandom.getSnake().get(i).x
+                    && snake.getSnakeHead().y == enemySnakeRandom.getSnake().get(i).y) {
+                snake.setScore();
+                enemySnakeRandom.setGameOver();
+                break;
+            }
+        }
+        for (int i = 0; i < enemySnakeFood.getSnake().size(); i++) {
+            if (snake.getSnakeHead().x == enemySnakeFood.getSnake().get(i).x
+                    && snake.getSnakeHead().y == enemySnakeFood.getSnake().get(i).y) {
+                snake.setScore();
+                enemySnakeFood.setGameOver();
+                break;
+            }
+        }
 
     }
 
