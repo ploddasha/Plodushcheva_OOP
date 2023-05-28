@@ -1,8 +1,8 @@
-package ru.nsu.plodushcheva.snakes;
+package ru.nsu.plodushcheva.model.snakes;
 
-import ru.nsu.plodushcheva.environment.Food;
-import ru.nsu.plodushcheva.environment.GameField;
-import ru.nsu.plodushcheva.environment.Walls;
+import ru.nsu.plodushcheva.model.Food;
+import ru.nsu.plodushcheva.view.GameField;
+import ru.nsu.plodushcheva.model.Walls;
 import java.awt.Point;
 import java.util.ArrayList;
 import java.util.List;
@@ -12,8 +12,8 @@ public class Snake {
     private final Food food;
     private final List<Point> snake;
     private Point snakeHead;
-    private final int ROWS = 30;
-    private final int COLUMNS = 30;
+    private final int ROWS;
+    private final int COLUMNS;
     private final Walls walls;
     boolean gameOver = false;
     private int score;
@@ -22,6 +22,8 @@ public class Snake {
         this.gameField = gameField;
         this.food = food;
         this.walls = walls;
+        this.ROWS = gameField.getROWS();
+        this.COLUMNS = gameField.getCOLUMNS();
         snake = new ArrayList<>();
         initSnake();
     }
@@ -91,10 +93,10 @@ public class Snake {
                 return;
             }
         }
-        for (int i = 0 ; i < walls.getWalls().size(); i++) {
-            if (snakeHead.getX() == walls.getWalls().get(i).getX() &&
-            snakeHead.getY() == walls.getWalls().get(i).getY()) {
-                System.out.println("r " + snakeHead.getX() + " " + walls.getWalls().get(i).getX());
+        for (int i = 0 ; i < walls.getWallsList().size(); i++) {
+            if (snakeHead.getX() == walls.getWallsList().get(i).getX() &&
+            snakeHead.getY() == walls.getWallsList().get(i).getY()) {
+                System.out.println("r " + snakeHead.getX() + " " + walls.getWallsList().get(i).getX());
                 gameOver = true;
                 return;
             }

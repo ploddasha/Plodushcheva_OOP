@@ -1,4 +1,4 @@
-package ru.nsu.plodushcheva.environment;
+package ru.nsu.plodushcheva.view;
 
 public class GameField {
     private final int WIDTH;

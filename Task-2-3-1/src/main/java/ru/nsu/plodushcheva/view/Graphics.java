@@ -1,7 +1,7 @@
-package ru.nsu.plodushcheva;
+package ru.nsu.plodushcheva.view;
 
-import ru.nsu.plodushcheva.environment.GameField;
-import ru.nsu.plodushcheva.environment.Walls;
+import javafx.scene.text.Font;
+import ru.nsu.plodushcheva.model.Walls;
 import java.awt.Point;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
@@ -9,11 +9,11 @@ import javafx.scene.paint.Color;
 public class Graphics {
 
     private final GameField gameField;
-    private static int WIDTH = 600;
-    private static int HEIGHT = 600;
-    private static int COLUMNS = 30;
-    private static int ROWS = 30;
-    private static final int SQUARE_SIZE = WIDTH/ROWS;
+    private static int WIDTH;
+    private static int HEIGHT;
+    private static int COLUMNS;
+    private static int ROWS;
+    private static int SQUARE_SIZE;
 
     public Graphics(GameField gameField, int WIDTH, int HEIGHT, int COLUMNS, int ROWS) {
         Graphics.WIDTH = WIDTH;
@@ -21,6 +21,7 @@ public class Graphics {
         Graphics.COLUMNS = COLUMNS;
         Graphics.ROWS = ROWS;
         this.gameField = gameField;
+        SQUARE_SIZE = WIDTH/ROWS;
 
     }
 
@@ -61,7 +62,7 @@ public class Graphics {
     public void drawWalls(GraphicsContext gc, Walls walls) {
         gc.setFill(Color.web("5BC0EB"));
 
-        for (Point wall : walls.getWalls()) {
+        for (Point wall : walls.getWallsList()) {
             gc.fillRect(wall.x * SQUARE_SIZE,
                     wall.y * SQUARE_SIZE, SQUARE_SIZE, SQUARE_SIZE);
         }
@@ -86,5 +87,18 @@ public class Graphics {
     public void drawLevel(GraphicsContext gc, int level) {
         gc.setFill(Color.web("5BC0EB"));
         gc.fillText("Level " + level, 15, 150);
+    }
+
+    public void drawGameOver(GraphicsContext gc) {
+        gc.setFill(Color.RED);
+        gc.setFont(new Font("Digital-7", 70));
+        gc.fillText("Game Over", WIDTH / 3.5, HEIGHT / 2);
+
+    }
+
+    public void drawGameWon(GraphicsContext gc) {
+        gc.setFill(Color.GREEN);
+        gc.setFont(new Font("Digital-7", 70));
+        gc.fillText("You won", WIDTH / 3.5, HEIGHT / 2);
     }
 }

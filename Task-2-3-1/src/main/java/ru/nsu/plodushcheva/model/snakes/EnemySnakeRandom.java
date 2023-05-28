@@ -1,26 +1,26 @@
-package ru.nsu.plodushcheva.snakes;
+package ru.nsu.plodushcheva.model.snakes;
 
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
-import ru.nsu.plodushcheva.environment.Food;
-import ru.nsu.plodushcheva.environment.GameField;
-import ru.nsu.plodushcheva.environment.Walls;
+import ru.nsu.plodushcheva.model.Food;
+import ru.nsu.plodushcheva.view.GameField;
+import ru.nsu.plodushcheva.model.Walls;
 
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-import static ru.nsu.plodushcheva.snakes.EnemySnakeFood.Direction.*;
+import static ru.nsu.plodushcheva.model.snakes.EnemySnakeRandom.Direction.*;
 
 
-public class EnemySnakeFood {
+public class EnemySnakeRandom {
     private final GameField gameField;
     private final Food food;
     private List<Point> snake;
     private Point snakeHead;
-    private final int ROWS = 30;
-    private final int COLUMNS = 30;
+    private final int ROWS;
+    private final int COLUMNS;
     private final Walls walls;
     boolean gameOver = false;
     private int score;
@@ -32,12 +32,14 @@ public class EnemySnakeFood {
         UP,
         DOWN
     }
-    private EnemySnakeFood.Direction currentDirection;
+    private EnemySnakeRandom.Direction currentDirection;
 
-    public EnemySnakeFood(GameField gameField, Food food, Walls walls) {
+    public EnemySnakeRandom(GameField gameField, Food food, Walls walls) {
         this.gameField = gameField;
         this.food = food;
         this.walls = walls;
+        this.ROWS = gameField.getROWS();
+        this.COLUMNS = gameField.getCOLUMNS();
         snake = new ArrayList<>();
         initSnake();
     }
@@ -52,7 +54,6 @@ public class EnemySnakeFood {
             initSnake();
             gameOver = false;
         }
-
     }
 
     public void crawling() {
@@ -65,37 +66,8 @@ public class EnemySnakeFood {
         }
     }
 
-    Point goalFood;
-
     public void movingNext() {
-        List<Point> foods = food.getFood();
-        if (goalFood == null || !foods.contains(goalFood)) {
-            goalFood = getRandomFood(foods);
-        }
-
-        if (goalFood.x > snakeHead.x) {
-            currentDirection = RIGHT;
-        } else if (goalFood.x == snakeHead.x) {
-            if (goalFood.y > snakeHead.y) {
-                currentDirection = DOWN;
-            } else if (goalFood.y  < snakeHead.y) {
-                currentDirection = UP;
-            }
-                //??? eat
-
-        } else {
-            currentDirection = LEFT;
-        }
-        //Point directionFood = get
-        Direction direction;
-        List<Direction> directions = directions();
-        if (!directions.contains(currentDirection)) {
-            direction = getRandomDirection(directions);
-            System.out.println("from directions " + direction);
-        } else {
-            direction = currentDirection;
-            System.out.println("from current " + direction);
-        }
+        Direction direction = getRandomDirection(directions());
         if (direction != null) {
             switch (direction) {
                 case RIGHT -> moveRight();
@@ -104,16 +76,10 @@ public class EnemySnakeFood {
                 case DOWN -> moveDown();
             }
         } else {
-            System.err.println("EnemySnakeFood should die");
+            System.err.println("EnemySnakeRandom should die");
             gameOver = true;
         }
     }
-
-    private Point getRandomFood(List<Point> foods) {
-        int randomIndex = new Random().nextInt(foods.size());
-        return foods.get(randomIndex);
-    }
-
     private List<Direction> directions () {
 
         List<Direction> directions = new ArrayList<>();
@@ -144,7 +110,6 @@ public class EnemySnakeFood {
             directions.add(randomDirection);
         }
 
-
         return directions;
     }
 
@@ -158,8 +123,8 @@ public class EnemySnakeFood {
     }
 
     private boolean notSelf(Point point) {
-        for (int i = 3; i < snake.size(); i++) {
-            if (point.getX() == snake.get(i).getX() && point.getY() == snake.get(i).getY()) {
+        for (Point value : snake) {
+            if (point.getX() == value.getX() && point.getY() == value.getY()) {
                 return false;
             }
         }
@@ -167,14 +132,14 @@ public class EnemySnakeFood {
     }
 
     private boolean notBorder(Point point) {
-        return point.getX() != 0 && point.getX() != COLUMNS
-                && point.getY() != 0 && point.getY() != ROWS;
+        return point.getX() != -1 && point.getX() != COLUMNS
+                && point.getY() != -1 && point.getY() != ROWS;
     }
 
     private boolean noWall(Point point) {
-        for (int i = 0 ; i < walls.getWalls().size(); i++) {
-            if (point.getX() == walls.getWalls().get(i).getX() &&
-                    point.getY() == walls.getWalls().get(i).getY()) {
+        for (int i = 0 ; i < walls.getWallsList().size(); i++) {
+            if (point.getX() == walls.getWallsList().get(i).getX() &&
+                    point.getY() == walls.getWallsList().get(i).getY()) {
                 return false;
             }
         }
@@ -185,7 +150,7 @@ public class EnemySnakeFood {
 
     public void drawSnake(GraphicsContext gc) {
 
-        gc.setFill(Color.web("FA7921"));
+        gc.setFill(Color.web("5BC0EB"));
 
         for (Point point : snake) {
             gc.fillRoundRect(point.getX() * gameField.getPOINT_SIZE(),
@@ -200,10 +165,9 @@ public class EnemySnakeFood {
 
     private void initSnake() {
         for (int i = 0; i < 3; i++) {
-            snake.add(new Point(29, i + ROWS / 2));
+            snake.add(new Point(1, 2));
         }
         snakeHead = snake.get(0);
-
     }
 
     public void eatFood() {
@@ -250,6 +214,7 @@ public class EnemySnakeFood {
     public int getScore() {
         return score;
     }
+
     public void setGameOver() {
         gameOver = true;
     }

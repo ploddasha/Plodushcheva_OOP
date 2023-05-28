@@ -1,16 +1,22 @@
-package ru.nsu.plodushcheva.environment;
+package ru.nsu.plodushcheva.model;
 
-import ru.nsu.plodushcheva.snakes.EnemySnakeFood;
-import ru.nsu.plodushcheva.snakes.EnemySnakeRandom;
-import ru.nsu.plodushcheva.snakes.Snake;
+import ru.nsu.plodushcheva.model.snakes.EnemySnakeFood;
+import ru.nsu.plodushcheva.model.snakes.EnemySnakeRandom;
+import ru.nsu.plodushcheva.model.snakes.Snake;
+import ru.nsu.plodushcheva.view.GameField;
+
 import java.awt.Point;
 import java.util.ArrayList;
 import java.util.List;
+
 
 public class Food {
     private final int MAX_FOOD;
     private final int HEIGHT;
     private final int WIDTH;
+    Snake snake;
+    EnemySnakeRandom enemySnakeRandom;
+    EnemySnakeFood enemySnakeFood;
 
     private final List<Point> food;
 
@@ -27,15 +33,12 @@ public class Food {
         return food;
     }
 
-    Snake snake;
     public void addSnake(Snake snake) {
         this.snake = snake;
     }
-    EnemySnakeRandom enemySnakeRandom;
     public void addEnemySnakeRandom(EnemySnakeRandom enemySnakeRandom) {
         this.enemySnakeRandom = enemySnakeRandom;
     }
-    EnemySnakeFood enemySnakeFood;
     public void addEnemySnakeFood(EnemySnakeFood enemySnakeFood) {
         this.enemySnakeFood = enemySnakeFood;
     }
@@ -44,7 +47,7 @@ public class Food {
         while (food.size() < MAX_FOOD) {
             Point newFoodItem;
             newFoodItem = new Point((int) (Math.random() * HEIGHT), ((int) (Math.random() * WIDTH)));
-            if (!walls.getWalls().contains(newFoodItem)
+            if (!walls.getWallsList().contains(newFoodItem)
                     && !snake.getSnake().contains(newFoodItem)
                     && !enemySnakeRandom.getSnake().contains(newFoodItem)
                     && !enemySnakeFood.getSnake().contains(newFoodItem)
@@ -53,7 +56,4 @@ public class Food {
             }
         }
     }
-
-
-
 }
