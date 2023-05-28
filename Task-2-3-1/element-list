@@ -1,0 +1,8 @@
+module:ru.nsu.plodushcheva
+ru.nsu.plodushcheva
+ru.nsu.plodushcheva.controller
+ru.nsu.plodushcheva.controller.json
+ru.nsu.plodushcheva.model
+ru.nsu.plodushcheva.model.json
+ru.nsu.plodushcheva.model.snakes
+ru.nsu.plodushcheva.view
