@@ -18,6 +18,12 @@ ext {
     junitVersion = '5.8.2'
 }
 
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(16)
+    }
+}
+
 
 tasks.withType(JavaCompile) {
     options.encoding = 'UTF-8'
@@ -29,10 +35,6 @@ application {
 
 }
 
-compileJava {
-    sourceCompatibility = "16"
-    targetCompatibility = "16"
-}
 
 javafx {
     version = '17.0.2'
