@@ -1,5 +1,6 @@
 package ru.nsu.plodushcheva;
 
+import java.awt.Point;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -16,7 +17,6 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 import javafx.util.Duration;
-import java.awt.Point;
 import ru.nsu.plodushcheva.controller.SnakeGameController;
 import ru.nsu.plodushcheva.controller.json.JsonParser;
 import ru.nsu.plodushcheva.model.CollisionManager;

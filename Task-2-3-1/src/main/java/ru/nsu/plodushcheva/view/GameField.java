@@ -12,6 +12,7 @@ public class GameField {
 
     /**
      * Constructs an instance of the GameField class.
+     *
      * @param width the width of the game field
      * @param height the height of the game field
      * @param columns the number of columns in the game field

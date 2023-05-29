@@ -1,5 +1,10 @@
 package ru.nsu.plodushcheva.model.snakes;
 
+import static ru.nsu.plodushcheva.model.snakes.EnemySnakeRandom.Direction.DOWN;
+import static ru.nsu.plodushcheva.model.snakes.EnemySnakeRandom.Direction.LEFT;
+import static ru.nsu.plodushcheva.model.snakes.EnemySnakeRandom.Direction.RIGHT;
+import static ru.nsu.plodushcheva.model.snakes.EnemySnakeRandom.Direction.UP;
+
 import java.awt.Point;
 import java.util.ArrayList;
 import java.util.List;
@@ -8,10 +13,6 @@ import ru.nsu.plodushcheva.model.Food;
 import ru.nsu.plodushcheva.model.Walls;
 import ru.nsu.plodushcheva.view.GameField;
 
-import static ru.nsu.plodushcheva.model.snakes.EnemySnakeRandom.Direction.DOWN;
-import static ru.nsu.plodushcheva.model.snakes.EnemySnakeRandom.Direction.LEFT;
-import static ru.nsu.plodushcheva.model.snakes.EnemySnakeRandom.Direction.RIGHT;
-import static ru.nsu.plodushcheva.model.snakes.EnemySnakeRandom.Direction.UP;
 
 /**
  * Represents an enemy snake in the game.
@@ -225,7 +226,7 @@ public class EnemySnakeRandom {
     }
 
     /**
-     * moves snake's head to the right
+     * moves snake's head to the right.
      */
     public void moveRight() {
         currentDirection = RIGHT;
@@ -233,7 +234,7 @@ public class EnemySnakeRandom {
     }
 
     /**
-     * moves snake's head to the left
+     * moves snake's head to the left.
      */
     public void moveLeft() {
         currentDirection = LEFT;
@@ -241,7 +242,7 @@ public class EnemySnakeRandom {
     }
 
     /**
-     * moves snake's head up
+     * moves snake's head up.
      */
     public void moveUp() {
         currentDirection = UP;
@@ -249,7 +250,7 @@ public class EnemySnakeRandom {
     }
 
     /**
-     * moves snake's head down
+     * moves snake's head down.
      */
     public void moveDown() {
         currentDirection = DOWN;
