@@ -28,6 +28,24 @@ public class JsonData {
     public final List<Point> wallsFoodForLevel3;
 
 
+    /**
+     * Represents the JSON data used in the game.
+     *
+     * @param width The width of the game field.
+     * @param height The height of the game field.
+     * @param columns The number of columns in the game field.
+     * @param rows The number of rows in the game field.
+     * @param squareSize The size of each square in the game field.
+     * @param maxFoodForLevel1 The maximum number of food for level 1.
+     * @param maxFoodForLevel2 The maximum number of food for level 2.
+     * @param maxFoodForLevel3 The maximum number of food for level 3.
+     * @param speedFoodForLevel1 The speed of food for level 1.
+     * @param speedFoodForLevel2 The speed of food for level 2.
+     * @param speedFoodForLevel3 The speed of food for level 3.
+     * @param wallsFoodForLevel1 The list of wall coordinates for level 1.
+     * @param wallsFoodForLevel2 The list of wall coordinates for level 2.
+     * @param wallsFoodForLevel3 The list of wall coordinates for level 3.
+     */
     public JsonData(int width, int height, int columns, int rows, int squareSize,
                     int maxFoodForLevel1, int maxFoodForLevel2, int maxFoodForLevel3,
                     int speedFoodForLevel1, int speedFoodForLevel2, int speedFoodForLevel3,

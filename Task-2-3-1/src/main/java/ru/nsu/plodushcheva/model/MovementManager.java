@@ -27,6 +27,7 @@ public class MovementManager {
             case LEFT -> snake.moveLeft();
             case UP -> snake.moveUp();
             case DOWN -> snake.moveDown();
+            default -> throw new IllegalStateException("Invalid direction: " + direction);
         }
     }
 

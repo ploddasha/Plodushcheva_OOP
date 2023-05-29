@@ -16,6 +16,7 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import java.awt.Point;
 import ru.nsu.plodushcheva.controller.SnakeGameController;
 import ru.nsu.plodushcheva.controller.json.JsonParser;
 import ru.nsu.plodushcheva.model.CollisionManager;
@@ -29,8 +30,6 @@ import ru.nsu.plodushcheva.model.snakes.Snake;
 import ru.nsu.plodushcheva.view.GameField;
 import ru.nsu.plodushcheva.view.Graphics;
 import ru.nsu.plodushcheva.view.SnakeGameView;
-import java.awt.Point;
-
 
 
 /**
@@ -41,13 +40,16 @@ public class SnakeGame extends Application {
     static JsonData jsonData = new JsonParser().getData("info.json");
     private static final int width = jsonData.getWidth();
 
-    private static final int HEIGHT = jsonData.getHeight();
-    private static final int COLUMNS = jsonData.getColumns();
+    private static final int height = jsonData.getHeight();
+    private static final int columns = jsonData.getColumns();
     private static final int rows = jsonData.getRows();
     private static final int squareSize = jsonData.getSquareSize();
     private int scoreForWin = 20;
     private Graphics graphics;
 
+    /**
+     * Represents the possible directions for the enemy snake.
+     */
     public enum Direction {
         RIGHT,
         LEFT,
@@ -65,8 +67,8 @@ public class SnakeGame extends Application {
     private GameField gameField;
     private Food food;
 
-    int MAX_FOOD = 10;
-    int Speed = 130;
+    int maxFood = 10;
+    int speed = 130;
     Snake snake;
     private Integer gameLevel = 2;
 
@@ -105,34 +107,34 @@ public class SnakeGame extends Application {
                 String currentLevelText = finalLevel.getText();
                 switch (currentLevelText) {
                     case "You chose level 1" -> gameLevel = 1;
-                    case "You chose level 2" -> gameLevel = 2;
                     case "You chose level 3" -> gameLevel = 3;
+                    default -> gameLevel = 2;
                 }
 
                 if (gameLevel == 1) {
-                    MAX_FOOD = jsonData.getMaxFoodForLevel1();
-                    Speed = jsonData.getSpeedFoodForLevel1();
+                    maxFood = jsonData.getMaxFoodForLevel1();
+                    speed = jsonData.getSpeedFoodForLevel1();
                     walls.addWalls(jsonData.getWallsFoodForLevel1());
-                }else if (gameLevel == 2){
-                    MAX_FOOD = jsonData.getMaxFoodForLevel2();
-                    Speed = jsonData.getSpeedFoodForLevel2();
+                } else if (gameLevel == 2) {
+                    maxFood = jsonData.getMaxFoodForLevel2();
+                    speed = jsonData.getSpeedFoodForLevel2();
                     walls.addWalls(jsonData.getWallsFoodForLevel2());
-                } else if (gameLevel == 3){
-                    MAX_FOOD = jsonData.getMaxFoodForLevel3();
-                    Speed = jsonData.getSpeedFoodForLevel3();
+                } else if (gameLevel == 3) {
+                    maxFood = jsonData.getMaxFoodForLevel3();
+                    speed = jsonData.getSpeedFoodForLevel3();
                     walls.addWalls(jsonData.getWallsFoodForLevel3());
                 }
                 scoreForWin = spinner.getValue();
 
 
-                gameField = new GameField(width, HEIGHT, COLUMNS, rows, squareSize);
-                food = new Food(gameField, MAX_FOOD);
+                gameField = new GameField(width, height, columns, rows, squareSize);
+                food = new Food(gameField, maxFood);
                 snake = new Snake(gameField, food, walls);
-                graphics = new Graphics(gameField, width, HEIGHT, COLUMNS, rows);
+                graphics = new Graphics(gameField, width, height, columns, rows);
 
                 food.addSnake(snake);
 
-                Scene scene = snakeGameView.createScene(width, HEIGHT);
+                Scene scene = snakeGameView.createScene(width, height);
 
                 primaryStage.setScene(scene);
                 primaryStage.setX(300);
@@ -152,7 +154,8 @@ public class SnakeGame extends Application {
 
                 snake.gameOver();
 
-                Timeline timeline = new Timeline(new KeyFrame(Duration.millis(Speed), e -> run(gc, gcInfo)));
+                Timeline timeline = new Timeline(new KeyFrame(Duration.millis(speed),
+                        e -> run(gc, gcInfo)));
                 timeline.setCycleCount(Animation.INDEFINITE);
                 timeline.play();
 
@@ -166,7 +169,8 @@ public class SnakeGame extends Application {
             }
         });
 
-        Scene menuScene = snakeGameView.createMenuScene(spinner, level, button, buttonLevel, buttonLevel2, buttonLevel3);
+        Scene menuScene = snakeGameView.createMenuScene(spinner, level, button,
+                buttonLevel, buttonLevel2, buttonLevel3);
 
         primaryStage.setTitle("Snake game menu");
         primaryStage.setScene(menuScene);

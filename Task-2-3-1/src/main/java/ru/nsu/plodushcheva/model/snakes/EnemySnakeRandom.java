@@ -8,10 +8,10 @@ import ru.nsu.plodushcheva.model.Food;
 import ru.nsu.plodushcheva.model.Walls;
 import ru.nsu.plodushcheva.view.GameField;
 
-import static ru.nsu.plodushcheva.model.snakes.EnemySnakeRandom.Direction.UP;
 import static ru.nsu.plodushcheva.model.snakes.EnemySnakeRandom.Direction.DOWN;
 import static ru.nsu.plodushcheva.model.snakes.EnemySnakeRandom.Direction.LEFT;
 import static ru.nsu.plodushcheva.model.snakes.EnemySnakeRandom.Direction.RIGHT;
+import static ru.nsu.plodushcheva.model.snakes.EnemySnakeRandom.Direction.UP;
 
 /**
  * Represents an enemy snake in the game.
@@ -29,6 +29,9 @@ public class EnemySnakeRandom {
     private int score;
     private EnemySnakeRandom.Direction currentDirection;
 
+    /**
+     * Enum representing the possible directions for movement.
+     */
     public enum Direction {
         RIGHT,
         LEFT,
@@ -36,6 +39,13 @@ public class EnemySnakeRandom {
         DOWN
     }
 
+    /**
+     * Constructs an instance of the EnemySnakeRandom class.
+     *
+     * @param gameField the game field
+     * @param food the food object
+     * @param walls game walls
+     */
     public EnemySnakeRandom(GameField gameField, Food food, Walls walls) {
         this.gameField = gameField;
         this.food = food;
@@ -85,6 +95,7 @@ public class EnemySnakeRandom {
                 case LEFT -> moveLeft();
                 case UP -> moveUp();
                 case DOWN -> moveDown();
+                default -> throw new IllegalStateException("Invalid direction: " + direction);
             }
         } else {
             System.err.println("EnemySnakeRandom should die");
@@ -213,21 +224,33 @@ public class EnemySnakeRandom {
         }
     }
 
+    /**
+     * moves snake's head to the right
+     */
     public void moveRight() {
         currentDirection = RIGHT;
         snakeHead.x++;
     }
 
+    /**
+     * moves snake's head to the left
+     */
     public void moveLeft() {
         currentDirection = LEFT;
         snakeHead.x--;
     }
 
+    /**
+     * moves snake's head up
+     */
     public void moveUp() {
         currentDirection = UP;
         snakeHead.y--;
     }
 
+    /**
+     * moves snake's head down
+     */
     public void moveDown() {
         currentDirection = DOWN;
         snakeHead.y++;

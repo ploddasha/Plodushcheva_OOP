@@ -24,6 +24,7 @@ public class Snake {
 
     /**
      * Represents the Snake in the game.
+     *
      * @param gameField The game field where the snake moves.
      * @param food The food that the snake can eat.
      * @param walls The walls that the snake needs to avoid.

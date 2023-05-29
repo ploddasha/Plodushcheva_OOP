@@ -18,14 +18,22 @@ public class Graphics {
     private static int rows;
     private static int squareSize;
 
+    /**
+     * Constructs an instance of the Graphics class.
+     *
+     * @param gameField the game field to be associated with the graphics
+     * @param width the width of the graphics
+     * @param height the height of the graphics
+     * @param columns the number of columns in the graphics
+     * @param rows the number of rows in the graphics
+     */
     public Graphics(GameField gameField, int width, int height, int columns, int rows) {
         Graphics.width = width;
         Graphics.height = height;
         Graphics.columns = columns;
         Graphics.rows = rows;
         this.gameField = gameField;
-        squareSize = width/rows;
-
+        squareSize = width / rows;
     }
 
     /**
@@ -39,13 +47,13 @@ public class Graphics {
             case 1 -> gc.setFill(Color.web("9BC53D"));
             case 2 -> gc.setFill(Color.web("5BC0EB"));
             case 3 -> gc.setFill(Color.web("FA7921"));
+            default -> gc.setFill(Color.web("FA7900"));
         }
-        //gc.setFill(Color.web("9BC53D"));
         for (Point point : snake) {
-            gc.fillRoundRect(point.getX() * gameField.getPOINT_SIZE(),
-                    point.getY() * gameField.getPOINT_SIZE(),
-                    gameField.getPOINT_SIZE() - 1,
-                    gameField.getPOINT_SIZE() - 1,
+            gc.fillRoundRect(point.getX() * gameField.getPointSize(),
+                    point.getY() * gameField.getPointSize(),
+                    gameField.getPointSize() - 1,
+                    gameField.getPointSize() - 1,
                     25, 25);
         }
 
@@ -78,9 +86,9 @@ public class Graphics {
     public void drawFood(GraphicsContext gc, java.util.List<Point> food) {
         gc.setFill(Color.web("E55934"));
         for (Point point : food) {
-            gc.fillRoundRect(point.getX() * gameField.getPOINT_SIZE(),
-                    point.getY() * gameField.getPOINT_SIZE(),
-                    gameField.getPOINT_SIZE(), gameField.getPOINT_SIZE(), 45, 45);
+            gc.fillRoundRect(point.getX() * gameField.getPointSize(),
+                    point.getY() * gameField.getPointSize(),
+                    gameField.getPointSize(), gameField.getPointSize(), 45, 45);
         }
     }
 
@@ -112,15 +120,15 @@ public class Graphics {
      */
     public void drawScore(GraphicsContext gc, int score, int score1, int score2, int scoreForWin) {
         gc.setFill(Color.WHITE);
-        gc.fillRect(0, 0, 100,height);
+        gc.fillRect(0, 0, 100, height);
         gc.setFill(Color.web("5BC0EB"));
-        gc.fillText("Score: " , 15, 30);
+        gc.fillText("Score: ", 15, 30);
         gc.fillText(score + "/" + scoreForWin, 30, 50);
 
-        gc.fillText("Enemy1 score: " , 15, 70);
+        gc.fillText("Enemy1 score: ", 15, 70);
         gc.fillText(score1 + "/" + scoreForWin, 30, 90);
 
-        gc.fillText("Enemy2 score: " , 15, 110);
+        gc.fillText("Enemy2 score: ", 15, 110);
         gc.fillText(score2 + "/" + scoreForWin, 30, 130);
 
     }
@@ -144,7 +152,7 @@ public class Graphics {
     public void drawGameOver(GraphicsContext gc) {
         gc.setFill(Color.RED);
         gc.setFont(new Font("Digital-7", 70));
-        gc.fillText("Game Over", width / 3.5,height / 2);
+        gc.fillText("Game Over", width / 3.5, height / 2);
 
     }
 
@@ -156,6 +164,6 @@ public class Graphics {
     public void drawGameWon(GraphicsContext gc) {
         gc.setFill(Color.GREEN);
         gc.setFont(new Font("Digital-7", 70));
-        gc.fillText("You won", width / 3.5,height / 2);
+        gc.fillText("You won", width / 3.5, height / 2);
     }
 }

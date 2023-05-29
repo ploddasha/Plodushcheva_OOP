@@ -8,10 +8,10 @@ import ru.nsu.plodushcheva.model.Food;
 import ru.nsu.plodushcheva.model.Walls;
 import ru.nsu.plodushcheva.view.GameField;
 
-import static ru.nsu.plodushcheva.model.snakes.EnemySnakeFood.Direction.UP;
 import static ru.nsu.plodushcheva.model.snakes.EnemySnakeFood.Direction.DOWN;
 import static ru.nsu.plodushcheva.model.snakes.EnemySnakeFood.Direction.LEFT;
 import static ru.nsu.plodushcheva.model.snakes.EnemySnakeFood.Direction.RIGHT;
+import static ru.nsu.plodushcheva.model.snakes.EnemySnakeFood.Direction.UP;
 
 
 /**
@@ -41,6 +41,13 @@ public class EnemySnakeFood {
         DOWN
     }
 
+    /**
+     * Constructor.
+     *
+     * @param gameField the game field
+     * @param food the food object
+     * @param walls game walls
+     */
     public EnemySnakeFood(GameField gameField, Food food, Walls walls) {
         this.gameField = gameField;
         this.food = food;
@@ -117,6 +124,7 @@ public class EnemySnakeFood {
                 case LEFT -> moveLeft();
                 case UP -> moveUp();
                 case DOWN -> moveDown();
+                default -> throw new IllegalStateException("Invalid direction: " + direction);
             }
         } else {
             System.err.println("EnemySnakeFood should die");

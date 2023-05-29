@@ -15,7 +15,7 @@ import ru.nsu.plodushcheva.view.GameField;
  * It is responsible for generating and managing the food items on the game field.
  */
 public class Food {
-    private final int MAX_FOOD;
+    private final int maxFood;
     private final int height;
     private final int width;
     Snake snake;
@@ -26,13 +26,13 @@ public class Food {
 
 
     /**
-     Constructs a Food object with the specified game field and maximum number of food items.
-
-     @param gameField The game field.
-     @param MAX_FOOD The maximum number of food items.
+     * Constructs a Food object with the specified game field and maximum number of food items.
+     *
+     * @param gameField The game field.
+     * @param maxFood The maximum number of food items.
      */
-    public Food(GameField gameField, int MAX_FOOD) {
-        this.MAX_FOOD = MAX_FOOD;
+    public Food(GameField gameField, int maxFood) {
+        this.maxFood = maxFood;
         height = gameField.getRows();
         width = gameField.getColumns();
         food = new ArrayList<>();
@@ -77,7 +77,7 @@ public class Food {
      * @param walls The walls in the game.
      */
     public void generateFood(Walls walls) {
-        while (food.size() < MAX_FOOD) {
+        while (food.size() < maxFood) {
             Point newFoodItem;
             newFoodItem = new Point((int) (Math.random() * height),
                     ((int) (Math.random() * width)));

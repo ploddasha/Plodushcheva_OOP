@@ -3,6 +3,9 @@ package ru.nsu.plodushcheva;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+/**
+ * Future tests.
+ */
 public class SnakeGameTest {
 
     @Test
