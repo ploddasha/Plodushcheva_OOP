@@ -81,6 +81,7 @@ loadScripts(document, 'script');</script>
 <hr>
 <div class="type-signature"><span class="modifiers">public class </span><span class="element-name type-name-label">SnakeGameController</span>
 <span class="extends-implements">extends <a href="https://docs.oracle.com/en/java/javase/16/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a></span></div>
+<div class="block">Controller for the Snake game.</div>
 </section>
 <section class="summary">
 <ul class="summary-list">
@@ -111,12 +112,16 @@ loadScripts(document, 'script');</script>
 <div class="col-first even-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table"><code><a href="../SnakeGame.Direction.html" title="enum class in ru.nsu.plodushcheva">SnakeGame.Direction</a></code></div>
 <div class="col-second even-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table"><code><span class="member-name-link"><a href="#handleKeyPress(javafx.scene.input.KeyCode,ru.nsu.plodushcheva.SnakeGame.Direction)">handleKeyPress</a></span>&#8203;(javafx.scene.input.KeyCode&nbsp;code,
  <a href="../SnakeGame.Direction.html" title="enum class in ru.nsu.plodushcheva">SnakeGame.Direction</a>&nbsp;direction)</code></div>
-<div class="col-last even-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table">
+<div class="block">Handles key press events to determine the new direction of the snake.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table"><code>javafx.scene.control.Label</code></div>
 <div class="col-second odd-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table"><code><span class="member-name-link"><a href="#handleLevelButton(javafx.scene.control.Button,javafx.scene.control.Button,javafx.scene.control.Button)">handleLevelButton</a></span>&#8203;(javafx.scene.control.Button&nbsp;buttonLevel,
  javafx.scene.control.Button&nbsp;buttonLevel2,
  javafx.scene.control.Button&nbsp;buttonLevel3)</code></div>
-<div class="col-last odd-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table">
+<div class="block">Handles the level selection buttons.</div>
+</div>
 </div>
 </div>
 </div>
@@ -154,6 +159,15 @@ loadScripts(document, 'script');</script>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">javafx.scene.control.Label</span>&nbsp;<span class="element-name">handleLevelButton</span>&#8203;<span class="parameters">(javafx.scene.control.Button&nbsp;buttonLevel,
  javafx.scene.control.Button&nbsp;buttonLevel2,
  javafx.scene.control.Button&nbsp;buttonLevel3)</span></div>
+<div class="block">Handles the level selection buttons.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>buttonLevel</code> - The button for level 1.</dd>
+<dd><code>buttonLevel2</code> - The button for level 2.</dd>
+<dd><code>buttonLevel3</code> - The button for level 3.</dd>
+<dt>Returns:</dt>
+<dd>The label indicating the chosen level.</dd>
+</dl>
 </section>
 </li>
 <li>
@@ -161,6 +175,14 @@ loadScripts(document, 'script');</script>
 <h3>handleKeyPress</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="../SnakeGame.Direction.html" title="enum class in ru.nsu.plodushcheva">SnakeGame.Direction</a></span>&nbsp;<span class="element-name">handleKeyPress</span>&#8203;<span class="parameters">(javafx.scene.input.KeyCode&nbsp;code,
  <a href="../SnakeGame.Direction.html" title="enum class in ru.nsu.plodushcheva">SnakeGame.Direction</a>&nbsp;direction)</span></div>
+<div class="block">Handles key press events to determine the new direction of the snake.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>code</code> - The KeyCode corresponding to the pressed key.</dd>
+<dd><code>direction</code> - The current direction of the snake.</dd>
+<dt>Returns:</dt>
+<dd>The new direction of the snake.</dd>
+</dl>
 </section>
 </li>
 </ul>

@@ -81,6 +81,9 @@ loadScripts(document, 'script');</script>
 <hr>
 <div class="type-signature"><span class="modifiers">public class </span><span class="element-name type-name-label">MovementManager</span>
 <span class="extends-implements">extends <a href="https://docs.oracle.com/en/java/javase/16/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a></span></div>
+<div class="block">The MovementManager class handles the movement of snakes in the game.
+ It provides methods to move the player snake, move the enemy snakes,
+ and update the snake's position.</div>
 </section>
 <section class="summary">
 <ul class="summary-list">
@@ -111,14 +114,20 @@ loadScripts(document, 'script');</script>
 <div class="col-first even-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table"><code>void</code></div>
 <div class="col-second even-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table"><code><span class="member-name-link"><a href="#moveEnemySnakes(ru.nsu.plodushcheva.model.snakes.EnemySnakeRandom,ru.nsu.plodushcheva.model.snakes.EnemySnakeFood)">moveEnemySnakes</a></span>&#8203;(<a href="snakes/EnemySnakeRandom.html" title="class in ru.nsu.plodushcheva.model.snakes">EnemySnakeRandom</a>&nbsp;enemySnakeRandom,
  <a href="snakes/EnemySnakeFood.html" title="class in ru.nsu.plodushcheva.model.snakes">EnemySnakeFood</a>&nbsp;enemySnakeFood)</code></div>
-<div class="col-last even-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table">
+<div class="block">Moves the enemy snakes in their respective strategies.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table"><code>void</code></div>
 <div class="col-second odd-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table"><code><span class="member-name-link"><a href="#moveSnake(ru.nsu.plodushcheva.model.snakes.Snake,ru.nsu.plodushcheva.SnakeGame.Direction)">moveSnake</a></span>&#8203;(<a href="snakes/Snake.html" title="class in ru.nsu.plodushcheva.model.snakes">Snake</a>&nbsp;snake,
  <a href="../SnakeGame.Direction.html" title="enum class in ru.nsu.plodushcheva">SnakeGame.Direction</a>&nbsp;direction)</code></div>
-<div class="col-last odd-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table">
+<div class="block">Moves the specified snake in the given direction.</div>
+</div>
 <div class="col-first even-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table"><code>void</code></div>
 <div class="col-second even-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table"><code><span class="member-name-link"><a href="#updateSnakePosition(ru.nsu.plodushcheva.model.snakes.Snake)">updateSnakePosition</a></span>&#8203;(<a href="snakes/Snake.html" title="class in ru.nsu.plodushcheva.model.snakes">Snake</a>&nbsp;snake)</code></div>
-<div class="col-last even-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table">
+<div class="block">Updates the position of the snake's body segments based on the movement of the head.</div>
+</div>
 </div>
 </div>
 </div>
@@ -155,6 +164,12 @@ loadScripts(document, 'script');</script>
 <h3>moveSnake</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">moveSnake</span>&#8203;<span class="parameters">(<a href="snakes/Snake.html" title="class in ru.nsu.plodushcheva.model.snakes">Snake</a>&nbsp;snake,
  <a href="../SnakeGame.Direction.html" title="enum class in ru.nsu.plodushcheva">SnakeGame.Direction</a>&nbsp;direction)</span></div>
+<div class="block">Moves the specified snake in the given direction.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>snake</code> - The snake to be moved.</dd>
+<dd><code>direction</code> - The direction in which the snake should move.</dd>
+</dl>
 </section>
 </li>
 <li>
@@ -162,12 +177,23 @@ loadScripts(document, 'script');</script>
 <h3>moveEnemySnakes</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">moveEnemySnakes</span>&#8203;<span class="parameters">(<a href="snakes/EnemySnakeRandom.html" title="class in ru.nsu.plodushcheva.model.snakes">EnemySnakeRandom</a>&nbsp;enemySnakeRandom,
  <a href="snakes/EnemySnakeFood.html" title="class in ru.nsu.plodushcheva.model.snakes">EnemySnakeFood</a>&nbsp;enemySnakeFood)</span></div>
+<div class="block">Moves the enemy snakes in their respective strategies.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>enemySnakeRandom</code> - The random enemy snake.</dd>
+<dd><code>enemySnakeFood</code> - The food-seeking enemy snake.</dd>
+</dl>
 </section>
 </li>
 <li>
 <section class="detail" id="updateSnakePosition(ru.nsu.plodushcheva.model.snakes.Snake)">
 <h3>updateSnakePosition</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">updateSnakePosition</span>&#8203;<span class="parameters">(<a href="snakes/Snake.html" title="class in ru.nsu.plodushcheva.model.snakes">Snake</a>&nbsp;snake)</span></div>
+<div class="block">Updates the position of the snake's body segments based on the movement of the head.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>snake</code> - The snake to update the position for.</dd>
+</dl>
 </section>
 </li>
 </ul>

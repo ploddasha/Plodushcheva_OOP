@@ -81,6 +81,8 @@ loadScripts(document, 'script');</script>
 <hr>
 <div class="type-signature"><span class="modifiers">public class </span><span class="element-name type-name-label">SnakeGameView</span>
 <span class="extends-implements">extends <a href="https://docs.oracle.com/en/java/javase/16/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a></span></div>
+<div class="block">View for Snake Game
+ works with two scenes.</div>
 </section>
 <section class="summary">
 <ul class="summary-list">
@@ -115,11 +117,15 @@ loadScripts(document, 'script');</script>
  javafx.scene.control.Button&nbsp;buttonLevel,
  javafx.scene.control.Button&nbsp;buttonLevel2,
  javafx.scene.control.Button&nbsp;buttonLevel3)</code></div>
-<div class="col-last even-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table">
+<div class="block">Creates and returns the menu scene with the specified spinner, level label, and buttons.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table"><code>javafx.scene.Scene</code></div>
 <div class="col-second odd-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table"><code><span class="member-name-link"><a href="#createScene(int,int)">createScene</a></span>&#8203;(int&nbsp;WIDTH,
  int&nbsp;HEIGHT)</code></div>
-<div class="col-last odd-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table">
+<div class="block">Creates and returns the main game scene with the specified width and height.</div>
+</div>
 <div class="col-first even-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table"><code>javafx.scene.canvas.GraphicsContext</code></div>
 <div class="col-second even-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table"><code><span class="member-name-link"><a href="#getGraphicsContext()">getGraphicsContext</a></span>()</code></div>
 <div class="col-last even-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table">&nbsp;</div>
@@ -162,6 +168,14 @@ loadScripts(document, 'script');</script>
 <h3>createScene</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">javafx.scene.Scene</span>&nbsp;<span class="element-name">createScene</span>&#8203;<span class="parameters">(int&nbsp;WIDTH,
  int&nbsp;HEIGHT)</span></div>
+<div class="block">Creates and returns the main game scene with the specified width and height.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>WIDTH</code> - the width of the canvas</dd>
+<dd><code>HEIGHT</code> - the height of the canvas</dd>
+<dt>Returns:</dt>
+<dd>the main game scene</dd>
+</dl>
 </section>
 </li>
 <li>
@@ -173,6 +187,18 @@ loadScripts(document, 'script');</script>
  javafx.scene.control.Button&nbsp;buttonLevel,
  javafx.scene.control.Button&nbsp;buttonLevel2,
  javafx.scene.control.Button&nbsp;buttonLevel3)</span></div>
+<div class="block">Creates and returns the menu scene with the specified spinner, level label, and buttons.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>spinner</code> - the spinner control for selecting the desired score</dd>
+<dd><code>level</code> - the label for displaying the current level</dd>
+<dd><code>button</code> - the button for starting the game</dd>
+<dd><code>buttonLevel</code> - the button for selecting level 1</dd>
+<dd><code>buttonLevel2</code> - the button for selecting level 2</dd>
+<dd><code>buttonLevel3</code> - the button for selecting level 3</dd>
+<dt>Returns:</dt>
+<dd>the menu scene</dd>
+</dl>
 </section>
 </li>
 <li>

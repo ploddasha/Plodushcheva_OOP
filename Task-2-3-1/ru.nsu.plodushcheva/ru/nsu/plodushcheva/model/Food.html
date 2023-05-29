@@ -81,6 +81,8 @@ loadScripts(document, 'script');</script>
 <hr>
 <div class="type-signature"><span class="modifiers">public class </span><span class="element-name type-name-label">Food</span>
 <span class="extends-implements">extends <a href="https://docs.oracle.com/en/java/javase/16/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a></span></div>
+<div class="block">The Food class represents the food items in the game.
+ It is responsible for generating and managing the food items on the game field.</div>
 </section>
 <section class="summary">
 <ul class="summary-list">
@@ -111,16 +113,25 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-last">Description</div>
 <div class="col-first even-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table"><code>void</code></div>
 <div class="col-second even-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table"><code><span class="member-name-link"><a href="#addEnemySnakeFood(ru.nsu.plodushcheva.model.snakes.EnemySnakeFood)">addEnemySnakeFood</a></span>&#8203;(<a href="snakes/EnemySnakeFood.html" title="class in ru.nsu.plodushcheva.model.snakes">EnemySnakeFood</a>&nbsp;enemySnakeFood)</code></div>
-<div class="col-last even-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table">
+<div class="block">Adds the food-seeking enemy snake to the food manager.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table"><code>void</code></div>
 <div class="col-second odd-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table"><code><span class="member-name-link"><a href="#addEnemySnakeRandom(ru.nsu.plodushcheva.model.snakes.EnemySnakeRandom)">addEnemySnakeRandom</a></span>&#8203;(<a href="snakes/EnemySnakeRandom.html" title="class in ru.nsu.plodushcheva.model.snakes">EnemySnakeRandom</a>&nbsp;enemySnakeRandom)</code></div>
-<div class="col-last odd-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table">
+<div class="block">Adds the enemy random snake to the food manager.</div>
+</div>
 <div class="col-first even-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table"><code>void</code></div>
 <div class="col-second even-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table"><code><span class="member-name-link"><a href="#addSnake(ru.nsu.plodushcheva.model.snakes.Snake)">addSnake</a></span>&#8203;(<a href="snakes/Snake.html" title="class in ru.nsu.plodushcheva.model.snakes">Snake</a>&nbsp;snake)</code></div>
-<div class="col-last even-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table">
+<div class="block">Adds the player snake to the food manager.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table"><code>void</code></div>
 <div class="col-second odd-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table"><code><span class="member-name-link"><a href="#generateFood(ru.nsu.plodushcheva.model.Walls)">generateFood</a></span>&#8203;(<a href="Walls.html" title="class in ru.nsu.plodushcheva.model">Walls</a>&nbsp;walls)</code></div>
-<div class="col-last odd-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table">
+<div class="block">Generates the food items on the game field,
+ considering the walls and other snakes' positions.</div>
+</div>
 <div class="col-first even-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table"><code><a href="https://docs.oracle.com/en/java/javase/16/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="https://docs.oracle.com/en/java/javase/16/docs/api/java.desktop/java/awt/Point.html" title="class or interface in java.awt" class="external-link">Point</a>&gt;</code></div>
 <div class="col-second even-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table"><code><span class="member-name-link"><a href="#getFood()">getFood</a></span>()</code></div>
 <div class="col-last even-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table">&nbsp;</div>
@@ -166,24 +177,45 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="addSnake(ru.nsu.plodushcheva.model.snakes.Snake)">
 <h3>addSnake</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">addSnake</span>&#8203;<span class="parameters">(<a href="snakes/Snake.html" title="class in ru.nsu.plodushcheva.model.snakes">Snake</a>&nbsp;snake)</span></div>
+<div class="block">Adds the player snake to the food manager.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>snake</code> - The player snake.</dd>
+</dl>
 </section>
 </li>
 <li>
 <section class="detail" id="addEnemySnakeRandom(ru.nsu.plodushcheva.model.snakes.EnemySnakeRandom)">
 <h3>addEnemySnakeRandom</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">addEnemySnakeRandom</span>&#8203;<span class="parameters">(<a href="snakes/EnemySnakeRandom.html" title="class in ru.nsu.plodushcheva.model.snakes">EnemySnakeRandom</a>&nbsp;enemySnakeRandom)</span></div>
+<div class="block">Adds the enemy random snake to the food manager.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>enemySnakeRandom</code> - The enemy random snake.</dd>
+</dl>
 </section>
 </li>
 <li>
 <section class="detail" id="addEnemySnakeFood(ru.nsu.plodushcheva.model.snakes.EnemySnakeFood)">
 <h3>addEnemySnakeFood</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">addEnemySnakeFood</span>&#8203;<span class="parameters">(<a href="snakes/EnemySnakeFood.html" title="class in ru.nsu.plodushcheva.model.snakes">EnemySnakeFood</a>&nbsp;enemySnakeFood)</span></div>
+<div class="block">Adds the food-seeking enemy snake to the food manager.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>enemySnakeFood</code> - The food-seeking enemy snake.</dd>
+</dl>
 </section>
 </li>
 <li>
 <section class="detail" id="generateFood(ru.nsu.plodushcheva.model.Walls)">
 <h3>generateFood</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">generateFood</span>&#8203;<span class="parameters">(<a href="Walls.html" title="class in ru.nsu.plodushcheva.model">Walls</a>&nbsp;walls)</span></div>
+<div class="block">Generates the food items on the game field,
+ considering the walls and other snakes' positions.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>walls</code> - The walls in the game.</dd>
+</dl>
 </section>
 </li>
 </ul>
