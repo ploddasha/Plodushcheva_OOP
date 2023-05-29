@@ -118,8 +118,8 @@ public class Snake {
     public void gameOver() {
 
         if (snakeHead.x < 0 || snakeHead.y < 0
-                || snakeHead.x * gameField.getPOINT_SIZE() >= gameField.getWidth()
-                || snakeHead.y * gameField.getPOINT_SIZE() >= gameField.getHeight()) {
+                || snakeHead.x * gameField.getPointSize() >= gameField.getWidth()
+                || snakeHead.y * gameField.getPointSize() >= gameField.getHeight()) {
             gameOver = true;
             return;
         }
