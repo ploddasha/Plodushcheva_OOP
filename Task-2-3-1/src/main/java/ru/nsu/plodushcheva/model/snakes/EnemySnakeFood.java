@@ -1,19 +1,20 @@
 package ru.nsu.plodushcheva.model.snakes;
 
-import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.paint.Color;
-import ru.nsu.plodushcheva.model.Food;
-import ru.nsu.plodushcheva.view.GameField;
-import ru.nsu.plodushcheva.model.Walls;
-
-import java.awt.*;
+import java.awt.Point;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-
+import ru.nsu.plodushcheva.model.Food;
+import ru.nsu.plodushcheva.model.Walls;
+import ru.nsu.plodushcheva.view.GameField;
 import static ru.nsu.plodushcheva.model.snakes.EnemySnakeFood.Direction.*;
 
 
+
+/**
+ * Represents an enemy snake that interacts with the game.
+ * The goal is to eat food.
+ */
 public class EnemySnakeFood {
     private final GameField gameField;
     private final Food food;
@@ -24,15 +25,18 @@ public class EnemySnakeFood {
     private final Walls walls;
     boolean gameOver = false;
     private int score;
+    private EnemySnakeFood.Direction currentDirection;
 
 
+    /**
+     * Represents the possible directions for the enemy snake.
+     */
     public enum Direction {
         RIGHT,
         LEFT,
         UP,
         DOWN
     }
-    private EnemySnakeFood.Direction currentDirection;
 
     public EnemySnakeFood(GameField gameField, Food food, Walls walls) {
         this.gameField = gameField;
@@ -44,6 +48,10 @@ public class EnemySnakeFood {
         initSnake();
     }
 
+    /**
+     *  Runs the enemy snake's actions, including crawling, moving, and eating.
+     *  If the game is over, resets the snake.
+     */
     public void run() {
         if (!gameOver) {
             crawling();
@@ -57,6 +65,9 @@ public class EnemySnakeFood {
 
     }
 
+    /**
+     * Makes the enemy snake crawl by adjusting its body segments.
+     */
     public void crawling() {
         if (snake.size() > 1) {
             Point crawling = snake.get(snake.size() - 1);
@@ -69,6 +80,10 @@ public class EnemySnakeFood {
 
     Point goalFood;
 
+    /**
+     * Moves the enemy snake to the next position
+     * based on its current direction and the location of the goal food.
+     */
     public void movingNext() {
         List<Point> foods = food.getFood();
         if (goalFood == null || !foods.contains(goalFood)) {
@@ -90,10 +105,8 @@ public class EnemySnakeFood {
         List<Direction> directions = directions();
         if (!directions.contains(currentDirection)) {
             direction = getRandomDirection(directions);
-            //System.out.println("from directions " + direction);
         } else {
             direction = currentDirection;
-            //System.out.println("from current " + direction);
         }
         if (direction != null) {
             switch (direction) {
@@ -108,11 +121,22 @@ public class EnemySnakeFood {
         }
     }
 
+    /**
+     * Returns a random food point from the given list of food points.
+     *
+     * @param foods the list of food points
+     * @return a random food point
+     */
     private Point getRandomFood(List<Point> foods) {
         int randomIndex = new Random().nextInt(foods.size());
         return foods.get(randomIndex);
     }
 
+    /**
+     * Returns a list of possible directions for the snake to move in.
+     *
+     * @return the list of possible directions
+     */
     private List<Direction> directions () {
 
         List<Direction> directions = new ArrayList<>();
@@ -142,11 +166,15 @@ public class EnemySnakeFood {
         if (currentDirection != UP && noWall(point) && notBorder(point) && notSelf(point)) {
             directions.add(randomDirection);
         }
-
-
         return directions;
     }
 
+    /**
+     * Returns a random direction from the given list of directions.
+     *
+     * @param directions the list of directions
+     * @return a random direction
+     */
     public static Direction getRandomDirection(List<Direction> directions) {
         if (directions.size() > 0) {
             int randomIndex = new Random().nextInt(directions.size());
@@ -156,6 +184,12 @@ public class EnemySnakeFood {
         }
     }
 
+    /**
+     * Checks if the given point is not occupied by the snake itself.
+     *
+     * @param point The point to check.
+     * @return True if the point is not occupied by the snake itself, false otherwise.
+     */
     private boolean notSelf(Point point) {
         for (Point value : snake) {
             if (point.getX() == value.getX() && point.getY() == value.getY()) {
@@ -165,11 +199,23 @@ public class EnemySnakeFood {
         return true;
     }
 
+    /**
+     * Checks if the given point is not outside the game field.
+     *
+     * @param point  The point to check.
+     * @return True if the point is not outside the game field, false otherwise.
+     */
     private boolean notBorder(Point point) {
         return point.getX() != -1 && point.getX() != COLUMNS
                 && point.getY() != -1 && point.getY() != ROWS;
     }
 
+    /**
+     * Checks if the given point does not contain a wall.
+     *
+     * @param point The point to check.
+     * @return True if the point does not contain a wall, false otherwise.
+     */
     private boolean noWall(Point point) {
         for (int i = 0 ; i < walls.getWallsList().size(); i++) {
             if (point.getX() == walls.getWallsList().get(i).getX() &&
@@ -180,23 +226,9 @@ public class EnemySnakeFood {
         return true;
     }
 
-
-
-    public void drawSnake(GraphicsContext gc) {
-
-        gc.setFill(Color.web("FA7921"));
-
-        for (Point point : snake) {
-            gc.fillRoundRect(point.getX() * gameField.getPOINT_SIZE(),
-                    point.getY() * gameField.getPOINT_SIZE(),
-                    gameField.getPOINT_SIZE() - 1,
-                    gameField.getPOINT_SIZE() - 1,
-                    25, 25);
-        }
-
-
-    }
-
+    /**
+     * Initializes the snake's initial position.
+     */
     private void initSnake() {
         for (int i = 0; i < 3; i++) {
             snake.add(new Point(29, i + ROWS / 2));
@@ -205,6 +237,9 @@ public class EnemySnakeFood {
 
     }
 
+    /**
+     * Checks if the enemy snake has eaten the food and performs the necessary actions.
+     */
     public void eatFood() {
         for (int i = 0; i < food.getFood().size(); i++) {
             if (snakeHead.getX() == food.getFood().get(i).getX()

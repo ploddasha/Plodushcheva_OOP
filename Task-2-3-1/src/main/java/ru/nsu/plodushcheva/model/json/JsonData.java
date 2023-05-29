@@ -1,11 +1,13 @@
 package ru.nsu.plodushcheva.model.json;
 
-import com.google.gson.Gson;
-
-
-import java.awt.*;
+import java.awt.Point;
 import java.util.List;
 
+/**
+ * The JsonData class represents the JSON data used for configuring the game.
+ * It contains various properties such as width, height, food settings, and wall positions
+ * for different levels.
+ */
 public class JsonData {
     public final int width;
     public final int height;

@@ -4,14 +4,23 @@ import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
 import com.google.gson.reflect.TypeToken;
 import ru.nsu.plodushcheva.model.json.JsonData;
-
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.Reader;
 import java.util.Objects;
 
+
+/**
+ * Parses JSON data from a file.
+ */
 public class JsonParser {
 
+    /**
+     * Retrieves JSON data from a file.
+     *
+     * @param file The file containing the JSON data.
+     * @return The parsed JSON data.
+     */
     public JsonData getData(String file) {
         try (Reader reader = new InputStreamReader(
                 Objects.requireNonNull(getClass().getClassLoader()
@@ -22,7 +31,6 @@ public class JsonParser {
         } catch (JsonSyntaxException | IOException e) {
             e.printStackTrace();
         }
-
         return null;
     }
 }

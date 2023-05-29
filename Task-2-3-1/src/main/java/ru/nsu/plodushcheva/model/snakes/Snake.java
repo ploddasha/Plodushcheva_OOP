@@ -1,12 +1,16 @@
 package ru.nsu.plodushcheva.model.snakes;
 
-import ru.nsu.plodushcheva.model.Food;
-import ru.nsu.plodushcheva.view.GameField;
-import ru.nsu.plodushcheva.model.Walls;
 import java.awt.Point;
 import java.util.ArrayList;
 import java.util.List;
+import ru.nsu.plodushcheva.model.Food;
+import ru.nsu.plodushcheva.model.Walls;
+import ru.nsu.plodushcheva.view.GameField;
 
+/**
+ *The Snake class represents the player-controlled snake in the game.
+ * It manages the snake's movement, collision detection, and score.
+ */
 public class Snake {
     private final GameField gameField;
     private final Food food;
@@ -28,6 +32,9 @@ public class Snake {
         initSnake();
     }
 
+    /**
+     * Initializes the snake's initial position.
+     */
     private void initSnake() {
         for (int i = 0; i < 3; i++) {
             snake.add(new Point(5, i + ROWS / 2));
@@ -35,6 +42,9 @@ public class Snake {
         snakeHead = snake.get(0);
     }
 
+    /**
+     * Checks if the snake's head has eaten any food.
+     */
     public void eatFood() {
         for (int i = 0; i < food.getFood().size(); i++) {
             if (snakeHead.getX() == food.getFood().get(i).getX()
@@ -47,6 +57,9 @@ public class Snake {
         }
     }
 
+    /**
+     * Moves the snake to the right.
+     */
     public void moveRight() {
         if (snakeHead.getX() == COLUMNS) {
             snakeHead.x = 0;
@@ -55,6 +68,9 @@ public class Snake {
         }
     }
 
+    /**
+     * Moves the snake to the left.
+     */
     public void moveLeft() {
         if (snakeHead.getX() == 0) {
             snakeHead.x = COLUMNS;
@@ -63,6 +79,9 @@ public class Snake {
         }
     }
 
+    /**
+     * Moves the snake up.
+     */
     public void moveUp() {
         if (snakeHead.getY() == 0) {
             snakeHead.y = ROWS;
@@ -71,6 +90,9 @@ public class Snake {
         }
     }
 
+    /**
+     * Moves the snake down.
+     */
     public void moveDown() {
         if (snakeHead.getY() == ROWS) {
             snakeHead.y = 0;
@@ -79,6 +101,13 @@ public class Snake {
         }
     }
 
+    /**
+     * Checks if the game is over by evaluating various conditions.
+     * The game is considered over if:
+     * - The snake's head is outside the game field boundaries.
+     * - The snake's head collides with its own body.
+     * - The snake's head collides with a wall.
+     */
     public void gameOver() {
 
         if (snakeHead.x < 0 || snakeHead.y < 0 ||
@@ -101,8 +130,6 @@ public class Snake {
                 return;
             }
         }
-
-
     }
 
     public List<Point> getSnake() {

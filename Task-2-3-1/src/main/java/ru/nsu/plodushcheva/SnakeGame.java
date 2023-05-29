@@ -8,29 +8,34 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.control.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.Spinner;
+import javafx.scene.control.SpinnerValueFactory;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import ru.nsu.plodushcheva.controller.SnakeGameController;
+import ru.nsu.plodushcheva.controller.json.JsonParser;
 import ru.nsu.plodushcheva.model.CollisionManager;
 import ru.nsu.plodushcheva.model.Food;
 import ru.nsu.plodushcheva.model.MovementManager;
-import ru.nsu.plodushcheva.view.GameField;
 import ru.nsu.plodushcheva.model.Walls;
 import ru.nsu.plodushcheva.model.json.JsonData;
-import ru.nsu.plodushcheva.controller.json.JsonParser;
 import ru.nsu.plodushcheva.model.snakes.EnemySnakeFood;
 import ru.nsu.plodushcheva.model.snakes.EnemySnakeRandom;
 import ru.nsu.plodushcheva.model.snakes.Snake;
+import ru.nsu.plodushcheva.view.GameField;
 import ru.nsu.plodushcheva.view.Graphics;
 import ru.nsu.plodushcheva.view.SnakeGameView;
 import java.awt.Point;
 
 
+
+/**
+ * The main class that represents the Snake game application.
+ */
 public class SnakeGame extends Application {
 
     static JsonData jsonData = new JsonParser().getData("info.json");
@@ -169,6 +174,12 @@ public class SnakeGame extends Application {
 
     }
 
+    /**
+     * The main game loop.
+     *
+     * @param gc     the GraphicsContext for the game canvas
+     * @param gcInfo the GraphicsContext for the info canvas
+     */
     private void run(GraphicsContext gc, GraphicsContext gcInfo) {
         CollisionManager collisionManager = new CollisionManager();
         collisionManager.collision(snake, enemySnakeFood, enemySnakeRandom);
@@ -187,7 +198,7 @@ public class SnakeGame extends Application {
         }
         graphics.drawBackground(gc);
         graphics.drawWalls(gc, walls.getWalls());
-        graphics.drawSnake(gc, snake.getSnake());
+        graphics.drawSnake(gc, snake.getSnake(), 1);
 
         snake.eatFood();
         graphics.drawFood(gc, food.getFood());
@@ -199,8 +210,8 @@ public class SnakeGame extends Application {
         graphics.drawLevel(gcInfo, gameLevel);
 
         if (!snake.isGameOver()) {
-            enemySnakeRandom.drawSnake(gc);
-            enemySnakeFood.drawSnake(gc);
+            graphics.drawSnake(gc, enemySnakeRandom.getSnake(), 2);
+            graphics.drawSnake(gc, enemySnakeFood.getSnake(), 3);
         }
 
         if (snake.getSnake().size() > 1) {

@@ -1,11 +1,14 @@
 package ru.nsu.plodushcheva.view;
 
-import javafx.scene.text.Font;
-import ru.nsu.plodushcheva.model.Walls;
 import java.awt.Point;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
+import ru.nsu.plodushcheva.model.Walls;
 
+/**
+ * Class responsible for drawing game graphics.
+ */
 public class Graphics {
 
     private final GameField gameField;
@@ -25,8 +28,19 @@ public class Graphics {
 
     }
 
-    public void drawSnake(GraphicsContext gc, java.util.List<Point> snake) {
-        gc.setFill(Color.web("9BC53D"));
+    /**
+     * Draws the snake on the game field.
+     *
+     * @param gc the GraphicsContext object
+     * @param snake the list of snake points
+     */
+    public void drawSnake(GraphicsContext gc, java.util.List<Point> snake, int index) {
+        switch (index) {
+            case 1 -> gc.setFill(Color.web("9BC53D"));
+            case 2 -> gc.setFill(Color.web("5BC0EB"));
+            case 3 -> gc.setFill(Color.web("FA7921"));
+        }
+        //gc.setFill(Color.web("9BC53D"));
         for (Point point : snake) {
             gc.fillRoundRect(point.getX() * gameField.getPOINT_SIZE(),
                     point.getY() * gameField.getPOINT_SIZE(),
@@ -34,8 +48,14 @@ public class Graphics {
                     gameField.getPOINT_SIZE() - 1,
                     25, 25);
         }
+
     }
 
+    /**
+     * Draws the background of the game field.
+     *
+     * @param gc the GraphicsContext object
+     */
     public void drawBackground(GraphicsContext gc) {
         for (int i = 0; i < ROWS; i++) {
             for (int j = 0; j < COLUMNS; j++) {
@@ -49,6 +69,12 @@ public class Graphics {
         }
     }
 
+    /**
+     * Draws the food on the game field.
+     *
+     * @param gc the GraphicsContext object
+     * @param food the list of food points
+     */
     public void drawFood(GraphicsContext gc, java.util.List<Point> food) {
         gc.setFill(Color.web("E55934"));
         for (Point point : food) {
@@ -59,6 +85,12 @@ public class Graphics {
     }
 
 
+    /**
+     * Draws the walls on the game field.
+     *
+     * @param gc the GraphicsContext object
+     * @param walls the Walls object representing the walls
+     */
     public void drawWalls(GraphicsContext gc, Walls walls) {
         gc.setFill(Color.web("5BC0EB"));
 
@@ -69,6 +101,15 @@ public class Graphics {
     }
 
 
+    /**
+     * Draws the score on the game field.
+     *
+     * @param gc the GraphicsContext object
+     * @param score the player's score
+     * @param score1 the score of enemy 1
+     * @param score2 the score of enemy 2
+     * @param scoreForWin the score needed to win the game
+     */
     public void drawScore(GraphicsContext gc, int score, int score1, int score2, int scoreForWin) {
         gc.setFill(Color.WHITE);
         gc.fillRect(0, 0, 100, HEIGHT);
@@ -84,11 +125,22 @@ public class Graphics {
 
     }
 
+    /**
+     * Draws the level on the game field.
+     *
+     * @param gc the GraphicsContext object
+     * @param level the current level
+     */
     public void drawLevel(GraphicsContext gc, int level) {
         gc.setFill(Color.web("5BC0EB"));
         gc.fillText("Level " + level, 15, 150);
     }
 
+    /**
+     * Draws the "Game Over" message on the game field.
+     *
+     * @param gc the GraphicsContext object
+     */
     public void drawGameOver(GraphicsContext gc) {
         gc.setFill(Color.RED);
         gc.setFont(new Font("Digital-7", 70));
@@ -96,6 +148,11 @@ public class Graphics {
 
     }
 
+    /**
+     * Draws the "You won" message on the game field.
+     *
+     * @param gc the GraphicsContext object
+     */
     public void drawGameWon(GraphicsContext gc) {
         gc.setFill(Color.GREEN);
         gc.setFont(new Font("Digital-7", 70));

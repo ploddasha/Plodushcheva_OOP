@@ -1,5 +1,8 @@
 package ru.nsu.plodushcheva.view;
 
+/**
+ * Represents the game field in the Snake game.
+ */
 public class GameField {
     private final int WIDTH;
     private final int HEIGHT;
