@@ -24,15 +24,15 @@ public class SnakeGameView {
     /**
      * Creates and returns the main game scene with the specified width and height.
      *
-     * @param WIDTH  the width of the canvas
-     * @param HEIGHT the height of the canvas
+     * @param width  the width of the canvas
+     * @param height the height of the canvas
      * @return the main game scene
      */
-    public Scene createScene(int WIDTH, int HEIGHT) {
+    public Scene createScene(int width, int height) {
         HBox root = new HBox();
 
-        Canvas canvas = new Canvas(WIDTH, HEIGHT);
-        Canvas info = new Canvas(100, HEIGHT);
+        Canvas canvas = new Canvas(width, height);
+        Canvas info = new Canvas(100, height);
 
         root.getChildren().add(info);
         root.getChildren().add(canvas);

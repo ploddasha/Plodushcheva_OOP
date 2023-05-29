@@ -7,8 +7,11 @@ import java.util.Random;
 import ru.nsu.plodushcheva.model.Food;
 import ru.nsu.plodushcheva.model.Walls;
 import ru.nsu.plodushcheva.view.GameField;
-import static ru.nsu.plodushcheva.model.snakes.EnemySnakeFood.Direction.*;
 
+import static ru.nsu.plodushcheva.model.snakes.EnemySnakeFood.Direction.UP;
+import static ru.nsu.plodushcheva.model.snakes.EnemySnakeFood.Direction.DOWN;
+import static ru.nsu.plodushcheva.model.snakes.EnemySnakeFood.Direction.LEFT;
+import static ru.nsu.plodushcheva.model.snakes.EnemySnakeFood.Direction.RIGHT;
 
 
 /**
@@ -20,8 +23,8 @@ public class EnemySnakeFood {
     private final Food food;
     private List<Point> snake;
     private Point snakeHead;
-    private final int ROWS;
-    private final int COLUMNS;
+    private final int rows;
+    private final int columns;
     private final Walls walls;
     boolean gameOver = false;
     private int score;
@@ -42,8 +45,8 @@ public class EnemySnakeFood {
         this.gameField = gameField;
         this.food = food;
         this.walls = walls;
-        this.ROWS = gameField.getROWS();
-        this.COLUMNS = gameField.getCOLUMNS();
+        this.rows = gameField.getRows();
+        this.columns = gameField.getColumns();
         snake = new ArrayList<>();
         initSnake();
     }
@@ -137,7 +140,7 @@ public class EnemySnakeFood {
      *
      * @return the list of possible directions
      */
-    private List<Direction> directions () {
+    private List<Direction> directions() {
 
         List<Direction> directions = new ArrayList<>();
 
@@ -145,7 +148,7 @@ public class EnemySnakeFood {
 
         randomDirection = RIGHT;
         Point point = new Point(snakeHead.x + 1, snakeHead.y);
-        if (currentDirection != LEFT && noWall(point) && notBorder(point) && notSelf(point) ) {
+        if (currentDirection != LEFT && noWall(point) && notBorder(point) && notSelf(point)) {
             directions.add(randomDirection);
         }
 
@@ -206,8 +209,8 @@ public class EnemySnakeFood {
      * @return True if the point is not outside the game field, false otherwise.
      */
     private boolean notBorder(Point point) {
-        return point.getX() != -1 && point.getX() != COLUMNS
-                && point.getY() != -1 && point.getY() != ROWS;
+        return point.getX() != -1 && point.getX() != columns
+                && point.getY() != -1 && point.getY() != rows;
     }
 
     /**
@@ -217,9 +220,9 @@ public class EnemySnakeFood {
      * @return True if the point does not contain a wall, false otherwise.
      */
     private boolean noWall(Point point) {
-        for (int i = 0 ; i < walls.getWallsList().size(); i++) {
-            if (point.getX() == walls.getWallsList().get(i).getX() &&
-                    point.getY() == walls.getWallsList().get(i).getY()) {
+        for (int i = 0; i < walls.getWallsList().size(); i++) {
+            if (point.getX() == walls.getWallsList().get(i).getX()
+                    && point.getY() == walls.getWallsList().get(i).getY()) {
                 return false;
             }
         }
@@ -231,7 +234,7 @@ public class EnemySnakeFood {
      */
     private void initSnake() {
         for (int i = 0; i < 3; i++) {
-            snake.add(new Point(29, i + ROWS / 2));
+            snake.add(new Point(29, i + rows / 2));
         }
         snakeHead = snake.get(0);
 
@@ -278,12 +281,15 @@ public class EnemySnakeFood {
     public List<Point> getSnake() {
         return snake;
     }
+
     public Point getSnakeHead() {
         return snakeHead;
     }
+
     public int getScore() {
         return score;
     }
+
     public void setGameOver() {
         gameOver = true;
     }

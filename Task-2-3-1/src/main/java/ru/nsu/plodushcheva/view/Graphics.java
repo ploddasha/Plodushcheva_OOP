@@ -12,19 +12,19 @@ import ru.nsu.plodushcheva.model.Walls;
 public class Graphics {
 
     private final GameField gameField;
-    private static int WIDTH;
-    private static int HEIGHT;
-    private static int COLUMNS;
-    private static int ROWS;
-    private static int SQUARE_SIZE;
+    private static int width;
+    private static int height;
+    private static int columns;
+    private static int rows;
+    private static int squareSize;
 
-    public Graphics(GameField gameField, int WIDTH, int HEIGHT, int COLUMNS, int ROWS) {
-        Graphics.WIDTH = WIDTH;
-        Graphics.HEIGHT = HEIGHT;
-        Graphics.COLUMNS = COLUMNS;
-        Graphics.ROWS = ROWS;
+    public Graphics(GameField gameField, int width, int height, int columns, int rows) {
+        Graphics.width = width;
+        Graphics.height = height;
+        Graphics.columns = columns;
+        Graphics.rows = rows;
         this.gameField = gameField;
-        SQUARE_SIZE = WIDTH/ROWS;
+        squareSize = width/rows;
 
     }
 
@@ -57,14 +57,14 @@ public class Graphics {
      * @param gc the GraphicsContext object
      */
     public void drawBackground(GraphicsContext gc) {
-        for (int i = 0; i < ROWS; i++) {
-            for (int j = 0; j < COLUMNS; j++) {
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < columns; j++) {
                 if ((i + j) % 2 == 0) {
                     gc.setFill(Color.web("FDE74C"));
                 } else {
                     gc.setFill(Color.web("FDEC68"));
                 }
-                gc.fillRect(i * SQUARE_SIZE, j * SQUARE_SIZE, SQUARE_SIZE, SQUARE_SIZE);
+                gc.fillRect(i * squareSize, j * squareSize, squareSize, squareSize);
             }
         }
     }
@@ -95,8 +95,8 @@ public class Graphics {
         gc.setFill(Color.web("5BC0EB"));
 
         for (Point wall : walls.getWallsList()) {
-            gc.fillRect(wall.x * SQUARE_SIZE,
-                    wall.y * SQUARE_SIZE, SQUARE_SIZE, SQUARE_SIZE);
+            gc.fillRect(wall.x * squareSize,
+                    wall.y * squareSize, squareSize, squareSize);
         }
     }
 
@@ -112,7 +112,7 @@ public class Graphics {
      */
     public void drawScore(GraphicsContext gc, int score, int score1, int score2, int scoreForWin) {
         gc.setFill(Color.WHITE);
-        gc.fillRect(0, 0, 100, HEIGHT);
+        gc.fillRect(0, 0, 100,height);
         gc.setFill(Color.web("5BC0EB"));
         gc.fillText("Score: " , 15, 30);
         gc.fillText(score + "/" + scoreForWin, 30, 50);
@@ -144,7 +144,7 @@ public class Graphics {
     public void drawGameOver(GraphicsContext gc) {
         gc.setFill(Color.RED);
         gc.setFont(new Font("Digital-7", 70));
-        gc.fillText("Game Over", WIDTH / 3.5, HEIGHT / 2);
+        gc.fillText("Game Over", width / 3.5,height / 2);
 
     }
 
@@ -156,6 +156,6 @@ public class Graphics {
     public void drawGameWon(GraphicsContext gc) {
         gc.setFill(Color.GREEN);
         gc.setFont(new Font("Digital-7", 70));
-        gc.fillText("You won", WIDTH / 3.5, HEIGHT / 2);
+        gc.fillText("You won", width / 3.5,height / 2);
     }
 }

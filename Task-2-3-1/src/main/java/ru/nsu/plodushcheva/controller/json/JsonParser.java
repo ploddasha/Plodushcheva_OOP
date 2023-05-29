@@ -3,11 +3,12 @@ package ru.nsu.plodushcheva.controller.json;
 import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
 import com.google.gson.reflect.TypeToken;
-import ru.nsu.plodushcheva.model.json.JsonData;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.Reader;
 import java.util.Objects;
+import ru.nsu.plodushcheva.model.json.JsonData;
+
 
 
 /**

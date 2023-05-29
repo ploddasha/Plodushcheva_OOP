@@ -16,18 +16,24 @@ public class Snake {
     private final Food food;
     private final List<Point> snake;
     private Point snakeHead;
-    private final int ROWS;
-    private final int COLUMNS;
+    private final int rows;
+    private final int columns;
     private final Walls walls;
     boolean gameOver = false;
     private int score;
 
+    /**
+     * Represents the Snake in the game.
+     * @param gameField The game field where the snake moves.
+     * @param food The food that the snake can eat.
+     * @param walls The walls that the snake needs to avoid.
+     */
     public Snake(GameField gameField, Food food, Walls walls) {
         this.gameField = gameField;
         this.food = food;
         this.walls = walls;
-        this.ROWS = gameField.getROWS();
-        this.COLUMNS = gameField.getCOLUMNS();
+        this.rows = gameField.getRows();
+        this.columns = gameField.getColumns();
         snake = new ArrayList<>();
         initSnake();
     }
@@ -37,7 +43,7 @@ public class Snake {
      */
     private void initSnake() {
         for (int i = 0; i < 3; i++) {
-            snake.add(new Point(5, i + ROWS / 2));
+            snake.add(new Point(5, i + rows / 2));
         }
         snakeHead = snake.get(0);
     }
@@ -61,7 +67,7 @@ public class Snake {
      * Moves the snake to the right.
      */
     public void moveRight() {
-        if (snakeHead.getX() == COLUMNS) {
+        if (snakeHead.getX() == columns) {
             snakeHead.x = 0;
         } else {
             snakeHead.x++;
@@ -73,7 +79,7 @@ public class Snake {
      */
     public void moveLeft() {
         if (snakeHead.getX() == 0) {
-            snakeHead.x = COLUMNS;
+            snakeHead.x = columns;
         } else {
             snakeHead.x--;
         }
@@ -84,7 +90,7 @@ public class Snake {
      */
     public void moveUp() {
         if (snakeHead.getY() == 0) {
-            snakeHead.y = ROWS;
+            snakeHead.y = rows;
         } else {
             snakeHead.y--;
         }
@@ -94,7 +100,7 @@ public class Snake {
      * Moves the snake down.
      */
     public void moveDown() {
-        if (snakeHead.getY() == ROWS) {
+        if (snakeHead.getY() == rows) {
             snakeHead.y = 0;
         } else {
             snakeHead.y++;
@@ -110,22 +116,22 @@ public class Snake {
      */
     public void gameOver() {
 
-        if (snakeHead.x < 0 || snakeHead.y < 0 ||
-                snakeHead.x * gameField.getPOINT_SIZE() >= gameField.getWIDTH() ||
-                snakeHead.y * gameField.getPOINT_SIZE() >= gameField.getHEIGHT()) {
+        if (snakeHead.x < 0 || snakeHead.y < 0
+                || snakeHead.x * gameField.getPOINT_SIZE() >= gameField.getWidth()
+                || snakeHead.y * gameField.getPOINT_SIZE() >= gameField.getHeight()) {
             gameOver = true;
             return;
         }
         for (int i = 3; i < snake.size(); i++) {
-            if (snakeHead.getX() == snake.get(i).getX() && snakeHead.getY() == snake.get(i).getY()) {
+            if (snakeHead.getX() == snake.get(i).getX()
+                    && snakeHead.getY() == snake.get(i).getY()) {
                 gameOver = true;
                 return;
             }
         }
-        for (int i = 0 ; i < walls.getWallsList().size(); i++) {
-            if (snakeHead.getX() == walls.getWallsList().get(i).getX() &&
-            snakeHead.getY() == walls.getWallsList().get(i).getY()) {
-                System.out.println("r " + snakeHead.getX() + " " + walls.getWallsList().get(i).getX());
+        for (int i = 0; i < walls.getWallsList().size(); i++) {
+            if (snakeHead.getX() == walls.getWallsList().get(i).getX()
+                    && snakeHead.getY() == walls.getWallsList().get(i).getY()) {
                 gameOver = true;
                 return;
             }
@@ -135,18 +141,23 @@ public class Snake {
     public List<Point> getSnake() {
         return snake;
     }
+
     public Point getSnakeHead() {
         return snakeHead;
     }
+
     public int getScore() {
         return score;
     }
+
     public void setScore() {
         score++;
     }
+
     public void setGameOver() {
         gameOver = true;
     }
+
     public boolean isGameOver() {
         return gameOver;
     }

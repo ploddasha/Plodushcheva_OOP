@@ -39,13 +39,13 @@ import java.awt.Point;
 public class SnakeGame extends Application {
 
     static JsonData jsonData = new JsonParser().getData("info.json");
-    private static final int WIDTH = jsonData.getWidth();
+    private static final int width = jsonData.getWidth();
 
     private static final int HEIGHT = jsonData.getHeight();
     private static final int COLUMNS = jsonData.getColumns();
-    private static final int ROWS = jsonData.getRows();
-    private static final int SQUARE_SIZE = jsonData.getSquareSize();
-    private int SCORE_FOR_WIN = 20;
+    private static final int rows = jsonData.getRows();
+    private static final int squareSize = jsonData.getSquareSize();
+    private int scoreForWin = 20;
     private Graphics graphics;
 
     public enum Direction {
@@ -122,17 +122,17 @@ public class SnakeGame extends Application {
                     Speed = jsonData.getSpeedFoodForLevel3();
                     walls.addWalls(jsonData.getWallsFoodForLevel3());
                 }
-                SCORE_FOR_WIN = spinner.getValue();
+                scoreForWin = spinner.getValue();
 
 
-                gameField = new GameField(WIDTH, HEIGHT, COLUMNS, ROWS, SQUARE_SIZE);
+                gameField = new GameField(width, HEIGHT, COLUMNS, rows, squareSize);
                 food = new Food(gameField, MAX_FOOD);
                 snake = new Snake(gameField, food, walls);
-                graphics = new Graphics(gameField, WIDTH, HEIGHT, COLUMNS, ROWS);
+                graphics = new Graphics(gameField, width, HEIGHT, COLUMNS, rows);
 
                 food.addSnake(snake);
 
-                Scene scene = snakeGameView.createScene(WIDTH,HEIGHT);
+                Scene scene = snakeGameView.createScene(width, HEIGHT);
 
                 primaryStage.setScene(scene);
                 primaryStage.setX(300);
@@ -184,15 +184,15 @@ public class SnakeGame extends Application {
         CollisionManager collisionManager = new CollisionManager();
         collisionManager.collision(snake, enemySnakeFood, enemySnakeRandom);
 
-        if (enemySnakeFood.getScore() == SCORE_FOR_WIN
-                || enemySnakeRandom.getScore() == SCORE_FOR_WIN) {
+        if (enemySnakeFood.getScore() == scoreForWin
+                || enemySnakeRandom.getScore() == scoreForWin) {
             snake.setGameOver();
         }
         if (snake.isGameOver()) {
             graphics.drawGameOver(gc);
             return;
         }
-        if (score == SCORE_FOR_WIN) {
+        if (score == scoreForWin) {
             graphics.drawGameWon(gc);
             return;
         }
@@ -206,7 +206,7 @@ public class SnakeGame extends Application {
         score = snake.getScore();
         int scoreEnemyFood = enemySnakeFood.getScore();
         int scoreEnemyRandom = enemySnakeRandom.getScore();
-        graphics.drawScore(gcInfo, score, scoreEnemyFood, scoreEnemyRandom, SCORE_FOR_WIN);
+        graphics.drawScore(gcInfo, score, scoreEnemyFood, scoreEnemyRandom, scoreForWin);
         graphics.drawLevel(gcInfo, gameLevel);
 
         if (!snake.isGameOver()) {

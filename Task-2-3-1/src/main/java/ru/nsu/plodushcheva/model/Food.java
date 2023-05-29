@@ -16,8 +16,8 @@ import ru.nsu.plodushcheva.view.GameField;
  */
 public class Food {
     private final int MAX_FOOD;
-    private final int HEIGHT;
-    private final int WIDTH;
+    private final int height;
+    private final int width;
     Snake snake;
     EnemySnakeRandom enemySnakeRandom;
     EnemySnakeFood enemySnakeFood;
@@ -25,10 +25,16 @@ public class Food {
     private final List<Point> food;
 
 
+    /**
+     Constructs a Food object with the specified game field and maximum number of food items.
+
+     @param gameField The game field.
+     @param MAX_FOOD The maximum number of food items.
+     */
     public Food(GameField gameField, int MAX_FOOD) {
         this.MAX_FOOD = MAX_FOOD;
-        HEIGHT = gameField.getROWS();
-        WIDTH = gameField.getCOLUMNS();
+        height = gameField.getRows();
+        width = gameField.getColumns();
         food = new ArrayList<>();
 
     }
@@ -73,7 +79,8 @@ public class Food {
     public void generateFood(Walls walls) {
         while (food.size() < MAX_FOOD) {
             Point newFoodItem;
-            newFoodItem = new Point((int) (Math.random() * HEIGHT), ((int) (Math.random() * WIDTH)));
+            newFoodItem = new Point((int) (Math.random() * height),
+                    ((int) (Math.random() * width)));
             if (!walls.getWallsList().contains(newFoodItem)
                     && !snake.getSnake().contains(newFoodItem)
                     && !enemySnakeRandom.getSnake().contains(newFoodItem)

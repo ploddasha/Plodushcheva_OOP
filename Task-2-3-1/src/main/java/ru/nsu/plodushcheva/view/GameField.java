@@ -4,35 +4,35 @@ package ru.nsu.plodushcheva.view;
  * Represents the game field in the Snake game.
  */
 public class GameField {
-    private final int WIDTH;
-    private final int HEIGHT;
-    private final int COLUMNS;
-    private final int ROWS;
+    private final int width;
+    private final int height;
+    private final int columns;
+    private final int rows;
     private final int POINT_SIZE;
 
     public GameField(int width, int height, int columns, int rows, int point_size) {
-        WIDTH = width;
-        HEIGHT = height;
-        COLUMNS = columns;
-        ROWS = rows;
-        POINT_SIZE = point_size;
+        this.width = width;
+        this.height = height;
+        this.columns = columns;
+        this.rows = rows;
+        this.POINT_SIZE = point_size;
     }
 
 
-    public int getWIDTH() {
-        return WIDTH;
+    public int getWidth() {
+        return width;
     }
 
-    public int getHEIGHT() {
-        return HEIGHT;
+    public int getHeight() {
+        return height;
     }
 
-    public int getCOLUMNS() {
-        return COLUMNS;
+    public int getColumns() {
+        return columns;
     }
 
-    public int getROWS() {
-        return ROWS;
+    public int getRows() {
+        return rows;
     }
 
 
