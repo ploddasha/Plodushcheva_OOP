@@ -23,8 +23,9 @@ import java.util.List;
  * @param wallsFoodForLevel2 The list of wall coordinates for level 2.
  * @param wallsFoodForLevel3 The list of wall coordinates for level 3.
  */
-public record JsonData(int width, int height, int columns, int rows, int squareSize, int maxFoodForLevel1,
-                       int maxFoodForLevel2, int maxFoodForLevel3, int speedFoodForLevel1, int speedFoodForLevel2,
-                       int speedFoodForLevel3, List<Point> wallsFoodForLevel1, List<Point> wallsFoodForLevel2,
+public record JsonData(int width, int height, int columns, int rows, int squareSize,
+                       int maxFoodForLevel1, int maxFoodForLevel2, int maxFoodForLevel3,
+                       int speedFoodForLevel1, int speedFoodForLevel2, int speedFoodForLevel3,
+                       List<Point> wallsFoodForLevel1, List<Point> wallsFoodForLevel2,
                        List<Point> wallsFoodForLevel3) {
 }

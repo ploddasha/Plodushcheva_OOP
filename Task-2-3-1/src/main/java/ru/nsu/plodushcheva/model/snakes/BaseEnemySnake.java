@@ -1,16 +1,23 @@
 package ru.nsu.plodushcheva.model.snakes;
 
-import ru.nsu.plodushcheva.model.Food;
-import ru.nsu.plodushcheva.model.Walls;
-import ru.nsu.plodushcheva.view.GameField;
+import static ru.nsu.plodushcheva.model.snakes.BaseEnemySnake.Direction.DOWN;
+import static ru.nsu.plodushcheva.model.snakes.BaseEnemySnake.Direction.LEFT;
+import static ru.nsu.plodushcheva.model.snakes.BaseEnemySnake.Direction.RIGHT;
+import static ru.nsu.plodushcheva.model.snakes.BaseEnemySnake.Direction.UP;
 
 import java.awt.Point;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import ru.nsu.plodushcheva.model.Food;
+import ru.nsu.plodushcheva.model.Walls;
+import ru.nsu.plodushcheva.view.GameField;
 
-import static ru.nsu.plodushcheva.model.snakes.BaseEnemySnake.Direction.*;
 
+/**
+ * Base class for enemy snakes in the game.
+ * For enemy snake food and enemy snake random.
+ */
 public abstract class BaseEnemySnake {
 
     public final GameField gameField;
@@ -145,7 +152,8 @@ public abstract class BaseEnemySnake {
      * @param directions The list of directions
      * @return A random direction
      */
-    public static BaseEnemySnake.Direction getRandomDirection(List<BaseEnemySnake.Direction> directions) {
+    public static BaseEnemySnake.Direction getRandomDirection(
+            List<BaseEnemySnake.Direction> directions) {
         if (directions.size() > 0) {
             int randomIndex = new Random().nextInt(directions.size());
             return directions.get(randomIndex);
@@ -196,7 +204,6 @@ public abstract class BaseEnemySnake {
         return true;
     }
 
-    /* override
     /**
      * Initializes the snake's initial position.
      */
@@ -223,6 +230,7 @@ public abstract class BaseEnemySnake {
             }
         }
     }
+    
     /**
      * moves snake's head to the right.
      */
