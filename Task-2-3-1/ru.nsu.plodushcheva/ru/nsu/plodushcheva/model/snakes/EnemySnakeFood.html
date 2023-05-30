@@ -45,7 +45,7 @@ loadScripts(document, 'script');</script>
 <ul class="sub-nav-list">
 <li>Summary:&nbsp;</li>
 <li><a href="#nested.class.summary">Nested</a>&nbsp;|&nbsp;</li>
-<li>Field&nbsp;|&nbsp;</li>
+<li><a href="#field.summary">Field</a>&nbsp;|&nbsp;</li>
 <li><a href="#constructor.summary">Constr</a>&nbsp;|&nbsp;</li>
 <li><a href="#method.summary">Method</a></li>
 </ul>
@@ -75,12 +75,14 @@ loadScripts(document, 'script');</script>
 <h1 title="Class EnemySnakeFood" class="title">Class EnemySnakeFood</h1>
 </div>
 <div class="inheritance" title="Inheritance Tree"><a href="https://docs.oracle.com/en/java/javase/16/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">java.lang.Object</a>
+<div class="inheritance"><a href="BaseEnemySnake.html" title="class in ru.nsu.plodushcheva.model.snakes">ru.nsu.plodushcheva.model.snakes.BaseEnemySnake</a>
 <div class="inheritance">ru.nsu.plodushcheva.model.snakes.EnemySnakeFood</div>
+</div>
 </div>
 <section class="description">
 <hr>
 <div class="type-signature"><span class="modifiers">public class </span><span class="element-name type-name-label">EnemySnakeFood</span>
-<span class="extends-implements">extends <a href="https://docs.oracle.com/en/java/javase/16/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a></span></div>
+<span class="extends-implements">extends <a href="BaseEnemySnake.html" title="class in ru.nsu.plodushcheva.model.snakes">BaseEnemySnake</a></span></div>
 <div class="block">Represents an enemy snake that interacts with the game.
  The goal is to eat food.</div>
 </section>
@@ -90,17 +92,18 @@ loadScripts(document, 'script');</script>
 <li>
 <section class="nested-class-summary" id="nested.class.summary">
 <h2>Nested Class Summary</h2>
-<div class="caption"><span>Nested Classes</span></div>
-<div class="summary-table three-column-summary">
-<div class="table-header col-first">Modifier and Type</div>
-<div class="table-header col-second">Class</div>
-<div class="table-header col-last">Description</div>
-<div class="col-first even-row-color"><code>static class&nbsp;</code></div>
-<div class="col-second even-row-color"><code><span class="member-name-link"><a href="EnemySnakeFood.Direction.html" title="enum class in ru.nsu.plodushcheva.model.snakes">EnemySnakeFood.Direction</a></span></code></div>
-<div class="col-last even-row-color">
-<div class="block">Represents the possible directions for the enemy snake.</div>
-</div>
-</div>
+<div class="inherited-list">
+<h2 id="nested.classes.inherited.from.class.ru.nsu.plodushcheva.model.snakes.BaseEnemySnake">Nested classes/interfaces inherited from class&nbsp;ru.nsu.plodushcheva.model.snakes.<a href="BaseEnemySnake.html" title="class in ru.nsu.plodushcheva.model.snakes">BaseEnemySnake</a></h2>
+<code><a href="BaseEnemySnake.Direction.html" title="enum class in ru.nsu.plodushcheva.model.snakes">BaseEnemySnake.Direction</a></code></div>
+</section>
+</li>
+<!-- =========== FIELD SUMMARY =========== -->
+<li>
+<section class="field-summary" id="field.summary">
+<h2>Field Summary</h2>
+<div class="inherited-list">
+<h3 id="fields.inherited.from.class.ru.nsu.plodushcheva.model.snakes.BaseEnemySnake">Fields inherited from class&nbsp;ru.nsu.plodushcheva.model.snakes.<a href="BaseEnemySnake.html" title="class in ru.nsu.plodushcheva.model.snakes">BaseEnemySnake</a></h3>
+<code><a href="BaseEnemySnake.html#columns">columns</a>, <a href="BaseEnemySnake.html#currentDirection">currentDirection</a>, <a href="BaseEnemySnake.html#food">food</a>, <a href="BaseEnemySnake.html#gameField">gameField</a>, <a href="BaseEnemySnake.html#gameOver">gameOver</a>, <a href="BaseEnemySnake.html#goalFood">goalFood</a>, <a href="BaseEnemySnake.html#rows">rows</a>, <a href="BaseEnemySnake.html#score">score</a>, <a href="BaseEnemySnake.html#snake">snake</a>, <a href="BaseEnemySnake.html#snakeHead">snakeHead</a>, <a href="BaseEnemySnake.html#walls">walls</a></code></div>
 </section>
 </li>
 <!-- ======== CONSTRUCTOR SUMMARY ======== -->
@@ -125,73 +128,29 @@ loadScripts(document, 'script');</script>
 <section class="method-summary" id="method.summary">
 <h2>Method Summary</h2>
 <div id="method-summary-table">
-<div class="table-tabs" role="tablist" aria-orientation="horizontal"><button id="method-summary-table-tab0" role="tab" aria-selected="true" aria-controls="method-summary-table.tabpanel" tabindex="0" onkeydown="switchTab(event)" onclick="show('method-summary-table', 'method-summary-table', 3)" class="active-table-tab">All Methods</button><button id="method-summary-table-tab1" role="tab" aria-selected="false" aria-controls="method-summary-table.tabpanel" tabindex="-1" onkeydown="switchTab(event)" onclick="show('method-summary-table', 'method-summary-table-tab1', 3)" class="table-tab">Static Methods</button><button id="method-summary-table-tab2" role="tab" aria-selected="false" aria-controls="method-summary-table.tabpanel" tabindex="-1" onkeydown="switchTab(event)" onclick="show('method-summary-table', 'method-summary-table-tab2', 3)" class="table-tab">Instance Methods</button><button id="method-summary-table-tab4" role="tab" aria-selected="false" aria-controls="method-summary-table.tabpanel" tabindex="-1" onkeydown="switchTab(event)" onclick="show('method-summary-table', 'method-summary-table-tab4', 3)" class="table-tab">Concrete Methods</button></div>
+<div class="table-tabs" role="tablist" aria-orientation="horizontal"><button id="method-summary-table-tab0" role="tab" aria-selected="true" aria-controls="method-summary-table.tabpanel" tabindex="0" onkeydown="switchTab(event)" onclick="show('method-summary-table', 'method-summary-table', 3)" class="active-table-tab">All Methods</button><button id="method-summary-table-tab2" role="tab" aria-selected="false" aria-controls="method-summary-table.tabpanel" tabindex="-1" onkeydown="switchTab(event)" onclick="show('method-summary-table', 'method-summary-table-tab2', 3)" class="table-tab">Instance Methods</button><button id="method-summary-table-tab4" role="tab" aria-selected="false" aria-controls="method-summary-table.tabpanel" tabindex="-1" onkeydown="switchTab(event)" onclick="show('method-summary-table', 'method-summary-table-tab4', 3)" class="table-tab">Concrete Methods</button></div>
 <div id="method-summary-table.tabpanel" role="tabpanel">
 <div class="summary-table three-column-summary" aria-labelledby="method-summary-table-tab0">
 <div class="table-header col-first">Modifier and Type</div>
 <div class="table-header col-second">Method</div>
 <div class="table-header col-last">Description</div>
 <div class="col-first even-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table"><code>void</code></div>
-<div class="col-second even-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table"><code><span class="member-name-link"><a href="#crawling()">crawling</a></span>()</code></div>
+<div class="col-second even-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table"><code><span class="member-name-link"><a href="#initSnake()">initSnake</a></span>()</code></div>
 <div class="col-last even-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table">
-<div class="block">Makes the enemy snake crawl by adjusting its body segments.</div>
+<div class="block">Initializes the snake's initial position.</div>
 </div>
 <div class="col-first odd-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table"><code>void</code></div>
-<div class="col-second odd-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table"><code><span class="member-name-link"><a href="#eatFood()">eatFood</a></span>()</code></div>
+<div class="col-second odd-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table"><code><span class="member-name-link"><a href="#movingNext()">movingNext</a></span>()</code></div>
 <div class="col-last odd-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table">
-<div class="block">Checks if the enemy snake has eaten the food and performs the necessary actions.</div>
-</div>
-<div class="col-first even-row-color method-summary-table-tab1 method-summary-table-tab4 method-summary-table"><code>static <a href="EnemySnakeFood.Direction.html" title="enum class in ru.nsu.plodushcheva.model.snakes">EnemySnakeFood.Direction</a></code></div>
-<div class="col-second even-row-color method-summary-table-tab1 method-summary-table-tab4 method-summary-table"><code><span class="member-name-link"><a href="#getRandomDirection(java.util.List)">getRandomDirection</a></span>&#8203;(<a href="https://docs.oracle.com/en/java/javase/16/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="EnemySnakeFood.Direction.html" title="enum class in ru.nsu.plodushcheva.model.snakes">EnemySnakeFood.Direction</a>&gt;&nbsp;directions)</code></div>
-<div class="col-last even-row-color method-summary-table-tab1 method-summary-table-tab4 method-summary-table">
-<div class="block">Returns a random direction from the given list of directions.</div>
-</div>
-<div class="col-first odd-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table"><code>int</code></div>
-<div class="col-second odd-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table"><code><span class="member-name-link"><a href="#getScore()">getScore</a></span>()</code></div>
-<div class="col-last odd-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table">&nbsp;</div>
-<div class="col-first even-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table"><code><a href="https://docs.oracle.com/en/java/javase/16/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="https://docs.oracle.com/en/java/javase/16/docs/api/java.desktop/java/awt/Point.html" title="class or interface in java.awt" class="external-link">Point</a>&gt;</code></div>
-<div class="col-second even-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table"><code><span class="member-name-link"><a href="#getSnake()">getSnake</a></span>()</code></div>
-<div class="col-last even-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table">&nbsp;</div>
-<div class="col-first odd-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table"><code><a href="https://docs.oracle.com/en/java/javase/16/docs/api/java.desktop/java/awt/Point.html" title="class or interface in java.awt" class="external-link">Point</a></code></div>
-<div class="col-second odd-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table"><code><span class="member-name-link"><a href="#getSnakeHead()">getSnakeHead</a></span>()</code></div>
-<div class="col-last odd-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table">&nbsp;</div>
-<div class="col-first even-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table"><code>void</code></div>
-<div class="col-second even-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table"><code><span class="member-name-link"><a href="#moveDown()">moveDown</a></span>()</code></div>
-<div class="col-last even-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table">
-<div class="block">moves snake's head down.</div>
-</div>
-<div class="col-first odd-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table"><code>void</code></div>
-<div class="col-second odd-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table"><code><span class="member-name-link"><a href="#moveLeft()">moveLeft</a></span>()</code></div>
-<div class="col-last odd-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table">
-<div class="block">moves snake's head left.</div>
-</div>
-<div class="col-first even-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table"><code>void</code></div>
-<div class="col-second even-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table"><code><span class="member-name-link"><a href="#moveRight()">moveRight</a></span>()</code></div>
-<div class="col-last even-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table">
-<div class="block">moves snake's head right.</div>
-</div>
-<div class="col-first odd-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table"><code>void</code></div>
-<div class="col-second odd-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table"><code><span class="member-name-link"><a href="#moveUp()">moveUp</a></span>()</code></div>
-<div class="col-last odd-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table">
-<div class="block">moves snake's head up.</div>
-</div>
-<div class="col-first even-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table"><code>void</code></div>
-<div class="col-second even-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table"><code><span class="member-name-link"><a href="#movingNext()">movingNext</a></span>()</code></div>
-<div class="col-last even-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table">
 <div class="block">Moves the enemy snake to the next position
  based on its current direction and the location of the goal food.</div>
 </div>
-<div class="col-first odd-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table"><code>void</code></div>
-<div class="col-second odd-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table"><code><span class="member-name-link"><a href="#run()">run</a></span>()</code></div>
-<div class="col-last odd-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table">
-<div class="block">Runs the enemy snake's actions, including crawling, moving, and eating.</div>
-</div>
-<div class="col-first even-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table"><code>void</code></div>
-<div class="col-second even-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table"><code><span class="member-name-link"><a href="#setGameOver()">setGameOver</a></span>()</code></div>
-<div class="col-last even-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table">&nbsp;</div>
 </div>
 </div>
 </div>
+<div class="inherited-list">
+<h3 id="methods.inherited.from.class.ru.nsu.plodushcheva.model.snakes.BaseEnemySnake">Methods inherited from class&nbsp;ru.nsu.plodushcheva.model.snakes.<a href="BaseEnemySnake.html" title="class in ru.nsu.plodushcheva.model.snakes">BaseEnemySnake</a></h3>
+<code><a href="BaseEnemySnake.html#crawling()">crawling</a>, <a href="BaseEnemySnake.html#eatFood()">eatFood</a>, <a href="BaseEnemySnake.html#getRandomDirection(java.util.List)">getRandomDirection</a>, <a href="BaseEnemySnake.html#getScore()">getScore</a>, <a href="BaseEnemySnake.html#getSnake()">getSnake</a>, <a href="BaseEnemySnake.html#getSnakeHead()">getSnakeHead</a>, <a href="BaseEnemySnake.html#moveDown()">moveDown</a>, <a href="BaseEnemySnake.html#moveLeft()">moveLeft</a>, <a href="BaseEnemySnake.html#moveRight()">moveRight</a>, <a href="BaseEnemySnake.html#moveUp()">moveUp</a>, <a href="BaseEnemySnake.html#run()">run</a>, <a href="BaseEnemySnake.html#setGameOver()">setGameOver</a></code></div>
 <div class="inherited-list">
 <h3 id="methods.inherited.from.class.java.lang.Object">Methods inherited from class&nbsp;java.lang.<a href="https://docs.oracle.com/en/java/javase/16/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a></h3>
 <code><a href="https://docs.oracle.com/en/java/javase/16/docs/api/java.base/java/lang/Object.html#clone()" title="class or interface in java.lang" class="external-link">clone</a>, <a href="https://docs.oracle.com/en/java/javase/16/docs/api/java.base/java/lang/Object.html#equals(java.lang.Object)" title="class or interface in java.lang" class="external-link">equals</a>, <a href="https://docs.oracle.com/en/java/javase/16/docs/api/java.base/java/lang/Object.html#finalize()" title="class or interface in java.lang" class="external-link">finalize</a>, <a href="https://docs.oracle.com/en/java/javase/16/docs/api/java.base/java/lang/Object.html#getClass()" title="class or interface in java.lang" class="external-link">getClass</a>, <a href="https://docs.oracle.com/en/java/javase/16/docs/api/java.base/java/lang/Object.html#hashCode()" title="class or interface in java.lang" class="external-link">hashCode</a>, <a href="https://docs.oracle.com/en/java/javase/16/docs/api/java.base/java/lang/Object.html#notify()" title="class or interface in java.lang" class="external-link">notify</a>, <a href="https://docs.oracle.com/en/java/javase/16/docs/api/java.base/java/lang/Object.html#notifyAll()" title="class or interface in java.lang" class="external-link">notifyAll</a>, <a href="https://docs.oracle.com/en/java/javase/16/docs/api/java.base/java/lang/Object.html#toString()" title="class or interface in java.lang" class="external-link">toString</a>, <a href="https://docs.oracle.com/en/java/javase/16/docs/api/java.base/java/lang/Object.html#wait()" title="class or interface in java.lang" class="external-link">wait</a>, <a href="https://docs.oracle.com/en/java/javase/16/docs/api/java.base/java/lang/Object.html#wait(long)" title="class or interface in java.lang" class="external-link">wait</a>, <a href="https://docs.oracle.com/en/java/javase/16/docs/api/java.base/java/lang/Object.html#wait(long,int)" title="class or interface in java.lang" class="external-link">wait</a></code></div>
@@ -230,98 +189,26 @@ loadScripts(document, 'script');</script>
 <h2>Method Details</h2>
 <ul class="member-list">
 <li>
-<section class="detail" id="run()">
-<h3>run</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">run</span>()</div>
-<div class="block">Runs the enemy snake's actions, including crawling, moving, and eating.
-  If the game is over, resets the snake.</div>
-</section>
-</li>
-<li>
-<section class="detail" id="crawling()">
-<h3>crawling</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">crawling</span>()</div>
-<div class="block">Makes the enemy snake crawl by adjusting its body segments.</div>
-</section>
-</li>
-<li>
 <section class="detail" id="movingNext()">
 <h3>movingNext</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">movingNext</span>()</div>
 <div class="block">Moves the enemy snake to the next position
  based on its current direction and the location of the goal food.</div>
-</section>
-</li>
-<li>
-<section class="detail" id="getRandomDirection(java.util.List)">
-<h3>getRandomDirection</h3>
-<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type"><a href="EnemySnakeFood.Direction.html" title="enum class in ru.nsu.plodushcheva.model.snakes">EnemySnakeFood.Direction</a></span>&nbsp;<span class="element-name">getRandomDirection</span>&#8203;<span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/16/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="EnemySnakeFood.Direction.html" title="enum class in ru.nsu.plodushcheva.model.snakes">EnemySnakeFood.Direction</a>&gt;&nbsp;directions)</span></div>
-<div class="block">Returns a random direction from the given list of directions.</div>
 <dl class="notes">
-<dt>Parameters:</dt>
-<dd><code>directions</code> - the list of directions</dd>
-<dt>Returns:</dt>
-<dd>a random direction</dd>
+<dt>Overrides:</dt>
+<dd><code><a href="BaseEnemySnake.html#movingNext()">movingNext</a></code>&nbsp;in class&nbsp;<code><a href="BaseEnemySnake.html" title="class in ru.nsu.plodushcheva.model.snakes">BaseEnemySnake</a></code></dd>
 </dl>
 </section>
 </li>
 <li>
-<section class="detail" id="eatFood()">
-<h3>eatFood</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">eatFood</span>()</div>
-<div class="block">Checks if the enemy snake has eaten the food and performs the necessary actions.</div>
-</section>
-</li>
-<li>
-<section class="detail" id="moveRight()">
-<h3>moveRight</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">moveRight</span>()</div>
-<div class="block">moves snake's head right.</div>
-</section>
-</li>
-<li>
-<section class="detail" id="moveLeft()">
-<h3>moveLeft</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">moveLeft</span>()</div>
-<div class="block">moves snake's head left.</div>
-</section>
-</li>
-<li>
-<section class="detail" id="moveUp()">
-<h3>moveUp</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">moveUp</span>()</div>
-<div class="block">moves snake's head up.</div>
-</section>
-</li>
-<li>
-<section class="detail" id="moveDown()">
-<h3>moveDown</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">moveDown</span>()</div>
-<div class="block">moves snake's head down.</div>
-</section>
-</li>
-<li>
-<section class="detail" id="getSnake()">
-<h3>getSnake</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/16/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="https://docs.oracle.com/en/java/javase/16/docs/api/java.desktop/java/awt/Point.html" title="class or interface in java.awt" class="external-link">Point</a>&gt;</span>&nbsp;<span class="element-name">getSnake</span>()</div>
-</section>
-</li>
-<li>
-<section class="detail" id="getSnakeHead()">
-<h3>getSnakeHead</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/16/docs/api/java.desktop/java/awt/Point.html" title="class or interface in java.awt" class="external-link">Point</a></span>&nbsp;<span class="element-name">getSnakeHead</span>()</div>
-</section>
-</li>
-<li>
-<section class="detail" id="getScore()">
-<h3>getScore</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">int</span>&nbsp;<span class="element-name">getScore</span>()</div>
-</section>
-</li>
-<li>
-<section class="detail" id="setGameOver()">
-<h3>setGameOver</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">setGameOver</span>()</div>
+<section class="detail" id="initSnake()">
+<h3>initSnake</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">initSnake</span>()</div>
+<div class="block">Initializes the snake's initial position.</div>
+<dl class="notes">
+<dt>Overrides:</dt>
+<dd><code><a href="BaseEnemySnake.html#initSnake()">initSnake</a></code>&nbsp;in class&nbsp;<code><a href="BaseEnemySnake.html" title="class in ru.nsu.plodushcheva.model.snakes">BaseEnemySnake</a></code></dd>
+</dl>
 </section>
 </li>
 </ul>
