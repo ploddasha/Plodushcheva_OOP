@@ -38,12 +38,12 @@ import ru.nsu.plodushcheva.view.SnakeGameView;
 public class SnakeGame extends Application {
 
     static JsonData jsonData = new JsonParser().getData("info.json");
-    private static final int width = jsonData.getWidth();
+    private static final int width = jsonData.width();
 
-    private static final int height = jsonData.getHeight();
-    private static final int columns = jsonData.getColumns();
-    private static final int rows = jsonData.getRows();
-    private static final int squareSize = jsonData.getSquareSize();
+    private static final int height = jsonData.height();
+    private static final int columns = jsonData.columns();
+    private static final int rows = jsonData.rows();
+    private static final int squareSize = jsonData.squareSize();
     private int scoreForWin = 20;
     private Graphics graphics;
 
@@ -112,17 +112,17 @@ public class SnakeGame extends Application {
                 }
 
                 if (gameLevel == 1) {
-                    maxFood = jsonData.getMaxFoodForLevel1();
-                    speed = jsonData.getSpeedFoodForLevel1();
-                    walls.addWalls(jsonData.getWallsFoodForLevel1());
+                    maxFood = jsonData.maxFoodForLevel1();
+                    speed = jsonData.speedFoodForLevel1();
+                    walls.addWalls(jsonData.wallsFoodForLevel1());
                 } else if (gameLevel == 2) {
-                    maxFood = jsonData.getMaxFoodForLevel2();
-                    speed = jsonData.getSpeedFoodForLevel2();
-                    walls.addWalls(jsonData.getWallsFoodForLevel2());
+                    maxFood = jsonData.maxFoodForLevel2();
+                    speed = jsonData.speedFoodForLevel2();
+                    walls.addWalls(jsonData.wallsFoodForLevel2());
                 } else if (gameLevel == 3) {
-                    maxFood = jsonData.getMaxFoodForLevel3();
-                    speed = jsonData.getSpeedFoodForLevel3();
-                    walls.addWalls(jsonData.getWallsFoodForLevel3());
+                    maxFood = jsonData.maxFoodForLevel3();
+                    speed = jsonData.speedFoodForLevel3();
+                    walls.addWalls(jsonData.wallsFoodForLevel3());
                 }
                 scoreForWin = spinner.getValue();
 
@@ -160,8 +160,9 @@ public class SnakeGame extends Application {
                 timeline.play();
 
                 enemySnakeRandom = new EnemySnakeRandom(gameField, food, walls);
+                enemySnakeRandom.initSnake();
                 enemySnakeFood = new EnemySnakeFood(gameField, food, walls);
-
+                enemySnakeFood.initSnake();
                 food.addEnemySnakeFood(enemySnakeFood);
                 food.addEnemySnakeRandom(enemySnakeRandom);
 
