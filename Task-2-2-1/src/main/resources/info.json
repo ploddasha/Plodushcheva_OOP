@@ -1,0 +1,27 @@
+{
+  "cooks": [
+    {
+      "name": "Name 1",
+      "strength": 1
+    },
+    {
+      "name": "Name 2",
+      "strength": 2
+    },
+    {
+      "name": "Name 3",
+      "strength": 3
+    }
+  ],
+  "couriers": [
+    {
+      "name": "Name 1",
+      "maxTrunkSize": 2
+    },
+    {
+      "name": "Name 2",
+      "maxTrunkSize": 1
+    }
+  ],
+  "stockSize": 5
+}
